@@ -1,0 +1,15 @@
+/build/
+/benchpress-build/
+.DS_Store
+
+/node_modules/
+bower_components/
+angular.xcodeproj
+.idea
+*.iml
+.agignore
+.lvimrc
+libpeerconnection.log
+npm-debug.log
+/tmp/
+/scripts/bower/bower-*
