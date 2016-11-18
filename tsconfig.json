@@ -12,7 +12,7 @@
   
   "exclude": [
     "node_modules",
-		 "typings/main",
-    "typings/main.d.ts"
+		 "typings/app.main",
+    "typings/app.main.ts"
   ]
 }
