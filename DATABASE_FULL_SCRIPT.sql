@@ -41,7 +41,14 @@ NAME varchar(60),
 DESCRIPTION varchar(MAX),
 CITYID numeric foreign key references CITY(ID)
 )
-
+CREATE TABLE ADMININFO
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+NAME varchar(60),
+EMAIL varchar(60),
+PHONE varchar(20),
+PWD varchar(MAX)
+);
 CREATE TABLE USERINFO
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
