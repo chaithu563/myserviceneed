@@ -73,6 +73,8 @@ CREATE TABLE USERMEMBERSHIP
 ID numeric IDENTITY(1,1) PRIMARY KEY,
 USERID numeric foreign key references USERINFO(ID),
 MEMBERSHIPID numeric foreign key references MEMBERSHIP(ID),
+STARTDATE datetime,
+ENDDATE datetime,
 COMMENTS varchar(MAX) --any user level rule breaks/requests made then admin will add comments
 )
 
