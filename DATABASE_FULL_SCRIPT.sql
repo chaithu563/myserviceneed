@@ -1,11 +1,11 @@
 USE Master
 -- if database exists, drop it
 if EXISTS(SELECT name FROM sys.databases
-     WHERE name = 'SERVICE_DB_NAME')
-DROP Database "SERVICE_DB_NAME"
+     WHERE name = 'myserviceneed')
+DROP Database "myserviceneed"
 GO
 -- create new database 
-CREATE DATABASE [SERVICE_DB_NAME]
+CREATE DATABASE [myserviceneed]
 GO
 USE [SERVICE_DB_NAME]
 -- add user mapping to database 
@@ -146,9 +146,25 @@ MINBUDGET money,
 MAXBUDGET money,
 SERVICESTATE int foreign key references SERVICESTATE(ID),
 SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
-SERVICENEEDEDDATE DATETIME
+--SERVICENEEDEDDATE DATE,
+--SERVICESTARTDATETIME DATETIME,
+--SERVICEENDDATETIME DATETIME
 --ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
 )
+CREATE TABLE USERSERVICETIMEREOCRD  ---User service request info 
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+SERVICEID numeric foreign key references USERSERVICENEED(ID),
+--SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
+SERVICENEEDEDDATE DATE,  --if it is one day work
+SERVICESTARTDATE DATE,  --if it is multi day work start date
+SERVICEENDDATE DATE,  -- if it is multi day work end date
+SERVICESTARTTIME TIME,  --if any specific start time of day
+SERVICEENDTIME TIME  --if any specific end time of day
+
+--ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
+)
+
 CREATE TABLE SERVICEBID  ---User service BID info 
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
