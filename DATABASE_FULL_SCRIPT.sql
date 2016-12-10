@@ -61,6 +61,14 @@ LOGINTYPEID int foreign key references SOCIALLOGIN(ID),
 CURRENTLOCATION varchar(max)
 
 );
+
+CREATE TABLE USERPWD
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+USERID numeric foreign key references USERINFO(ID),
+PWD varchar(MAX)
+)
+
 CREATE TABLE MEMBERSHIP
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
