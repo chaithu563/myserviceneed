@@ -22,9 +22,16 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
+      'ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
+      'ng2-dropdown': 'node_modules/ng2-dropdown',
+      'moment': 'node_modules/moment/moment.js',
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      'jaydata/core': 'lib/jaydata/jaydata.js',
+      'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
+      'ag-grid-ng2': 'node_modules/ag-grid-ng2',
+      'ag-grid': 'node_modules/ag-grid'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -34,7 +41,35 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'ag-grid-ng2': {
+      	defaultExtension: "js"
+      },
+      'ag-grid': {
+      	defaultExtension: "js"
+      },
+      'ng2-dropdown': {
+          main: "index.js",
+          defaultExtension: "js"
       }
+			
+    },
+
+    meta: {
+        //'jaydata/odata': {
+        //    format: 'cjs',
+        //    deps: ['jaydata/core']
+    	//},
+    	'jaydata/core': {
+    		format: 'cjs'
+    	},
+    	'jaydata/odata': {
+    		format: 'cjs',
+    		deps: ['jaydata/core']
+    	},
+        './jaydata-model/MSN': {
+        	deps: ['jaydata/core', 'jaydata/odata']
+        }
     }
   });
 })(this);

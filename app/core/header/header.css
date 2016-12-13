@@ -1,0 +1,38 @@
+﻿.header{
+	width:100%;
+	height:8.5%;
+	background-color:ActiveBorder;
+	display:inline-block;
+	margin:0 !important ;
+	padding:0 !important ;
+	background-color:#324392;
+	position  :relative;
+}
+.header > .logocontainer
+{
+	left:10%;
+	width:20%;
+	height:100%;
+	display:inline;
+	 float:left;
+}
+.logocontainer>.logo{
+	  background-image: url("../app/assets/img/cmp_logo.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		width:100%;
+		height:100%;
+}
+
+.header > .userinfo
+{
+	top:9%;
+	width:20%;
+	height:100%;
+	float:right;
+}
+
+body {    
+    margin: 0 !important;
+    padding: 0 !important;
+}

@@ -1,0 +1,11 @@
+﻿<div>
+
+	<h3> Edit Admin User</h3>
+
+	NAME <input type="text" [(ngModel)]="userdetails.NAME" /> <br />
+	EMAIL <input type="text" [(ngModel)]="userdetails.EMAIL" /> <br />
+	PHONE <input type="text" [(ngModel)]="userdetails.PHONE" /> <br />
+	PASSWORD <input type="text" [(ngModel)]="userdetails.PWD" /> <br />
+
+	<input type="submit" (click)="saveUser(userdetails)" />
+</div>

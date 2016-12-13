@@ -1,0 +1,26 @@
+﻿<div class="leftmenu">
+	<div >
+		<h3> Manage Options </h3>
+		<accordion closeOthers="true" closeOtherPanels="true">
+			<accordion-panel  heading="Admins"> <a [routerLink]="['/manageadmins']">Handle admins </a> </accordion-panel>
+			<accordion-panel   heading="users"> <a [routerLink]="['/users']">Handle Users </a>  </accordion-panel>
+			<accordion-panel heading="Cities">  <a [routerLink]="['/cities']"> Handle Cities </a></accordion-panel>
+			<accordion-panel heading="Areas"><a [routerLink]="['/cityareas']">Manage Areas in City </a> </accordion-panel>
+			<accordion-panel heading="MemberShips">
+            <a [routerLink]="['/memberships']">Manage Membership </a>
+                <!--<a [routerLink]="['/manageusermemberships']">Manage User Membership </a>-->
+            </accordion-panel>
+			<accordion-panel heading="Service Time Type">What Time type service user can have</accordion-panel>
+			<accordion-panel heading="Social Logins">Manage Social Login Options</accordion-panel>
+
+			<accordion-panel heading="Service Category"> <a [routerLink]="['/categories']">Manage Service Categories</a></accordion-panel>
+
+
+			<accordion-panel heading="Service Sub Category"> <a [routerLink]="['/subcategories']">Manage Service Sub Categories</a></accordion-panel>
+			<accordion-panel heading="User Bids"> Handle User Bids</accordion-panel>
+			<accordion-panel heading="User Services">Manage what services user provide</accordion-panel>
+			<accordion-panel heading="Users Service Needs">Manage what services user need</accordion-panel>
+
+		</accordion>
+</div>
+</div>
