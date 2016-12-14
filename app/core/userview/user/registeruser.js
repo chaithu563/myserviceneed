@@ -58,7 +58,7 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 };
                 RegisterUserComponent = __decorate([
                     core_1.Component({
-                        selector: 'addadmin',
+                        selector: 'registeruser',
                         templateUrl: 'app/core/userview/user/registeruser.html',
                     }), 
                     __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router])

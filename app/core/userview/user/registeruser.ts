@@ -3,7 +3,7 @@ import {GridOptions} from 'ag-grid/main';
 import { MSNService } from '../../../services/msn.service';
 import {Router} from '@angular/router';
 @Component({
-    selector: 'addadmin',
+    selector: 'registeruser',
     templateUrl: 'app/core/userview/user/registeruser.html',
 
 })

@@ -40,7 +40,7 @@ System.register(['@angular/core', './services/msn.service'], function(exports_1,
                     core_1.Component({
                         selector: 'my-app',
                         // 	template: '<header> </header> <div class="row" >  <div class="col-md-2" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-10" style="height: 100%;"> <adminview></adminview>  </div> </div>',
-                        template: '<header> </header> <div class="row" >   <div class="col-md-10" style="height: 100%;"> <userview></userview>  </div> </div>',
+                        template: '<header> </header>   <userview></userview> ',
                         providers: [msn_service_1.MSNService]
                     }), 
                     __metadata('design:paramtypes', [msn_service_1.MSNService])
