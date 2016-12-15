@@ -3,12 +3,12 @@ import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 @Component({
 	selector: 'leftmenu',
-	templateUrl: 'app/core/leftmenu/leftmenu.html',
-		styleUrls: ['app/core/leftmenu/leftmenu.css'],
+	templateUrl: 'app/core/topmenu/topmenu.html',
+		styleUrls: ['app/core/topmenu/topmenu.css'],
 		providers: [AccordionComponent, AccordionPanelComponent],
 		directives: [ ROUTER_DIRECTIVES]
 })
-export class LeftMenuComponent {
+export class TopMenuComponent {
 
 	constructor(private router: Router) {
 
@@ -16,9 +16,5 @@ export class LeftMenuComponent {
 
 	}
 
- linkClicked(ob)
- {
-	 this.router.navigate(['PublicPage']);
- }
-
+ 
 }

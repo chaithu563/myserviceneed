@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../user/registeruser"], function (exports_1, context_1) {
+System.register(["@angular/core", "ng2-bootstrap", "@angular/router"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,34 +10,38 @@ System.register(["@angular/core", "../user/registeruser"], function (exports_1, 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, registeruser_1, DefaultViewComponent;
+    var core_1, ng2_bootstrap_1, router_1, TopMenuComponent;
     return {
         setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (registeruser_1_1) {
-                registeruser_1 = registeruser_1_1;
+            function (ng2_bootstrap_1_1) {
+                ng2_bootstrap_1 = ng2_bootstrap_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }
         ],
         execute: function () {
-            DefaultViewComponent = (function () {
-                function DefaultViewComponent() {
+            TopMenuComponent = (function () {
+                function TopMenuComponent(router) {
+                    this.router = router;
                 }
-                return DefaultViewComponent;
+                return TopMenuComponent;
             }());
-            DefaultViewComponent = __decorate([
+            TopMenuComponent = __decorate([
                 core_1.Component({
-                    selector: 'userview',
-                    templateUrl: 'app/core/userview/default/default.html',
-                    styleUrls: ['app/core/userview/default/default.css'],
-                    providers: [registeruser_1.RegisterUserComponent],
-                    directives: [registeruser_1.RegisterUserComponent]
+                    selector: 'leftmenu',
+                    templateUrl: 'app/core/topmenu/topmenu.html',
+                    styleUrls: ['app/core/topmenu/topmenu.css'],
+                    providers: [ng2_bootstrap_1.AccordionComponent, ng2_bootstrap_1.AccordionPanelComponent],
+                    directives: [router_1.ROUTER_DIRECTIVES]
                 }),
-                __metadata("design:paramtypes", [])
-            ], DefaultViewComponent);
-            exports_1("DefaultViewComponent", DefaultViewComponent);
+                __metadata("design:paramtypes", [router_1.Router])
+            ], TopMenuComponent);
+            exports_1("TopMenuComponent", TopMenuComponent);
         }
     };
 });
-//# sourceMappingURL=default.js.map
+//# sourceMappingURL=topmenu.js.map
