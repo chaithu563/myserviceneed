@@ -3,3 +3,7 @@ https://angular-maps.com/docs/getting-started.html
 
 
 <add name="myserviceneedEntities" connectionString="Data Source=inhydvms362; Integrated Security=true;Initial Catalog= myserviceneed; uid=service_user; Password=service_user; " providerName="System.Data.SqlClient"/>
+
+
+
+https://www.smartmenus.org/forums/topic/plug-smartmenu-into-angular-2/

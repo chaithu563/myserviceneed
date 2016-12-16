@@ -1,16 +1,61 @@
-﻿<!--<div class="header container">
-	<div class="logocontainer">
-		<div class="logo"> </div>
-	</div>
-	<div class="userinfo">User Name</div>
-</div>-->
-
+﻿
 <div class="page-header">
 	<div class="container header">
 		<div class="logocontainer">
 			<div class="logo">
-				<img src="../app/assets/img/cmp_logo.png" />
+				<img src="../app/assets/img/cmp_logo.png"/>
 			</div>
+		</div>
+
+		<div>
+
+
+					<!-- Left nav -->
+					<ul class="nav navbar-nav">
+						
+						<li><a href="#">Link</a></li>
+						<li>
+							<a href="#">I Need <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Weeding Service</a></li>
+								<li><a href="#">House/Construction Work</a></li>
+								<li><a href="#">Beaty Services</a></li>
+								<li><a href="#">Job Training Services</a></li>
+								<li>
+									<a href="#">Food Services <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Break Fast</a></li>
+										<li><a href="#">Lunch</a></li>
+										<li><a href="#">Dinner</a></li>
+										<li><a href="#">Evening Snacks</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+
+		</div>
+
+
+
+		<div class="dropdown" dropdown  (onopen)="doSomeActionOnOpen()" (onclose)="doSomeActionOnClose()">
+			<button class="btn btn-primary" dropdown-open>Find Service</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">Weeding Service</a></li>
+				<li><a href="#">House/Construction Work</a></li>
+				<li><a href="#">Beaty Services</a></li>
+				<li><a href="#">Job Training Services</a></li>
+				<li>
+					<a href="#">Food Services <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Break Fast</a></li>
+						<li><a href="#">Lunch</a></li>
+						<li><a href="#">Dinner</a></li>
+						<li><a href="#">Evening Snacks</a></li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 		<div class="userinfo">User Name</div>
 	</div>

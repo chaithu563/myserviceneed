@@ -1,6 +1,5 @@
-System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../app.config', "jaydata/odata"], function(exports_1, context_1) {
+System.register(["@angular/core", "rxjs/Subject", "../jaydata-model/MSN", "../app.config", "jaydata/odata"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../ap
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Subject_1, MSN_1, app_config_1;
-    var MSNService;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, Subject_1, MSN_1, app_config_1, MSNService;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -26,8 +25,10 @@ System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../ap
             function (app_config_1_1) {
                 app_config_1 = app_config_1_1;
             },
-            function (_1) {}],
-        execute: function() {
+            function (_1) {
+            }
+        ],
+        execute: function () {
             MSNService = (function () {
                 function MSNService() {
                     var _this = this;
@@ -54,14 +55,14 @@ System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../ap
                     this.subject.next(this.context);
                     this.subject.complete();
                 };
-                MSNService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], MSNService);
                 return MSNService;
             }());
+            MSNService = __decorate([
+                core_1.Injectable(),
+                __metadata("design:paramtypes", [])
+            ], MSNService);
             exports_1("MSNService", MSNService);
         }
-    }
+    };
 });
 //# sourceMappingURL=msn.service.js.map
