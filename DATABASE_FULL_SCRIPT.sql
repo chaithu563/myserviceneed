@@ -7,7 +7,7 @@ GO
 -- create new database 
 CREATE DATABASE [myserviceneed]
 GO
-USE [SERVICE_DB_NAME]
+USE [myserviceneed]
 -- add user mapping to database 
 CREATE USER [service_user] FOR LOGIN [service_user]
 -- add roles to user
