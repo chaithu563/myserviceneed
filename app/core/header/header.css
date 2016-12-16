@@ -1,6 +1,12 @@
-﻿.header{
+﻿
+.page-header
+{
+margin:0px 0px 0px 0px; !important
+
+}
+.header{
 	width:100%;
-	height:8.5%;
+	height:7.5%;
 	background-color:ActiveBorder;
 	display:inline-block;
 	margin:0 !important ;
@@ -27,8 +33,12 @@
 }
 
 .logo > img{
-	 opacity: 0.7;
-    filter: alpha(opacity=50)
+	 opacity: 0.6;
+    filter: alpha(opacity=80);
+    height:100%;
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 49%, rgba(255, 255, 255, 1) 100%);
+        background: -webkit-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 49%, rgba(255, 255, 255, 1) 100%);
+
 }
 
  .userinfo
