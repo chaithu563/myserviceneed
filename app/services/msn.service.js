@@ -1,4 +1,4 @@
-System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../app.config', "jaydata/odata"], function(exports_1, context_1) {
+System.register(['@angular/core', 'rxjs/Observable', '../app.config', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,53 +10,42 @@ System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../ap
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Subject_1, MSN_1, app_config_1;
+    var core_1, Observable_1, app_config_1, http_1;
     var MSNService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (Subject_1_1) {
-                Subject_1 = Subject_1_1;
-            },
-            function (MSN_1_1) {
-                MSN_1 = MSN_1_1;
+            function (Observable_1_1) {
+                Observable_1 = Observable_1_1;
             },
             function (app_config_1_1) {
                 app_config_1 = app_config_1_1;
             },
-            function (_1) {}],
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (_1) {},
+            function (_2) {}],
         execute: function() {
             MSNService = (function () {
-                function MSNService() {
-                    var _this = this;
+                function MSNService(http) {
+                    this.http = http;
                     this.config = {
-                        provider: app_config_1.MSN_DI_CONFIG.oDataProvider,
-                        oDataServiceHost: app_config_1.MSN_DI_CONFIG.oDataEndPoint
+                        ServiceApi: app_config_1.MSN_DI_CONFIG.MSNServiceApi
                     };
-                    this.subject = new Subject_1.Subject();
-                    // need to fix this
-                    new MSN_1.MSN.MSNContext(this.config)
-                        .onReady()
-                        .then(function (context) { return _this.onReady(context); });
                 }
-                MSNService.prototype.getContext = function (setContext) {
-                    if (this.context) {
-                        setContext(this.context);
-                    }
-                    else {
-                        this.subject.subscribe(setContext);
-                    }
-                };
-                MSNService.prototype.onReady = function (context) {
-                    this.context = context;
-                    this.subject.next(this.context);
-                    this.subject.complete();
+                // Fetch all existing comments
+                MSNService.prototype.getCategories = function () {
+                    // ...using get request
+                    return this.http.get(this.config.ServiceApi + 'SERVICECATEGORies')
+                        .map(function (res) { return res.json(); })
+                        .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };
                 MSNService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], MSNService);
                 return MSNService;
             }());

@@ -9,7 +9,7 @@
 
 		<div class="ServiceContainer">
 
-					<ul  id="main-menu" class="sm sm-blue">
+					<!--<ul  id="main-menu" class="sm sm-blue">
 						
 						<li>
 							<a href="#">I Need <span class="caret"></span></a>
@@ -30,7 +30,18 @@
                                 <li><a href="#">Electronic Repair Services</a></li>
 							</ul>
 						</li>
-					</ul>
+					</ul>-->
+
+            <ul id="main-menu" class="sm sm-blue">
+
+                <li>
+                    <a href="#">I Need <span class="caret"></span></a>
+                    <ul>
+                        <li *ngFor="let cat of categories;"><a href="/service/{{cat.ID}}">{{cat.NAME}}</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
 
 
 		</div>

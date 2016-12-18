@@ -1,4 +1,5 @@
 ﻿import { NgModule }      from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import {myComponents} from './app.depend';
@@ -9,7 +10,7 @@ import { routing }              from './app.routing';
 import {AgGridModule} from 'ag-grid-ng2/main';
 import {DropdownModule} from "ng2-dropdown";
 @NgModule({
-	imports: [RouterModule, BrowserModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(), routing],
+    imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(), routing],
 	declarations: [...myComponents],
 	 providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     bootstrap: [AppComponent]

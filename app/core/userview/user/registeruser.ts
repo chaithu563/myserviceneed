@@ -29,13 +29,13 @@ export class RegisterUserComponent {
 
     private init() {
 
-        this.mSNService.getContext(
-            context => this.OnContextLoaded(context)
-        );
+        //this.mSNService.getContext(
+        //    context => this.OnContextLoaded(context)
+        //);
     }
     private OnContextLoaded(context: any) {
-        var _this = this;
-        _this.context = context;
+        //var _this = this;
+        //_this.context = context;
       
 
     }
@@ -49,16 +49,11 @@ export class RegisterUserComponent {
         this.userdetails.EMAIL = user.EMAIL;
         this.userdetails.PHONE = user.PHONE;
         this.userdetails.PWD = user.PWD;
-        this.context.ADMININFOes.add(this.userdetails);
-        //this.userdetailsorig.ID = 2;
-        //	this.context.ADMININFOes.add(this.userdetailsorig);
-        console.log(user);
-        //this.context.saveChanges();
-
-        //this.router.navigate(['manageadmins']);
-        this.context.saveChanges().then(function () {
-            _this.router.navigate(['manageadmins']);
-        });
+        //this.context.ADMININFOes.add(this.userdetails);
+       
+        //this.context.saveChanges().then(function () {
+        //    _this.router.navigate(['manageadmins']);
+        //});
 
     }
 

@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '../../services/msn.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,17 +10,35 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, msn_service_1;
     var HeaderComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (msn_service_1_1) {
+                msn_service_1 = msn_service_1_1;
             }],
         execute: function() {
             HeaderComponent = (function () {
-                function HeaderComponent() {
+                function HeaderComponent(msnService) {
+                    this.msnService = msnService;
+                    this.init();
                 }
+                HeaderComponent.prototype.init = function () {
+                    var _this = this;
+                    var categoriesOperation;
+                    categoriesOperation = this.msnService.getCategories();
+                    // Subscribe to observable
+                    categoriesOperation.subscribe(function (categories) {
+                        console.log(categories);
+                        _this.categories = categories;
+                    }, function (err) {
+                        // Log errors if any
+                        console.log(err);
+                    });
+                };
                 HeaderComponent.prototype.ngAfterViewInit = function () {
                     $('#main-menu').smartmenus({
                         subMenusSubOffsetX: 1,
@@ -32,9 +50,9 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                         selector: 'header',
                         templateUrl: 'app/core/header/header.html',
                         styleUrls: ['app/core/header/header.css'],
-                        providers: []
+                        providers: [msn_service_1.MSNService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [msn_service_1.MSNService])
                 ], HeaderComponent);
                 return HeaderComponent;
             }());

@@ -1,41 +1,35 @@
 ﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { MSN } from '../jaydata-model/MSN';
 import {MSN_DI_CONFIG } from '../app.config';
-import "jaydata/odata";
-
+import { Http, Response, Headers, RequestOptions} from '@angular/http';
+// Import RxJs required methods
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MSNService {
-    private context: MSN.MSNContext;
-    private subject: Subject<MSN.MSNContext>;
 
     private config = {
-			  provider: MSN_DI_CONFIG.oDataProvider,
-				oDataServiceHost: MSN_DI_CONFIG.oDataEndPoint
+
+              ServiceApi: MSN_DI_CONFIG.MSNServiceApi
     };
 
-    constructor() {
-        this.subject = new Subject();
-       // need to fix this
-        new MSN.MSNContext(this.config)
-            .onReady()
-            .then(context => this.onReady(context));
+    constructor( private http: Http) {
+       
     }
 
-    getContext(setContext: (context: MSN.MSNContext) => void) {
-        if (this.context) {
-            setContext(this.context);
-        }
-        else {
-            this.subject.subscribe(setContext);
-        }
+    // Fetch all existing comments
+   public getCategories(): Observable<any[]> {
+
+        // ...using get request
+        return this.http.get(this.config.ServiceApi +'SERVICECATEGORies')
+            // ...and calling .json() on the response to return data
+            .map((res: Response) => res.json())
+            //...errors if any
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
     }
 
-    private onReady(context: MSN.MSNContext) {
-        this.context = context;
-        this.subject.next(this.context);
-        this.subject.complete();
-    }
+   
 }
