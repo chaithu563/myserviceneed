@@ -24,7 +24,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 HeaderComponent.prototype.ngAfterViewInit = function () {
                     $('#main-menu').smartmenus({
                         subMenusSubOffsetX: 1,
-                        subMenusSubOffsetY: -8
+                        subMenusSubOffsetY: -5
                     });
                 };
                 HeaderComponent = __decorate([

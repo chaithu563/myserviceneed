@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="db7e25c5fa084a77815e7d608533f6e2" Name="Diagram1">
+        <EntityTypeShape EntityType="MSNModel.ADMININFO" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.CITY" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.CITYAREA" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.MEMBERSHIP" Width="1.5" PointX="8.25" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.SERVICEBID" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.SERVICECATEGORY" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.SERVICESTATE" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.SERVICESUBCATEGORY" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.SERVICETIMETYPE" Width="1.5" PointX="10.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.SOCIALLOGIN" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERBID" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERFUND" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERINFO" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERMEMBERSHIP" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERPWD" Width="1.5" PointX="7.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICE" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICENEED" Width="1.5" PointX="12.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICETIMEREOCRD" Width="1.5" PointX="15" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="MSNModel.FK__CITYAREA__CITYID__08EA5793" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERINFO__CITYID__117F9D94" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERINFO__CITYAR__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERMEMBE__MEMBE__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERI__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERS__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__ALLOC__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__SERVICESU__SERVI__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERINFO__LOGINT__1367E606" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERBIDS__USERID__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERFUNDS__USERI__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERMEMBE__USERI__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERPWD__USERID__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
