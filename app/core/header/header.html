@@ -14,7 +14,23 @@
 						<li>
 							<a href="#">I Need <span class="caret"></span></a>
 							<ul >
-								<li><a href="#">Weeding Service</a></li>
+								<li _ngcontent-sfh-22="">
+
+									<a _ngcontent-sfh-22=""> Wedding Services <span _ngcontent-sfh-22="" class="caret"> </span>  </a>
+
+
+									<ul _ngcontent-sfh-22="">
+										<li _ngcontent-sfh-22="">
+											<a _ngcontent-sfh-22="" href="#">Bridal Makeup</a>
+										</li>
+										<li _ngcontent-sfh-22="">
+											<a _ngcontent-sfh-22="" href="#">Photography Service</a>
+										</li>
+									</ul>
+
+
+								</li>
+
 								<li><a href="#">House/Construction Work</a></li>
 								<li><a href="#">Beaty Services</a></li>
 								<li><a href="#">Job Training Services</a></li>
@@ -32,30 +48,24 @@
 						</li>
 					</ul>-->
 
+
             <ul id="main-menu" class="sm sm-blue">
 
                 <li>
                     <a href="#">I Need <span class="caret"></span></a>
-                    <ul>
-                        <li ngFor let-cat="$implicit" [ngForOf]="categories">
-                        
-                        <a href="/service/{{cat.ID}}">{{cat.NAME}}  <span class="caret"></span></a>
+									<ul>
+										<li *ngFor="let cat of categories">
+											<a> {{cat.NAME}} <span class="caret"> </span>  </a>
 
-                            <!--<ul *ngFor="let subcat of {{cat.SERVICESUBCATEGORies}}">
-                                <li >
-                                    <a >{{subcat.NAME}}</a>
-                                </li>
-                            </ul>-->
+											<ul >
+												<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+													<a href="#">{{subcat.NAME}} <span class="caret"> </span> </a>
+												</li>
+										 </ul>
 
-                            <!--<ul ngFor let-subcat [ngForOf]="cat.SERVICESUBCATEGORies" >
-                                <li>
-                                    <a>{{subcat.NAME}}</a>
-                                </li>
-                            </ul>-->
-                        
-                        </li>
-                        
-                    </ul>
+                    </li>
+
+									</ul>
                 </li>
             </ul>
 
