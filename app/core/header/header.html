@@ -37,7 +37,23 @@
                 <li>
                     <a href="#">I Need <span class="caret"></span></a>
                     <ul>
-                        <li *ngFor="let cat of categories;"><a href="/service/{{cat.ID}}">{{cat.NAME}}</a></li>
+                        <li ngFor let-cat="$implicit" [ngForOf]="categories">
+                        
+                        <a href="/service/{{cat.ID}}">{{cat.NAME}}  <span class="caret"></span></a>
+
+                            <!--<ul *ngFor="let subcat of {{cat.SERVICESUBCATEGORies}}">
+                                <li >
+                                    <a >{{subcat.NAME}}</a>
+                                </li>
+                            </ul>-->
+
+                            <!--<ul ngFor let-subcat [ngForOf]="cat.SERVICESUBCATEGORies" >
+                                <li>
+                                    <a>{{subcat.NAME}}</a>
+                                </li>
+                            </ul>-->
+                        
+                        </li>
                         
                     </ul>
                 </li>
