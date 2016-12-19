@@ -40,10 +40,12 @@ System.register(["@angular/core", "../../services/msn.service"], function (expor
                     });
                 };
                 HeaderComponent.prototype.ngAfterViewInit = function () {
-                    $('#main-menu').smartmenus({
-                        subMenusSubOffsetX: 1,
-                        subMenusSubOffsetY: -5
-                    });
+                    setTimeout(function () {
+                        $('#main-menu').smartmenus({
+                            subMenusSubOffsetX: 1,
+                            subMenusSubOffsetY: -11
+                        });
+                    }, 500);
                 };
                 return HeaderComponent;
             }());
