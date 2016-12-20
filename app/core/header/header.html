@@ -1,84 +1,44 @@
 ﻿
 <div class="page-header">
-	<div class="container header">
-		<div class="logocontainer">
-			<div class="logo">
-				<img src="../app/assets/img/cmp_logo.png"/>
-			</div>
-		</div>
+    <div class="container header">
+        <div class="logocontainer">
+            <div class="logo">
+                <img src="../app/assets/img/cmp_logo.png" />
+            </div>
+        </div>
 
-		<div class="ServiceContainer">
-
-					<!--<ul  id="main-menu" class="sm sm-blue">
-						
-						<li>
-							<a href="#">I Need <span class="caret"></span></a>
-							<ul >
-								<li _ngcontent-sfh-22="">
-
-									<a _ngcontent-sfh-22=""> Wedding Services <span _ngcontent-sfh-22="" class="caret"> </span>  </a>
-
-
-									<ul _ngcontent-sfh-22="">
-										<li _ngcontent-sfh-22="">
-											<a _ngcontent-sfh-22="" href="#">Bridal Makeup</a>
-										</li>
-										<li _ngcontent-sfh-22="">
-											<a _ngcontent-sfh-22="" href="#">Photography Service</a>
-										</li>
-									</ul>
-
-
-								</li>
-
-								<li><a href="#">House/Construction Work</a></li>
-								<li><a href="#">Beaty Services</a></li>
-								<li><a href="#">Job Training Services</a></li>
-								<li>
-									<a href="#">Food Services <span class="caret"></span></a>
-									<ul >
-										<li><a href="#">Break Fast</a></li>
-										<li><a href="#">Lunch</a></li>
-										<li><a href="#">Dinner</a></li>
-										<li><a href="#">Evening Snacks</a></li>
-									</ul>
-								</li>
-                                <li><a href="#">Electronic Repair Services</a></li>
-							</ul>
-						</li>
-					</ul>-->
-
+        <div class="ServiceContainer">
 
             <ul id="main-menu" class="sm sm-blue">
 
                 <li>
-                    <a href="#">I Need <span class="caret"></span></a>
-									<ul>
-										<li *ngFor="let cat of categories">
-											<a> {{cat.NAME}} <span class="caret"> </span>  </a>
+                    <a href="#">I Need </a>
+                    <ul>
+                        <li *ngFor="let cat of categories">
+                            <a> {{cat.NAME}}  </a>
 
-											<ul >
-												<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
-													<a href="#">{{subcat.NAME}} <span class="caret"> </span> </a>
-												</li>
-										 </ul>
+                            <ul *ngIf=cat.SERVICESUBCATEGORies.length >
+                                <li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+                                    <a href="#">{{subcat.NAME}}  </a>
+                                </li>
+                            </ul>
 
-                    </li>
+                        </li>
 
-									</ul>
+                    </ul>
                 </li>
             </ul>
 
 
-		</div>
+        </div>
 
 
 
-		
-		
-        
-        
+
+
+
+
         <div class="userinfo">User Name</div>
-	</div>
+    </div>
 </div>
 
