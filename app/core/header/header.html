@@ -9,13 +9,13 @@
 
         <div class="ServiceContainer">
 
-            <ul id="main-menu" class="sm sm-blue">
+            <ul id="main-menu" class="sm sm-blue servicemenu">
 
                 <li>
                     <a href="#">I Need </a>
                     <ul>
                         <li *ngFor="let cat of categories">
-                            <a> {{cat.NAME}}  </a>
+                            <a> {{cat.NAME}}</a>
 
                             <ul *ngIf=cat.SERVICESUBCATEGORies.length >
                                 <li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
@@ -29,16 +29,14 @@
                 </li>
             </ul>
 
-
+           
         </div>
 
-
-
-
-
-
-
         <div class="userinfo">User Name</div>
+
+
+
+       
     </div>
 </div>
 

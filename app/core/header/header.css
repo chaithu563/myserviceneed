@@ -49,8 +49,12 @@ padding:0 !important ;
  .ServiceContainer
  {
      margin-left:40%;
-     margin-right:60%;
 
+
+ }
+ .servicemenu
+ {
+      position:absolute;
  }
 
 
