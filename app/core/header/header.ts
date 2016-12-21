@@ -1,12 +1,13 @@
 ﻿import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MSNService } from '../../services/msn.service';
 import { Observable } from 'rxjs/Observable';
+import {  RouterLink} from '@angular/router';
 declare var $:JQueryStatic;
 @Component({
     selector: 'header',
     templateUrl: 'app/core/header/header.html',
     styleUrls: ['app/core/header/header.css'],
-    providers: [MSNService]
+    providers: [MSNService, RouterLink]
     
 })
 export class HeaderComponent implements AfterViewInit{

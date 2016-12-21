@@ -10,7 +10,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, UserViewComponent;
+    var core_1, PostServiceComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,23 +18,23 @@ System.register(["@angular/core"], function (exports_1, context_1) {
             }
         ],
         execute: function () {
-            UserViewComponent = (function () {
-                function UserViewComponent() {
+            PostServiceComponent = (function () {
+                function PostServiceComponent() {
                 }
-                return UserViewComponent;
+                return PostServiceComponent;
             }());
-            UserViewComponent = __decorate([
+            PostServiceComponent = __decorate([
                 core_1.Component({
-                    selector: 'userview',
-                    templateUrl: 'app/core/userview/userview.html',
-                    styleUrls: ['app/core/userview/userview.css'],
+                    selector: 'postservice',
+                    templateUrl: 'app/core/userview/postservice/postservice.html',
+                    styleUrls: ['app/core/userview/postservice/postservice.css'],
                     providers: [],
                     directives: []
                 }),
                 __metadata("design:paramtypes", [])
-            ], UserViewComponent);
-            exports_1("UserViewComponent", UserViewComponent);
+            ], PostServiceComponent);
+            exports_1("PostServiceComponent", PostServiceComponent);
         }
     };
 });
-//# sourceMappingURL=userview.js.map
+//# sourceMappingURL=postservice.js.map

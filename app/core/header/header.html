@@ -19,7 +19,7 @@
 
                             <ul *ngIf=cat.SERVICESUBCATEGORies.length >
                                 <li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
-                                    <a href="#">{{subcat.NAME}}  </a>
+																	<a [routerLink]="['/postservice',subcat.ID]">{{subcat.NAME}}  </a>
                                 </li>
                             </ul>
 
