@@ -40,11 +40,21 @@ export class HeaderComponent implements AfterViewInit{
     }
     ngAfterViewInit() {
 			setTimeout(() => {
-				$('#main-menu').smartmenus({
+				$('#ineed-menu').smartmenus({
 					subMenusSubOffsetX: 1,
 					subMenusSubOffsetY: -11
 								});
-			}, 500)
+			}, 500);
+
+			setTimeout(() => {
+				$('#findwork-menu').smartmenus({
+					subMenusSubOffsetX: 1,
+					subMenusSubOffsetY: -11
+								});
+			}, 500);
+
+		
+
     }
 
 }

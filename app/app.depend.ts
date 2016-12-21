@@ -5,12 +5,14 @@ import {UserViewComponent} from './core/userview/userview';
 import {RegisterUserComponent} from './core/userview/user/registeruser';
 import {EditUserComponent} from './core/userview/user/edituser';
 import {PostServiceComponent} from './core/userview/postservice/postservice';
+import {FindWorkComponent} from './core/userview/findwork/findwork';
+
 
 
 
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
-	HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent
+	HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, FindWorkComponent
 ];
 
 export const myDirectives = [

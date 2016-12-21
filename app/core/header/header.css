@@ -1,60 +1,59 @@
 ﻿
-.page-header
-{
-margin:0 !important ;
-padding:0 !important ;
+.page-header {
+	margin: 0 !important;
+	padding: 0 !important;
+}
 
+.header {
+	width: 100%;
+	height: 50px;
+	background-color: ActiveBorder;
+	display: inline-block;
+	margin: 0 !important;
+	padding: 0 !important;
+	background-color: #0094ff;
+	position: relative;
 }
-.header{
-	width:100%;
-	height:50px;
-	background-color:ActiveBorder;
-	display:inline-block;
-	margin:0 !important ;
-	padding:0 !important ;
-	background-color:#0094ff;
-	position  :relative;
+
+.logocontainer {
+	width: 40%;
+	height: 100%;
+	display: inline;
+	float: left;
+	background-color: #0094ff;
 }
- .logocontainer
-{
-	
-	width:40%;
-	height:100%;
-	display:inline;
-	 float:left;
-	 background-color:#0094ff;
-}
-.logocontainer>.logo{
-	  /*background-image: url("../app/assets/img/cmp_logo.png");*/
+
+	.logocontainer > .logo {
+		/*background-image: url("../app/assets/img/cmp_logo.png");*/
 		background-size: contain;
 		background-repeat: no-repeat;
-		width:50%;
-		height:100%;
-		background-color:#0094ff !important;
-		 vertical-align: bottom;
+		width: 50%;
+		height: 100%;
+		background-color: #0094ff !important;
+		vertical-align: bottom;
+	}
+
+.logo > img {
+	opacity: 0.8;
+	height: 100%;
 }
 
-.logo > img{
-	 opacity: 0.8;
-    height:100%;
+.userinfo {
+	top: 9%;
+	width: 20%;
+	height: 100%;
+	float: right;
 }
 
- .userinfo
-{
-	top:9%;
-	width:20%;
-	height:100%;
-	float:right;
+.ServiceContainer {
+	margin-left: 36%;
 }
- .ServiceContainer
- {
-     margin-left:40%;
 
+.servicemenu {
+	position: absolute;
+}
 
- }
- .servicemenu
- {
-      position:absolute;
- }
-
-
+.findworkmenu {
+	position: absolute;
+	margin-left: 18%;
+}

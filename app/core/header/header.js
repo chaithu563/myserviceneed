@@ -44,7 +44,13 @@ System.register(["@angular/core", "../../services/msn.service", "@angular/router
                 };
                 HeaderComponent.prototype.ngAfterViewInit = function () {
                     setTimeout(function () {
-                        $('#main-menu').smartmenus({
+                        $('#ineed-menu').smartmenus({
+                            subMenusSubOffsetX: 1,
+                            subMenusSubOffsetY: -11
+                        });
+                    }, 500);
+                    setTimeout(function () {
+                        $('#findwork-menu').smartmenus({
                             subMenusSubOffsetX: 1,
                             subMenusSubOffsetY: -11
                         });

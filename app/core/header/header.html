@@ -9,28 +9,52 @@
 
         <div class="ServiceContainer">
 
-            <ul id="main-menu" class="sm sm-blue servicemenu">
+					<div class="servicemenu">
+						<ul id="ineed-menu" class="sm sm-blue ">
 
-                <li>
-                    <a href="#">I Need </a>
-                    <ul>
-                        <li *ngFor="let cat of categories">
-                            <a> {{cat.NAME}}</a>
+							<li>
+								<a href="#">I Need </a>
+								<ul>
+									<li *ngFor="let cat of categories">
+										<a> {{cat.NAME}}</a>
 
-                            <ul *ngIf=cat.SERVICESUBCATEGORies.length >
-                                <li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
-																	<a [routerLink]="['/postservice',subcat.ID]">{{subcat.NAME}}  </a>
-                                </li>
-                            </ul>
+										<ul *ngIf=cat.SERVICESUBCATEGORies.length>
+											<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+												<a [routerLink]="['/postservice',subcat.ID]">{{subcat.NAME}}  </a>
+											</li>
+										</ul>
 
-                        </li>
+									</li>
 
-                    </ul>
-                </li>
-            </ul>
+								</ul>
+							</li>
+						</ul>
 
-           
-        </div>
+					</div>
+
+					<div class="findworkmenu">
+						<ul id="findwork-menu" class="sm sm-blue ">
+
+							<li>
+								<a href="#">Find Work </a>
+								<ul>
+									<li *ngFor="let cat of categories">
+										<a> {{cat.NAME}}</a>
+
+										<ul *ngIf=cat.SERVICESUBCATEGORies.length>
+											<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+												<a [routerLink]="['/findwork',subcat.ID]">{{subcat.NAME}}  </a>
+											</li>
+										</ul>
+
+									</li>
+
+								</ul>
+							</li>
+						</ul>
+					</div>
+				
+				 </div>
 
         <div class="userinfo">User Name</div>
 
