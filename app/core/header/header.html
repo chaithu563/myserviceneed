@@ -1,66 +1,90 @@
 ﻿
 <div class="page-header">
-    <div class="container header">
-        <div class="logocontainer">
-            <div class="logo">
-                <img src="../app/assets/img/cmp_logo.png" />
-            </div>
-        </div>
+	<div class="container header">
+		<div class="logocontainer">
+			<div class="logo">
+				<img src="../app/assets/img/cmp_logo.png" />
+			</div>
+		</div>
 
-        <div class="ServiceContainer">
+		<div class="ServiceContainer">
 
-					<div class="servicemenu">
-						<ul id="ineed-menu" class="sm sm-blue ">
+			<div class="servicemenu">
+				<ul id="ineed-menu" class="sm sm-blue ">
 
-							<li>
-								<a href="#">I Need </a>
-								<ul>
-									<li *ngFor="let cat of categories">
-										<a> {{cat.NAME}}</a>
+					<li>
+						<a href="#">I Need </a>
+						<ul>
+							<li *ngFor="let cat of categories">
+								<a> {{cat.NAME}}</a>
 
-										<ul *ngIf=cat.SERVICESUBCATEGORies.length>
-											<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
-												<a [routerLink]="['/postservice',subcat.ID]">{{subcat.NAME}}  </a>
-											</li>
-										</ul>
-
+								<ul *ngIf=cat.SERVICESUBCATEGORies.length>
+									<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+										<a [routerLink]="['/postservice',subcat.ID]">{{subcat.NAME}}  </a>
 									</li>
-
 								</ul>
+
 							</li>
+
 						</ul>
+					</li>
+				</ul>
 
-					</div>
+			</div>
 
-					<div class="findworkmenu">
-						<ul id="findwork-menu" class="sm sm-blue ">
+			<div class="findworkmenu">
+				<ul id="findwork-menu" class="sm sm-blue ">
 
-							<li>
-								<a href="#">Find Work </a>
-								<ul>
-									<li *ngFor="let cat of categories">
-										<a> {{cat.NAME}}</a>
+					<li>
+						<a href="#">Find Work </a>
+						<ul>
+							<li *ngFor="let cat of categories">
+								<a> {{cat.NAME}}</a>
 
-										<ul *ngIf=cat.SERVICESUBCATEGORies.length>
-											<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
-												<a [routerLink]="['/findwork',subcat.ID]">{{subcat.NAME}}  </a>
-											</li>
-										</ul>
-
+								<ul *ngIf=cat.SERVICESUBCATEGORies.length>
+									<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+										<a [routerLink]="['/findwork',subcat.ID]">{{subcat.NAME}}  </a>
 									</li>
-
 								</ul>
+
 							</li>
+
 						</ul>
-					</div>
-				
-				 </div>
+					</li>
+				</ul>
+			</div>
 
-        <div class="userinfo">User Name</div>
+		</div>
+
+		<div class="rightCorner">
+
+			<div class="chooseCity">
+				<!--<div class="dropdown" dropdown>
+					<button class="btn btn-primary" dropdown-open>Choose City</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Badman</a></li>
+						<li><a href="#">Sadman</a></li>
+						<li><a href="#">Lieman</a></li>
+					</ul>
+				</div>-->
+			
+
+			
+				<select (change)="onCityChange($event.target.value)" class=" form-control" data-style="btn-primary">
+					<option selected>
+						Choose City
+					</option>
+					<option *ngFor="let x of cities" [value]="x.ID">{{x.NAME}}</option>
+				</select>
+
+	
+			
+			</div>
+		</div>
 
 
+	
 
-       
-    </div>
+	</div>
 </div>
 

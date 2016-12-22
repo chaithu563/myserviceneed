@@ -12,7 +12,8 @@ declare var $:JQueryStatic;
 })
 export class HeaderComponent implements AfterViewInit{
 
-    categories: any;
+	categories: any;
+	cities: any;
     constructor(private msnService: MSNService ) {
 
         this.init();
@@ -20,25 +21,15 @@ export class HeaderComponent implements AfterViewInit{
     }
 
     private init() {
-        let categoriesOperation: Observable<any[]>;
-
-
-        categoriesOperation = this.msnService.getCategories();
-        // Subscribe to observable
-        categoriesOperation.subscribe(
-            categories => {
-                console.log(categories);
-                this.categories = categories;
-            },
-            err => {
-                // Log errors if any
-                console.log(err);
-            });
-
+       
+			this.loadCategories();
+			this.loadCities();
 
 
     }
-    ngAfterViewInit() {
+
+
+		ngAfterViewInit() {
 			setTimeout(() => {
 				$('#ineed-menu').smartmenus({
 					subMenusSubOffsetX: 1,
@@ -53,8 +44,49 @@ export class HeaderComponent implements AfterViewInit{
 								});
 			}, 500);
 
-		
+
 
     }
+
+		private loadCategories() {
+			let categoriesOperation: Observable<any[]>;
+
+
+			categoriesOperation = this.msnService.getCategories();
+			// Subscribe to observable
+			categoriesOperation.subscribe(
+				categories => {
+					console.log(categories);
+					this.categories = categories;
+					this.ngAfterViewInit();
+				},
+				err => {
+					// Log errors if any
+					console.log(err);
+				});
+
+		}
+
+		private loadCities() {
+			let citiesOperation: Observable<any[]>;
+
+
+			citiesOperation = this.msnService.getCities();
+			// Subscribe to observable
+			citiesOperation.subscribe(
+				cities => {
+					console.log(cities);
+					this.cities = cities;
+				},
+				err => {
+					// Log errors if any
+					console.log(err);
+				});
+		}
+
+		private onCityChange() {
+
+		}
+   
 
 }

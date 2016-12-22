@@ -30,17 +30,8 @@ System.register(["@angular/core", "../../services/msn.service", "@angular/router
                     this.init();
                 }
                 HeaderComponent.prototype.init = function () {
-                    var _this = this;
-                    var categoriesOperation;
-                    categoriesOperation = this.msnService.getCategories();
-                    // Subscribe to observable
-                    categoriesOperation.subscribe(function (categories) {
-                        console.log(categories);
-                        _this.categories = categories;
-                    }, function (err) {
-                        // Log errors if any
-                        console.log(err);
-                    });
+                    this.loadCategories();
+                    this.loadCities();
                 };
                 HeaderComponent.prototype.ngAfterViewInit = function () {
                     setTimeout(function () {
@@ -55,6 +46,35 @@ System.register(["@angular/core", "../../services/msn.service", "@angular/router
                             subMenusSubOffsetY: -11
                         });
                     }, 500);
+                };
+                HeaderComponent.prototype.loadCategories = function () {
+                    var _this = this;
+                    var categoriesOperation;
+                    categoriesOperation = this.msnService.getCategories();
+                    // Subscribe to observable
+                    categoriesOperation.subscribe(function (categories) {
+                        console.log(categories);
+                        _this.categories = categories;
+                        _this.ngAfterViewInit();
+                    }, function (err) {
+                        // Log errors if any
+                        console.log(err);
+                    });
+                };
+                HeaderComponent.prototype.loadCities = function () {
+                    var _this = this;
+                    var citiesOperation;
+                    citiesOperation = this.msnService.getCities();
+                    // Subscribe to observable
+                    citiesOperation.subscribe(function (cities) {
+                        console.log(cities);
+                        _this.cities = cities;
+                    }, function (err) {
+                        // Log errors if any
+                        console.log(err);
+                    });
+                };
+                HeaderComponent.prototype.onCityChange = function () {
                 };
                 return HeaderComponent;
             }());

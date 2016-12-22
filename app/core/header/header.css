@@ -38,12 +38,7 @@
 	height: 100%;
 }
 
-.userinfo {
-	top: 9%;
-	width: 20%;
-	height: 100%;
-	float: right;
-}
+
 
 .ServiceContainer {
 	margin-left: 36%;
@@ -56,4 +51,18 @@
 .findworkmenu {
 	position: absolute;
 	margin-left: 18%;
+}
+
+.rightCorner {
+	
+	/*width: 20%;*/
+	/*height: 100%;*/
+	float: right;
+	margin-top:15px;
+	background-color : transparent !important;
+	 background:rgba(255,255,255,0.5);
+}
+.chooseCity{
+	 
+
 }
