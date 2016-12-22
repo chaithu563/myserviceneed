@@ -34,6 +34,8 @@ namespace MSNServiceApi.Models
         public Nullable<decimal> CITYAREAID { get; set; }
         public Nullable<int> LOGINTYPEID { get; set; }
         public string CURRENTLOCATION { get; set; }
+        public Nullable<double> USERLOCATIONLATITUDE { get; set; }
+        public Nullable<double> USERLOCATIONLONGITUDE { get; set; }
     
         public virtual CITY CITY { get; set; }
         public virtual CITYAREA CITYAREA { get; set; }

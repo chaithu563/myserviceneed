@@ -23,7 +23,7 @@ namespace MSNServiceApi.Models
     
         public decimal ID { get; set; }
         public Nullable<decimal> USERID { get; set; }
-        public string SERVICELOCATION { get; set; }
+        public string SERVICELOCATIONADDRESS { get; set; }
         public string SERVICETITLE { get; set; }
         public string SERVICEDESCRIPTION { get; set; }
         public Nullable<decimal> SERVICECATEGORYID { get; set; }
@@ -32,8 +32,14 @@ namespace MSNServiceApi.Models
         public Nullable<decimal> MAXBUDGET { get; set; }
         public Nullable<int> SERVICESTATE { get; set; }
         public Nullable<int> SERVICETIMETYPE { get; set; }
+        public Nullable<double> LOCATIONLATITUDE { get; set; }
+        public Nullable<double> LOCATIONLONGITUDE { get; set; }
+        public Nullable<decimal> SERVICECITYID { get; set; }
+        public Nullable<decimal> SERVICECITYAREAID { get; set; }
         public Nullable<decimal> ALLOCATEDBIDID { get; set; }
     
+        public virtual CITY CITY { get; set; }
+        public virtual CITYAREA CITYAREA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICEBID> SERVICEBIDs { get; set; }
         public virtual SERVICEBID SERVICEBID { get; set; }

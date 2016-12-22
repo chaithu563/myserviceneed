@@ -58,7 +58,9 @@ PHONE varchar(20),
 CITYID numeric foreign key references CITY(ID),-- need to think why we need again when we have city id
 CITYAREAID numeric foreign key references CITYAREA(ID),
 LOGINTYPEID int foreign key references SOCIALLOGIN(ID),
-CURRENTLOCATION varchar(max)
+CURRENTLOCATION varchar(max),
+USERLOCATIONLATITUDE float  NULL, 
+USERLOCATIONLONGITUDE float  NULL
 
 );
 
@@ -137,7 +139,7 @@ CREATE TABLE USERSERVICENEED  ---User service request info
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
 USERID numeric foreign key references USERINFO(ID),
-SERVICELOCATION varchar(max),
+SERVICELOCATIONADDRESS varchar(max),
 SERVICETITLE varchar(300),
 SERVICEDESCRIPTION varchar(MAX),
 SERVICECATEGORYID numeric foreign key references SERVICECATEGORY(ID),
@@ -146,6 +148,10 @@ MINBUDGET money,
 MAXBUDGET money,
 SERVICESTATE int foreign key references SERVICESTATE(ID),
 SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
+LOCATIONLATITUDE float  NULL, 
+LOCATIONLONGITUDE float  NULL,
+SERVICECITYID numeric foreign key references CITY(ID),-- need to think why we need again when we have city id
+SERVICECITYAREAID numeric foreign key references CITYAREA(ID)
 --SERVICENEEDEDDATE DATE,
 --SERVICESTARTDATETIME DATETIME,
 --SERVICEENDDATETIME DATETIME

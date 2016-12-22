@@ -21,31 +21,33 @@
         <EntityTypeShape EntityType="MSNModel.USERMEMBERSHIP" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MSNModel.USERPWD" Width="1.5" PointX="7.5" PointY="20.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MSNModel.USERSERVICE" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MSNModel.USERSERVICENEED" Width="1.5" PointX="12.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="MSNModel.USERSERVICETIMEREOCRD" Width="1.5" PointX="15" PointY="10.125" IsExpanded="true" />
         <AssociationConnector Association="MSNModel.FK__CITYAREA__CITYID__08EA5793" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERINFO__CITYID__117F9D94" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERINFO__CITYAR__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERMEMBE__MEMBE__21B6055D" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERI__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERS__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__ALLOC__5629CD9C" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__SERVICESU__SERVI__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERINFO__LOGINT__1367E606" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERBIDS__USERID__2B3F6F97" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERFUNDS__USERI__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERMEMBE__USERI__20C1E124" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERPWD__USERID__182C9B23" ManuallyRouted="false" />
         <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4F7CD00D" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="MSNModel.USERSERVICENEED" Width="1.5" PointX="12.75" PointY="6" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4BAC3F29" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4CA06362" />
+        <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERS__571DF1D5" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__ALLOC__5812160E" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__47DBAE45" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__49C3F6B7" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__48CFD27E" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__4AB81AF0" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__46E78A0C" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__5165187F" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -118,6 +118,8 @@
     <EntitySetMapping Name="USERINFOes">
       <EntityTypeMapping TypeName="MSNModel.USERINFO">
         <MappingFragment StoreEntitySet="USERINFO">
+          <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
+          <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -160,24 +162,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="USERSERVICENEEDs">
-      <EntityTypeMapping TypeName="MSNModel.USERSERVICENEED">
-        <MappingFragment StoreEntitySet="USERSERVICENEED">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="SERVICELOCATION" ColumnName="SERVICELOCATION" />
-          <ScalarProperty Name="SERVICETITLE" ColumnName="SERVICETITLE" />
-          <ScalarProperty Name="SERVICEDESCRIPTION" ColumnName="SERVICEDESCRIPTION" />
-          <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
-          <ScalarProperty Name="SERVICESUBCATEGORYID" ColumnName="SERVICESUBCATEGORYID" />
-          <ScalarProperty Name="MINBUDGET" ColumnName="MINBUDGET" />
-          <ScalarProperty Name="MAXBUDGET" ColumnName="MAXBUDGET" />
-          <ScalarProperty Name="SERVICESTATE" ColumnName="SERVICESTATE" />
-          <ScalarProperty Name="SERVICETIMETYPE" ColumnName="SERVICETIMETYPE" />
-          <ScalarProperty Name="ALLOCATEDBIDID" ColumnName="ALLOCATEDBIDID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="USERSERVICETIMEREOCRDs">
       <EntityTypeMapping TypeName="MSNModel.USERSERVICETIMEREOCRD">
         <MappingFragment StoreEntitySet="USERSERVICETIMEREOCRD">
@@ -188,6 +172,28 @@
           <ScalarProperty Name="SERVICEENDDATE" ColumnName="SERVICEENDDATE" />
           <ScalarProperty Name="SERVICESTARTTIME" ColumnName="SERVICESTARTTIME" />
           <ScalarProperty Name="SERVICEENDTIME" ColumnName="SERVICEENDTIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERSERVICENEEDs">
+      <EntityTypeMapping TypeName="MSNModel.USERSERVICENEED">
+        <MappingFragment StoreEntitySet="USERSERVICENEED">
+          <ScalarProperty Name="ALLOCATEDBIDID" ColumnName="ALLOCATEDBIDID" />
+          <ScalarProperty Name="SERVICECITYAREAID" ColumnName="SERVICECITYAREAID" />
+          <ScalarProperty Name="SERVICECITYID" ColumnName="SERVICECITYID" />
+          <ScalarProperty Name="LOCATIONLONGITUDE" ColumnName="LOCATIONLONGITUDE" />
+          <ScalarProperty Name="LOCATIONLATITUDE" ColumnName="LOCATIONLATITUDE" />
+          <ScalarProperty Name="SERVICETIMETYPE" ColumnName="SERVICETIMETYPE" />
+          <ScalarProperty Name="SERVICESTATE" ColumnName="SERVICESTATE" />
+          <ScalarProperty Name="MAXBUDGET" ColumnName="MAXBUDGET" />
+          <ScalarProperty Name="MINBUDGET" ColumnName="MINBUDGET" />
+          <ScalarProperty Name="SERVICESUBCATEGORYID" ColumnName="SERVICESUBCATEGORYID" />
+          <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
+          <ScalarProperty Name="SERVICEDESCRIPTION" ColumnName="SERVICEDESCRIPTION" />
+          <ScalarProperty Name="SERVICETITLE" ColumnName="SERVICETITLE" />
+          <ScalarProperty Name="SERVICELOCATIONADDRESS" ColumnName="SERVICELOCATIONADDRESS" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

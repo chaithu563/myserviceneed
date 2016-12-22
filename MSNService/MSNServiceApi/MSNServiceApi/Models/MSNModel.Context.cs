@@ -41,7 +41,7 @@ namespace MSNServiceApi.Models
         public virtual DbSet<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
         public virtual DbSet<USERPWD> USERPWDs { get; set; }
         public virtual DbSet<USERSERVICE> USERSERVICEs { get; set; }
-        public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
         public virtual DbSet<USERSERVICETIMEREOCRD> USERSERVICETIMEREOCRDs { get; set; }
+        public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
 }
