@@ -58,11 +58,14 @@
 	/*width: 20%;*/
 	/*height: 100%;*/
 	float: right;
-	margin-top:15px;
-	background-color : transparent !important;
-	 background:rgba(255,255,255,0.5);
+	margin-top:23px;
+margin-right:10px;
 }
 .chooseCity{
-	 
+	 opacity:0.9;
+	height:10px;
+}
 
+.chooseCity >.dropdown > a{
+	color: white;
 }

@@ -28,6 +28,7 @@ System.register(["@angular/core", "../../services/msn.service", "@angular/router
                 function HeaderComponent(msnService) {
                     this.msnService = msnService;
                     this.init();
+                    this.UserCity = 'Choose City';
                 }
                 HeaderComponent.prototype.init = function () {
                     this.loadCategories();
@@ -74,7 +75,8 @@ System.register(["@angular/core", "../../services/msn.service", "@angular/router
                         console.log(err);
                     });
                 };
-                HeaderComponent.prototype.onCityChange = function () {
+                HeaderComponent.prototype.onCityChange = function (value) {
+                    this.UserCity = value;
                 };
                 return HeaderComponent;
             }());

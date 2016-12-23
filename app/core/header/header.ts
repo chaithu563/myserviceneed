@@ -14,10 +14,11 @@ export class HeaderComponent implements AfterViewInit{
 
 	categories: any;
 	cities: any;
+	UserCity: string;
     constructor(private msnService: MSNService ) {
 
         this.init();
-      
+				this.UserCity = 'Choose City';
     }
 
     private init() {
@@ -84,8 +85,9 @@ export class HeaderComponent implements AfterViewInit{
 				});
 		}
 
-		private onCityChange() {
+		private onCityChange(value) {
 
+			this.UserCity = value;
 		}
    
 
