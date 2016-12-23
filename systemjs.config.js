@@ -31,7 +31,8 @@
       'jaydata/core': 'lib/jaydata/jaydata.js',
       'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
-      'ag-grid': 'node_modules/ag-grid'
+      'ag-grid': 'node_modules/ag-grid',
+      'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -56,10 +57,7 @@
     },
 
     meta: {
-        //'jaydata/odata': {
-        //    format: 'cjs',
-        //    deps: ['jaydata/core']
-    	//},
+       
     	'jaydata/core': {
     		format: 'cjs'
     	},
