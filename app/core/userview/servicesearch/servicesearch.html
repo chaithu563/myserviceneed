@@ -1,0 +1,47 @@
+﻿<div>
+    <form>
+        <div class="form-group">
+            <label for="city">City</label>
+            <!--<select (change)="onCityChange($event.target.value)">
+                <option selected>
+                    Choose City
+                </option>
+                <option *ngFor="let x of cities" [value]="x.ID">{{x.NAME}}</option>
+            </select>-->
+
+            <div ng2-auto-complete
+                 [source]="cities"
+                 value-property-name="ID"
+                  display-property-name="NAME"
+                 (ngModelChange)="onCityChange($event)"
+                 placeholder="Choose City">
+                <input [ngModel]="currentcity"  name="city"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category">Service Category:</label>
+            <select (change)="onCategoryChange($event.target.value)">
+                <option selected>
+                    Choose Service Category
+                </option>
+                <option *ngFor="let x of categories" [value]="x.ID">{{x.NAME}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="category">Service Sub Category:</label>
+            <select (change)="onSubCategoryChange($event.target.value)">
+                <option selected>
+                    Choose Service Sub Category
+                </option>
+                <option *ngFor="let x of subcategories" [value]="x.ID">{{x.NAME}}</option>
+            </select>
+        </div>
+
+        <div class="checkbox">
+            <label><input type="checkbox"> Save as my deafult need</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+</div>

@@ -32,7 +32,9 @@
       'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
       'ag-grid': 'node_modules/ag-grid',
-      'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js'
+      'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js',
+      'ng2-auto-complete': 'npm:ng2-auto-complete/dist/ng2-auto-complete.umd.js',
+
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

@@ -10,10 +10,12 @@ import { routing }              from './app.routing';
 import {AgGridModule} from 'ag-grid-ng2/main';
 import {DropdownModule} from "ng2-dropdown";
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 
 @NgModule({
-	imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(), routing,
+    imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
+        routing, Ng2AutoCompleteModule,
 		AgmCoreModule.forRoot({
 		apiKey: 'YOUR_KEY'
 		})
