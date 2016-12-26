@@ -20,54 +20,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
         execute: function () {
             DefaultViewComponent = (function () {
                 function DefaultViewComponent() {
-                    this.lat = 17.440080;
-                    this.lng = 78.348917;
-                    this.findCurrentLocation();
                 }
-                DefaultViewComponent.prototype.findCurrentLocation = function () {
-                    var _this = this;
-                    // Try HTML5 geolocation.
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            _this.lat = position.coords.latitude;
-                            _this.lng = position.coords.longitude;
-                            //_this.lat = 16.306652;
-                            //_this.lng = 80.436240;
-                            _this.findCity();
-                        }, function () {
-                            alert('error');
-                        });
-                    }
-                    else {
-                        // Browser doesn't support Geolocation
-                        alert('error');
-                    }
-                };
-                DefaultViewComponent.prototype.findCity = function () {
-                    var geocoder;
-                    geocoder = new google.maps.Geocoder();
-                    var latlng = new google.maps.LatLng(this.lat, this.lng);
-                    var _this = this;
-                    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            if (results[0]) {
-                                var value = results[0].address_components;
-                                //	var value = add.split(",");
-                                var count = value.length;
-                                //country = value[count - 1];
-                                //state = value[count - 2];
-                                _this.city = value[count - 5].long_name;
-                                alert("city name is: " + _this.city);
-                            }
-                            else {
-                                alert("address not found");
-                            }
-                        }
-                        else {
-                            alert("Geocoder failed due to: " + status);
-                        }
-                    });
-                };
                 return DefaultViewComponent;
             }());
             DefaultViewComponent = __decorate([

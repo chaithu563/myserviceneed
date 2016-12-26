@@ -17,7 +17,11 @@ import {UserViewComponent} from './core/userview/userview';
 const appRoutes: Routes = [
 
 	{
-    path: ':city',
+    path: '',
+    component: UserViewComponent, useAsDefault: true
+	},
+	{
+    path: ':city?',
     component: DefaultViewComponent
 	},
 

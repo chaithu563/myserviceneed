@@ -3,5 +3,15 @@
 	<div>
 	<!--<h3> Need to implement breadcrumb here </h3>-->	
 		<!--<router-outlet></router-outlet>-->
+
+
+		<div style="display:none">
+
+			<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="8">
+				<sebm-google-map-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></sebm-google-map-marker>
+			</sebm-google-map>
+
+
+		</div>
 	</div>
 </div>

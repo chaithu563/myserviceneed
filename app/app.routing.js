@@ -1,7 +1,7 @@
-System.register(["@angular/router", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/findwork/findwork", "./core/userview/default/default"], function (exports_1, context_1) {
+System.register(["@angular/router", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/findwork/findwork", "./core/userview/default/default", "./core/userview/userview"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, registeruser_1, edituser_1, postservice_1, findwork_1, default_1, appRoutes, routing;
+    var router_1, registeruser_1, edituser_1, postservice_1, findwork_1, default_1, userview_1, appRoutes, routing;
     return {
         setters: [
             function (router_1_1) {
@@ -21,6 +21,9 @@ System.register(["@angular/router", "./core/userview/user/registeruser", "./core
             },
             function (default_1_1) {
                 default_1 = default_1_1;
+            },
+            function (userview_1_1) {
+                userview_1 = userview_1_1;
             }
         ],
         execute: function () {
@@ -30,7 +33,11 @@ System.register(["@angular/router", "./core/userview/user/registeruser", "./core
             //];
             appRoutes = [
                 {
-                    path: ':city',
+                    path: '',
+                    component: userview_1.UserViewComponent, useAsDefault: true
+                },
+                {
+                    path: ':city?',
                     component: default_1.DefaultViewComponent
                 },
                 //{
