@@ -31,8 +31,8 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                         navigator.geolocation.getCurrentPosition(function (position) {
                             _this.lat = position.coords.latitude;
                             _this.lng = position.coords.longitude;
-                            //_this.lat = 16.069715;
-                            //_this.lng = 80.451153;
+                            //_this.lat = 16.306652;
+                            //_this.lng = 80.436240;
                             _this.findCity();
                         }, function () {
                             alert('error');
@@ -51,12 +51,12 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[0]) {
-                                var add = results[0].formatted_address;
-                                var value = add.split(",");
+                                var value = results[0].address_components;
+                                //	var value = add.split(",");
                                 var count = value.length;
                                 //country = value[count - 1];
                                 //state = value[count - 2];
-                                _this.city = value[count - 3];
+                                _this.city = value[count - 5].long_name;
                                 alert("city name is: " + _this.city);
                             }
                             else {
