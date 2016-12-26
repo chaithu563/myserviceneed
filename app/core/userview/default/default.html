@@ -1,13 +1,52 @@
-﻿<div>
+﻿<div class="container-fluid">
+	<div class="row extra-bottom-padding ">
 
- <div>
+	</div>
 
-     MyServiceNeed is a platform where people can request their required service.
-     The service providers will bid their price for fulfilling customer required service.
-     The service providers can view all customers service requests in any specific location in map.
+	<div class="row">
 
- </div>
-    <div>
-       <registeruser></registeruser>
-    </div>
+
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+
+		</div>
+		<div class="col-sm-8">
+			<form>
+				<div class="right-inner-addon">
+					<!--<i class="icon-search"></i>-->
+					<span class="searcharea">
+						<input type="search"
+									 class="form-control search-text-box"
+									 placeholder="Choose Your Needed Service" />
+						
+						
+						<button type="button" class="btn btn-info">
+							<span class="glyphicon glyphicon-search"></span> Search
+						</button>
+					</span>
+				</div>
+
+		
+				<!--<button type="submit" class="btn btn-default">Submit</button>-->
+			</form>
+
+
+			<div>
+
+				<sebm-google-map [latitude]="lat" [longitude]="lng">
+					<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+				</sebm-google-map>
+
+
+			</div>
+		</div>
+		<div class="col-sm-2">
+
+
+		</div>
+	</div>
 </div>
+
+
+

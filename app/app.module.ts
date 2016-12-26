@@ -17,7 +17,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
         routing, Ng2AutoCompleteModule,
 		AgmCoreModule.forRoot({
-		apiKey: 'YOUR_KEY'
+			apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q'
 		})
 		],
 	declarations: [...myComponents],

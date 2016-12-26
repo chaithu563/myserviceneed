@@ -5,12 +5,27 @@ import {RegisterUserComponent} from './core/userview/user/registeruser';
 import {EditUserComponent} from './core/userview/user/edituser';
 import {PostServiceComponent} from './core/userview/postservice/postservice';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
+import {DefaultViewComponent} from './core/userview/default/default';
+
+import {UserViewComponent} from './core/userview/userview';
+
 // Route Configuration
 //export const routes: Routes = [
 //		{ path: '/manageadmins', component: AdminUserComponent }
 //];
 
 const appRoutes: Routes = [
+
+	{
+    path: ':city',
+    component: DefaultViewComponent
+	},
+
+	//{
+    //path: '/',
+    //component: UserViewComponent
+	//},
+
   {
     path: 'registeruser',
     component: RegisterUserComponent

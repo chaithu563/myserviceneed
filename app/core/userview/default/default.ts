@@ -8,11 +8,14 @@ import {RegisterUserComponent} from  '../user/registeruser';
     selector: 'userview',
     templateUrl: 'app/core/userview/default/default.html',
     styleUrls: ['app/core/userview/default/default.css'],
-    providers: [RegisterUserComponent],
-    directives: [RegisterUserComponent]
+    providers: [],
+    directives: []
 })
 export class DefaultViewComponent {
 
+	
+  lat: number = 20.678418;
+  lng: number = 77.809007;
     constructor() {
 
 

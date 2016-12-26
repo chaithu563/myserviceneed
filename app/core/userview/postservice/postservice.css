@@ -1,11 +1,7 @@
 ﻿.extra-bottom-padding {
 	margin-top:20px;
 }
-.searcharea{
-	display: table;
-    margin: 0 auto;
-		width:70%;
-}
+
 
 .searcharea> button{
 	position:absolute;

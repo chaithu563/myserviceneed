@@ -1,1 +1,21 @@
-﻿
+﻿.searcharea{
+	display: table;
+    margin: 0 auto;
+		width:70%;
+}
+
+.extra-bottom-padding {
+	margin-top:20px;
+}
+
+
+.searcharea> button{
+	position:absolute;
+}
+.search-text-box{
+	display:inline;	
+	width:60%
+}
+.sebm-google-map-container {
+  height: 40%;
+}

@@ -7,7 +7,7 @@ import { MSNOdataService } from './services/msn.odataservice';
 @Component({
     selector: 'my-app',
   // 	template: '<header> </header> <div class="row" >  <div class="col-md-2" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-10" style="height: 100%;"> <adminview></adminview>  </div> </div>',
-    template: '<header> </header>   <userview></userview> ',
+    template: '<header> </header>  <router-outlet></router-outlet> ',
     providers: [MSNOdataService]
    // directives: [HeaderComponent]
    

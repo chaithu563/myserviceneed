@@ -7,3 +7,6 @@ https://angular-maps.com/docs/getting-started.html
 
 
 https://www.smartmenus.org/forums/topic/plug-smartmenu-into-angular-2/
+
+
+google maps api key    AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q

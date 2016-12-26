@@ -1,10 +1,9 @@
-System.register(['@angular/router', './core/userview/user/registeruser', './core/userview/user/edituser', './core/userview/postservice/postservice', './core/userview/findwork/findwork'], function(exports_1, context_1) {
+System.register(["@angular/router", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/findwork/findwork", "./core/userview/default/default"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, registeruser_1, edituser_1, postservice_1, findwork_1;
-    var appRoutes, routing;
+    var router_1, registeruser_1, edituser_1, postservice_1, findwork_1, default_1, appRoutes, routing;
     return {
-        setters:[
+        setters: [
             function (router_1_1) {
                 router_1 = router_1_1;
             },
@@ -19,13 +18,25 @@ System.register(['@angular/router', './core/userview/user/registeruser', './core
             },
             function (findwork_1_1) {
                 findwork_1 = findwork_1_1;
-            }],
-        execute: function() {
+            },
+            function (default_1_1) {
+                default_1 = default_1_1;
+            }
+        ],
+        execute: function () {
             // Route Configuration
             //export const routes: Routes = [
             //		{ path: '/manageadmins', component: AdminUserComponent }
             //];
             appRoutes = [
+                {
+                    path: ':city',
+                    component: default_1.DefaultViewComponent
+                },
+                //{
+                //path: '/',
+                //component: UserViewComponent
+                //},
                 {
                     path: 'registeruser',
                     component: registeruser_1.RegisterUserComponent
@@ -42,6 +53,6 @@ System.register(['@angular/router', './core/userview/user/registeruser', './core
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));
         }
-    }
+    };
 });
 //# sourceMappingURL=app.routing.js.map
