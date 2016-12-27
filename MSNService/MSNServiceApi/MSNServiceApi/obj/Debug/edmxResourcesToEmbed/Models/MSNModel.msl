@@ -4,114 +4,114 @@
     <EntitySetMapping Name="ADMININFOes">
       <EntityTypeMapping TypeName="MSNModel.ADMININFO">
         <MappingFragment StoreEntitySet="ADMININFO">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
           <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CITies">
       <EntityTypeMapping TypeName="MSNModel.CITY">
         <MappingFragment StoreEntitySet="CITY">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CITYAREAs">
       <EntityTypeMapping TypeName="MSNModel.CITYAREA">
         <MappingFragment StoreEntitySet="CITYAREA">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MEMBERSHIPs">
       <EntityTypeMapping TypeName="MSNModel.MEMBERSHIP">
         <MappingFragment StoreEntitySet="MEMBERSHIP">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SERVICEBIDs">
       <EntityTypeMapping TypeName="MSNModel.SERVICEBID">
         <MappingFragment StoreEntitySet="SERVICEBID">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="USERSERVICENEEDID" ColumnName="USERSERVICENEEDID" />
-          <ScalarProperty Name="BIDTITLE" ColumnName="BIDTITLE" />
-          <ScalarProperty Name="BIDDESCRIPTION" ColumnName="BIDDESCRIPTION" />
           <ScalarProperty Name="BIDAMOUNT" ColumnName="BIDAMOUNT" />
+          <ScalarProperty Name="BIDDESCRIPTION" ColumnName="BIDDESCRIPTION" />
+          <ScalarProperty Name="BIDTITLE" ColumnName="BIDTITLE" />
+          <ScalarProperty Name="USERSERVICENEEDID" ColumnName="USERSERVICENEEDID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SERVICECATEGORies">
       <EntityTypeMapping TypeName="MSNModel.SERVICECATEGORY">
         <MappingFragment StoreEntitySet="SERVICECATEGORY">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SERVICESTATEs">
       <EntityTypeMapping TypeName="MSNModel.SERVICESTATE">
         <MappingFragment StoreEntitySet="SERVICESTATE">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SERVICESUBCATEGORies">
       <EntityTypeMapping TypeName="MSNModel.SERVICESUBCATEGORY">
         <MappingFragment StoreEntitySet="SERVICESUBCATEGORY">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SERVICETIMETYPEs">
       <EntityTypeMapping TypeName="MSNModel.SERVICETIMETYPE">
         <MappingFragment StoreEntitySet="SERVICETIMETYPE">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SOCIALLOGINs">
       <EntityTypeMapping TypeName="MSNModel.SOCIALLOGIN">
         <MappingFragment StoreEntitySet="SOCIALLOGIN">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="USERBIDS">
       <EntityTypeMapping TypeName="MSNModel.USERBID">
         <MappingFragment StoreEntitySet="USERBIDS">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
           <ScalarProperty Name="BIDS" ColumnName="BIDS" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="USERFUNDS">
       <EntityTypeMapping TypeName="MSNModel.USERFUND">
         <MappingFragment StoreEntitySet="USERFUNDS">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
           <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -120,58 +120,45 @@
         <MappingFragment StoreEntitySet="USERINFO">
           <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
           <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
-          <ScalarProperty Name="CITYAREAID" ColumnName="CITYAREAID" />
-          <ScalarProperty Name="LOGINTYPEID" ColumnName="LOGINTYPEID" />
           <ScalarProperty Name="CURRENTLOCATION" ColumnName="CURRENTLOCATION" />
+          <ScalarProperty Name="LOGINTYPEID" ColumnName="LOGINTYPEID" />
+          <ScalarProperty Name="CITYAREAID" ColumnName="CITYAREAID" />
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="USERMEMBERSHIPs">
       <EntityTypeMapping TypeName="MSNModel.USERMEMBERSHIP">
         <MappingFragment StoreEntitySet="USERMEMBERSHIP">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="MEMBERSHIPID" ColumnName="MEMBERSHIPID" />
-          <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
-          <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
           <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+          <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+          <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+          <ScalarProperty Name="MEMBERSHIPID" ColumnName="MEMBERSHIPID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="USERPWDs">
       <EntityTypeMapping TypeName="MSNModel.USERPWD">
         <MappingFragment StoreEntitySet="USERPWD">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
           <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="USERSERVICEs">
       <EntityTypeMapping TypeName="MSNModel.USERSERVICE">
         <MappingFragment StoreEntitySet="USERSERVICE">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
           <ScalarProperty Name="SERVICESUBCATEGORYID" ColumnName="SERVICESUBCATEGORYID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="USERSERVICETIMEREOCRDs">
-      <EntityTypeMapping TypeName="MSNModel.USERSERVICETIMEREOCRD">
-        <MappingFragment StoreEntitySet="USERSERVICETIMEREOCRD">
+          <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
-          <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
-          <ScalarProperty Name="SERVICESTARTDATE" ColumnName="SERVICESTARTDATE" />
-          <ScalarProperty Name="SERVICEENDDATE" ColumnName="SERVICEENDDATE" />
-          <ScalarProperty Name="SERVICESTARTTIME" ColumnName="SERVICESTARTTIME" />
-          <ScalarProperty Name="SERVICEENDTIME" ColumnName="SERVICEENDTIME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -193,6 +180,19 @@
           <ScalarProperty Name="SERVICETITLE" ColumnName="SERVICETITLE" />
           <ScalarProperty Name="SERVICELOCATIONADDRESS" ColumnName="SERVICELOCATIONADDRESS" />
           <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERSERVICETIMEREOCRDs">
+      <EntityTypeMapping TypeName="MSNModel.USERSERVICETIMEREOCRD">
+        <MappingFragment StoreEntitySet="USERSERVICETIMEREOCRD">
+          <ScalarProperty Name="SERVICEENDTIME" ColumnName="SERVICEENDTIME" />
+          <ScalarProperty Name="SERVICESTARTTIME" ColumnName="SERVICESTARTTIME" />
+          <ScalarProperty Name="SERVICEENDDATE" ColumnName="SERVICEENDDATE" />
+          <ScalarProperty Name="SERVICESTARTDATE" ColumnName="SERVICESTARTDATE" />
+          <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
+          <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

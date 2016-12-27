@@ -30,6 +30,15 @@ export class MSNService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 
     }
+   // Fetch all existing comments
+   public getAvailableServicesURL() {
+
+
+       return this.config.ServiceApi + 'FetchServices?search=:keyword';
+      
+
+   }
+
 
 	  // Fetch all existing comments
    public getCities(): Observable<any[]> {

@@ -1,5 +1,6 @@
-System.register(["@angular/core", "@angular/router"], function (exports_1, context_1) {
+System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,19 +10,18 @@ System.register(["@angular/core", "@angular/router"], function (exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, UserViewComponent;
+    var core_1, router_1;
+    var UserViewComponent;
     return {
-        setters: [
+        setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            }
-        ],
-        execute: function () {
-            //@Injectable()
+            }],
+        execute: function() {
+            //import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
             UserViewComponent = (function () {
                 function UserViewComponent(_router) {
                     this._router = _router;
@@ -73,20 +73,20 @@ System.register(["@angular/core", "@angular/router"], function (exports_1, conte
                         }
                     });
                 };
+                UserViewComponent = __decorate([
+                    core_1.Component({
+                        selector: 'userview',
+                        templateUrl: 'app/core/userview/userview.html',
+                        styleUrls: ['app/core/userview/userview.css'],
+                        providers: [],
+                        directives: []
+                    }), 
+                    __metadata('design:paramtypes', [router_1.Router])
+                ], UserViewComponent);
                 return UserViewComponent;
             }());
-            UserViewComponent = __decorate([
-                core_1.Component({
-                    selector: 'userview',
-                    templateUrl: 'app/core/userview/userview.html',
-                    styleUrls: ['app/core/userview/userview.css'],
-                    providers: [],
-                    directives: []
-                }),
-                __metadata("design:paramtypes", [router_1.Router])
-            ], UserViewComponent);
             exports_1("UserViewComponent", UserViewComponent);
         }
-    };
+    }
 });
 //# sourceMappingURL=userview.js.map

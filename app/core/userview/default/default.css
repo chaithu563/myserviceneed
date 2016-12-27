@@ -1,7 +1,7 @@
 ﻿.searcharea{
 	display: table;
     margin: 0 auto;
-		width:70%;
+		/*width:90%;*/
 }
 
 .extra-bottom-padding {
@@ -14,7 +14,7 @@
 }
 .search-text-box{
 	display:inline;	
-	width:60%
+	width:100% !important;
 }
 .sebm-google-map-container {
   height: 40%;
