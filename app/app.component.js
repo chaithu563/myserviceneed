@@ -36,7 +36,9 @@ System.register(['@angular/core', './services/msn.odataservice'], function(expor
                         selector: 'my-app',
                         // 	template: '<header> </header> <div class="row" >  <div class="col-md-2" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-10" style="height: 100%;"> <adminview></adminview>  </div> </div>',
                         template: '<header> </header>  <router-outlet></router-outlet> ',
-                        providers: [msn_odataservice_1.MSNOdataService]
+                        providers: [msn_odataservice_1.MSNOdataService],
+                        // directives: [HeaderComponent]
+                        styles: ["\n    ng2-auto-complete, input {\n      display: block;  width: 80%;\n    }\n  "]
                     }), 
                     __metadata('design:paramtypes', [msn_odataservice_1.MSNOdataService])
                 ], AppComponent);

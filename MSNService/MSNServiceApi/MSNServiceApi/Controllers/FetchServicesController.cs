@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MSNServiceApi.Models;
-
+//using MSNServiceApi.Types;
 namespace MSNServiceApi.Controllers
 {
     public class FetchServicesController : ApiController
@@ -25,15 +25,21 @@ namespace MSNServiceApi.Controllers
 
         // GET: api/SERVICECATEGORies/5
         [ResponseType(typeof(SERVICESUBCATEGORY))]
-        public IEnumerable<SERVICESUBCATEGORY> GetFetchServices(string search)
+        public IEnumerable<dynamic> GetFetchServices(string search)
         {
-            //SERVICESUBCATEGORY sERVICESUBCATEGORY = await db.SERVICESUBCATEGORies.Where(x=>x.NAME.Contains (search)).ToListAsync();
-            //if (sERVICESUBCATEGORY == null)
-            //{
-            //    return NotFound();
-            //}
+            //return db.SERVICESUBCATEGORies.Where(x => (x.NAME.ToLower().Contains(search.ToLower()) || x.DESCRIPTION.ToLower().Contains(search.ToLower()))).ToList<SERVICESUBCATEGORY>();
 
-            return db.SERVICESUBCATEGORies.Where(x => x.NAME.ToLower().Contains(search.ToLower())).ToList<SERVICESUBCATEGORY>();
+            // var result = db.SERVICESUBCATEGORies.Where(x => x.NAME.ToLower().Contains(search.ToLower())).ToList();
+
+
+            //var result = db.SERVICESUBCATEGORies.Where(x => x.NAME.ToLower().Contains(search.ToLower())).
+            //    Select(x=>new Services{ID= x.ID, NAME=x.NAME }).ToList();
+
+
+            var result = db.SERVICESUBCATEGORies.Where(x => x.NAME.ToLower().Contains(search.ToLower())).
+                Select(x => new { x.ID, x.NAME }).ToList();
+
+            return result;
         }
 
     }

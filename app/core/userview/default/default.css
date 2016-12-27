@@ -1,19 +1,27 @@
 ﻿.searcharea{
 	display: table;
     margin: 0 auto;
-		/*width:90%;*/
+		width:90%;
 }
 
 .extra-bottom-padding {
 	margin-top:20px;
 }
 
+/*.searcharea> .ng2-auto-complete
+{
 
+    width:100%;
+}
+ .ng2-auto-complete {
+     
+        width: 80%;
+    }*/
 .searcharea> button{
 	position:absolute;
 }
 .search-text-box{
-	display:inline;	
+	/*display:inline;*/	
 	width:100% !important;
 }
 .sebm-google-map-container {

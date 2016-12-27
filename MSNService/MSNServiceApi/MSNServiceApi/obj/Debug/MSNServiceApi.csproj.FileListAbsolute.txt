@@ -85,6 +85,5 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Newtonsoft.Json.xml
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Net.Http.Formatting.xml
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Http.xml
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Http.WebHost.xml
-C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
