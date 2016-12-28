@@ -19,9 +19,10 @@
                         <input ng2-auto-complete
                                class="form-control search-text-box"
                                [(ngModel)]="searchString"
-                             
+                             (valueChanged)="serviceSelected($event)"
                                [source]="avilableServices"
                                display-property-name="NAME"
+                                display-property-value="ID"
                                name="search box"
                                placeholder="Choose Your Needed Service" />
 

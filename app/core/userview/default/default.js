@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../../../services/msn.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '../../../services/msn.service', '@angular/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '../../../services/msn.service'], function(exp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, msn_service_1;
+    var core_1, msn_service_1, router_1;
     var DefaultViewComponent;
     return {
         setters:[
@@ -19,16 +19,24 @@ System.register(['@angular/core', '../../../services/msn.service'], function(exp
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             DefaultViewComponent = (function () {
                 //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-                function DefaultViewComponent(msnService, _cdRef) {
+                function DefaultViewComponent(msnService, router) {
                     this.msnService = msnService;
-                    this._cdRef = _cdRef;
+                    this.router = router;
                     this.searchString = "";
                     this.avilableServices = this.msnService.getAvailableServicesURL();
                 }
+                DefaultViewComponent.prototype.serviceSelected = function (object) {
+                    if (object.NAME)
+                        this.router.navigateByUrl('postservice/' + object.ID);
+                    console.log(object);
+                };
                 DefaultViewComponent = __decorate([
                     core_1.Component({
                         selector: 'userview',
@@ -37,7 +45,7 @@ System.register(['@angular/core', '../../../services/msn.service'], function(exp
                         providers: [msn_service_1.MSNService],
                         directives: []
                     }), 
-                    __metadata('design:paramtypes', [msn_service_1.MSNService, core_1.ChangeDetectorRef])
+                    __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router])
                 ], DefaultViewComponent);
                 return DefaultViewComponent;
             }());

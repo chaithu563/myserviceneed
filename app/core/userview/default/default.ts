@@ -15,12 +15,18 @@ export class DefaultViewComponent {
     avilableServices: any;
     searchString: string;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-    constructor(private msnService: MSNService,private  _cdRef: ChangeDetectorRef) {
+    constructor(private msnService: MSNService,private  router: Router) {
 
         this.searchString = "";
         this.avilableServices = this.msnService.getAvailableServicesURL();
     } 
 
+
+    serviceSelected(object) {
+        if (object.NAME)
+            this.router.navigateByUrl('postservice/' + object.ID);
+        console.log(object);
+    }
   
 
 }
