@@ -10,7 +10,7 @@ import {DefaultViewComponent} from './core/userview/default/default';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
 import {AddressComponent} from './core/userview/postservice/address/address';
 
-
+import { GoogleplaceDirective } from './shared/directives/googleplace.directive';
 
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
@@ -18,7 +18,7 @@ export const myComponents = [
 ];
 
 export const myDirectives = [
-   
+    GoogleplaceDirective
 ];
 
 export const myPipes = [

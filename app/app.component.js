@@ -24,13 +24,7 @@ System.register(['@angular/core', './services/msn.odataservice'], function(expor
             AppComponent = (function () {
                 function AppComponent(mSNOdataService) {
                     this.mSNOdataService = mSNOdataService;
-                    this.init();
                 }
-                AppComponent.prototype.init = function () {
-                    //this.mSNOdataService.getContext(
-                    //    context => this.OnContextLoaded(context)
-                    //);
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',

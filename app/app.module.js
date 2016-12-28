@@ -62,10 +62,11 @@ System.register(['@angular/core', '@angular/http', '@angular/platform-browser', 
                         imports: [router_1.RouterModule, platform_browser_1.BrowserModule, http_1.HttpModule, ng2_bootstrap_1.Ng2BootstrapModule, ng2_dropdown_1.DropdownModule, main_1.AgGridModule.withAotSupport(),
                             app_routing_1.routing, ng2_auto_complete_1.Ng2AutoCompleteModule,
                             core_2.AgmCoreModule.forRoot({
-                                apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q'
+                                apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
+                                libraries: ['places']
                             })
                         ],
-                        declarations: app_depend_1.myComponents.slice(),
+                        declarations: app_depend_1.myComponents.concat(app_depend_1.myDirectives),
                         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }],
                         bootstrap: [app_component_1.AppComponent]
                     }), 

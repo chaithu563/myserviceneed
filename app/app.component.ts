@@ -21,21 +21,9 @@ export class AppComponent {
     cities: any;
     constructor(private mSNOdataService: MSNOdataService) {
 
-			this.init();
+			
 		}
 
-    private init() {
-        //this.mSNOdataService.getContext(
-        //    context => this.OnContextLoaded(context)
-        //);
-    }
-   // private OnContextLoaded(context:any) {
-			//context.CITies.toArray(function(cities){
-            
-   //             this.cities = cities;
-   //             console.log(this.cities);
-			//});
-				
-   // }
+ 
 
 }

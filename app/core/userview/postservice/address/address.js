@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, core_2;
     var AddressComponent;
     return {
         setters:[
@@ -19,15 +19,41 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (core_2_1) {
+                core_2 = core_2_1;
             }],
         execute: function() {
             AddressComponent = (function () {
-                function AddressComponent(_router) {
-                    //  this.findCurrentLocation();
+                function AddressComponent(_router, zone, _loader) {
                     this._router = _router;
+                    this.zone = zone;
+                    this._loader = _loader;
                     this.lat = 17.440080;
                     this.lng = 78.348917;
+                    this.findCurrentLocation();
                 }
+                AddressComponent.prototype.loadAutocomplete = function () {
+                    var _this = this;
+                    this._loader.load().then(function () {
+                        var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
+                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                            var place = autocomplete.getPlace();
+                            _this.lat = place.geometry.location.lat();
+                            _this.lng = place.geometry.location.lng();
+                            console.log(place);
+                        });
+                    });
+                };
+                AddressComponent.prototype.getAddress = function (place) {
+                    this.address = place['formatted_address'];
+                    var location = place['geometry']['location'];
+                    var lat = location.lat();
+                    var lng = location.lng();
+                    console.log("Address Object", place);
+                    this.lat = lat;
+                    this.lng = lng;
+                };
                 AddressComponent.prototype.findCurrentLocation = function () {
                     var _this = this;
                     // Try HTML5 geolocation.
@@ -61,6 +87,7 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
                                 //country = value[count - 1];
                                 //state = value[count - 2];
                                 _this.city = value[count - 5].long_name;
+                                _this.loadAutocomplete();
                             }
                             else {
                                 alert("address not found");
@@ -76,10 +103,9 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
                         selector: 'address',
                         templateUrl: 'app/core/userview/postservice/address/address.html',
                         styleUrls: ['app/core/userview/postservice/address/address.css'],
-                        providers: [],
-                        directives: []
+                        providers: []
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
                 ], AddressComponent);
                 return AddressComponent;
             }());
