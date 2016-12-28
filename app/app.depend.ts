@@ -8,13 +8,13 @@ import {PostServiceComponent} from './core/userview/postservice/postservice';
 import {ServiceSearchComponent} from './core/userview/servicesearch/servicesearch';
 import {DefaultViewComponent} from './core/userview/default/default';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
-
+import {AddressComponent} from './core/userview/postservice/address/address';
 
 
 
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
-	HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, FindWorkComponent, ServiceSearchComponent, DefaultViewComponent
+    HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent, FindWorkComponent, ServiceSearchComponent, DefaultViewComponent
 ];
 
 export const myDirectives = [

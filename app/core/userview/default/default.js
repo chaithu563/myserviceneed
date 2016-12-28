@@ -34,7 +34,8 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 }
                 DefaultViewComponent.prototype.serviceSelected = function (object) {
                     if (object.NAME)
-                        this.router.navigateByUrl('postservice/' + object.ID);
+                        this.router.navigate(['postservice', object.ID]);
+                    // this.router.navigateByUrl('postservice/' + object.ID);
                     console.log(object);
                 };
                 DefaultViewComponent = __decorate([

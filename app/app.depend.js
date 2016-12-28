@@ -1,7 +1,7 @@
-System.register(['./app.component', './core/header/header', './core/topmenu/topmenu', './core/userview/userview', './core/userview/user/registeruser', './core/userview/user/edituser', './core/userview/postservice/postservice', './core/userview/servicesearch/servicesearch', './core/userview/default/default', './core/userview/findwork/findwork'], function(exports_1, context_1) {
+System.register(['./app.component', './core/header/header', './core/topmenu/topmenu', './core/userview/userview', './core/userview/user/registeruser', './core/userview/user/edituser', './core/userview/postservice/postservice', './core/userview/servicesearch/servicesearch', './core/userview/default/default', './core/userview/findwork/findwork', './core/userview/postservice/address/address'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var app_component_1, header_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_1, default_1, findwork_1;
+    var app_component_1, header_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_1, default_1, findwork_1, address_1;
     var myComponents, myDirectives, myPipes;
     return {
         setters:[
@@ -34,11 +34,14 @@ System.register(['./app.component', './core/header/header', './core/topmenu/topm
             },
             function (findwork_1_1) {
                 findwork_1 = findwork_1_1;
+            },
+            function (address_1_1) {
+                address_1 = address_1_1;
             }],
         execute: function() {
             //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
             exports_1("myComponents", myComponents = [
-                header_1.HeaderComponent, topmenu_1.TopMenuComponent, userview_1.UserViewComponent, app_component_1.AppComponent, registeruser_1.RegisterUserComponent, edituser_1.EditUserComponent, postservice_1.PostServiceComponent, findwork_1.FindWorkComponent, servicesearch_1.ServiceSearchComponent, default_1.DefaultViewComponent
+                header_1.HeaderComponent, topmenu_1.TopMenuComponent, userview_1.UserViewComponent, app_component_1.AppComponent, registeruser_1.RegisterUserComponent, edituser_1.EditUserComponent, postservice_1.PostServiceComponent, address_1.AddressComponent, findwork_1.FindWorkComponent, servicesearch_1.ServiceSearchComponent, default_1.DefaultViewComponent
             ]);
             exports_1("myDirectives", myDirectives = []);
             exports_1("myPipes", myPipes = []);

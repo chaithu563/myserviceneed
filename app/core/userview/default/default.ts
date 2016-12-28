@@ -24,7 +24,8 @@ export class DefaultViewComponent {
 
     serviceSelected(object) {
         if (object.NAME)
-            this.router.navigateByUrl('postservice/' + object.ID);
+            this.router.navigate(['postservice', object.ID] );
+           // this.router.navigateByUrl('postservice/' + object.ID);
         console.log(object);
     }
   

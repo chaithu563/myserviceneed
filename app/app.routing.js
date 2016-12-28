@@ -1,7 +1,7 @@
-System.register(['@angular/router', './core/userview/user/registeruser', './core/userview/user/edituser', './core/userview/postservice/postservice', './core/userview/findwork/findwork', './core/userview/default/default', './core/userview/userview'], function(exports_1, context_1) {
+System.register(['@angular/router', './core/userview/user/registeruser', './core/userview/user/edituser', './core/userview/postservice/postservice', './core/userview/postservice/address/address', './core/userview/findwork/findwork', './core/userview/default/default', './core/userview/userview'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, registeruser_1, edituser_1, postservice_1, findwork_1, default_1, userview_1;
+    var router_1, registeruser_1, edituser_1, postservice_1, address_1, findwork_1, default_1, userview_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -16,6 +16,9 @@ System.register(['@angular/router', './core/userview/user/registeruser', './core
             },
             function (postservice_1_1) {
                 postservice_1 = postservice_1_1;
+            },
+            function (address_1_1) {
+                address_1 = address_1_1;
             },
             function (findwork_1_1) {
                 findwork_1 = findwork_1_1;
@@ -34,28 +37,42 @@ System.register(['@angular/router', './core/userview/user/registeruser', './core
             appRoutes = [
                 {
                     path: '',
-                    component: userview_1.UserViewComponent, useAsDefault: true
+                    component: userview_1.UserViewComponent
                 },
                 {
-                    path: ':city?',
+                    path: ':city',
                     component: default_1.DefaultViewComponent
                 },
                 //{
-                //path: '/',
-                //component: UserViewComponent
+                //    path: 'postservice/:id', component: PostServiceComponent
                 //},
+                {
+                    path: 'postservice',
+                    children: [
+                        {
+                            path: ':id',
+                            children: [
+                                {
+                                    path: '',
+                                    component: postservice_1.PostServiceComponent, pathMatch: 'full'
+                                },
+                                {
+                                    path: 'address',
+                                    component: address_1.AddressComponent
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    path: 'findwork/:id', component: findwork_1.FindWorkComponent
+                },
                 {
                     path: 'registeruser',
                     component: registeruser_1.RegisterUserComponent
                 },
                 {
                     path: 'user/:id', component: edituser_1.EditUserComponent
-                },
-                {
-                    path: 'postservice/:id', component: postservice_1.PostServiceComponent
-                },
-                {
-                    path: 'findwork/:id', component: findwork_1.FindWorkComponent
                 }
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));

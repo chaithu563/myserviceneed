@@ -4,6 +4,7 @@ import {AppComponent} from './app.component';
 import {RegisterUserComponent} from './core/userview/user/registeruser';
 import {EditUserComponent} from './core/userview/user/edituser';
 import {PostServiceComponent} from './core/userview/postservice/postservice';
+import {AddressComponent} from './core/userview/postservice/address/address';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
 import {DefaultViewComponent} from './core/userview/default/default';
 
@@ -16,42 +17,71 @@ import {UserViewComponent} from './core/userview/userview';
 
 const appRoutes: Routes = [
 
-	{
-    path: '',
-    component: UserViewComponent, useAsDefault: true
-	},
-	{
-    path: ':city?',
-    component: DefaultViewComponent
-	},
+    {
+        path: '',
+        component: UserViewComponent
+    },
+    {
+        path: ':city',
+        component: DefaultViewComponent 
+        //,
+        //children: [
+        //    { path: 'postservice/:id', component: PostServiceComponent }
+           
+        //]
+    },
+    //{
+    //    path: 'postservice/:id', component: PostServiceComponent
 
-	//{
-    //path: '/',
-    //component: UserViewComponent
-	//},
+    //},
 
-  {
-    path: 'registeruser',
-    component: RegisterUserComponent
+    {
+        path: 'postservice',
+
+        children: [
+            {
+                path: ':id',
+
+                children: [
+                    {
+                        path: '',
+                        component: PostServiceComponent, pathMatch: 'full'
+                    }
+                    ,
+                    {
+                        path: 'address',
+                        component: AddressComponent
+                    }
+                ]
+
+
+            }
+        ]
+
     },
 
 
-	 {
-		 path: 'user/:id', component: EditUserComponent
-   
-  },
+    {
+        path: 'findwork/:id', component: FindWorkComponent
 
-	  {
-		 path: 'postservice/:id', component: PostServiceComponent
+    },
 
-	 },
-		{
-			path: 'findwork/:id', component: FindWorkComponent
 
-		}
-   
-   
- 
+    {
+        path: 'registeruser',
+        component: RegisterUserComponent
+    },
+
+
+    {
+        path: 'user/:id', component: EditUserComponent
+
+    }
+
+
+
+
+
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
