@@ -10,7 +10,8 @@ https://www.smartmenus.org/forums/topic/plug-smartmenu-into-angular-2/
 
 
 google maps api key    AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q
-
+----circle radis in goggle map
+http://plnkr.co/edit/d4Ldrs3WCMhqkeCvjhSO?p=preview
 
 location based search by radius
 https://github.com/anthonyvscode/LonelySharp/blob/master/LonelySharp/GeoLocation.cs
