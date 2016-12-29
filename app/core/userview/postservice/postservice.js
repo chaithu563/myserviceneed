@@ -32,6 +32,8 @@ System.register(['@angular/core', '@angular/router', '../servicesearch/servicese
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
+                    this.isServiceInfo = true;
+                    this.isAddress = false;
                 }
                 PostServiceComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -42,8 +44,10 @@ System.register(['@angular/core', '@angular/router', '../servicesearch/servicese
                     });
                 };
                 PostServiceComponent.prototype.handleClick = function (event) {
-                    this.router.navigate(['address'], { relativeTo: this.route });
-                    event.preventDefault();
+                    this.isServiceInfo = false;
+                    this.isAddress = true;
+                    //this.router.navigate(['address'], { relativeTo: this.route });
+                    //event.preventDefault();
                     //this.router.navigateByUrl('postservice/' + this.serviceid+'/address');
                 };
                 PostServiceComponent = __decorate([
