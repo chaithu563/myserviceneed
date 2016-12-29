@@ -20,18 +20,24 @@
             <div class="col-sm-8">
                 <form>
                     <div class="right-inner-addon">
-                        <input id="address" type="text" class="form-control" [(ngModel)]="userAddress" name="user Address" />
+                        <input id="address" type="text" class="form-control searchplace" [(ngModel)]="userAddress" name="user Address" />
                     </div>
                     <div>
 
-                        <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="8"  [disableDefaultUI]="false" [zoomControl]="true">
+                        <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="8" [disableDefaultUI]="false" [zoomControl]="true">
                             <sebm-google-map-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" (dragEnd)="markerPostionChanged($event)"></sebm-google-map-marker>
                         </sebm-google-map>
 
 
                     </div>
-                   
-                    <button type="submit" class="btn btn-default">Submit</button>
+
+                    <div class="form-group">
+                        <label for="Address">Please Specify Any specific Location Address in Selected Place in Map:</label>
+                        <textarea class="form-control" cols="50" rows="5"></textarea>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-default">NEXT</button>
                 </form>
             </div>
             <div class="col-sm-2">
