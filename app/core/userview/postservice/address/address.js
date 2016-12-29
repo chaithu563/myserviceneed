@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, core_2;
-    var AddressComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, core_2, AddressComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -22,8 +21,10 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
             },
             function (core_2_1) {
                 core_2 = core_2_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            //@Injectable()
             AddressComponent = (function () {
                 function AddressComponent(_router, zone, _loader) {
                     this._router = _router;
@@ -32,6 +33,7 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
                     this.lat = 17.440080;
                     this.lng = 78.348917;
                     this.findCurrentLocation();
+                    this.loadAutocomplete();
                 }
                 AddressComponent.prototype.loadAutocomplete = function () {
                     var _this = this;
@@ -41,7 +43,6 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
                             var place = autocomplete.getPlace();
                             _this.lat = place.geometry.location.lat();
                             _this.lng = place.geometry.location.lng();
-                            console.log(place);
                         });
                     });
                 };
@@ -61,8 +62,6 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
                         navigator.geolocation.getCurrentPosition(function (position) {
                             _this.lat = position.coords.latitude;
                             _this.lng = position.coords.longitude;
-                            //_this.lat = 16.306652;
-                            //_this.lng = 80.436240;
                             _this.findCity();
                         }, function () {
                             alert('error');
@@ -82,12 +81,13 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[0]) {
                                 var value = results[0].address_components;
+                                console.log(value);
                                 //	var value = add.split(",");
                                 var count = value.length;
                                 //country = value[count - 1];
                                 //state = value[count - 2];
                                 _this.city = value[count - 5].long_name;
-                                _this.loadAutocomplete();
+                                _this.userAddress = results[0].formatted_address;
                             }
                             else {
                                 alert("address not found");
@@ -98,19 +98,24 @@ System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'
                         }
                     });
                 };
-                AddressComponent = __decorate([
-                    core_1.Component({
-                        selector: 'address',
-                        templateUrl: 'app/core/userview/postservice/address/address.html',
-                        styleUrls: ['app/core/userview/postservice/address/address.css'],
-                        providers: []
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
-                ], AddressComponent);
+                AddressComponent.prototype.markerPostionChanged = function (object) {
+                    this.lat = object.coords.lat;
+                    this.lng = object.coords.lng;
+                    this.findCity();
+                };
                 return AddressComponent;
             }());
+            AddressComponent = __decorate([
+                core_1.Component({
+                    selector: 'address',
+                    templateUrl: 'app/core/userview/postservice/address/address.html',
+                    styleUrls: ['app/core/userview/postservice/address/address.css'],
+                    providers: []
+                }),
+                __metadata("design:paramtypes", [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
+            ], AddressComponent);
             exports_1("AddressComponent", AddressComponent);
         }
-    }
+    };
 });
 //# sourceMappingURL=address.js.map

@@ -12,16 +12,11 @@ https://www.smartmenus.org/forums/topic/plug-smartmenu-into-angular-2/
 google maps api key    AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q
 
 
+location based search by radius
+https://github.com/anthonyvscode/LonelySharp/blob/master/LonelySharp/GeoLocation.cs
 
-Unnamed Road, Garikapadu, Andhra Pradesh 522112, India
-http://maps.googleapis.com/maps/api/geocode/json?latlng=16.069715,80.451153&sensor=true
-
-
-
-Anantapur - Tadipatri - Guntur Highway, Boppudi, Andhra Pradesh 522616, India
-http://maps.googleapis.com/maps/api/geocode/json?latlng=16.069715,80.151153&sensor=true
+http://gis.stackexchange.com/questions/19760/how-do-i-calculate-the-bounding-box-for-given-a-distance-and-latitude-longitude
 
 
-http://maps.googleapis.com/maps/api/geocode/json?latlng=17.385044,78.486671&sensor=true
 
-18-23, Rd Number 2, Financial District, Nanakram Guda, Hyderabad, Telangana 500032, India
+select * from stores where lat!='' and lng!='' and ( 3959 * acos( cos( radians(" . $centerpoints['lat'] . ") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(" . $centerpoints['lng'] . ") ) + sin( radians(" . $centerpoints['lat'] . ") ) * sin( radians( lat ) ) ) ) < " . $distanceInMile
