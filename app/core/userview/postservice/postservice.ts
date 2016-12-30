@@ -18,7 +18,7 @@ import { postServiceRoute } from '../../../types/postServiceRoute';
 })
 export class PostServiceComponent {
 
-
+	serviceObject: any;
 	serviceid: number;
 		postServiceRoutes: any;
 		curretRoute: any;
@@ -43,12 +43,14 @@ export class PostServiceComponent {
 
 		this.postServiceRoutes = [];
 		this.postServiceRoutes = new postServiceRoute([
-			{ key: "serviceinfo", value: { current: "serviceinfo", next: "address", previous: "home", isActive: true } },
+			{ key: "serviceinfo", value: { current: "serviceinfo", next: "address", previous: "", isActive: true } },
 			{ key: "address", value: { current: "address", next: "confirm", previous: "serviceinfo", isActive: false } },
 			{ key: "confirm", value: { current: "confirm", next: "", previous: "address", isActive: false } }
 		]).toLookup();
-
+			
 		this.displayActiveRoute();
+
+		this.serviceObject = [];
 
 		}
 

@@ -29,21 +29,26 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
+                    this.serviceinfoChange = new core_1.EventEmitter();
                 }
                 ServiceInfoComponent.prototype.ngOnInit = function () {
-                    //this.route.params.subscribe(params => {
-                    //    if (params['id']) {
-                    //        this.serviceid = params['id'];
-                    //    }
-                    //});
                 };
-                ServiceInfoComponent.prototype.handleClick = function (event) {
-                    this.router.navigate(['address'], { relativeTo: this.route });
-                    event.preventDefault();
-                    //this.router.navigateByUrl('postservice/' + this.serviceid+'/address');
+                ServiceInfoComponent.prototype.titleChange = function (value) {
+                    this.serviceinfoChange.emit(this.serviceinfo);
+                };
+                ServiceInfoComponent.prototype.descriptionChange = function (value) {
+                    this.serviceinfoChange.emit(this.serviceinfo);
                 };
                 return ServiceInfoComponent;
             }());
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", Object)
+            ], ServiceInfoComponent.prototype, "serviceinfo", void 0);
+            __decorate([
+                core_1.Output(),
+                __metadata("design:type", core_1.EventEmitter)
+            ], ServiceInfoComponent.prototype, "serviceinfoChange", void 0);
             ServiceInfoComponent = __decorate([
                 core_1.Component({
                     selector: 'serviceinfo',

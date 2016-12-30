@@ -1,4 +1,4 @@
-﻿import { Component, ModuleWithProviders, NgZone} from '@angular/core';
+﻿import { Component, ModuleWithProviders, NgZone, Input, Output, EventEmitter} from '@angular/core';
 import { Routes, Router, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {GoogleplaceDirective} from '../../../../shared/directives/googleplace.directive';
@@ -16,7 +16,10 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 
 //@Injectable()
 export class AddressComponent {
-	userAddress: object;
+
+	@Input() serviceinfo: any;
+	@Output() serviceinfoChange : EventEmitter =new EventEmitter<any>();
+	userAddress: Object;
 	public address: Object;
 	geocoder: any;
 	google: any;
@@ -96,7 +99,9 @@ export class AddressComponent {
 						//state = value[count - 2];
 						_this.city = value[count - 5].long_name;
 
-				 	_this.userAddress = results[0].formatted_address;
+						_this.userAddress = results[0].formatted_address;
+
+						_this.serviceinfo.address = "\n" + _this.userAddress
 					}
 					else {
 						alert("address not found");
@@ -114,6 +119,12 @@ export class AddressComponent {
 		this.lat = object.coords.lat;
 		this.lng = object.coords.lng;
 		this.findCity();
+		}
+
+
+		addressChange(value) {
+			this.serviceinfoChange.emit(this.serviceinfo);
+
 		}
 
 }

@@ -16,14 +16,14 @@
 			</div>
 			<div class="col-sm-8">
 				<div class="postserrvcieinfo" *ngIf="curretRoute.current == 'serviceinfo'">
-					<serviceinfo></serviceinfo>
+					<serviceinfo [(serviceinfo)]="serviceObject"></serviceinfo>
 				</div>
 				<div class="postaddress" *ngIf="curretRoute.current == 'address'">
-					<address></address>
+					<address [(serviceinfo)]="serviceObject"></address>
 				</div>
 
-				<button type="submit" (click)="handlePrevious($event)" class="btn btn-default">PREVIOUS</button>
-                <button type="submit" (click)="handleNext($event)" class="btn btn-default">NEXT</button>
+				<button type="submit" *ngIf="curretRoute.previous != ''" (click)="handlePrevious($event)" class="btn btn-default">PREVIOUS</button>
+        <button type="submit" (click)="handleNext($event)" class="btn btn-default">NEXT</button>
 			</div>
 			<div class="col-sm-2">
 

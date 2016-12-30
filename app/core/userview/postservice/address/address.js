@@ -30,6 +30,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this._router = _router;
                     this.zone = zone;
                     this._loader = _loader;
+                    this.serviceinfoChange = new core_1.EventEmitter();
                     this.lat = 17.440080;
                     this.lng = 78.348917;
                     this.findCurrentLocation();
@@ -88,6 +89,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                                 //state = value[count - 2];
                                 _this.city = value[count - 5].long_name;
                                 _this.userAddress = results[0].formatted_address;
+                                _this.serviceinfo.address = "\n" + _this.userAddress;
                             }
                             else {
                                 alert("address not found");
@@ -103,8 +105,19 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this.lng = object.coords.lng;
                     this.findCity();
                 };
+                AddressComponent.prototype.addressChange = function (value) {
+                    this.serviceinfoChange.emit(this.serviceinfo);
+                };
                 return AddressComponent;
             }());
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", Object)
+            ], AddressComponent.prototype, "serviceinfo", void 0);
+            __decorate([
+                core_1.Output(),
+                __metadata("design:type", core_1.EventEmitter)
+            ], AddressComponent.prototype, "serviceinfoChange", void 0);
             AddressComponent = __decorate([
                 core_1.Component({
                     selector: 'address',
