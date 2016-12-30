@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', '../../../../services/msn.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "../../../../services/msn.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', '../../../../services/msn.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, msn_service_1;
-    var ServiceInfoComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, msn_service_1, ServiceInfoComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -22,8 +21,9 @@ System.register(['@angular/core', '@angular/router', '../../../../services/msn.s
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ServiceInfoComponent = (function () {
                 function ServiceInfoComponent(msnService, router, route) {
                     this.msnService = msnService;
@@ -42,20 +42,20 @@ System.register(['@angular/core', '@angular/router', '../../../../services/msn.s
                     event.preventDefault();
                     //this.router.navigateByUrl('postservice/' + this.serviceid+'/address');
                 };
-                ServiceInfoComponent = __decorate([
-                    core_1.Component({
-                        selector: 'serviceinfo',
-                        templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
-                        styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
-                        providers: [msn_service_1.MSNService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
-                ], ServiceInfoComponent);
                 return ServiceInfoComponent;
             }());
+            ServiceInfoComponent = __decorate([
+                core_1.Component({
+                    selector: 'serviceinfo',
+                    templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
+                    styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
+                    providers: [msn_service_1.MSNService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
+            ], ServiceInfoComponent);
             exports_1("ServiceInfoComponent", ServiceInfoComponent);
         }
-    }
+    };
 });
 //# sourceMappingURL=serviceinfo.js.map

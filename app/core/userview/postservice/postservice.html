@@ -15,14 +15,15 @@
                 <!--<servicesearch></servicesearch>-->
 			</div>
 			<div class="col-sm-8">
-                <div class="postserrvcieinfo" *ngIf="isServiceInfo">
-                    <serviceinfo></serviceinfo>
-                </div>
-                <div class="postaddress" *ngIf="isAddress">
-                    <address ></address>
-                </div>
+				<div class="postserrvcieinfo" *ngIf="curretRoute.current == 'serviceinfo'">
+					<serviceinfo></serviceinfo>
+				</div>
+				<div class="postaddress" *ngIf="curretRoute.current == 'address'">
+					<address></address>
+				</div>
 
-                <button type="submit" (click)="handleClick($event)" class="btn btn-default">NEXT</button>
+				<button type="submit" (click)="handlePrevious($event)" class="btn btn-default">PREVIOUS</button>
+                <button type="submit" (click)="handleNext($event)" class="btn btn-default">NEXT</button>
 			</div>
 			<div class="col-sm-2">
 
