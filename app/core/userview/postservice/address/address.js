@@ -1,5 +1,6 @@
-System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"], function (exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', 'angular2-google-maps/core'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,10 +10,10 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, core_2, AddressComponent;
+    var core_1, router_1, core_2;
+    var AddressComponent;
     return {
-        setters: [
+        setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -21,10 +22,8 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
             },
             function (core_2_1) {
                 core_2 = core_2_1;
-            }
-        ],
-        execute: function () {
-            //@Injectable()
+            }],
+        execute: function() {
             AddressComponent = (function () {
                 function AddressComponent(_router, zone, _loader) {
                     this._router = _router;
@@ -44,6 +43,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                             var place = autocomplete.getPlace();
                             _this.lat = place.geometry.location.lat();
                             _this.lng = place.geometry.location.lng();
+                            _this.findCity();
                         });
                     });
                 };
@@ -88,8 +88,15 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                                 //country = value[count - 1];
                                 //state = value[count - 2];
                                 _this.city = value[count - 5].long_name;
+                                var finaAddress;
+                                value.forEach(function (addr) {
+                                    if (finaAddress)
+                                        finaAddress = finaAddress + '\n' + ',' + addr.long_name;
+                                    else
+                                        finaAddress = addr.long_name;
+                                });
                                 _this.userAddress = results[0].formatted_address;
-                                _this.serviceinfo.address = "\n" + _this.userAddress;
+                                _this.serviceinfo.address = "\n" + finaAddress;
                             }
                             else {
                                 alert("address not found");
@@ -105,30 +112,33 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this.lng = object.coords.lng;
                     this.findCity();
                 };
+                AddressComponent.prototype.isEmpty = function (obj) {
+                    return Object.keys(obj).length === 0;
+                };
                 AddressComponent.prototype.addressChange = function (value) {
                     this.serviceinfoChange.emit(this.serviceinfo);
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], AddressComponent.prototype, "serviceinfo", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
+                ], AddressComponent.prototype, "serviceinfoChange", void 0);
+                AddressComponent = __decorate([
+                    core_1.Component({
+                        selector: 'address',
+                        templateUrl: 'app/core/userview/postservice/address/address.html',
+                        styleUrls: ['app/core/userview/postservice/address/address.css'],
+                        providers: []
+                    }), 
+                    __metadata('design:paramtypes', [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
+                ], AddressComponent);
                 return AddressComponent;
             }());
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", Object)
-            ], AddressComponent.prototype, "serviceinfo", void 0);
-            __decorate([
-                core_1.Output(),
-                __metadata("design:type", core_1.EventEmitter)
-            ], AddressComponent.prototype, "serviceinfoChange", void 0);
-            AddressComponent = __decorate([
-                core_1.Component({
-                    selector: 'address',
-                    templateUrl: 'app/core/userview/postservice/address/address.html',
-                    styleUrls: ['app/core/userview/postservice/address/address.css'],
-                    providers: []
-                }),
-                __metadata("design:paramtypes", [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
-            ], AddressComponent);
             exports_1("AddressComponent", AddressComponent);
         }
-    };
+    }
 });
 //# sourceMappingURL=address.js.map

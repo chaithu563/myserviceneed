@@ -18,7 +18,7 @@
                     <div class="searcharea">
                         <input ng2-auto-complete
                                class="form-control search-text-box"
-                               [(ngModel)]="searchString"
+                            
                              (valueChanged)="serviceSelected($event)"
                                [source]="avilableServices"
                                display-property-name="NAME"
@@ -36,14 +36,7 @@
             </form>
 
 
-            <!--<div>
-
-                <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="8">
-                    <sebm-google-map-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" ></sebm-google-map-marker>
-                </sebm-google-map>
-
-
-            </div>-->
+          
         </div>
         <div class="col-sm-2">
 

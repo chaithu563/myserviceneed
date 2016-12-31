@@ -1,15 +1,15 @@
-System.register([], function (exports_1, context_1) {
+System.register([], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    var __moduleName = context_1 && context_1.id;
     var Dictionary, postServiceRoute;
     return {
-        setters: [],
-        execute: function () {
+        setters:[],
+        execute: function() {
             Dictionary = (function () {
                 function Dictionary(init) {
                     this._keys = new Array();
@@ -51,7 +51,7 @@ System.register([], function (exports_1, context_1) {
             postServiceRoute = (function (_super) {
                 __extends(postServiceRoute, _super);
                 function postServiceRoute(init) {
-                    return _super.call(this, init) || this;
+                    _super.call(this, init);
                 }
                 postServiceRoute.prototype.values = function () {
                     return this._values;
@@ -63,6 +63,6 @@ System.register([], function (exports_1, context_1) {
             }(Dictionary));
             exports_1("postServiceRoute", postServiceRoute);
         }
-    };
+    }
 });
 //# sourceMappingURL=postServiceRoute.js.map

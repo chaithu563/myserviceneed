@@ -42,7 +42,8 @@ export class AddressComponent {
 			google.maps.event.addListener(autocomplete, 'place_changed', () => {
 				let place = autocomplete.getPlace();
 				this.lat = place.geometry.location.lat();
-				this.lng = place.geometry.location.lng();
+                this.lng = place.geometry.location.lng();
+                this.findCity();
 			});
 		});
 
@@ -99,9 +100,18 @@ export class AddressComponent {
 						//state = value[count - 2];
 						_this.city = value[count - 5].long_name;
 
+                        var finaAddress;
+                        value.forEach(function (addr) {
+                            if (finaAddress)
+                                finaAddress = finaAddress + '\n' + ',' + addr.long_name;
+                            else
+                                finaAddress =  addr.long_name;
+                        });
+
+
 						_this.userAddress = results[0].formatted_address;
 
-						_this.serviceinfo.address = "\n" + _this.userAddress
+                        _this.serviceinfo.address = "\n" + finaAddress;
 					}
 					else {
 						alert("address not found");
@@ -119,7 +129,11 @@ export class AddressComponent {
 		this.lat = object.coords.lat;
 		this.lng = object.coords.lng;
 		this.findCity();
-		}
+    }
+
+        isEmpty(obj) {
+            return Object.keys(obj).length === 0;
+        }
 
 
 		addressChange(value) {
