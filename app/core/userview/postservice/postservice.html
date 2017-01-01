@@ -22,6 +22,10 @@
 					<address [(serviceinfo)]="serviceObject"></address>
 				</div>
 
+                <div class="postservicetime" *ngIf="curretRoute.current == 'servicetime'">
+                    <servicetime [(serviceinfo)]="serviceObject"></servicetime>
+                </div>
+
 				<button type="submit" *ngIf="curretRoute.previous != ''" (click)="handlePrevious($event)" class="btn btn-default">PREVIOUS</button>
         <button type="submit" (click)="handleNext($event)" class="btn btn-default">NEXT</button>
 			</div>

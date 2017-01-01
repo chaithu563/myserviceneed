@@ -10,12 +10,12 @@ import {DefaultViewComponent} from './core/userview/default/default';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
 import {AddressComponent} from './core/userview/postservice/address/address';
 import {ServiceInfoComponent} from './core/userview/postservice/serviceinfo/serviceinfo';
-
+import {ServiceTimeComponent} from './core/userview/postservice/servicetime/servicetime';
 import { GoogleplaceDirective } from './shared/directives/googleplace.directive';
 
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
-    HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent, ServiceInfoComponent,
+    HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent, ServiceInfoComponent, ServiceTimeComponent,
     FindWorkComponent, ServiceSearchComponent, DefaultViewComponent
 ];
 

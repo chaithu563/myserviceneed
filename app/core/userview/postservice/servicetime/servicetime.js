@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, msn_service_1, ServiceInfoComponent;
+    var core_1, router_1, msn_service_1, ServiceTimeComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -24,43 +24,37 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
             }
         ],
         execute: function () {
-            ServiceInfoComponent = (function () {
-                function ServiceInfoComponent(msnService, router, route) {
+            ServiceTimeComponent = (function () {
+                function ServiceTimeComponent(msnService, router, route) {
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
                     this.serviceinfoChange = new core_1.EventEmitter();
                 }
-                ServiceInfoComponent.prototype.ngOnInit = function () {
+                ServiceTimeComponent.prototype.ngOnInit = function () {
                 };
-                ServiceInfoComponent.prototype.titleChange = function (value) {
-                    this.serviceinfoChange.emit(this.serviceinfo);
-                };
-                ServiceInfoComponent.prototype.descriptionChange = function (value) {
-                    this.serviceinfoChange.emit(this.serviceinfo);
-                };
-                return ServiceInfoComponent;
+                return ServiceTimeComponent;
             }());
             __decorate([
                 core_1.Input(),
                 __metadata("design:type", Object)
-            ], ServiceInfoComponent.prototype, "serviceinfo", void 0);
+            ], ServiceTimeComponent.prototype, "serviceinfo", void 0);
             __decorate([
                 core_1.Output(),
                 __metadata("design:type", core_1.EventEmitter)
-            ], ServiceInfoComponent.prototype, "serviceinfoChange", void 0);
-            ServiceInfoComponent = __decorate([
+            ], ServiceTimeComponent.prototype, "serviceinfoChange", void 0);
+            ServiceTimeComponent = __decorate([
                 core_1.Component({
-                    selector: 'serviceinfo',
-                    templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
-                    styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
+                    selector: 'servicetime',
+                    templateUrl: 'app/core/userview/postservice/servicetime/servicetime.html',
+                    styleUrls: ['app/core/userview/postservice/servicetime/servicetime.css'],
                     providers: [msn_service_1.MSNService],
                     directives: []
                 }),
                 __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
-            ], ServiceInfoComponent);
-            exports_1("ServiceInfoComponent", ServiceInfoComponent);
+            ], ServiceTimeComponent);
+            exports_1("ServiceTimeComponent", ServiceTimeComponent);
         }
     };
 });
-//# sourceMappingURL=serviceinfo.js.map
+//# sourceMappingURL=servicetime.js.map

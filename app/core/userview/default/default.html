@@ -18,18 +18,21 @@
                     <div class="searcharea">
                         <input ng2-auto-complete
                                class="form-control search-text-box"
-                            
+                            ([ngModel])="searchString"
                              (valueChanged)="serviceSelected($event)"
                                [source]="avilableServices"
                                display-property-name="NAME"
                                 display-property-value="ID"
                                name="search box"
+                                min-chars="2"
                                placeholder="Choose Your Needed Service" />
 
 
-                        <button type="button" class="btn btn-info">
-                            <span class="glyphicon glyphicon-search"></span> Search
-                        </button>
+                        <div class="autoButton">
+                            <button type="button" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search"></span> Search
+                            </button>
+                        </div>
                     </div>
                 </div>
 
