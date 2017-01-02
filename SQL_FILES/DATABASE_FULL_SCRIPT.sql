@@ -162,7 +162,7 @@ CREATE TABLE USERSERVICETIMEREOCRD  ---User service request info
 ID numeric IDENTITY(1,1) PRIMARY KEY,
 SERVICEID numeric foreign key references USERSERVICENEED(ID),
 --SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
-SERVICENEEDEDDATE DATE,  --if it is one day work
+SERVICEBOOKEDDATE DATE,  --
 SERVICESTARTDATE DATE,  --if it is multi day work start date
 SERVICEENDDATE DATE,  -- if it is multi day work end date
 SERVICESTARTTIME TIME,  --if any specific start time of day
