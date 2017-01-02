@@ -21,3 +21,12 @@ http://gis.stackexchange.com/questions/19760/how-do-i-calculate-the-bounding-box
 
 
 select * from stores where lat!='' and lng!='' and ( 3959 * acos( cos( radians(" . $centerpoints['lat'] . ") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(" . $centerpoints['lng'] . ") ) + sin( radians(" . $centerpoints['lat'] . ") ) * sin( radians( lat ) ) ) ) < " . $distanceInMile
+
+
+
+
+SEND MESSAGE OTP:
+https://sendotp.msg91.com/
+
+userID:  chaithu563
+PWD:  591115

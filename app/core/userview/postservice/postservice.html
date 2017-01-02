@@ -26,6 +26,10 @@
                     <servicetime [(serviceinfo)]="serviceObject"></servicetime>
                 </div>
 
+                <div class="postuserverify" *ngIf="curretRoute.current == 'userverify'">
+                    <userverify [(serviceinfo)]="serviceObject"></userverify>
+                </div>
+
 				<button type="submit" *ngIf="curretRoute.previous != ''" (click)="handlePrevious($event)" class="btn btn-default">PREVIOUS</button>
         <button type="submit" (click)="handleNext($event)" class="btn btn-default">NEXT</button>
 			</div>

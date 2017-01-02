@@ -45,7 +45,8 @@ export class PostServiceComponent {
 		this.postServiceRoutes = new postServiceRoute([
 			{ key: "serviceinfo", value: { current: "serviceinfo", next: "address", previous: "", isActive: true } },
             { key: "address", value: { current: "address", next: "servicetime", previous: "serviceinfo", isActive: false } },
-            { key: "servicetime", value: { current: "servicetime", next: "confirm", previous: "address", isActive: false } },
+            { key: "servicetime", value: { current: "servicetime", next: "userverify", previous: "address", isActive: false } },
+            { key: "userverify", value: { current: "userverify", next: "confirm", previous: "servicetime", isActive: false } },
 			{ key: "confirm", value: { current: "confirm", next: "", previous: "address", isActive: false } }
 		]).toLookup();
 			
