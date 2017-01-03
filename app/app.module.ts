@@ -13,10 +13,11 @@ import { AgmCoreModule, MapsAPILoader,NoOpMapsAPILoader,MouseEvent } from 'angul
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { DatePickerModule } from 'ng2-datepicker';
 import { ReactiveFormsModule } from '@angular/forms'
+import { NKDatetimeModule } from 'ng2-datetime';
 
 @NgModule({
     imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
-			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule,
+			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule, NKDatetimeModule,
 		AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
             libraries: ['places']

@@ -23,12 +23,20 @@
 			<div class="timeinfo">
 
 				<div class="singleday" *ngIf="timetype=='oneday'">
+					<div class="singledateSelection">
 
-					Singleday
-					<form [formGroup]="dataForm">
-						<ng2-datepicker formcontrolname="date" [options]="calendarOptions"></ng2-datepicker>
-					</form>
+						<label for="date">Service Required Date:</label>
 
+						<form [formGroup]="dataForm" class="datecomponent">
+							<ng2-datepicker FormControlName="date" [options]="calendarOptions"></ng2-datepicker>
+						</form>
+					</div>
+					<div>
+						<div>
+							<label for="date">Service Required Time:</label>
+							<datetime [datepicker]="false" [(ngModel)]="single_day_time"></datetime>
+						</div>
+					</div>
 					<!--<span>
 							<ng2-datepicker [(ngModel)]="date"></ng2-datepicker> 
 					</span>  [(ngModel)]="data"  -->
@@ -37,7 +45,23 @@
 
 				<div class="multtiday" *ngIf="timetype=='multiday'">
 
-					Multiday
+					<div class="singlestartdateSelection">
+
+						<label for="startdate">Service Start Date:</label>
+
+						<form [formGroup]="dataForm" class="datecomponent">
+							<ng2-datepicker FormControlName="startdate" [options]="calendarOptions"></ng2-datepicker>
+						</form>
+					</div>
+				
+					<div class="singleenddateSelection">
+
+						<label for="enddate">Service End Date:</label>
+
+						<form [formGroup]="dataForm" class="datecomponent">
+							<ng2-datepicker FormControlName="enddate" [options]="calendarOptions"></ng2-datepicker>
+						</form>
+					</div>
 				</div>
 
 			</div>
@@ -49,3 +73,4 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
+

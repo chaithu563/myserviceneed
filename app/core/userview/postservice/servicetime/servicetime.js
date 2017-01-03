@@ -37,12 +37,16 @@ System.register(["@angular/core", "@angular/router", "@angular/forms", "../../..
                     this.calendarOptions = {
                         format: "DD-MM-YYYY",
                         firstWeekdaySunday: false,
-                        color: 'blue'
+                        minDate: new Date(),
+                        //		maxDate: new DateConstructor(). ,
+                        initialDate: new Date()
                     };
                 }
                 ServiceTimeComponent.prototype.ngOnInit = function () {
                     this.dataForm = this.formBuilder.group({
-                        date: ''
+                        date: '',
+                        startdate: '',
+                        enddate: ''
                     });
                 };
                 return ServiceTimeComponent;

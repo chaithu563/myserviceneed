@@ -36,6 +36,7 @@
      
       'ng2-auto-complete': 'npm:ng2-auto-complete/dist/ng2-auto-complete.umd.js',
       'ng2-datepicker': 'npm:ng2-datepicker',
+      'ng2-datetime': 'npm:ng2-datetime',
       'ng2-slimscroll': 'npm:ng2-slimscroll',
     },
     // packages tells the System loader how to load when no filename and/or no extension
@@ -57,7 +58,10 @@
           main: "index.js",
           defaultExtension: "js"
       },
-
+      'ng2-datetime': {
+      	main: "ng2-datetime.js",
+      	defaultExtension: "js"
+      },
       'ng2-datepicker': {
       	main: "index.js",
       	defaultExtension: "js"

@@ -22,7 +22,10 @@ export class ServiceTimeComponent implements OnInit {
 		calendarOptions = {
 			format: "DD-MM-YYYY",
 			firstWeekdaySunday: false,
-			color: 'blue'
+			minDate: new Date(),
+	//		maxDate: new DateConstructor(). ,
+			initialDate: new Date()
+
 		};
 
 	
@@ -33,7 +36,9 @@ export class ServiceTimeComponent implements OnInit {
     }
     ngOnInit() {
 			this.dataForm = this.formBuilder.group({
-				date: ''
+				date: '',
+				startdate: '',
+				enddate:''
 			});
 		}
 
