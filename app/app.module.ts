@@ -11,11 +11,12 @@ import {AgGridModule} from 'ag-grid-ng2/main';
 import {DropdownModule} from "ng2-dropdown";
 import { AgmCoreModule, MapsAPILoader,NoOpMapsAPILoader,MouseEvent } from 'angular2-google-maps/core';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
-
+import { DatePickerModule } from 'ng2-datepicker';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
     imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
-        routing, Ng2AutoCompleteModule,
+			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule,
 		AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
             libraries: ['places']

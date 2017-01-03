@@ -1,5 +1,5 @@
 ﻿<div class="servicebasicInfo">
-    <form>
+
         <div class="right-inner-addon">
 
         </div>
@@ -11,17 +11,41 @@
           
 					<div class="btn-group btn-group-vertical" data-toggle="buttons">
 						<label class="btn active">
-							<input type="radio" name='timetype' ><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
+							<input type="radio" name='timetype' value="oneday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
 						</label>
 						<label class="btn active">
-							<input type="radio" name='timetype'><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
+							<input type="radio" name='timetype' value="multiday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
 						</label>
 					</div>
 
         </div>
 
-    </form>
+			<div class="timeinfo">
+
+				<div class="singleday" *ngIf="timetype=='oneday'">
+
+					Singleday
+					<form [formGroup]="dataForm">
+						<ng2-datepicker formcontrolname="date" [options]="calendarOptions"></ng2-datepicker>
+					</form>
+
+					<!--<span>
+							<ng2-datepicker [(ngModel)]="date"></ng2-datepicker> 
+					</span>  [(ngModel)]="data"  -->
+				
+				</div>
+
+				<div class="multtiday" *ngIf="timetype=='multiday'">
+
+					Multiday
+				</div>
+
+			</div>
+
+
 
 </div>
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "../../../../services/msn.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "../../../../services/msn.service"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, msn_service_1, ServiceTimeComponent;
+    var core_1, router_1, forms_1, msn_service_1, ServiceTimeComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -19,19 +19,31 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (forms_1_1) {
+                forms_1 = forms_1_1;
+            },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
             }
         ],
         execute: function () {
             ServiceTimeComponent = (function () {
-                function ServiceTimeComponent(msnService, router, route) {
+                function ServiceTimeComponent(msnService, router, route, formBuilder) {
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
+                    this.formBuilder = formBuilder;
                     this.serviceinfoChange = new core_1.EventEmitter();
+                    this.calendarOptions = {
+                        format: "DD-MM-YYYY",
+                        firstWeekdaySunday: false,
+                        color: 'blue'
+                    };
                 }
                 ServiceTimeComponent.prototype.ngOnInit = function () {
+                    this.dataForm = this.formBuilder.group({
+                        date: ''
+                    });
                 };
                 return ServiceTimeComponent;
             }());
@@ -48,10 +60,10 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     selector: 'servicetime',
                     templateUrl: 'app/core/userview/postservice/servicetime/servicetime.html',
                     styleUrls: ['app/core/userview/postservice/servicetime/servicetime.css'],
-                    providers: [msn_service_1.MSNService],
+                    providers: [msn_service_1.MSNService, forms_1.FormBuilder],
                     directives: []
                 }),
-                __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
+                __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder])
             ], ServiceTimeComponent);
             exports_1("ServiceTimeComponent", ServiceTimeComponent);
         }

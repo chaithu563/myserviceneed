@@ -33,8 +33,10 @@
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
       'ag-grid': 'node_modules/ag-grid',
       'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js',
+     
       'ng2-auto-complete': 'npm:ng2-auto-complete/dist/ng2-auto-complete.umd.js',
-
+      'ng2-datepicker': 'npm:ng2-datepicker',
+      'ng2-slimscroll': 'npm:ng2-slimscroll',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -54,6 +56,15 @@
       'ng2-dropdown': {
           main: "index.js",
           defaultExtension: "js"
+      },
+
+      'ng2-datepicker': {
+      	main: "index.js",
+      	defaultExtension: "js"
+      },
+      'ng2-slimscroll': {
+      	main: "index.js",
+      	defaultExtension: "js"
       }
 			
     },
