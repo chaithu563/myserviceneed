@@ -59,8 +59,8 @@
           defaultExtension: "js"
       },
       'ng2-datetime': {
-      	main: "ng2-datetime.js",
-      	defaultExtension: "js"
+          main: "ng2-datetime.js",
+      	defaultextension: "js"
       },
       'ng2-datepicker': {
       	main: "index.js",

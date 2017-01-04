@@ -41,6 +41,7 @@ System.register(["@angular/core", "@angular/router", "@angular/forms", "../../..
                         //		maxDate: new DateConstructor(). ,
                         initialDate: new Date()
                     };
+                    this.single_day_time = '';
                 }
                 ServiceTimeComponent.prototype.ngOnInit = function () {
                     this.dataForm = this.formBuilder.group({
