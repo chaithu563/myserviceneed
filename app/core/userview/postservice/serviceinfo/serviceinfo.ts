@@ -18,8 +18,8 @@ export class ServiceInfoComponent {
 
 	@Input() serviceinfo: any;
 		@Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
-		cloudinaryImage: any;
-
+		cloudinaryImage:any ;
+		uploadedimages: Array<any>=[];
 		cloudinaryOptions: CloudinaryOptions = new CloudinaryOptions({
 			cloud_name: 'myserviceneed',
 			upload_preset: 'e8pd1qgk',
@@ -39,8 +39,8 @@ export class ServiceInfoComponent {
     this.uploader.onSuccessItem = function (item: any, response: string, status: number, headers: any) {
       //response is the cloudinary response
       //see http://cloudinary.com/documentation/upload_images#upload_response
-      _self.cloudinaryImage = JSON.parse(response);
-
+      let image = JSON.parse(response);
+			_self.uploadedimages.push(image.public_id );
       return { item, response, status, headers };
 			};
 

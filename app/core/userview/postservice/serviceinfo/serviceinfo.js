@@ -33,6 +33,7 @@ System.register(["@angular/core", "@angular/router", "ng2-cloudinary", "../../..
                     this.router = router;
                     this.route = route;
                     this.serviceinfoChange = new core_1.EventEmitter();
+                    this.uploadedimages = [];
                     this.cloudinaryOptions = new ng2_cloudinary_1.CloudinaryOptions({
                         cloud_name: 'myserviceneed',
                         upload_preset: 'e8pd1qgk',
@@ -46,7 +47,8 @@ System.register(["@angular/core", "@angular/router", "ng2-cloudinary", "../../..
                     this.uploader.onSuccessItem = function (item, response, status, headers) {
                         //response is the cloudinary response
                         //see http://cloudinary.com/documentation/upload_images#upload_response
-                        _self.cloudinaryImage = JSON.parse(response);
+                        var image = JSON.parse(response);
+                        _self.uploadedimages.push(image.public_id);
                         return { item: item, response: response, status: status, headers: headers };
                     };
                 }
