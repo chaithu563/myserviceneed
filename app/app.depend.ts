@@ -14,11 +14,13 @@ import {ServiceTimeComponent} from './core/userview/postservice/servicetime/serv
 import {UserVerifyComponent} from './core/userview/postservice/userverify/userverify';
 import { GoogleplaceDirective } from './shared/directives/googleplace.directive';
 
+import { FileSelectDirective } from 'ng2-file-upload';
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
     ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent,
-    FindWorkComponent, ServiceSearchComponent, DefaultViewComponent
+	FindWorkComponent, ServiceSearchComponent, DefaultViewComponent,
+	 FileSelectDirective,
 ];
 
 export const myDirectives = [

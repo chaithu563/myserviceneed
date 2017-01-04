@@ -1,68 +1,86 @@
 ﻿<div class="servicebasicInfo">
 
-        <div class="right-inner-addon">
+	<div class="right-inner-addon">
 
-        </div>
-			<div>
+	</div>
+	<div>
 
-				<h3> Please Choose whether your service is one day need or multi day need</h3>
+		<h3> Please Choose whether your service is one day need or multi day need</h3>
+	</div>
+	<div class="radio">
+
+		<div class="btn-group btn-group-vertical" data-toggle="buttons">
+			<label class="btn active">
+				<input type="radio" name='timetype' value="oneday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
+			</label>
+			<label class="btn active">
+				<input type="radio" name='timetype' value="multiday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
+			</label>
+		</div>
+
+	</div>
+
+	<div class="timeinfo">
+
+		<div class="singleday" *ngIf="timetype=='oneday'">
+
+			<div class="dateSelectionInline">
+
+				<label for="date">Service Required Date:</label>
+
+				<form [formGroup]="dataForm" class="datecomponent">
+					<ng2-datepicker FormControlName="date" [options]="calendarOptions"></ng2-datepicker>
+				</form>
 			</div>
-        <div class="radio">
-          
-					<div class="btn-group btn-group-vertical" data-toggle="buttons">
-						<label class="btn active">
-							<input type="radio" name='timetype' value="oneday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
-						</label>
-						<label class="btn active">
-							<input type="radio" name='timetype' value="multiday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
-						</label>
-					</div>
+			<br/>
+			<div class="dateSelectionInline">
 
-        </div>
+				<label for="date">Service Required Time:</label>
+				<div class="datecomponent timecomponent">
+					<datetime [(ngModel)]="single_day_time" [datepicker]="false"></datetime>
 
-			<div class="timeinfo">
 
-				<div class="singleday" *ngIf="timetype=='oneday'">
-					<div class="singledateSelection">
 
-						<label for="date">Service Required Date:</label>
-
-						<form [formGroup]="dataForm" class="datecomponent">
-							<ng2-datepicker FormControlName="date" [options]="calendarOptions"></ng2-datepicker>
-						</form>
-					</div>
-					<div>
-						<div>
-							<label for="date">Service Required Time:</label>
-							<datetime [(ngModel)]="single_day_time"></datetime>
-						</div>
-					</div>
-					
-				
 				</div>
-
-				<div class="multtiday" *ngIf="timetype=='multiday'">
-
-					<div class="singlestartdateSelection">
-
-						<label for="startdate">Service Start Date:</label>
-
-						<form [formGroup]="dataForm" class="datecomponent">
-							<ng2-datepicker FormControlName="startdate" [options]="calendarOptions"></ng2-datepicker>
-						</form>
-					</div>
-				
-					<div class="singleenddateSelection">
-
-						<label for="enddate">Service End Date:</label>
-
-						<form [formGroup]="dataForm" class="datecomponent">
-							<ng2-datepicker FormControlName="enddate" [options]="calendarOptions"></ng2-datepicker>
-						</form>
-					</div>
-				</div>
-
 			</div>
+
+
+		</div>
+
+		<div class="multtiday" *ngIf="timetype=='multiday'">
+
+			<div class="dateSelectionInline">
+
+				<label for="startdate">Service Start Date:</label>
+
+				<form [formGroup]="dataForm" class="datecomponent">
+					<ng2-datepicker FormControlName="startdate" [options]="calendarOptions"></ng2-datepicker>
+				</form>
+			</div>
+			<br />
+			<div class="dateSelectionInline">
+
+				<label for="enddate">Service End Date:</label>
+
+				<form [formGroup]="dataForm" class="datecomponent">
+					<ng2-datepicker FormControlName="enddate" [options]="calendarOptions"></ng2-datepicker>
+				</form>
+			</div>
+			<br />
+			<div class="dateSelectionInline">
+
+				<label for="date">At wht time you need the service for selected days:</label>
+				<div class="datecomponent timecomponent">
+					<datetime [(ngModel)]="single_day_time" [datepicker]="false"></datetime>
+
+
+
+				</div>
+			</div>
+			<br />
+		</div>
+
+	</div>
 
 
 

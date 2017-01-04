@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "../../../../services/msn.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "ng2-cloudinary", "../../../../services/msn.service"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, msn_service_1, ServiceInfoComponent;
+    var core_1, router_1, ng2_cloudinary_1, msn_service_1, ServiceInfoComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,6 +18,9 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (ng2_cloudinary_1_1) {
+                ng2_cloudinary_1 = ng2_cloudinary_1_1;
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
@@ -30,6 +33,22 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     this.router = router;
                     this.route = route;
                     this.serviceinfoChange = new core_1.EventEmitter();
+                    this.cloudinaryOptions = new ng2_cloudinary_1.CloudinaryOptions({
+                        cloud_name: 'myserviceneed',
+                        upload_preset: 'e8pd1qgk',
+                        autoUpload: true,
+                        api_key: 375471576546793,
+                        api_secret: "u0oknAWF4KFEswzF-OOs_KubB30"
+                    });
+                    this.uploader = new ng2_cloudinary_1.CloudinaryUploader(this.cloudinaryOptions);
+                    var _self = this;
+                    //Override onSuccessItem function to record cloudinary response data
+                    this.uploader.onSuccessItem = function (item, response, status, headers) {
+                        //response is the cloudinary response
+                        //see http://cloudinary.com/documentation/upload_images#upload_response
+                        _self.cloudinaryImage = JSON.parse(response);
+                        return { item: item, response: response, status: status, headers: headers };
+                    };
                 }
                 ServiceInfoComponent.prototype.ngOnInit = function () {
                 };

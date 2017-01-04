@@ -18,7 +18,7 @@ export class ServiceTimeComponent implements OnInit {
     @Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
 		dataForm: FormGroup;
         timetype: string;
-        single_day_time: string;
+        single_day_time: Date;
     serviceid: number;
 		calendarOptions = {
 			format: "DD-MM-YYYY",
@@ -32,7 +32,7 @@ export class ServiceTimeComponent implements OnInit {
 	
     constructor(private msnService: MSNService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
 
-        this.single_day_time = '';
+			this.single_day_time = new Date();
 
 
     }

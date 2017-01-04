@@ -33,7 +33,8 @@
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
       'ag-grid': 'node_modules/ag-grid',
       'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js',
-     
+      'ng2-cloudinary': 'npm:ng2-cloudinary/dist/umd/ng2-cloudinary.js',
+      'ng2-file-upload': 'npm:ng2-file-upload',
       'ng2-auto-complete': 'npm:ng2-auto-complete/dist/ng2-auto-complete.umd.js',
       'ng2-datepicker': 'npm:ng2-datepicker',
       'ng2-datetime': 'npm:ng2-datetime',
@@ -61,6 +62,10 @@
       'ng2-datetime': {
           main: "ng2-datetime",
       	defaultextension: "ts"
+      },
+      'ng2-file-upload': {
+      	main: "ng2-file-upload",
+      	defaultextension: "js"
       },
       'ng2-datepicker': {
       	main: "index.js",

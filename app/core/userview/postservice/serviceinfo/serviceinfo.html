@@ -13,6 +13,10 @@
 					<textarea class="form-control" rows="9" [(ngModel)]="serviceinfo.Description" (ngModelChange)="descriptionChange($event)" name="descrption"></textarea>
         </div>
 
+			<div class="form-group">
+				<label for="description">If you have any images related to your service need please upload here:</label>
+			<input type="file" ng2FileSelect [uploader]="uploader"/>
+			</div>
         <!--<div class="radio">
             <label for="description">Service Need Type:</label>
             <label class="radio-inline"><input type="radio" name="optradio">Hourly</label>

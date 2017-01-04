@@ -151,10 +151,15 @@ box-shadow: none;
 
 
 }
-.singledateSelection {
+.dateSelectionInline {
 	display:inline-block;
 }
 .datecomponent
 {
 	display:inline-block;
+	
+}
+.timecomponent
+{
+	width:50%;
 }
