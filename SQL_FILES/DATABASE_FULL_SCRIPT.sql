@@ -171,6 +171,14 @@ SERVICEENDTIME TIME  --if any specific end time of day
 --ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
 )
 
+CREATE TABLE USERSERVICENEEDFILES  ---User service request info 
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+SERVICEID numeric foreign key references USERSERVICENEED(ID),
+FILEPUBLICKKEY varchar(50)  -- clodinary public key
+)
+
+
 CREATE TABLE SERVICEBID  ---User service BID info 
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,

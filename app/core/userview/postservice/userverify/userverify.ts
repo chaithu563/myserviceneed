@@ -15,7 +15,8 @@ export class UserVerifyComponent {
 
     @Input() serviceinfo: any;
     @Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
-
+		isOTPVerifyPhase: boolean = false;
+		isOTPVerifyDone: boolean = false;
     serviceid: number;
     constructor(private msnService: MSNService, private router: Router, private route: ActivatedRoute) {
 
@@ -33,6 +34,17 @@ export class UserVerifyComponent {
     //descriptionChange(value) {
     //    this.serviceinfoChange.emit(this.serviceinfo);
     //}
+
+		sendOTPClicked() {
+			this.isOTPVerifyPhase = true;
+
+			//logic for sending OTP message
+
+		}
+		afterVeriftOTPClick() {
+			this.isOTPVerifyDone = true;
+			this.isOTPVerifyPhase = false;;
+		}
 
 
 }

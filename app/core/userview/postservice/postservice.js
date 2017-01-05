@@ -56,8 +56,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                         { key: "serviceinfo", value: { current: "serviceinfo", next: "address", previous: "", isActive: true } },
                         { key: "address", value: { current: "address", next: "servicetime", previous: "serviceinfo", isActive: false } },
                         { key: "servicetime", value: { current: "servicetime", next: "userverify", previous: "address", isActive: false } },
-                        { key: "userverify", value: { current: "userverify", next: "confirm", previous: "servicetime", isActive: false } },
-                        { key: "confirm", value: { current: "confirm", next: "", previous: "address", isActive: false } }
+                        { key: "userverify", value: { current: "userverify", next: "", previous: "servicetime", isActive: false } },
                     ]).toLookup();
                     this.displayActiveRoute();
                     this.serviceObject = [];

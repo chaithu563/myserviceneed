@@ -4,21 +4,38 @@
 
         </div>
 
-        <div class="radio">
-            <label for="username">User Name:</label>
-            <input type="text" />
-            <br/>
 
-            <label for="description">Mobile Number:</label>
-            <input type="text" />
 
-            <input type="button" value="SEND OTP" />
-            <br />
+			<div class="notLoggedInUser">
+				<h4> Since you are not a logged in user , myserviceneed requesting  your mobile number for verification</h4>
+			<div class="form-group">
+				<div class="sendOTP">
+					<label for="username">User Name:</label>
+					<input type="text" class="form-control verifytxtbox" />
+					<br />
 
-            <label for="verifyOTP">Please Enter OTP you received on registered mobile:</label>
-            <input type="text" />
-            <input type="button" value="VERIFY OTP" />
-        </div>
+					<label for="description">Mobile Number:</label>
+					<input type="text" class="form-control verifytxtbox" />
+
+					<input *ngIf="!isOTPVerifyDone" type="button" value="SEND OTP" class="btn btn-default inlinetxtbox" (click)="sendOTPClicked()" />
+
+				</div>
+				
+				<br />
+
+				<div class="verifyOTP" *ngIf="isOTPVerifyPhase">
+					<label for="verifyOTP">Please Enter OTP you received on registered mobile:</label>
+					<div>
+						<input type="text" class="form-control verifytxtbox inlinetxtbox" /> <input type="button" value="VERIFY OTP" (click)="afterVeriftOTPClick()" class="btn btn-default inlinetxtbox " /> 
+						<p>NOTE: If you not receive OTP please click SEND OTP button again.</p>
+					</div>
+					
+
+				</div>
+			
+			</div>
+
+			</div>
 
     </form>
 

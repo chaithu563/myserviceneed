@@ -30,8 +30,25 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     this.router = router;
                     this.route = route;
                     this.serviceinfoChange = new core_1.EventEmitter();
+                    this.isOTPVerifyPhase = false;
+                    this.isOTPVerifyDone = false;
                 }
                 UserVerifyComponent.prototype.ngOnInit = function () {
+                };
+                //titleChange(value) {
+                //    this.serviceinfoChange.emit(this.serviceinfo);
+                //}
+                //descriptionChange(value) {
+                //    this.serviceinfoChange.emit(this.serviceinfo);
+                //}
+                UserVerifyComponent.prototype.sendOTPClicked = function () {
+                    this.isOTPVerifyPhase = true;
+                    //logic for sending OTP message
+                };
+                UserVerifyComponent.prototype.afterVeriftOTPClick = function () {
+                    this.isOTPVerifyDone = true;
+                    this.isOTPVerifyPhase = false;
+                    ;
                 };
                 return UserVerifyComponent;
             }());
