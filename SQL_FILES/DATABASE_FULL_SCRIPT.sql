@@ -113,6 +113,8 @@ CREATE TABLE SERVICESUBCATEGORY
 ID numeric IDENTITY(1,1) PRIMARY KEY,
 NAME varchar(100),
 DESCRIPTION varchar(MAX),
+IMAGEPUBLICKEY varchar(50),
+ICONPUBLICKEY varchar(50),
 SERVICECATEGORYID numeric foreign key references SERVICECATEGORY(ID)
 )
 CREATE TABLE USERSERVICE --if user provides any service then we will link
@@ -121,6 +123,13 @@ ID numeric IDENTITY(1,1) PRIMARY KEY,
 USERID numeric foreign key references USERINFO(ID),
 SERVICECATEGORYID numeric foreign key references SERVICECATEGORY(ID),
 SERVICESUBCATEGORYID numeric foreign key references SERVICESUBCATEGORY(ID)
+)
+
+CREATE TABLE USERSERVICEFILES  ---User service request info 
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+USERSERVICEID numeric foreign key references USERSERVICE(ID),
+FILEPUBLICKKEY varchar(50)  -- clodinary public key
 )
 CREATE TABLE SERVICETIMETYPE  ---is work is hr/days/weeks/months type
 (
@@ -187,6 +196,12 @@ USERSERVICENEEDID numeric foreign key references USERSERVICENEED(ID),
 BIDTITLE varchar(300),
 BIDDESCRIPTION varchar(MAX),
 BIDAMOUNT money
+)
+CREATE TABLE SERVICEBIDNEEDFILES  ---User service request info 
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+BIDID numeric foreign key references SERVICEBID(ID),
+FILEPUBLICKKEY varchar(50)  -- clodinary public key
 )
 
 ALTER TABLE USERSERVICENEED
