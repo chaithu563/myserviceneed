@@ -24,6 +24,8 @@ namespace MSNServiceApi.Models
         public decimal ID { get; set; }
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
+        public string IMAGEPUBLICKEY { get; set; }
+        public string ICONPUBLICKEY { get; set; }
         public Nullable<decimal> SERVICECATEGORYID { get; set; }
     
         public virtual SERVICECATEGORY SERVICECATEGORY { get; set; }

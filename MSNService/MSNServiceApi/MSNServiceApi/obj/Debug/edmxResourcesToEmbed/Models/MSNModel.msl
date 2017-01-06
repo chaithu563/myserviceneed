@@ -51,6 +51,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SERVICEBIDNEEDFILES">
+      <EntityTypeMapping TypeName="MSNModel.SERVICEBIDNEEDFILE">
+        <MappingFragment StoreEntitySet="SERVICEBIDNEEDFILES">
+          <ScalarProperty Name="FILEPUBLICKKEY" ColumnName="FILEPUBLICKKEY" />
+          <ScalarProperty Name="BIDID" ColumnName="BIDID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SERVICECATEGORies">
       <EntityTypeMapping TypeName="MSNModel.SERVICECATEGORY">
         <MappingFragment StoreEntitySet="SERVICECATEGORY">
@@ -73,6 +82,8 @@
       <EntityTypeMapping TypeName="MSNModel.SERVICESUBCATEGORY">
         <MappingFragment StoreEntitySet="SERVICESUBCATEGORY">
           <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
+          <ScalarProperty Name="ICONPUBLICKEY" ColumnName="ICONPUBLICKEY" />
+          <ScalarProperty Name="IMAGEPUBLICKEY" ColumnName="IMAGEPUBLICKEY" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -162,6 +173,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="USERSERVICEFILES">
+      <EntityTypeMapping TypeName="MSNModel.USERSERVICEFILE">
+        <MappingFragment StoreEntitySet="USERSERVICEFILES">
+          <ScalarProperty Name="FILEPUBLICKKEY" ColumnName="FILEPUBLICKKEY" />
+          <ScalarProperty Name="USERSERVICEID" ColumnName="USERSERVICEID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="USERSERVICENEEDs">
       <EntityTypeMapping TypeName="MSNModel.USERSERVICENEED">
         <MappingFragment StoreEntitySet="USERSERVICENEED">
@@ -184,6 +204,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="USERSERVICENEEDFILES">
+      <EntityTypeMapping TypeName="MSNModel.USERSERVICENEEDFILE">
+        <MappingFragment StoreEntitySet="USERSERVICENEEDFILES">
+          <ScalarProperty Name="FILEPUBLICKKEY" ColumnName="FILEPUBLICKKEY" />
+          <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="USERSERVICETIMEREOCRDs">
       <EntityTypeMapping TypeName="MSNModel.USERSERVICETIMEREOCRD">
         <MappingFragment StoreEntitySet="USERSERVICETIMEREOCRD">
@@ -191,7 +220,7 @@
           <ScalarProperty Name="SERVICESTARTTIME" ColumnName="SERVICESTARTTIME" />
           <ScalarProperty Name="SERVICEENDDATE" ColumnName="SERVICEENDDATE" />
           <ScalarProperty Name="SERVICESTARTDATE" ColumnName="SERVICESTARTDATE" />
-          <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
+          <ScalarProperty Name="SERVICEBOOKEDDATE" ColumnName="SERVICEBOOKEDDATE" />
           <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>

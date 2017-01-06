@@ -30,6 +30,7 @@ namespace MSNServiceApi.Models
         public virtual DbSet<CITYAREA> CITYAREAs { get; set; }
         public virtual DbSet<MEMBERSHIP> MEMBERSHIPs { get; set; }
         public virtual DbSet<SERVICEBID> SERVICEBIDs { get; set; }
+        public virtual DbSet<SERVICEBIDNEEDFILE> SERVICEBIDNEEDFILES { get; set; }
         public virtual DbSet<SERVICECATEGORY> SERVICECATEGORies { get; set; }
         public virtual DbSet<SERVICESTATE> SERVICESTATEs { get; set; }
         public virtual DbSet<SERVICESUBCATEGORY> SERVICESUBCATEGORies { get; set; }
@@ -41,7 +42,9 @@ namespace MSNServiceApi.Models
         public virtual DbSet<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
         public virtual DbSet<USERPWD> USERPWDs { get; set; }
         public virtual DbSet<USERSERVICE> USERSERVICEs { get; set; }
+        public virtual DbSet<USERSERVICEFILE> USERSERVICEFILES { get; set; }
         public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        public virtual DbSet<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
         public virtual DbSet<USERSERVICETIMEREOCRD> USERSERVICETIMEREOCRDs { get; set; }
     }
 }

@@ -12,16 +12,12 @@ namespace MSNServiceApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USERSERVICETIMEREOCRD
+    public partial class SERVICEBIDNEEDFILE
     {
         public decimal ID { get; set; }
-        public Nullable<decimal> SERVICEID { get; set; }
-        public Nullable<System.DateTime> SERVICEBOOKEDDATE { get; set; }
-        public Nullable<System.DateTime> SERVICESTARTDATE { get; set; }
-        public Nullable<System.DateTime> SERVICEENDDATE { get; set; }
-        public Nullable<System.TimeSpan> SERVICESTARTTIME { get; set; }
-        public Nullable<System.TimeSpan> SERVICEENDTIME { get; set; }
+        public Nullable<decimal> BIDID { get; set; }
+        public string FILEPUBLICKKEY { get; set; }
     
-        public virtual USERSERVICENEED USERSERVICENEED { get; set; }
+        public virtual SERVICEBID SERVICEBID { get; set; }
     }
 }

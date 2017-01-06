@@ -17,6 +17,7 @@ namespace MSNServiceApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SERVICEBID()
         {
+            this.SERVICEBIDNEEDFILES = new HashSet<SERVICEBIDNEEDFILE>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
         }
     
@@ -27,6 +28,8 @@ namespace MSNServiceApi.Models
         public string BIDDESCRIPTION { get; set; }
         public Nullable<decimal> BIDAMOUNT { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SERVICEBIDNEEDFILE> SERVICEBIDNEEDFILES { get; set; }
         public virtual USERINFO USERINFO { get; set; }
         public virtual USERSERVICENEED USERSERVICENEED { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

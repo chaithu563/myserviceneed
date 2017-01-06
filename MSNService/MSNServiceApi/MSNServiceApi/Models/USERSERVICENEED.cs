@@ -19,6 +19,7 @@ namespace MSNServiceApi.Models
         {
             this.SERVICEBIDs = new HashSet<SERVICEBID>();
             this.USERSERVICETIMEREOCRDs = new HashSet<USERSERVICETIMEREOCRD>();
+            this.USERSERVICENEEDFILES = new HashSet<USERSERVICENEEDFILE>();
         }
     
         public decimal ID { get; set; }
@@ -50,5 +51,7 @@ namespace MSNServiceApi.Models
         public virtual USERINFO USERINFO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICETIMEREOCRD> USERSERVICETIMEREOCRDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
     }
 }
