@@ -219,7 +219,7 @@
     <Compile Include="Models\USERSERVICENEEDFILE.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\USERSERVICETIMEREOCRD.cs">
+    <Compile Include="Models\USERSERVICETIMERECORD.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

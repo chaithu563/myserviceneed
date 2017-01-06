@@ -30,7 +30,7 @@ export class AddressComponent {
 
 		this.findCurrentLocation();
 		this.loadAutocomplete()
-
+		
 	}
 
 	loadAutocomplete() {
@@ -44,20 +44,21 @@ export class AddressComponent {
 				this.lat = place.geometry.location.lat();
                 this.lng = place.geometry.location.lng();
                 this.findCity();
+								this.userAddress = ""; 
 			});
 		});
 
 	}
 
-	getAddress(place: Object) {
-		this.address = place['formatted_address'];
-		var location = place['geometry']['location'];
-		var lat = location.lat();
-		var lng = location.lng();
-		console.log("Address Object", place);
-		this.lat = lat;
-		this.lng = lng;
-	}
+	//getAddress(place: Object) {
+	//	this.address = place['formatted_address'];
+	//	var location = place['geometry']['location'];
+	//	var lat = location.lat();
+	//	var lng = location.lng();
+	//	console.log("Address Object", place);
+	//	this.lat = lat;
+	//	this.lng = lng;
+	//}
 
 
 	findCurrentLocation() {
@@ -136,7 +137,9 @@ export class AddressComponent {
         }
 
 
-		addressChange(value) {
+				addressChange(value) {
+					this.serviceinfo.locationlat = this.lat;
+					this.serviceinfo.locationlng = this.lng;
 			this.serviceinfoChange.emit(this.serviceinfo);
 
 		}

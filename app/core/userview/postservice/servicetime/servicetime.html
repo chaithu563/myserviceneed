@@ -28,8 +28,8 @@
 
 				<label for="date">Service Required Date:</label>
 
-				<form [formGroup]="dataForm" class="datecomponent">
-					<ng2-datepicker FormControlName="date" [options]="calendarOptions"></ng2-datepicker>
+				<form class="datecomponent">
+					<ng2-datepicker [(ngModel)]="serviceinfo.servicedate"  [options]="calendarOptions" name="servicedate"></ng2-datepicker>
 				</form>
 			</div>
 			<br/>
@@ -37,7 +37,7 @@
 
 				<label for="date">Service Required Time:</label>
 				<div class="datecomponent timecomponent">
-					<datetime [(ngModel)]="single_day_time" [datepicker]="false"></datetime>
+					<datetime [(ngModel)]="serviceinfo.single_day_start_time" [datepicker]="false"></datetime>
 
 
 
@@ -47,14 +47,14 @@
 
 		</div>
 
-		<div class="multtiday" *ngIf="timetype=='multiday'">
+		<div class="multiday" *ngIf="timetype=='multiday'">
 
 			<div class="dateSelectionInline">
 
 				<label for="startdate">Service Start Date:</label>
 
-				<form [formGroup]="dataForm" class="datecomponent">
-					<ng2-datepicker FormControlName="startdate" [options]="calendarOptions"></ng2-datepicker>
+				<form  class="datecomponent">
+					<ng2-datepicker  [(ngModel)]="serviceinfo.servicestartdate"  [options]="calendarOptions" name="servicestartdate"></ng2-datepicker>
 				</form>
 			</div>
 			<br />
@@ -62,16 +62,16 @@
 
 				<label for="enddate">Service End Date:</label>
 
-				<form [formGroup]="dataForm" class="datecomponent">
-					<ng2-datepicker FormControlName="enddate" [options]="calendarOptions"></ng2-datepicker>
+				<form  class="datecomponent">
+					<ng2-datepicker  [(ngModel)]="serviceinfo.serviceenddate" [options]="calendarOptions" name="serviceenddate"></ng2-datepicker>
 				</form>
 			</div>
 			<br />
 			<div class="dateSelectionInline">
 
-				<label for="date">At wht time you need the service for selected days:</label>
+				<label for="date">At what time you need the service for selected days:</label>
 				<div class="datecomponent timecomponent">
-					<datetime [(ngModel)]="single_day_time" [datepicker]="false"></datetime>
+					<datetime [(ngModel)]="serviceinfo.multi_day_start_time" [datepicker]="false"></datetime>
 
 
 

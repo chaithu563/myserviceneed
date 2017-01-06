@@ -18,7 +18,6 @@ namespace MSNServiceApi.Models
         public USERSERVICENEED()
         {
             this.SERVICEBIDs = new HashSet<SERVICEBID>();
-            this.USERSERVICETIMEREOCRDs = new HashSet<USERSERVICETIMEREOCRD>();
             this.USERSERVICENEEDFILES = new HashSet<USERSERVICENEEDFILE>();
         }
     
@@ -37,6 +36,7 @@ namespace MSNServiceApi.Models
         public Nullable<double> LOCATIONLONGITUDE { get; set; }
         public Nullable<decimal> SERVICECITYID { get; set; }
         public Nullable<decimal> SERVICECITYAREAID { get; set; }
+        public Nullable<decimal> USERSERVICETIMERECORDID { get; set; }
         public Nullable<decimal> ALLOCATEDBIDID { get; set; }
     
         public virtual CITY CITY { get; set; }
@@ -50,8 +50,7 @@ namespace MSNServiceApi.Models
         public virtual SERVICETIMETYPE SERVICETIMETYPE1 { get; set; }
         public virtual USERINFO USERINFO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERSERVICETIMEREOCRD> USERSERVICETIMEREOCRDs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
+        public virtual USERSERVICETIMERECORD USERSERVICETIMERECORD { get; set; }
     }
 }

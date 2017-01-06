@@ -45,18 +45,19 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                             _this.lat = place.geometry.location.lat();
                             _this.lng = place.geometry.location.lng();
                             _this.findCity();
+                            _this.userAddress = "";
                         });
                     });
                 };
-                AddressComponent.prototype.getAddress = function (place) {
-                    this.address = place['formatted_address'];
-                    var location = place['geometry']['location'];
-                    var lat = location.lat();
-                    var lng = location.lng();
-                    console.log("Address Object", place);
-                    this.lat = lat;
-                    this.lng = lng;
-                };
+                //getAddress(place: Object) {
+                //	this.address = place['formatted_address'];
+                //	var location = place['geometry']['location'];
+                //	var lat = location.lat();
+                //	var lng = location.lng();
+                //	console.log("Address Object", place);
+                //	this.lat = lat;
+                //	this.lng = lng;
+                //}
                 AddressComponent.prototype.findCurrentLocation = function () {
                     var _this = this;
                     // Try HTML5 geolocation.
@@ -117,6 +118,8 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     return Object.keys(obj).length === 0;
                 };
                 AddressComponent.prototype.addressChange = function (value) {
+                    this.serviceinfo.locationlat = this.lat;
+                    this.serviceinfo.locationlng = this.lng;
                     this.serviceinfoChange.emit(this.serviceinfo);
                 };
                 return AddressComponent;

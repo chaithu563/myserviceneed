@@ -40,7 +40,8 @@ export class ServiceInfoComponent {
       //response is the cloudinary response
       //see http://cloudinary.com/documentation/upload_images#upload_response
       let image = JSON.parse(response);
-			_self.uploadedimages.push(image.public_id );
+			_self.uploadedimages.push(image.public_id);
+			_self.serviceinfo.uploadedimages = _self.uploadedimages;
       return { item, response, status, headers };
 			};
 

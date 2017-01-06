@@ -41,14 +41,15 @@ System.register(["@angular/core", "@angular/router", "@angular/forms", "../../..
                         //		maxDate: new DateConstructor(). ,
                         initialDate: new Date()
                     };
-                    this.single_day_time = new Date();
                 }
                 ServiceTimeComponent.prototype.ngOnInit = function () {
-                    this.dataForm = this.formBuilder.group({
-                        date: '',
-                        startdate: '',
-                        enddate: ''
+                    this.serviceinfo.dateForm = this.formBuilder.group({
+                        servicedate: '',
+                        servicestartdate: '',
+                        serviceenddate: ''
                     });
+                    this.serviceinfo.single_day_start_time = new Date();
+                    this.serviceinfo.multi_day_start_time = new Date();
                 };
                 return ServiceTimeComponent;
             }());

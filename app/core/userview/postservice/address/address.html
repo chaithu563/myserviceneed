@@ -2,7 +2,7 @@
 
     <form>
         <div class="right-inner-addon">
-            <input id="address" type="text" class="form-control searchplace" [(ngModel)]="userAddress" name="user Address" />
+            <input id="address" type="text" class="form-control searchplace" [(ngModel)]="userAddress" name="user Address" placeholder="Search for your service needed location on Map" />
         </div>
         <div>
 
@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label for="Address">Please modify as any specific location address in selected place in Map:</label>
-					<textarea class="form-control" cols="50" rows="5" [(ngModel)]="serviceinfo.address" (ngModelChange)="addressChange($event)" name="address"></textarea>
+					<textarea class="form-control" cols="10" rows="7" [(ngModel)]="serviceinfo.address" (ngModelChange)="addressChange($event)" name="address"></textarea>
         </div>
 
 

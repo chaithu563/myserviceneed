@@ -12,16 +12,22 @@ namespace MSNServiceApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USERSERVICETIMEREOCRD
+    public partial class USERSERVICETIMERECORD
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public USERSERVICETIMERECORD()
+        {
+            this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
+        }
+    
         public decimal ID { get; set; }
-        public Nullable<decimal> SERVICEID { get; set; }
         public Nullable<System.DateTime> SERVICEBOOKEDDATE { get; set; }
         public Nullable<System.DateTime> SERVICESTARTDATE { get; set; }
         public Nullable<System.DateTime> SERVICEENDDATE { get; set; }
         public Nullable<System.TimeSpan> SERVICESTARTTIME { get; set; }
         public Nullable<System.TimeSpan> SERVICEENDTIME { get; set; }
     
-        public virtual USERSERVICENEED USERSERVICENEED { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
 }

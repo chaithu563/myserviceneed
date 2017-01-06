@@ -143,6 +143,18 @@ ID int IDENTITY(1,1) PRIMARY KEY,
 NAME varchar(100),
 DESCRIPTION varchar(MAX)
 )
+CREATE TABLE USERSERVICETIMERECORD  ---User service request info 
+(
+ID numeric IDENTITY(1,1) PRIMARY KEY,
+--SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
+SERVICEBOOKEDDATE DATE,  --
+SERVICESTARTDATE DATE,  --if it is multi day work start date
+SERVICEENDDATE DATE,  -- if it is multi day work end date
+SERVICESTARTTIME TIME,  --if any specific start time of day
+SERVICEENDTIME TIME  --if any specific end time of day
+
+--ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
+)
 
 CREATE TABLE USERSERVICENEED  ---User service request info 
 (
@@ -160,25 +172,15 @@ SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
 LOCATIONLATITUDE float  NULL, 
 LOCATIONLONGITUDE float  NULL,
 SERVICECITYID numeric foreign key references CITY(ID),-- need to think why we need again when we have city id
-SERVICECITYAREAID numeric foreign key references CITYAREA(ID)
+SERVICECITYAREAID numeric foreign key references CITYAREA(ID),
+USERSERVICETIMERECORDID numeric foreign key references USERSERVICETIMERECORD(ID),
+
 --SERVICENEEDEDDATE DATE,
 --SERVICESTARTDATETIME DATETIME,
 --SERVICEENDDATETIME DATETIME
 --ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
 )
-CREATE TABLE USERSERVICETIMEREOCRD  ---User service request info 
-(
-ID numeric IDENTITY(1,1) PRIMARY KEY,
-SERVICEID numeric foreign key references USERSERVICENEED(ID),
---SERVICETIMETYPE int foreign key references SERVICETIMETYPE(ID),
-SERVICEBOOKEDDATE DATE,  --
-SERVICESTARTDATE DATE,  --if it is multi day work start date
-SERVICEENDDATE DATE,  -- if it is multi day work end date
-SERVICESTARTTIME TIME,  --if any specific start time of day
-SERVICEENDTIME TIME  --if any specific end time of day
 
---ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
-)
 
 CREATE TABLE USERSERVICENEEDFILES  ---User service request info 
 (

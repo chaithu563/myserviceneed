@@ -18,7 +18,8 @@ export class ServiceTimeComponent implements OnInit {
     @Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
 		dataForm: FormGroup;
         timetype: string;
-        single_day_time: Date;
+        single_day_start_time: Date;
+				multi_day_start_time: Date;
     serviceid: number;
 		calendarOptions = {
 			format: "DD-MM-YYYY",
@@ -32,16 +33,18 @@ export class ServiceTimeComponent implements OnInit {
 	
     constructor(private msnService: MSNService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
 
-			this.single_day_time = new Date();
-
+		
 
     }
     ngOnInit() {
-			this.dataForm = this.formBuilder.group({
-				date: '',
-				startdate: '',
-				enddate:''
+			this.serviceinfo.dateForm = this.formBuilder.group({
+				servicedate: '',
+				servicestartdate: '',
+				serviceenddate:''
 			});
+
+			this.serviceinfo.single_day_start_time = new Date();
+			this.serviceinfo.multi_day_start_time = new Date();
 		}
 
     //titleChange(value) {

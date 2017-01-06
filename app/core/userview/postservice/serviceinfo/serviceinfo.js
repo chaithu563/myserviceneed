@@ -49,6 +49,7 @@ System.register(["@angular/core", "@angular/router", "ng2-cloudinary", "../../..
                         //see http://cloudinary.com/documentation/upload_images#upload_response
                         var image = JSON.parse(response);
                         _self.uploadedimages.push(image.public_id);
+                        _self.serviceinfo.uploadedimages = _self.uploadedimages;
                         return { item: item, response: response, status: status, headers: headers };
                     };
                 }

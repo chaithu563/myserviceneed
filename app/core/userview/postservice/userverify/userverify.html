@@ -11,11 +11,11 @@
 			<div class="form-group">
 				<div class="sendOTP">
 					<label for="username">User Name:</label>
-					<input type="text" class="form-control verifytxtbox" />
+					<input type="text" class="form-control verifytxtbox" [(ngModel)]="serviceinfo.USERNAME" name="username" />
 					<br />
 
 					<label for="description">Mobile Number:</label>
-					<input type="text" class="form-control verifytxtbox" />
+					<input type="text" class="form-control verifytxtbox" [(ngModel)]="serviceinfo.MOBILE" name="mobile" />
 
 					<input *ngIf="!isOTPVerifyDone" type="button" value="SEND OTP" class="btn btn-default inlinetxtbox" (click)="sendOTPClicked()" />
 
