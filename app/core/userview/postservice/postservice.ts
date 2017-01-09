@@ -84,5 +84,13 @@ export class PostServiceComponent {
 		this.postServiceRoutes[this.curretRoute.current].isActive = false;
 		this.postServiceRoutes[this.curretRoute.next].isActive = true;
 		this.displayActiveRoute();
-	}
+        }
+
+
+    postService() {
+
+        console.log(this.serviceObject);
+
+
+    }
 }

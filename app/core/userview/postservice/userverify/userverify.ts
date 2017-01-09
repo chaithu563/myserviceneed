@@ -15,6 +15,7 @@ export class UserVerifyComponent {
 
     @Input() serviceinfo: any;
     @Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
+    @Output() postUserRequest: EventEmitter = new EventEmitter<any>();
 		isOTPVerifyPhase: boolean = false;
 		isOTPVerifyDone: boolean = false;
     serviceid: number;
@@ -41,10 +42,14 @@ export class UserVerifyComponent {
 			//logic for sending OTP message
 
 		}
-		afterVeriftOTPClick() {
-			this.isOTPVerifyDone = true;
-			this.isOTPVerifyPhase = false;;
-		}
+
+        afterVerifyOTPClick() {
+            this.isOTPVerifyDone = true;
+            this.isOTPVerifyPhase = false;
+
+            this.postUserRequest.emit(this.serviceinfo);
+
+        }
 
 
 }

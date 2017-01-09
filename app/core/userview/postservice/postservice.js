@@ -80,6 +80,9 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     this.postServiceRoutes[this.curretRoute.next].isActive = true;
                     this.displayActiveRoute();
                 };
+                PostServiceComponent.prototype.postService = function () {
+                    console.log(this.serviceObject);
+                };
                 return PostServiceComponent;
             }());
             PostServiceComponent = __decorate([

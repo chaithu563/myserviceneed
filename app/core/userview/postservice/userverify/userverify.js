@@ -30,6 +30,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     this.router = router;
                     this.route = route;
                     this.serviceinfoChange = new core_1.EventEmitter();
+                    this.postUserRequest = new core_1.EventEmitter();
                     this.isOTPVerifyPhase = false;
                     this.isOTPVerifyDone = false;
                 }
@@ -45,10 +46,10 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     this.isOTPVerifyPhase = true;
                     //logic for sending OTP message
                 };
-                UserVerifyComponent.prototype.afterVeriftOTPClick = function () {
+                UserVerifyComponent.prototype.afterVerifyOTPClick = function () {
                     this.isOTPVerifyDone = true;
                     this.isOTPVerifyPhase = false;
-                    ;
+                    this.postUserRequest.emit(this.serviceinfo);
                 };
                 return UserVerifyComponent;
             }());
@@ -60,6 +61,10 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                 core_1.Output(),
                 __metadata("design:type", core_1.EventEmitter)
             ], UserVerifyComponent.prototype, "serviceinfoChange", void 0);
+            __decorate([
+                core_1.Output(),
+                __metadata("design:type", core_1.EventEmitter)
+            ], UserVerifyComponent.prototype, "postUserRequest", void 0);
             UserVerifyComponent = __decorate([
                 core_1.Component({
                     selector: 'userverify',
