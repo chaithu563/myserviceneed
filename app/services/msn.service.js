@@ -56,6 +56,17 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                         .map(function (res) { return res.json(); })
                         .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };
+                MSNService.prototype.postUserServiceNeed = function (data) {
+                    var headers = new http_1.Headers({ 'Content-Type': 'multipart/form-data' });
+                    headers.append('Authorization', 'Bearer ');
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    var json = JSON.stringify(data);
+                    var params = 'json=' + json;
+                    // ...using get request
+                    return this.http.post(this.config.ServiceApi + 'USERSERVICENEEDs', data, options)
+                        .map(function (res) { return res.json(); })
+                        .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
+                };
                 return MSNService;
             }());
             MSNService = __decorate([

@@ -11,10 +11,10 @@
 
 		<div class="btn-group btn-group-vertical" data-toggle="buttons">
 			<label class="btn active">
-				<input type="radio" name='timetype' value="oneday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
+				<input type="radio" name='timetype' value="oneday" (change)="serviceTypeChange($event.target.value)"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
 			</label>
 			<label class="btn active">
-				<input type="radio" name='timetype' value="multiday" (change)="timetype=$event.target.value"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
+				<input type="radio" name='timetype' value="multiday" (change)="serviceTypeChange($event.target.value)"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
 			</label>
 		</div>
 
@@ -37,7 +37,7 @@
 
 				<label for="date">Service Required Time:</label>
 				<div class="datecomponent timecomponent">
-					<datetime [(ngModel)]="serviceinfo.single_day_start_time" [datepicker]="false"></datetime>
+					<datetime [(ngModel)]="serviceinfo.service_start_time" [datepicker]="false"></datetime>
 
 
 
@@ -71,7 +71,7 @@
 
 				<label for="date">At what time you need the service for selected days:</label>
 				<div class="datecomponent timecomponent">
-					<datetime [(ngModel)]="serviceinfo.multi_day_start_time" [datepicker]="false"></datetime>
+					<datetime [(ngModel)]="serviceinfo.service_start_time" [datepicker]="false"></datetime>
 
 
 

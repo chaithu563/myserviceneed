@@ -18,8 +18,8 @@ export class ServiceTimeComponent implements OnInit {
     @Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
 		dataForm: FormGroup;
         timetype: string;
-        single_day_start_time: Date;
-				multi_day_start_time: Date;
+        service_start_time: Date;
+			//	multi_day_start_time: Date;
     serviceid: number;
 		calendarOptions = {
 			format: "DD-MM-YYYY",
@@ -37,23 +37,28 @@ export class ServiceTimeComponent implements OnInit {
 
     }
     ngOnInit() {
-			this.serviceinfo.dateForm = this.formBuilder.group({
-				servicedate: '',
-				servicestartdate: '',
-				serviceenddate:''
-			});
+			//this.serviceinfo.dateForm = this.formBuilder.group({
+			//	servicedate: '',
+			//	servicestartdate: '',
+			//	serviceenddate:''
+			//});
 
-			this.serviceinfo.single_day_start_time = new Date();
-			this.serviceinfo.multi_day_start_time = new Date();
+			this.serviceinfo.service_start_time = new Date();
+		//	this.serviceinfo.multi_day_start_time = new Date();
 		}
 
-    //titleChange(value) {
-    //    this.serviceinfoChange.emit(this.serviceinfo);
-    //}
+		serviceTypeChange(value) {
 
-    //descriptionChange(value) {
-    //    this.serviceinfoChange.emit(this.serviceinfo);
-    //}
+			this.timetype = value;
+
+			if (value == 'oneday') {
+
+				this.serviceinfo.servicestartdate = this.serviceinfo.servicedate;
+				this.serviceinfo.serviceenddate = this.serviceinfo.servicedate;
+
+			}
+
+		}
 
 
 }

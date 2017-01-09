@@ -43,13 +43,20 @@ System.register(["@angular/core", "@angular/router", "@angular/forms", "../../..
                     };
                 }
                 ServiceTimeComponent.prototype.ngOnInit = function () {
-                    this.serviceinfo.dateForm = this.formBuilder.group({
-                        servicedate: '',
-                        servicestartdate: '',
-                        serviceenddate: ''
-                    });
-                    this.serviceinfo.single_day_start_time = new Date();
-                    this.serviceinfo.multi_day_start_time = new Date();
+                    //this.serviceinfo.dateForm = this.formBuilder.group({
+                    //	servicedate: '',
+                    //	servicestartdate: '',
+                    //	serviceenddate:''
+                    //});
+                    this.serviceinfo.service_start_time = new Date();
+                    //	this.serviceinfo.multi_day_start_time = new Date();
+                };
+                ServiceTimeComponent.prototype.serviceTypeChange = function (value) {
+                    this.timetype = value;
+                    if (value == 'oneday') {
+                        this.serviceinfo.servicestartdate = this.serviceinfo.servicedate;
+                        this.serviceinfo.serviceenddate = this.serviceinfo.servicedate;
+                    }
                 };
                 return ServiceTimeComponent;
             }());

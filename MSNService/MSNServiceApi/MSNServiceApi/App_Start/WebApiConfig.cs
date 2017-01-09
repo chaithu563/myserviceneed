@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
+using System.Web.Http.Cors;
 namespace MSNServiceApi
 {
     public static class WebApiConfig
@@ -23,6 +23,11 @@ namespace MSNServiceApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+						//var enableCorsAttribute = new EnableCorsAttribute("*",
+						//																		 "Origin, Content-Type, Accept",
+						//																		 "GET, PUT, POST, DELETE, OPTIONS");
+						//config.EnableCors(enableCorsAttribute);
         }
     }
 }

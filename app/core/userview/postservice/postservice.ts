@@ -18,7 +18,7 @@ import { postServiceRoute } from '../../../types/postServiceRoute';
 })
 export class PostServiceComponent {
 
-	serviceObject: any;
+	serviceObject: any = {};
 	serviceid: number;
 		postServiceRoutes: any;
 		curretRoute: any;
@@ -89,8 +89,20 @@ export class PostServiceComponent {
 
     postService() {
 
-        console.log(this.serviceObject);
+			console.log(this.serviceObject);
+			let userneedOperation: Observable<any[]>;
+			userneedOperation = this.msnService.postUserServiceNeed(this.serviceObject);
 
+			// Subscribe to observable
+			userneedOperation.subscribe(
+				postedneed => {
+					console.log(postedneed);
+					
+				},
+				err => {
+					// Log errors if any
+					console.log(err);
+				});
 
     }
 }

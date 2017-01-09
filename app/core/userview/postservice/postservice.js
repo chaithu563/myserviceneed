@@ -36,6 +36,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
+                    this.serviceObject = {};
                     this.handleInitialLoad();
                     this.router.events.subscribe(function (event) {
                         // Handle route change
@@ -82,6 +83,15 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                 };
                 PostServiceComponent.prototype.postService = function () {
                     console.log(this.serviceObject);
+                    var userneedOperation;
+                    userneedOperation = this.msnService.postUserServiceNeed(this.serviceObject);
+                    // Subscribe to observable
+                    userneedOperation.subscribe(function (postedneed) {
+                        console.log(postedneed);
+                    }, function (err) {
+                        // Log errors if any
+                        console.log(err);
+                    });
                 };
                 return PostServiceComponent;
             }());

@@ -73,17 +73,41 @@ namespace MSNServiceApi.Controllers
 
         // POST: api/USERSERVICENEEDs
         [ResponseType(typeof(USERSERVICENEED))]
-        public async Task<IHttpActionResult> PostUSERSERVICENEED(USERSERVICENEED uSERSERVICENEED)
+				//public async Task<IHttpActionResult> PostUSERSERVICENEED(USERSERVICENEED uSERSERVICENEED)
+				public async Task<IHttpActionResult> PostUSERSERVICENEED(dynamic details)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            db.USERSERVICENEEDs.Add(uSERSERVICENEED);
-            await db.SaveChangesAsync();
+					//chaitanya comment strat
+						//if (!ModelState.IsValid)
+						//{
+						//		return BadRequest(ModelState);
+						//}
 
-            return CreatedAtRoute("DefaultApi", new { id = uSERSERVICENEED.ID }, uSERSERVICENEED);
+						//db.USERSERVICENEEDs.Add(uSERSERVICENEED);
+						//await db.SaveChangesAsync();
+
+						//return CreatedAtRoute("DefaultApi", new { id = uSERSERVICENEED.ID }, uSERSERVICENEED);
+					//chaitanya comment end
+
+
+
+					USERSERVICENEED ob = new USERSERVICENEED();
+
+					ob.SERVICETITLE = details["Title"];
+					ob.SERVICEDESCRIPTION = details["Description"];
+					ob.SERVICELOCATIONADDRESS = details["address"];
+
+					ob.USERSERVICETIMERECORD.SERVICEBOOKEDDATE = DateTime.Today;
+					ob.USERSERVICETIMERECORD.SERVICESTARTDATE = new DateTime(details["servicestartdate"].year, details["servicestartdate"].month, details["servicestartdate"].day);
+					ob.USERSERVICETIMERECORD.SERVICEENDDATE = new DateTime(details["serviceenddate"].year, details["serviceenddate"].month, details["serviceenddate"].day);
+					ob.USERSERVICETIMERECORD.SERVICESTARTTIME = new DateTime(details["service_start_time"]).TimeOfDay;
+					ob.USERSERVICETIMERECORD.SERVICEENDTIME = null;
+
+					db.USERSERVICENEEDs.Add(ob);
+					await db.SaveChangesAsync();
+
+					return CreatedAtRoute("DefaultApi", new { id = ob.ID }, ob);
+
         }
 
         // DELETE: api/USERSERVICENEEDs/5
@@ -115,5 +139,23 @@ namespace MSNServiceApi.Controllers
         {
             return db.USERSERVICENEEDs.Count(e => e.ID == id) > 0;
         }
+
+
+			//public void SubmitServiceNeed(object details)
+			//	{
+
+					//USERSERVICENEED ob = new USERSERVICENEED();
+
+					//ob.SERVICETITLE = details.Title;
+					//ob.SERVICEDESCRIPTION = details.Description;
+					//ob.SERVICELOCATIONADDRESS = details.address;
+
+					//ob.USERSERVICETIMERECORD.SERVICEBOOKEDDATE = DateTime.Today;
+					//ob.USERSERVICETIMERECORD.SERVICESTARTDATE =new DateTime(details.servicestartdate.year,details.servicestartdate.month,details.servicestartdate.day);
+					//ob.USERSERVICETIMERECORD.SERVICEENDDATE = new DateTime(details.serviceenddate.year, details.serviceenddate.month, details.serviceenddate.day);
+					//ob.USERSERVICETIMERECORD.SERVICESTARTTIME = new DateTime(details.service_start_time).TimeOfDay;
+					//ob.USERSERVICETIMERECORD.SERVICEENDTIME = null;
+
+			//	}
     }
 }
