@@ -8,6 +8,7 @@ import { MSNService } from '../../../services/msn.service';
 
 import { postServiceRoute } from '../../../types/postServiceRoute';
 
+import { IPostData, PostData} from '../../../types/postServiceRequest';
 
 @Component({
 	selector: 'postservice',
@@ -18,7 +19,7 @@ import { postServiceRoute } from '../../../types/postServiceRoute';
 })
 export class PostServiceComponent {
 
-	serviceObject: any = {};
+	  serviceObject: IPostData=new PostData();
 	serviceid: number;
 		postServiceRoutes: any;
 		curretRoute: any;
@@ -52,7 +53,7 @@ export class PostServiceComponent {
 			
 		this.displayActiveRoute();
 
-		this.serviceObject = [];
+		//this.serviceObject = [];
 
 		}
 

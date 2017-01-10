@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "../servicesearch/servicesearch", "../../../services/msn.service", "../../../types/postServiceRoute"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "../servicesearch/servicesearch", "../../../services/msn.service", "../../../types/postServiceRoute", "../../../types/postServiceRequest"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, servicesearch_1, msn_service_1, postServiceRoute_1, PostServiceComponent;
+    var core_1, router_1, servicesearch_1, msn_service_1, postServiceRoute_1, postServiceRequest_1, PostServiceComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -27,6 +27,9 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
             },
             function (postServiceRoute_1_1) {
                 postServiceRoute_1 = postServiceRoute_1_1;
+            },
+            function (postServiceRequest_1_1) {
+                postServiceRequest_1 = postServiceRequest_1_1;
             }
         ],
         execute: function () {
@@ -36,7 +39,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
-                    this.serviceObject = {};
+                    this.serviceObject = new postServiceRequest_1.PostData();
                     this.handleInitialLoad();
                     this.router.events.subscribe(function (event) {
                         // Handle route change
@@ -60,7 +63,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                         { key: "userverify", value: { current: "userverify", next: "", previous: "servicetime", isActive: false } },
                     ]).toLookup();
                     this.displayActiveRoute();
-                    this.serviceObject = [];
+                    //this.serviceObject = [];
                 };
                 PostServiceComponent.prototype.displayActiveRoute = function () {
                     var _this = this;

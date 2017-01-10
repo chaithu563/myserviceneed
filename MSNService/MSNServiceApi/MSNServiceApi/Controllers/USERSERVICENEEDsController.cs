@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using MSNServiceApi.Models;
 
@@ -71,10 +72,11 @@ namespace MSNServiceApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+			//[EnableCors]
         // POST: api/USERSERVICENEEDs
         [ResponseType(typeof(USERSERVICENEED))]
 				//public async Task<IHttpActionResult> PostUSERSERVICENEED(USERSERVICENEED uSERSERVICENEED)
-				public async Task<IHttpActionResult> PostUSERSERVICENEED(dynamic details)
+				public async Task<IHttpActionResult> PostUSERSERVICENEED([FromBody] dynamic details)
         {
 
 					//chaitanya comment strat
@@ -93,15 +95,26 @@ namespace MSNServiceApi.Controllers
 
 					USERSERVICENEED ob = new USERSERVICENEED();
 
-					ob.SERVICETITLE = details["Title"];
-					ob.SERVICEDESCRIPTION = details["Description"];
+					ob.SERVICETITLE = details["title"];
+					ob.SERVICEDESCRIPTION = details["description"];
 					ob.SERVICELOCATIONADDRESS = details["address"];
 
-					ob.USERSERVICETIMERECORD.SERVICEBOOKEDDATE = DateTime.Today;
-					ob.USERSERVICETIMERECORD.SERVICESTARTDATE = new DateTime(details["servicestartdate"].year, details["servicestartdate"].month, details["servicestartdate"].day);
-					ob.USERSERVICETIMERECORD.SERVICEENDDATE = new DateTime(details["serviceenddate"].year, details["serviceenddate"].month, details["serviceenddate"].day);
-					ob.USERSERVICETIMERECORD.SERVICESTARTTIME = new DateTime(details["service_start_time"]).TimeOfDay;
-					ob.USERSERVICETIMERECORD.SERVICEENDTIME = null;
+					USERSERVICETIMERECORD time = new USERSERVICETIMERECORD();
+
+					time.SERVICEBOOKEDDATE = DateTime.Today;
+					//time.SERVICESTARTDATE = new DateTime(details["servicestartdate"].year, details["servicestartdate"].month, details["servicestartdate"].day);
+					//time.SERVICEENDDATE = new DateTime(details["serviceenddate"].year, details["serviceenddate"].month, details["serviceenddate"].day);
+					var d = details["servicestartdate"].momentObj;
+
+					time.SERVICESTARTDATE = Convert.ToDateTime(d);
+					time.SERVICEENDDATE = Convert.ToDateTime(details["serviceenddate"].momentObj);
+
+
+
+					time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
+					time.SERVICEENDTIME = null;
+
+					ob.USERSERVICETIMERECORD = time;
 
 					db.USERSERVICENEEDs.Add(ob);
 					await db.SaveChangesAsync();

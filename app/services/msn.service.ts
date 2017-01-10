@@ -55,13 +55,15 @@ export class MSNService {
 	
 	 public postUserServiceNeed(data): Observable<any[]> {
 
-		 let headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+		 //application/x-www-form-urlencoded
+		 //application/json; charset=utf-8
+		 let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
 		 headers.append('Authorization', 'Bearer ')
 		 let options = new RequestOptions({ headers: headers });
 		 var json = JSON.stringify(data);
 		 var params = 'json=' + json;
 		 // ...using get request
-		 return this.http.post(this.config.ServiceApi + 'USERSERVICENEEDs', data,options)
+		 return this.http.post(this.config.ServiceApi + 'USERSERVICENEEDs', json,options)
 		 // ...and calling .json() on the response to return data
 			 .map((res: Response) => res.json())
 		 //...errors if any

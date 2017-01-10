@@ -39,9 +39,10 @@ System.register(["@angular/core", "@angular/router"], function (exports_1, conte
                             //_this.lat = 16.306652;
                             //_this.lng = 80.436240;
                             _this.findCity();
-                        }, function () {
-                            alert('error');
-                        });
+                        }, function (ob) {
+                            alert('error' + ob);
+                            console.log(ob);
+                        }, { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
                     }
                     else {
                         // Browser doesn't support Geolocation
