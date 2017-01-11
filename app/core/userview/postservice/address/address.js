@@ -31,8 +31,6 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this.zone = zone;
                     this._loader = _loader;
                     this.serviceinfoChange = new core_1.EventEmitter();
-                    this.lat = 17.440080;
-                    this.lng = 78.348917;
                     this.findCurrentLocation();
                     this.loadAutocomplete();
                 }
@@ -42,29 +40,20 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                         var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
                         google.maps.event.addListener(autocomplete, 'place_changed', function () {
                             var place = autocomplete.getPlace();
-                            _this.lat = place.geometry.location.lat();
-                            _this.lng = place.geometry.location.lng();
+                            _this.serviceinfo.latitude = place.geometry.location.lat();
+                            _this.serviceinfo.longitude = place.geometry.location.lng();
                             _this.findCity();
                             _this.userAddress = "";
                         });
                     });
                 };
-                //getAddress(place: Object) {
-                //	this.address = place['formatted_address'];
-                //	var location = place['geometry']['location'];
-                //	var lat = location.lat();
-                //	var lng = location.lng();
-                //	console.log("Address Object", place);
-                //	this.lat = lat;
-                //	this.lng = lng;
-                //}
                 AddressComponent.prototype.findCurrentLocation = function () {
                     var _this = this;
                     // Try HTML5 geolocation.
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function (position) {
-                            _this.lat = position.coords.latitude;
-                            _this.lng = position.coords.longitude;
+                            _this.serviceinfo.latitude = position.coords.latitude;
+                            _this.serviceinfo.longitude = position.coords.longitude;
                             _this.findCity();
                         }, function () {
                             alert('error');
@@ -78,7 +67,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                 AddressComponent.prototype.findCity = function () {
                     var geocoder;
                     geocoder = new google.maps.Geocoder();
-                    var latlng = new google.maps.LatLng(this.lat, this.lng);
+                    var latlng = new google.maps.LatLng(this.serviceinfo.latitude, this.serviceinfo.longitude);
                     var _this = this;
                     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
@@ -110,16 +99,14 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     });
                 };
                 AddressComponent.prototype.markerPostionChanged = function (object) {
-                    this.lat = object.coords.lat;
-                    this.lng = object.coords.lng;
+                    this.serviceinfo.latitude = object.coords.lat;
+                    this.serviceinfo.longitude = object.coords.lng;
                     this.findCity();
                 };
                 AddressComponent.prototype.isEmpty = function (obj) {
                     return Object.keys(obj).length === 0;
                 };
                 AddressComponent.prototype.addressChange = function (value) {
-                    this.serviceinfo.locationlat = this.lat;
-                    this.serviceinfo.locationlng = this.lng;
                     this.serviceinfoChange.emit(this.serviceinfo);
                 };
                 return AddressComponent;

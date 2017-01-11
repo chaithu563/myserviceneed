@@ -98,23 +98,36 @@ namespace MSNServiceApi.Controllers
 					ob.SERVICETITLE = details["title"];
 					ob.SERVICEDESCRIPTION = details["description"];
 					ob.SERVICELOCATIONADDRESS = details["address"];
+					ob.LOCATIONLATITUDE = details["latitude"];
+					ob.LOCATIONLONGITUDE = details["longitude"];
+
 
 					USERSERVICETIMERECORD time = new USERSERVICETIMERECORD();
-
 					time.SERVICEBOOKEDDATE = DateTime.Today;
-					//time.SERVICESTARTDATE = new DateTime(details["servicestartdate"].year, details["servicestartdate"].month, details["servicestartdate"].day);
-					//time.SERVICEENDDATE = new DateTime(details["serviceenddate"].year, details["serviceenddate"].month, details["serviceenddate"].day);
-					var d = details["servicestartdate"].momentObj;
-
-					time.SERVICESTARTDATE = Convert.ToDateTime(d);
+					time.SERVICESTARTDATE = Convert.ToDateTime(details["servicestartdate"].momentObj);
 					time.SERVICEENDDATE = Convert.ToDateTime(details["serviceenddate"].momentObj);
-
-
-
 					time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
 					time.SERVICEENDTIME = null;
-
 					ob.USERSERVICETIMERECORD = time;
+
+					USERINFO user = new USERINFO();
+					user.NAME = details["username"];
+					user.PHONE=details["mobile"];
+					ob.USERINFO=user;
+
+
+					var uploadedimages=details["uploadedimages"];
+					foreach (var image in uploadedimages)
+					{
+						var file = new USERSERVICENEEDFILE();
+						file.FILEPUBLICKKEY =image;
+							ob.USERSERVICENEEDFILES.Add(file);
+
+
+					}
+				
+
+				
 
 					db.USERSERVICENEEDs.Add(ob);
 					await db.SaveChangesAsync();

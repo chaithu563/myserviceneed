@@ -23,8 +23,8 @@ export class AddressComponent {
 	public address: Object;
 	geocoder: any;
 	google: any;
-	lat: number = 17.440080;
-	lng: number = 78.348917;
+	//lat: number;
+	//lng: number;
 	city: string;
 	constructor(public _router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
@@ -41,8 +41,8 @@ export class AddressComponent {
 			let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
 			google.maps.event.addListener(autocomplete, 'place_changed', () => {
 				let place = autocomplete.getPlace();
-				this.lat = place.geometry.location.lat();
-                this.lng = place.geometry.location.lng();
+				this.serviceinfo.latitude = place.geometry.location.lat();
+				this.serviceinfo.longitude = place.geometry.location.lng();
                 this.findCity();
 								this.userAddress = ""; 
 			});
@@ -50,15 +50,7 @@ export class AddressComponent {
 
 	}
 
-	//getAddress(place: Object) {
-	//	this.address = place['formatted_address'];
-	//	var location = place['geometry']['location'];
-	//	var lat = location.lat();
-	//	var lng = location.lng();
-	//	console.log("Address Object", place);
-	//	this.lat = lat;
-	//	this.lng = lng;
-	//}
+
 
 
 	findCurrentLocation() {
@@ -66,8 +58,8 @@ export class AddressComponent {
 		// Try HTML5 geolocation.
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
-				_this.lat = position.coords.latitude;
-				_this.lng = position.coords.longitude;
+				_this.serviceinfo.latitude = position.coords.latitude;
+				_this.serviceinfo.longitude = position.coords.longitude;
 
 				_this.findCity();
 
@@ -86,7 +78,7 @@ export class AddressComponent {
 
 		var geocoder;
 		geocoder = new google.maps.Geocoder();
-		var latlng = new google.maps.LatLng(this.lat, this.lng);
+		var latlng = new google.maps.LatLng(this.serviceinfo.latitude, this.serviceinfo.longitude);
 		var _this = this;
 		geocoder.geocode(
 			{ 'latLng': latlng },
@@ -127,8 +119,8 @@ export class AddressComponent {
 
 		markerPostionChanged(object) {
 
-		this.lat = object.coords.lat;
-		this.lng = object.coords.lng;
+			this.serviceinfo.latitude = object.coords.lat;
+			this.serviceinfo.longitude = object.coords.lng;
 		this.findCity();
     }
 
@@ -138,8 +130,7 @@ export class AddressComponent {
 
 
 				addressChange(value) {
-					this.serviceinfo.locationlat = this.lat;
-					this.serviceinfo.locationlng = this.lng;
+				
 			this.serviceinfoChange.emit(this.serviceinfo);
 
 		}
