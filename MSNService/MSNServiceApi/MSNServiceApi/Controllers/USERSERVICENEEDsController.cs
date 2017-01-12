@@ -100,7 +100,7 @@ namespace MSNServiceApi.Controllers
 					ob.SERVICELOCATIONADDRESS = details["address"];
 					ob.LOCATIONLATITUDE = details["latitude"];
 					ob.LOCATIONLONGITUDE = details["longitude"];
-
+					ob.SERVICESUBCATEGORYID = details["servicesubcategoryid"];
 
 					USERSERVICETIMERECORD time = new USERSERVICETIMERECORD();
 					time.SERVICEBOOKEDDATE = DateTime.Today;

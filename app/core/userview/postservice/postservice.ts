@@ -19,7 +19,7 @@ import { IPostData, PostData} from '../../../types/postServiceRequest';
 })
 export class PostServiceComponent {
 
-	  serviceObject: IPostData=new PostData();
+	serviceObject: PostData=new PostData();
 	serviceid: number;
 		postServiceRoutes: any;
 		curretRoute: any;
@@ -35,7 +35,8 @@ export class PostServiceComponent {
 	ngOnInit() {
 		this.route.params.subscribe(params => {
 			if (params['id']) {
-				this.serviceid = params['id'];
+			//	this.serviceid = params['id'];
+				this.serviceObject.servicesubcategoryid = params['id'];
 			}
 		});
 	}

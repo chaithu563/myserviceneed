@@ -17,6 +17,7 @@ System.register([], function (exports_1, context_1) {
                     this.service_start_time = new Date();
                     this.latitude = 0;
                     this.longitude = 0;
+                    this.servicesubcategoryid = 0;
                     this.uploadedimages = [];
                 }
                 return PostData;

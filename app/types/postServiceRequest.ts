@@ -10,6 +10,7 @@
 	 latitude: number;
 	 longitude: number;
 	 uploadedimages: Object;
+	 servicesubcategoryid: number;
 }
 
 
@@ -26,6 +27,7 @@ export class PostData implements IPostData {
 	 latitude: Object;
 	 longitude: Object;
 	 uploadedimages: Object;
+	 servicesubcategoryid: number;
 
 	constructor() {
 
@@ -40,6 +42,7 @@ export class PostData implements IPostData {
 		this.service_start_time = new Date();
 		this.latitude = 0;
 		this.longitude = 0;
+		this.servicesubcategoryid = 0;
 		this.uploadedimages = [];
 		}
 

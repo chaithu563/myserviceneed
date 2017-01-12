@@ -1,1 +1,16 @@
-﻿
+﻿.search-text-box{
+
+
+	width:40%;
+}
+
+.autoButton
+{
+
+    display:inline-block;
+}
+
+.searchplace{
+	display:inline-block;
+	width:24%;
+}

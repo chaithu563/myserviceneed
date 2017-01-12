@@ -50,7 +50,8 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     var _this = this;
                     this.route.params.subscribe(function (params) {
                         if (params['id']) {
-                            _this.serviceid = params['id'];
+                            //	this.serviceid = params['id'];
+                            _this.serviceObject.servicesubcategoryid = params['id'];
                         }
                     });
                 };
