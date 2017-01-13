@@ -34,7 +34,7 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
                     this.router = router;
                     this.zone = zone;
                     this._loader = _loader;
-                    this.searchString = "";
+                    this.servicessearch = [];
                     this.avilableServices = this.msnService.getAvailableServicesURL();
                     this.loadAutocomplete();
                 }
@@ -44,10 +44,11 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
                         var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
                         google.maps.event.addListener(autocomplete, 'place_changed', function () {
                             var place = autocomplete.getPlace();
-                            _this.serviceinfo.latitude = place.geometry.location.lat();
-                            _this.serviceinfo.longitude = place.geometry.location.lng();
-                            _this.findCity();
-                            _this.userAddress = "";
+                            _this.servicessearch.latitude = place.geometry.location.lat();
+                            _this.servicessearch.longitude = place.geometry.location.lng();
+                            //	this.findCity();
+                            //this.userAddress = "";
+                            console.log(place);
                         });
                     });
                 };

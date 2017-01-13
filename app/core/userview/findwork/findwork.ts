@@ -15,11 +15,12 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 })
 export class FindWorkComponent {
 	avilableServices: any;
-	searchString: string;
+    searchString: string;
+    servicessearch: any;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
 	constructor(private msnService: MSNService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
-		this.searchString = "";
+        this.servicessearch = [];
 		this.avilableServices = this.msnService.getAvailableServicesURL();
 		this.loadAutocomplete();
 
@@ -35,10 +36,11 @@ export class FindWorkComponent {
 			let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
 			google.maps.event.addListener(autocomplete, 'place_changed', () => {
 				let place = autocomplete.getPlace();
-				this.serviceinfo.latitude = place.geometry.location.lat();
-				this.serviceinfo.longitude = place.geometry.location.lng();
-				this.findCity();
-								this.userAddress = "";
+				this.servicessearch.latitude = place.geometry.location.lat();
+                this.servicessearch.longitude = place.geometry.location.lng();
+			//	this.findCity();
+								//this.userAddress = "";
+                console.log(place);
 			});
 		});
 
