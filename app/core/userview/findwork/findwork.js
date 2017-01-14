@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../../services/msn.service", "@angular/router", "angular2-google-maps/core"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../../services/msn.service", "../../../services/msn.pager", "@angular/router", "angular2-google-maps/core"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, msn_service_1, router_1, core_2, FindWorkComponent;
+    var core_1, msn_service_1, msn_pager_1, router_1, core_2, FindWorkComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,6 +18,9 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
+            },
+            function (msn_pager_1_1) {
+                msn_pager_1 = msn_pager_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -29,8 +32,9 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
         execute: function () {
             FindWorkComponent = (function () {
                 //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-                function FindWorkComponent(msnService, router, zone, _loader) {
+                function FindWorkComponent(msnService, pagerService, router, zone, _loader) {
                     this.msnService = msnService;
+                    this.pagerService = pagerService;
                     this.router = router;
                     this.zone = zone;
                     this._loader = _loader;
@@ -65,10 +69,10 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
                     selector: 'userview',
                     templateUrl: 'app/core/userview/findwork/findwork.html',
                     styleUrls: ['app/core/userview/findwork/findwork.css'],
-                    providers: [msn_service_1.MSNService],
+                    providers: [msn_service_1.MSNService, msn_pager_1.PagerService],
                     directives: []
                 }),
-                __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
+                __metadata("design:paramtypes", [msn_service_1.MSNService, msn_pager_1.PagerService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
             ], FindWorkComponent);
             exports_1("FindWorkComponent", FindWorkComponent);
         }

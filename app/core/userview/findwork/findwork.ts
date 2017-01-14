@@ -1,16 +1,17 @@
 ﻿import { Component, ModuleWithProviders, ChangeDetectorRef, NgZone, Input, Output, EventEmitter } from '@angular/core';
 
 import { MSNService } from '../../../services/msn.service';
+import { PagerService } from '../../../services/msn.pager';
 import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
-//import {AdminUserComponent} from './user/adminuser';
-import {RegisterUserComponent} from  '../user/registeruser';
+import {ListViewWorkComponent} from './listviewwork/listviewwork';
+//import {RegisterUserComponent} from  '../user/registeruser';
 import { Observable } from 'rxjs/Observable';
 import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'angular2-google-maps/core';
 @Component({
 	selector: 'userview',
 	templateUrl: 'app/core/userview/findwork/findwork.html',
 	styleUrls: ['app/core/userview/findwork/findwork.css'],
-	providers: [MSNService],
+    providers: [MSNService, PagerService],
 	directives: []
 })
 export class FindWorkComponent {
@@ -18,7 +19,7 @@ export class FindWorkComponent {
     searchString: string;
     servicessearch: any;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-	constructor(private msnService: MSNService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
+    constructor(private msnService: MSNService, private pagerService: PagerService,private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
         this.servicessearch = [];
 		this.avilableServices = this.msnService.getAvailableServicesURL();

@@ -69,6 +69,13 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                         .map(function (res) { return res.json(); })
                         .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };
+                // Fetch all existing comments
+                MSNService.prototype.getServiceWorks = function () {
+                    // ...using get request
+                    return this.http.get(this.config.ServiceApi + 'USERSERVICENEEDs')
+                        .map(function (res) { return res.json(); })
+                        .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
+                };
                 return MSNService;
             }());
             MSNService = __decorate([

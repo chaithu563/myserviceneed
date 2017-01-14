@@ -3,45 +3,54 @@
 
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 
 
-	</div>
+	</div>-->
 	<div class="row">
 		<div class="col-sm-2">
 
 		</div>
-		<div class="col-sm-8">
-			<form>
-				<div class="right-inner-addon">
-					<!--<i class="icon-search"></i>-->
-					<div class="findworkheader">
-					 <input ng2-auto-complete
-                               class="form-control search-text-box"
-                            ([ngModel])="searchString"
-                             (valueChanged)="serviceSelected($event)"
-                               [source]="avilableServices"
-                               display-property-name="NAME"
-                                display-property-value="ID"
-                               name="search box"
-                                min-chars="2"
-                               placeholder="Choose Service you want to provide" />
-						
-							<input id="address" type="text" class="form-control searchplace" [(ngModel)]="userAddress" name="user Address" placeholder="Search By Locality" />
-					
+        <div class="col-sm-8">
+            <br />
+            <div>
+                <form>
+                    <div class="right-inner-addon">
+                        <!--<i class="icon-search"></i>-->
+                        <div class="findworkheader">
+                            Service:  <input ng2-auto-complete
+                                             class="form-control search-text-box"
+                                             ([ngModel])="searchString"
+                                             (valueChanged)="serviceSelected($event)"
+                                             [source]="avilableServices"
+                                             display-property-name="NAME"
+                                             display-property-value="ID"
+                                             name="search box"
+                                             min-chars="2"
+                                             placeholder="Choose Service you want to provide" />
+
+                            Location:	<input id="address" type="text" class="form-control searchplace" [(ngModel)]="userAddress" name="user Address" placeholder="Search By Locality" />
 
 
-						<div class="autoButton">
-							<button type="button" class="btn btn-info">
-								<span class="glyphicon glyphicon-search"></span> Search
-							</button>
-						</div>
-					</div>
-				</div>
 
-			</form>
+                            <div class="autoButton">
+                                <button type="button" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-search"></span> Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
 
+
+                </form>
+
+            </div>
+            <div>
+                <listviewwork></listviewwork>
+
+            </div>
+           
 
 		</div>
 		<div class="col-sm-2">

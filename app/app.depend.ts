@@ -8,6 +8,7 @@ import {PostServiceComponent} from './core/userview/postservice/postservice';
 import {ServiceSearchComponent} from './core/userview/servicesearch/servicesearch';
 import {DefaultViewComponent} from './core/userview/default/default';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
+import {ListViewWorkComponent} from './core/userview/findwork/listviewwork/listviewwork';
 import {AddressComponent} from './core/userview/postservice/address/address';
 import {ServiceInfoComponent} from './core/userview/postservice/serviceinfo/serviceinfo';
 import {ServiceTimeComponent} from './core/userview/postservice/servicetime/servicetime';
@@ -19,7 +20,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
 export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
     ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent,
-	FindWorkComponent, ServiceSearchComponent, DefaultViewComponent,
+    FindWorkComponent, ListViewWorkComponent, ServiceSearchComponent, DefaultViewComponent,
 	 FileSelectDirective,
 ];
 

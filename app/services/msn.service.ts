@@ -72,5 +72,18 @@ export class MSNService {
 
 		 }
 
+
+     // Fetch all existing comments
+     public getServiceWorks(): Observable<any[]> {
+
+         // ...using get request
+         return this.http.get(this.config.ServiceApi + 'USERSERVICENEEDs')
+             // ...and calling .json() on the response to return data
+             .map((res: Response) => res.json())
+             //...errors if any
+             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
+     }
+
    
 }
