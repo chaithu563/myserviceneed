@@ -88,6 +88,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                 PostServiceComponent.prototype.postService = function () {
                     console.log(this.serviceObject);
                     var userneedOperation;
+                    //this.serviceObject.address.replace('\n', '<br/>');
                     userneedOperation = this.msnService.postUserServiceNeed(this.serviceObject);
                     // Subscribe to observable
                     userneedOperation.subscribe(function (postedneed) {

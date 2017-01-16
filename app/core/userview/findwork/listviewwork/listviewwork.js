@@ -31,7 +31,6 @@ System.register(["@angular/core", "../../../../services/msn.service", "../../../
         ],
         execute: function () {
             ListViewWorkComponent = (function () {
-                //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
                 function ListViewWorkComponent(msnService, pagerService, router, zone, _loader) {
                     //  this.servicessearch = [];
                     //  this.avilableServices = this.msnService.getAvailableServicesURL();

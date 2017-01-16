@@ -93,6 +93,7 @@ export class PostServiceComponent {
 
 			console.log(this.serviceObject);
 			let userneedOperation: Observable<any[]>;
+			//this.serviceObject.address.replace('\n', '<br/>');
 			userneedOperation = this.msnService.postUserServiceNeed(this.serviceObject);
 
 			// Subscribe to observable

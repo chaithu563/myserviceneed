@@ -1,8 +1,74 @@
 ﻿<div class="container">
     <div class="text-center">
-        <h1>ListView Test</h1>
-        <!-- items being paged -->
-        <div *ngFor="let item of pagedItems">{{item.SERVICETITLE}}</div>
+    <div class="listviewpageitems">
+
+
+			<div class="container">
+			
+			
+		
+			
+				<!--<ul class="list-group">
+					<li *ngFor="let item of pagedItems" class="list-group-item">
+						{{item.SERVICETITLE}}
+						 <span class="badge"></span>
+
+					</li>
+					
+
+				</ul>-->
+
+				<table class="table table-condensed">
+					<thead>
+						<tr >
+							<th>Service</th>
+							<th>Address</th>
+							<th>Requested On</th>
+							<th>Needed On</th>
+							<th>Contact</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of pagedItems">
+							<td>
+								
+								<h3> {{item.SERVICETITLE}} </h3>
+								<p>
+									{{item.SERVICEDESCRIPTION}}
+								</p>
+							
+							</td>
+							<td class="angular-with-newlines">
+
+								{{item.SERVICELOCATIONADDRESS}}
+
+							</td>
+							<td>
+							
+							{{item.SERVICEBOOKEDDATE | date:'yMMMd'}}
+							
+							</td>
+
+							<td>
+
+								{{item.SERVICESTARTDATE | date:'yMMMdjms'}}
+
+							</td>
+
+							<td>
+							
+							{{item.NAME}}<br/>
+								{{item.PHONE}}
+							
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+			
+			</div>
+		</div>
+       
        
         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
             <li [ngClass]="{disabled:pager.currentPage === 1}">

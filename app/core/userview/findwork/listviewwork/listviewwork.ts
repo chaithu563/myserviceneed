@@ -18,7 +18,6 @@ export class ListViewWorkComponent implements OnInit{
     avilableServices: any;
     searchString: string;
     servicessearch: any;
-    //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
     constructor(private msnService: MSNService, private pagerService: PagerService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
       //  this.servicessearch = [];

@@ -19,9 +19,23 @@ namespace MSNServiceApi.Controllers
         private MSNEntities db = new MSNEntities();
 
         // GET: api/USERSERVICENEEDs
-        public IQueryable<USERSERVICENEED> GetUSERSERVICENEEDs()
+        public dynamic GetUSERSERVICENEEDs()
         {
-            return db.USERSERVICENEEDs;
+					var result = db.USERSERVICENEEDs.Select(x => new
+					{
+
+						x.SERVICETITLE,
+						x.SERVICEDESCRIPTION,
+						x.SERVICELOCATIONADDRESS,
+						x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
+						x.USERSERVICETIMERECORD.SERVICESTARTDATE,
+						x.USERSERVICETIMERECORD.SERVICESTARTTIME,
+						x.USERINFO.NAME,
+						x.USERINFO.PHONE
+					});
+
+					return result;
+           
         }
 
         // GET: api/USERSERVICENEEDs/5

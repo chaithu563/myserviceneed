@@ -19,6 +19,32 @@ https://github.com/anthonyvscode/LonelySharp/blob/master/LonelySharp/GeoLocation
 http://gis.stackexchange.com/questions/19760/how-do-i-calculate-the-bounding-box-for-given-a-distance-and-latitude-longitude
 
 
+<sebm-google-map 
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="true"
+      (mapClick)="mapClicked($event)">
+      
+        <sebm-google-map-marker [latitude]="lat" [longitude]="lng"
+        
+        [iconUrl]="'https://i.stack.imgur.com/7b0HJ.png'"
+        (markerClick)="markerClick()" >
+        
+        </sebm-google-map-marker>
+      <sebm-google-map-circle
+          [latitude]="lat" [longitude]="lng"
+          (centerChange)="lat = $event.lat; lng = $event.lng"
+          [(radius)]="radius"
+          [fillColor]="'red'"
+          [circleDraggable]="true"
+          [editable]="true">
+      </sebm-google-map-circle>
+
+    </sebm-google-map>
+
+
 
 select * from stores where lat!='' and lng!='' and ( 3959 * acos( cos( radians(" . $centerpoints['lat'] . ") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(" . $centerpoints['lng'] . ") ) + sin( radians(" . $centerpoints['lat'] . ") ) * sin( radians( lat ) ) ) ) < " . $distanceInMile
 

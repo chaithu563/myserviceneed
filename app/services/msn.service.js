@@ -73,7 +73,10 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                 MSNService.prototype.getServiceWorks = function () {
                     // ...using get request
                     return this.http.get(this.config.ServiceApi + 'USERSERVICENEEDs')
-                        .map(function (res) { return res.json(); })
+                        .map(function (res) {
+                        //JSON.parse(JSON.stringify(res._body))
+                        return res.json();
+                    })
                         .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };
                 return MSNService;
