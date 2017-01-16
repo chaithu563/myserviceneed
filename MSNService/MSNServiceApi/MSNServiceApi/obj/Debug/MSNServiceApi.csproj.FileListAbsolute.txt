@@ -91,7 +91,6 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Http.Cors.xml
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojFakesResolveAssemblyReference.cache
-C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Cors.Fakes.fakesconfig
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.QualityTools.Testing.Fakes.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Cors.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Http.Cors.dll

@@ -1,7 +1,7 @@
-System.register(["./app.component", "./core/header/header", "./core/topmenu/topmenu", "./core/userview/userview", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/servicesearch/servicesearch", "./core/userview/default/default", "./core/userview/findwork/findwork", "./core/userview/findwork/listviewwork/listviewwork", "./core/userview/postservice/address/address", "./core/userview/postservice/serviceinfo/serviceinfo", "./core/userview/postservice/servicetime/servicetime", "./core/userview/postservice/userverify/userverify", "./shared/directives/googleplace.directive", "ng2-file-upload"], function (exports_1, context_1) {
+System.register(["./app.component", "./core/header/header", "./core/topmenu/topmenu", "./core/userview/userview", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/servicesearch/servicesearch", "./core/userview/default/default", "./core/userview/findwork/findwork", "./core/userview/findwork/listviewwork/listviewwork", "./core/userview/findwork/mapviewwork/mapviewwork", "./core/userview/postservice/address/address", "./core/userview/postservice/serviceinfo/serviceinfo", "./core/userview/postservice/servicetime/servicetime", "./core/userview/postservice/userverify/userverify", "./shared/directives/googleplace.directive", "ng2-file-upload"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var app_component_1, header_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_1, default_1, findwork_1, listviewwork_1, address_1, serviceinfo_1, servicetime_1, userverify_1, googleplace_directive_1, ng2_file_upload_1, myComponents, myDirectives, myPipes;
+    var app_component_1, header_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_1, default_1, findwork_1, listviewwork_1, mapviewwork_1, address_1, serviceinfo_1, servicetime_1, userverify_1, googleplace_directive_1, ng2_file_upload_1, myComponents, myDirectives, myPipes;
     return {
         setters: [
             function (app_component_1_1) {
@@ -37,6 +37,9 @@ System.register(["./app.component", "./core/header/header", "./core/topmenu/topm
             function (listviewwork_1_1) {
                 listviewwork_1 = listviewwork_1_1;
             },
+            function (mapviewwork_1_1) {
+                mapviewwork_1 = mapviewwork_1_1;
+            },
             function (address_1_1) {
                 address_1 = address_1_1;
             },
@@ -61,7 +64,7 @@ System.register(["./app.component", "./core/header/header", "./core/topmenu/topm
             exports_1("myComponents", myComponents = [
                 header_1.HeaderComponent, topmenu_1.TopMenuComponent, userview_1.UserViewComponent, app_component_1.AppComponent, registeruser_1.RegisterUserComponent, edituser_1.EditUserComponent, postservice_1.PostServiceComponent, address_1.AddressComponent,
                 serviceinfo_1.ServiceInfoComponent, servicetime_1.ServiceTimeComponent, userverify_1.UserVerifyComponent,
-                findwork_1.FindWorkComponent, listviewwork_1.ListViewWorkComponent, servicesearch_1.ServiceSearchComponent, default_1.DefaultViewComponent,
+                findwork_1.FindWorkComponent, listviewwork_1.ListViewWorkComponent, mapviewwork_1.MapViewWorkComponent, servicesearch_1.ServiceSearchComponent, default_1.DefaultViewComponent,
                 ng2_file_upload_1.FileSelectDirective,
             ]);
             exports_1("myDirectives", myDirectives = [
