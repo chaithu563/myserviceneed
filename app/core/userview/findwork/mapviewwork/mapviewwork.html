@@ -1,11 +1,10 @@
-﻿<div class="container">
+﻿<!--<div class="container">-->
 
-    <h1>Map view</h1>
-    <form>
+
 
         <div>
 
-            <sebm-google-map [zoom]="8" [latitude]="servicessearch.latitude" [longitude]="servicessearch.longitude"  [disableDefaultUI]="false" [zoomControl]="true">
+            <sebm-google-map [zoom]="15" [latitude]="servicessearch.latitude" [longitude]="servicessearch.longitude"  [disableDefaultUI]="false" [zoomControl]="true">
                 <sebm-google-map-marker *ngFor="let item of allItems" [latitude]="item.LOCATIONLATITUDE" [longitude]="item.LOCATIONLONGITUDE" ></sebm-google-map-marker>
             </sebm-google-map>
 
@@ -16,5 +15,5 @@
 
 
 
-    </form>
-    </div>
+ 
+    <!--</div>-->

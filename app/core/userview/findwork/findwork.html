@@ -38,7 +38,15 @@
                                     <span class="glyphicon glyphicon-search"></span> Search
                                 </button>
                             </div>
+
+													<div class="viewtype">
+
+														<img src="../../../app/assets/img/list_view.gif" title="Available Services in List View" (click)="listview=1"/>
+														<img src="../../../app/assets/img/map_view1.png" title="Available Services in Map View" (click)="listview=0" />
+													</div>
                         </div>
+
+											
                     </div>
 
 
@@ -47,14 +55,19 @@
 
             </div>
             <div>
-                <!--<listviewwork></listviewwork>-->
-							<mapviewwork [servicessearch]="servicessearch"></mapviewwork>
+							<div *ngIf="listview"> <listviewwork></listviewwork>  </div>  
+							<div *ngIf="!listview">  <mapviewwork [servicessearch]="servicessearch"></mapviewwork> </div>
             </div>
            
 
 		</div>
+		
 		<div class="col-sm-2">
 
+			<div>
+				<h3> Selected Service Info</h3>
+
+			</div>
 
 		</div>
 	</div>

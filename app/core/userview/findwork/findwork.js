@@ -38,9 +38,10 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.router = router;
                     this.zone = zone;
                     this._loader = _loader;
+                    this.listview = false;
                     this.servicessearch = {};
-                    this.servicessearch.latitude = 16.3066;
-                    this.servicessearch.longitude = 80.43654;
+                    //this.servicessearch.latitude = 16.3066;
+                    //this.servicessearch.longitude = 80.43654;
                     this.avilableServices = this.msnService.getAvailableServicesURL();
                     this.findCurrentLocation();
                     this.loadAutocomplete();

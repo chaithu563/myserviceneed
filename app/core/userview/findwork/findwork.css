@@ -1,15 +1,21 @@
-﻿.search-text-box{
-
-
+﻿.search-text-box {
 }
 
-.autoButton
-{
-
-    display:inline-block;
+.viewtype {
+	display: inline-block;
+	width: 10%;
 }
 
-.searchplace{
-	display:inline-block;
-	width:35%;
+	.viewtype img {
+		width: 25%;
+		height: 4%;
+	}
+
+.autoButton {
+	display: inline-block;
+}
+
+.searchplace {
+	display: inline-block;
+	width: 35%;
 }

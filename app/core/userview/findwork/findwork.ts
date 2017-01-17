@@ -12,24 +12,25 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 	selector: 'userview',
 	templateUrl: 'app/core/userview/findwork/findwork.html',
 	styleUrls: ['app/core/userview/findwork/findwork.css'],
-    providers: [MSNService, PagerService],
+	providers: [MSNService, PagerService],
 	directives: []
 })
 export class FindWorkComponent {
 	avilableServices: any;
-    searchString: string;
-    servicessearch: Observable<any>;
+	searchString: string;
+	listview: boolean = false;
+	servicessearch: Observable<any>;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-    constructor(private msnService: MSNService, private pagerService: PagerService,private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
+	constructor(private msnService: MSNService, private pagerService: PagerService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
-			this.servicessearch = {};
-			this.servicessearch.latitude = 16.3066;
-			this.servicessearch.longitude = 80.43654;
+		this.servicessearch = {};
+		//this.servicessearch.latitude = 16.3066;
+		//this.servicessearch.longitude = 80.43654;
 
 				this.avilableServices = this.msnService.getAvailableServicesURL();
 				this.findCurrentLocation();
-		    this.loadAutocomplete();
-	
+		this.loadAutocomplete();
+
 
 	}
 
@@ -44,10 +45,10 @@ export class FindWorkComponent {
 			google.maps.event.addListener(autocomplete, 'place_changed', () => {
 				let place = autocomplete.getPlace();
 				this.servicessearch.latitude = place.geometry.location.lat();
-                this.servicessearch.longitude = place.geometry.location.lng();
-			//	this.findCity();
+        this.servicessearch.longitude = place.geometry.location.lng();
+				//	this.findCity();
 								//this.userAddress = "";
-                console.log(place);
+				console.log(place);
 			});
 		});
 
@@ -75,9 +76,9 @@ export class FindWorkComponent {
 
 	serviceSelected(object) {
 		if (object && object.NAME)
-		//	this.router.navigate(['postservice', object.ID]);
-		// this.router.navigateByUrl('postservice/' + object.ID);
-		console.log(object);
+			//	this.router.navigate(['postservice', object.ID]);
+			// this.router.navigateByUrl('postservice/' + object.ID);
+			console.log(object);
 	}
 
 
