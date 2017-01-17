@@ -5,7 +5,7 @@
 
         <div>
 
-            <sebm-google-map [zoom]="8" [latitude]="79" [longitude]="80"  [disableDefaultUI]="false" [zoomControl]="true">
+            <sebm-google-map [zoom]="8" [latitude]="servicessearch.latitude" [longitude]="servicessearch.longitude"  [disableDefaultUI]="false" [zoomControl]="true">
                 <sebm-google-map-marker *ngFor="let item of allItems" [latitude]="item.LOCATIONLATITUDE" [longitude]="item.LOCATIONLONGITUDE" ></sebm-google-map-marker>
             </sebm-google-map>
 

@@ -38,8 +38,11 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.router = router;
                     this.zone = zone;
                     this._loader = _loader;
-                    this.servicessearch = [];
+                    this.servicessearch = {};
+                    this.servicessearch.latitude = 16.3066;
+                    this.servicessearch.longitude = 80.43654;
                     this.avilableServices = this.msnService.getAvailableServicesURL();
+                    this.findCurrentLocation();
                     this.loadAutocomplete();
                 }
                 FindWorkComponent.prototype.loadAutocomplete = function () {
@@ -55,6 +58,23 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             console.log(place);
                         });
                     });
+                };
+                FindWorkComponent.prototype.findCurrentLocation = function () {
+                    var _this = this;
+                    // Try HTML5 geolocation.
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            _this.servicessearch.latitude = position.coords.latitude;
+                            _this.servicessearch.longitude = position.coords.longitude;
+                            //_this.findCity();
+                        }, function () {
+                            alert('error');
+                        });
+                    }
+                    else {
+                        // Browser doesn't support Geolocation
+                        alert('error');
+                    }
                 };
                 FindWorkComponent.prototype.serviceSelected = function (object) {
                     if (object && object.NAME)

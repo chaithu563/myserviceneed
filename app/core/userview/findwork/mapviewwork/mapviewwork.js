@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "angular2-google-maps/core", "../../../../services/msn.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "angular2-google-maps/core", "../../../../services/msn.service", "rxjs/Observable"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, core_2, msn_service_1, MapViewWorkComponent;
+    var core_1, router_1, core_2, msn_service_1, Observable_1, MapViewWorkComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -24,18 +24,21 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
+            },
+            function (Observable_1_1) {
+                Observable_1 = Observable_1_1;
             }
         ],
         execute: function () {
             //@Injectable()
             MapViewWorkComponent = (function () {
                 function MapViewWorkComponent(msnService, _router, zone, _loader) {
+                    //    this.findCurrentLocation();
+                    //  this.loadAutocomplete()
                     this.msnService = msnService;
                     this._router = _router;
                     this.zone = zone;
                     this._loader = _loader;
-                    this.findCurrentLocation();
-                    this.loadAutocomplete();
                 }
                 MapViewWorkComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -47,16 +50,16 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     });
                 };
                 MapViewWorkComponent.prototype.loadAutocomplete = function () {
-                    this._loader.load().then(function () {
-                        var autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
-                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                            var place = autocomplete.getPlace();
-                            //this.serviceinfo.latitude = place.geometry.location.lat();
-                            //this.serviceinfo.longitude = place.geometry.location.lng();
-                            //this.findCity();
-                            //this.userAddress = "";
-                        });
-                    });
+                    //this._loader.load().then(() => {
+                    //    let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
+                    //    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+                    //        let place = autocomplete.getPlace();
+                    //        //this.serviceinfo.latitude = place.geometry.location.lat();
+                    //        //this.serviceinfo.longitude = place.geometry.location.lng();
+                    //        //this.findCity();
+                    //        //this.userAddress = "";
+                    //    });
+                    //});
                 };
                 MapViewWorkComponent.prototype.findCurrentLocation = function () {
                     var _this = this;
@@ -127,8 +130,8 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
             }());
             __decorate([
                 core_1.Input(),
-                __metadata("design:type", Object)
-            ], MapViewWorkComponent.prototype, "servicesearch", void 0);
+                __metadata("design:type", Observable_1.Observable)
+            ], MapViewWorkComponent.prototype, "servicessearch", void 0);
             MapViewWorkComponent = __decorate([
                 core_1.Component({
                     selector: 'mapviewwork',

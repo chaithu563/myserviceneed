@@ -4,6 +4,7 @@ import { MSNService } from '../../../services/msn.service';
 import { PagerService } from '../../../services/msn.pager';
 import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
 import {ListViewWorkComponent} from './listviewwork/listviewwork';
+import {MapViewWorkComponent} from './mapviewwork/mapviewwork';
 //import {RegisterUserComponent} from  '../user/registeruser';
 import { Observable } from 'rxjs/Observable';
 import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'angular2-google-maps/core';
@@ -17,13 +18,18 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 export class FindWorkComponent {
 	avilableServices: any;
     searchString: string;
-    servicessearch: any;
+    servicessearch: Observable<any>;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
     constructor(private msnService: MSNService, private pagerService: PagerService,private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
-        this.servicessearch = [];
-		this.avilableServices = this.msnService.getAvailableServicesURL();
-		this.loadAutocomplete();
+			this.servicessearch = {};
+			this.servicessearch.latitude = 16.3066;
+			this.servicessearch.longitude = 80.43654;
+
+				this.avilableServices = this.msnService.getAvailableServicesURL();
+				this.findCurrentLocation();
+		    this.loadAutocomplete();
+	
 
 	}
 
@@ -47,7 +53,25 @@ export class FindWorkComponent {
 
 	}
 
+	findCurrentLocation() {
+		var _this = this;
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				_this.servicessearch.latitude = position.coords.latitude;
+				_this.servicessearch.longitude = position.coords.longitude;
 
+				//_this.findCity();
+
+			}, function () {
+				alert('error');
+			});
+		} else {
+			// Browser doesn't support Geolocation
+			alert('error');
+		}
+
+	}
 
 	serviceSelected(object) {
 		if (object && object.NAME)

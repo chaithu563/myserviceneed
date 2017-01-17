@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import {GoogleplaceDirective} from '../../../../shared/directives/googleplace.directive';
 import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'angular2-google-maps/core';
 import { MSNService } from '../../../../services/msn.service';
-
+import { Observable } from 'rxjs/Observable';
 @Component({
     selector: 'mapviewwork',
     templateUrl: 'app/core/userview/findwork/mapviewwork/mapviewwork.html',
@@ -18,7 +18,7 @@ import { MSNService } from '../../../../services/msn.service';
 //@Injectable()
 export class MapViewWorkComponent implements OnInit{
 
-    @Input() servicesearch: any;
+	@Input() servicessearch: Observable<any>;
     //@Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
     userAddress: Object;
     public address: Object;
@@ -31,8 +31,8 @@ export class MapViewWorkComponent implements OnInit{
     city: string;
     constructor(private msnService: MSNService,public _router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
-        this.findCurrentLocation();
-        this.loadAutocomplete()
+    //    this.findCurrentLocation();
+      //  this.loadAutocomplete()
 
     }
 
@@ -51,16 +51,16 @@ export class MapViewWorkComponent implements OnInit{
 
 
 
-        this._loader.load().then(() => {
-            let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
-            google.maps.event.addListener(autocomplete, 'place_changed', () => {
-                let place = autocomplete.getPlace();
-                //this.serviceinfo.latitude = place.geometry.location.lat();
-                //this.serviceinfo.longitude = place.geometry.location.lng();
-                //this.findCity();
-                //this.userAddress = "";
-            });
-        });
+        //this._loader.load().then(() => {
+        //    let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
+        //    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+        //        let place = autocomplete.getPlace();
+        //        //this.serviceinfo.latitude = place.geometry.location.lat();
+        //        //this.serviceinfo.longitude = place.geometry.location.lng();
+        //        //this.findCity();
+        //        //this.userAddress = "";
+        //    });
+        //});
 
     }
 
