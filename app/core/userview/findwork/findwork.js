@@ -77,17 +77,18 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         alert('error');
                     }
                 };
-                FindWorkComponent.prototype.serviceSelected = function (object) {
-                    if (object && object.NAME)
-                        //	this.router.navigate(['postservice', object.ID]);
-                        // this.router.navigateByUrl('postservice/' + object.ID);
-                        console.log(object);
+                FindWorkComponent.prototype.onServiceSelected = function (object) {
+                    //if (object && object.NAME)
+                    //	this.router.navigate(['postservice', object.ID]);
+                    // this.router.navigateByUrl('postservice/' + object.ID);
+                    this.selectedService = object;
+                    console.log(object);
                 };
                 return FindWorkComponent;
             }());
             FindWorkComponent = __decorate([
                 core_1.Component({
-                    selector: 'userview',
+                    selector: 'findwork',
                     templateUrl: 'app/core/userview/findwork/findwork.html',
                     styleUrls: ['app/core/userview/findwork/findwork.css'],
                     providers: [msn_service_1.MSNService, msn_pager_1.PagerService],

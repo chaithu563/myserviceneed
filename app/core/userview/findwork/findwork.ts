@@ -9,7 +9,7 @@ import {MapViewWorkComponent} from './mapviewwork/mapviewwork';
 import { Observable } from 'rxjs/Observable';
 import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'angular2-google-maps/core';
 @Component({
-	selector: 'userview',
+	selector: 'findwork',
 	templateUrl: 'app/core/userview/findwork/findwork.html',
 	styleUrls: ['app/core/userview/findwork/findwork.css'],
 	providers: [MSNService, PagerService],
@@ -17,7 +17,8 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 })
 export class FindWorkComponent {
 	avilableServices: any;
-	searchString: string;
+    searchString: string;
+    selectedService: any;
 	listview: boolean = false;
 	servicessearch: Observable<any>;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
@@ -74,10 +75,11 @@ export class FindWorkComponent {
 
 	}
 
-	serviceSelected(object) {
-		if (object && object.NAME)
+    onServiceSelected(object) {
+		//if (object && object.NAME)
 			//	this.router.navigate(['postservice', object.ID]);
 			// this.router.navigateByUrl('postservice/' + object.ID);
+        this.selectedService = object;
 			console.log(object);
 	}
 

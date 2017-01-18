@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 export class MapViewWorkComponent implements OnInit{
 
 	@Input() servicessearch: Observable<any>;
-    //@Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
+    @Output() onServiceSelected=  new EventEmitter();
     userAddress: Object;
     public address: Object;
     // array of all items to be paged
@@ -47,106 +47,26 @@ export class MapViewWorkComponent implements OnInit{
               
             });
     }
-    loadAutocomplete() {
+    
 
 
+    selectedService(selectedService) {
 
-        //this._loader.load().then(() => {
-        //    let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
-        //    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-        //        let place = autocomplete.getPlace();
-        //        //this.serviceinfo.latitude = place.geometry.location.lat();
-        //        //this.serviceinfo.longitude = place.geometry.location.lng();
-        //        //this.findCity();
-        //        //this.userAddress = "";
-        //    });
-        //});
+       // this.selectedService. = selectedService;
+        this.onServiceSelected.emit({
+            value: selectedService
+        })
 
     }
 
+    
 
 
+   
 
-    findCurrentLocation() {
-        var _this = this;
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                //_this.serviceinfo.latitude = position.coords.latitude;
-                //_this.serviceinfo.longitude = position.coords.longitude;
+   
+  
 
-                _this.findCity();
-
-            }, function () {
-                alert('error');
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            alert('error');
-        }
-
-    }
-
-
-    findCity() {
-
-        //var geocoder;
-        //geocoder = new google.maps.Geocoder();
-        //var latlng = new google.maps.LatLng(this.serviceinfo.latitude, this.serviceinfo.longitude);
-        //var _this = this;
-        //geocoder.geocode(
-        //    { 'latLng': latlng },
-        //    function (results, status) {
-        //        if (status == google.maps.GeocoderStatus.OK) {
-        //            if (results[0]) {
-        //                var value = results[0].address_components;
-        //                console.log(value);
-        //                //	var value = add.split(",");
-        //                var count = value.length;
-        //                //country = value[count - 1];
-        //                //state = value[count - 2];
-        //                _this.city = value[count - 5].long_name;
-
-        //                var finaAddress;
-        //                value.forEach(function (addr) {
-        //                    if (finaAddress)
-        //                        finaAddress = finaAddress + '\n' + ',' + addr.long_name;
-        //                    else
-        //                        finaAddress = addr.long_name;
-        //                });
-
-
-        //                _this.userAddress = results[0].formatted_address;
-
-        //               // _this.serviceinfo.address = "\n" + finaAddress;
-        //            }
-        //            else {
-        //                alert("address not found");
-        //            }
-        //        }
-        //        else {
-        //            alert("Geocoder failed due to: " + status);
-        //        }
-        //    }
-        //);
-    }
-
-    markerPostionChanged(object) {
-
-        //this.serviceinfo.latitude = object.coords.lat;
-        //this.serviceinfo.longitude = object.coords.lng;
-        this.findCity();
-    }
-
-    isEmpty(obj) {
-        return Object.keys(obj).length === 0;
-    }
-
-
-				addressChange(value) {
-
-      //  this.serviceinfoChange.emit(this.serviceinfo);
-
-    }
+			
 
 }

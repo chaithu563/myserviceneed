@@ -39,6 +39,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this._router = _router;
                     this.zone = zone;
                     this._loader = _loader;
+                    this.onServiceSelected = new core_1.EventEmitter();
                 }
                 MapViewWorkComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -49,82 +50,11 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                         _this.allItems = data;
                     });
                 };
-                MapViewWorkComponent.prototype.loadAutocomplete = function () {
-                    //this._loader.load().then(() => {
-                    //    let autocomplete = new google.maps.places.Autocomplete(document.getElementById("address"), {});
-                    //    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-                    //        let place = autocomplete.getPlace();
-                    //        //this.serviceinfo.latitude = place.geometry.location.lat();
-                    //        //this.serviceinfo.longitude = place.geometry.location.lng();
-                    //        //this.findCity();
-                    //        //this.userAddress = "";
-                    //    });
-                    //});
-                };
-                MapViewWorkComponent.prototype.findCurrentLocation = function () {
-                    var _this = this;
-                    // Try HTML5 geolocation.
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            //_this.serviceinfo.latitude = position.coords.latitude;
-                            //_this.serviceinfo.longitude = position.coords.longitude;
-                            _this.findCity();
-                        }, function () {
-                            alert('error');
-                        });
-                    }
-                    else {
-                        // Browser doesn't support Geolocation
-                        alert('error');
-                    }
-                };
-                MapViewWorkComponent.prototype.findCity = function () {
-                    //var geocoder;
-                    //geocoder = new google.maps.Geocoder();
-                    //var latlng = new google.maps.LatLng(this.serviceinfo.latitude, this.serviceinfo.longitude);
-                    //var _this = this;
-                    //geocoder.geocode(
-                    //    { 'latLng': latlng },
-                    //    function (results, status) {
-                    //        if (status == google.maps.GeocoderStatus.OK) {
-                    //            if (results[0]) {
-                    //                var value = results[0].address_components;
-                    //                console.log(value);
-                    //                //	var value = add.split(",");
-                    //                var count = value.length;
-                    //                //country = value[count - 1];
-                    //                //state = value[count - 2];
-                    //                _this.city = value[count - 5].long_name;
-                    //                var finaAddress;
-                    //                value.forEach(function (addr) {
-                    //                    if (finaAddress)
-                    //                        finaAddress = finaAddress + '\n' + ',' + addr.long_name;
-                    //                    else
-                    //                        finaAddress = addr.long_name;
-                    //                });
-                    //                _this.userAddress = results[0].formatted_address;
-                    //               // _this.serviceinfo.address = "\n" + finaAddress;
-                    //            }
-                    //            else {
-                    //                alert("address not found");
-                    //            }
-                    //        }
-                    //        else {
-                    //            alert("Geocoder failed due to: " + status);
-                    //        }
-                    //    }
-                    //);
-                };
-                MapViewWorkComponent.prototype.markerPostionChanged = function (object) {
-                    //this.serviceinfo.latitude = object.coords.lat;
-                    //this.serviceinfo.longitude = object.coords.lng;
-                    this.findCity();
-                };
-                MapViewWorkComponent.prototype.isEmpty = function (obj) {
-                    return Object.keys(obj).length === 0;
-                };
-                MapViewWorkComponent.prototype.addressChange = function (value) {
-                    //  this.serviceinfoChange.emit(this.serviceinfo);
+                MapViewWorkComponent.prototype.selectedService = function (selectedService) {
+                    // this.selectedService. = selectedService;
+                    this.onServiceSelected.emit({
+                        value: selectedService
+                    });
                 };
                 return MapViewWorkComponent;
             }());
@@ -132,6 +62,10 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                 core_1.Input(),
                 __metadata("design:type", Observable_1.Observable)
             ], MapViewWorkComponent.prototype, "servicessearch", void 0);
+            __decorate([
+                core_1.Output(),
+                __metadata("design:type", Object)
+            ], MapViewWorkComponent.prototype, "onServiceSelected", void 0);
             MapViewWorkComponent = __decorate([
                 core_1.Component({
                     selector: 'mapviewwork',
