@@ -11,7 +11,8 @@
 		<div class="col-sm-2">
 
 		</div>
-        <div class="col-sm-8">
+      
+		  <div class="col-sm-8">
             <br />
             <div>
                 <form>
@@ -65,16 +66,48 @@
 		<div class="col-sm-2">
 
 			<div *ngIf="selectedService">
-				<h3> Selected Service Info</h3>
 
-				<span>Service Title</span>  {{selectedService.SERVICETITLE}}
+				<div class="right-inner-addon">
 
-				<span>Service Description</span>  {{selectedService.SERVICEDESCRIPTION}}
+				</div>
+				<br/>
+				<div class="form-group">
+					<label class="label label-info serviceinfolabel">
+						Selected Service Information
 
-			</div>
+					</label>
+					</div>
+
+					<div class="form-group">
+						<label for="title">Title:</label><br/>
+				  	<a> <span> {{selectedService.SERVICETITLE}} </span> </a>	
+					</div>
+
+				<div class="form-group">
+					<label>Description</label><br />
+					<span> {{selectedService.SERVICEDESCRIPTION}} </span>
+				</div>
+
+				<div class="form-group">
+					<label>Service Needed On</label><br />
+					<span> {{selectedService.SERVICESTARTDATE | date:'yMMMd'}} </span>  <span> <b>  TIME:</b> {{selectedService.SERVICESTARTTIME.split(':')[0]}} : {{selectedService.SERVICESTARTTIME.split(':')[1]}} </span>
+				
+				</div>
+				<div class="form-group">
+					<label>Service Address</label><br />
+					<span> {{selectedService.SERVICELOCATIONADDRESS}} </span>
+
+				</div>
+
+				</div>
+
+
 
 		</div>
 	</div>
+
+
+
 </div>
 
 

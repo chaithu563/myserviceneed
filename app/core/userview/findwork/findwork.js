@@ -79,9 +79,15 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 };
                 FindWorkComponent.prototype.serviceSelected = function (object) {
                     if (object && object.NAME)
-                        //	this.router.navigate(['postservice', object.ID]);
-                        // this.router.navigateByUrl('postservice/' + object.ID);
-                        console.log(object);
+                        this.servicessearch.serviceid = object.ID;
+                    console.log(object);
+                };
+                FindWorkComponent.prototype.convertUTCDateToLocalDate = function (date) {
+                    var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+                    var offset = date.getTimezoneOffset() / 60;
+                    var hours = date.getHours();
+                    newDate.setHours(hours - offset);
+                    return newDate;
                 };
                 FindWorkComponent.prototype.onServiceSelected = function (object) {
                     //if (object && object.NAME)

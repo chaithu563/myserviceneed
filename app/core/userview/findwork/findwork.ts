@@ -17,8 +17,8 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 })
 export class FindWorkComponent {
 	avilableServices: any;
-    searchString: string;
-    selectedService: any;
+	searchString: string;
+	selectedService: any;
 	listview: boolean = false;
 	servicessearch: Observable<any>;
   //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
@@ -77,18 +77,33 @@ export class FindWorkComponent {
 
 	serviceSelected(object) {
 		if (object && object.NAME)
-			//	this.router.navigate(['postservice', object.ID]);
-			// this.router.navigateByUrl('postservice/' + object.ID);
-			console.log(object);
+			this.servicessearch.serviceid = object.ID;
+		console.log(object);
 	}
 
 
-    onServiceSelected(object) {
+	 convertUTCDateToLocalDate(date) {
+	var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+
+	var offset = date.getTimezoneOffset() / 60;
+	var hours = date.getHours();
+
+	newDate.setHours(hours - offset);
+
+	return newDate;
+}
+
+
+
+	onServiceSelected(object) {
 		//if (object && object.NAME)
-			//	this.router.navigate(['postservice', object.ID]);
-			// this.router.navigateByUrl('postservice/' + object.ID);
-        this.selectedService = object.value;
-			console.log(object);
+		//	this.router.navigate(['postservice', object.ID]);
+		// this.router.navigateByUrl('postservice/' + object.ID);
+		this.selectedService = object.value;
+
+
+
+		console.log(object);
 	}
 
 
