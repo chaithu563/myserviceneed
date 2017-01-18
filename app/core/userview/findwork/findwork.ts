@@ -75,11 +75,19 @@ export class FindWorkComponent {
 
 	}
 
+	serviceSelected(object) {
+		if (object && object.NAME)
+			//	this.router.navigate(['postservice', object.ID]);
+			// this.router.navigateByUrl('postservice/' + object.ID);
+			console.log(object);
+	}
+
+
     onServiceSelected(object) {
 		//if (object && object.NAME)
 			//	this.router.navigate(['postservice', object.ID]);
 			// this.router.navigateByUrl('postservice/' + object.ID);
-        this.selectedService = object;
+        this.selectedService = object.value;
 			console.log(object);
 	}
 

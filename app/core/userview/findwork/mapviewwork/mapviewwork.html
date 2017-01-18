@@ -3,7 +3,7 @@
         <div>
 
             <sebm-google-map [zoom]="15" [latitude]="servicessearch.latitude" [longitude]="servicessearch.longitude"  [disableDefaultUI]="false" [zoomControl]="true">
-                <sebm-google-map-marker *ngFor="let item of allItems" [latitude]="item.LOCATIONLATITUDE" [longitude]="item.LOCATIONLONGITUDE" (markerClick)="selectedService(item)"  ></sebm-google-map-marker>
+                <sebm-google-map-marker *ngFor="let item of allItems" [latitude]="item.LOCATIONLATITUDE" [longitude]="item.LOCATIONLONGITUDE" (markerClick)="selectedService(item)" (click)="selectedService(item)" ></sebm-google-map-marker>
             </sebm-google-map>
 
 

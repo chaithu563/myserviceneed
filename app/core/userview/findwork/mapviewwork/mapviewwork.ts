@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'app/core/userview/findwork/mapviewwork/mapviewwork.html',
     styleUrls: ['app/core/userview/findwork/mapviewwork/mapviewwork.css'],
     providers: []
-
+		//outputs: ['onServiceSelected']
 })
 
 

@@ -64,12 +64,12 @@
 		
 		<div class="col-sm-2">
 
-			<div>
+			<div *ngIf="selectedService">
 				<h3> Selected Service Info</h3>
 
-                <span>Service Title</span>  {{selectedService.SERVICETITLE}}
+				<span>Service Title</span>  {{selectedService.SERVICETITLE}}
 
-                <span>Service Description</span>  {{selectedService.SERVICEDESCRIPTION}}
+				<span>Service Description</span>  {{selectedService.SERVICEDESCRIPTION}}
 
 			</div>
 

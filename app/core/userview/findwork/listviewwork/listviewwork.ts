@@ -13,6 +13,7 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
     styleUrls: ['app/core/userview/findwork/listviewwork/listviewwork.css'],
     providers: [MSNService, PagerService],
     directives: []
+
 })
 export class ListViewWorkComponent implements OnInit{
     avilableServices: any;

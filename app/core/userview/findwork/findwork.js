@@ -77,11 +77,17 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         alert('error');
                     }
                 };
+                FindWorkComponent.prototype.serviceSelected = function (object) {
+                    if (object && object.NAME)
+                        //	this.router.navigate(['postservice', object.ID]);
+                        // this.router.navigateByUrl('postservice/' + object.ID);
+                        console.log(object);
+                };
                 FindWorkComponent.prototype.onServiceSelected = function (object) {
                     //if (object && object.NAME)
                     //	this.router.navigate(['postservice', object.ID]);
                     // this.router.navigateByUrl('postservice/' + object.ID);
-                    this.selectedService = object;
+                    this.selectedService = object.value;
                     console.log(object);
                 };
                 return FindWorkComponent;
