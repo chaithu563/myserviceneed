@@ -74,10 +74,12 @@ export class MSNService {
 
 
      // Fetch all existing comments
-     public getServiceWorks(): Observable<any[]> {
+     public getServiceWorks(data): Observable<any[]> {
 
          // ...using get request
-			 return this.http.get(this.config.ServiceApi + 'USERSERVICENEEDs')
+         var query = JSON.stringify(data);
+
+         return this.http.get(this.config.ServiceApi + 'USERSERVICENEEDs' + '?query=' + encodeURIComponent(query))
 			 // ...and calling .json() on the response to return data
 				 .map((res) =>
 					 //JSON.parse(JSON.stringify(res._body))

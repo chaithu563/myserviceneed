@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using MSNServiceApi.Models;
+using Newtonsoft.Json;
 
 namespace MSNServiceApi.Controllers
 {
@@ -40,21 +41,47 @@ namespace MSNServiceApi.Controllers
            
         }
 
-		// GET: api/USERSERVICENEEDs/5
-		[ResponseType(typeof(USERSERVICENEED))]
-		public async Task<IHttpActionResult> GetUSERSERVICENEED(decimal id)
-		{
-			USERSERVICENEED uSERSERVICENEED = await db.USERSERVICENEEDs.FindAsync(id);
-			if (uSERSERVICENEED == null)
-			{
-				return NotFound();
-			}
+        //// GET: api/USERSERVICENEEDs/5
+        //[ResponseType(typeof(USERSERVICENEED))]
+        //public async Task<IHttpActionResult> GetUSERSERVICENEED(decimal id)
+        //{
+        //	USERSERVICENEED uSERSERVICENEED = await db.USERSERVICENEEDs.FindAsync(id);
+        //	if (uSERSERVICENEED == null)
+        //	{
+        //		return NotFound();
+        //	}
 
-			return Ok(uSERSERVICENEED);
-		}
+        //	return Ok(uSERSERVICENEED);
+        //}
 
-		// PUT: api/USERSERVICENEEDs/5
-		[ResponseType(typeof(void))]
+        // GET: api/USERSERVICENEEDs/5
+        [ResponseType(typeof(USERSERVICENEED))]
+        public object GetUSERSERVICENEED(string query)
+        {
+            var filters = JsonConvert.DeserializeObject<object>(query);
+
+            var result = db.USERSERVICENEEDs.Select(x => new
+            {
+                x.ID,
+                x.SERVICETITLE,
+                x.SERVICEDESCRIPTION,
+                x.SERVICELOCATIONADDRESS,
+                x.LOCATIONLATITUDE,
+                x.LOCATIONLONGITUDE,
+                x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
+                x.USERSERVICETIMERECORD.SERVICESTARTDATE,
+                x.USERSERVICETIMERECORD.SERVICESTARTTIME,
+                x.USERINFO.NAME,
+                x.USERINFO.PHONE
+            });
+
+            return result;
+
+           // return Ok(uSERSERVICENEED);
+        }
+
+        // PUT: api/USERSERVICENEEDs/5
+        [ResponseType(typeof(void))]
 		public async Task<IHttpActionResult> PutUSERSERVICENEED(decimal id, USERSERVICENEED uSERSERVICENEED)
 		{
 			if (!ModelState.IsValid)

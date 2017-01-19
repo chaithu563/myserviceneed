@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ModuleWithProviders, NgZone, Input, Output, EventEmitter} from '@angular/core';
+﻿import { Component, OnInit, ModuleWithProviders, NgZone, Input, Output, EventEmitter, DoCheck, KeyValueDiffers} from '@angular/core';
 import { Routes, Router, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {GoogleplaceDirective} from '../../../../shared/directives/googleplace.directive';
@@ -21,6 +21,7 @@ export class MapViewWorkComponent implements OnInit{
 	@Input() servicessearch: Observable<any>;
     @Output() onServiceSelected=  new EventEmitter();
     userAddress: Object;
+    differ: any;
     public address: Object;
     // array of all items to be paged
     private allItems: any[];
@@ -29,8 +30,9 @@ export class MapViewWorkComponent implements OnInit{
     //lat: number;
     //lng: number;
     city: string;
-    constructor(private msnService: MSNService,public _router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
+    constructor(private msnService: MSNService, public _router: Router, private zone: NgZone, private _loader: MapsAPILoader, private differs: KeyValueDiffers) {
 
+        this.differ = differs.find({}).create(null);
     //    this.findCurrentLocation();
       //  this.loadAutocomplete()
 
@@ -38,7 +40,7 @@ export class MapViewWorkComponent implements OnInit{
 
     ngOnInit() {
         // get dummy data
-        this.msnService.getServiceWorks()
+        this.msnService.getServiceWorks(this.servicessearch)
             // .map((response) => response)
             .subscribe(data => {
                 // set items to json response
@@ -48,6 +50,17 @@ export class MapViewWorkComponent implements OnInit{
             });
     }
     
+    ngDoCheck() {
+        var changes = this.differ.diff(this.servicessearch);
+
+        if (changes) {
+            console.log('changes detected' + changes);
+            this.ngOnInit();
+            
+        } else {
+            console.log('nothing changed');
+        }
+    }
 
 
     selectedService(selectedService) {
