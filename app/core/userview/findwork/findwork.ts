@@ -16,6 +16,7 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
     directives: []
 })
 export class FindWorkComponent {
+	zoom: number;
     avilableServices: any;
     searchString: string;
     selectedService: any;
@@ -27,7 +28,7 @@ export class FindWorkComponent {
         this.servicessearch = {};
         //this.servicessearch.latitude = 16.3066;
         //this.servicessearch.longitude = 80.43654;
-
+				this.servicessearch.zoom = 15;
         this.avilableServices = this.msnService.getAvailableServicesURL();
         this.findCurrentLocation();
         this.loadAutocomplete();
@@ -53,13 +54,15 @@ export class FindWorkComponent {
                 //	this.findCity();
                 //this.userAddress = "";
                 console.log(place);
-                getBoundsZoomLevel(place.geometry.viewport,'passdim');
+								var dim = { height:500, width: 500};
+								this.servicessearch.zoom = this.getBoundsZoomLevel(place.geometry.viewport, dim);
+								console.log('zoom' + this.servicessearch.zoom);
             });
         });
 
     }
 
-    function getBoundsZoomLevel(bounds, mapDim) {
+     getBoundsZoomLevel(bounds, mapDim) {
     var WORLD_DIM = { height: 256, width: 256 };
     var ZOOM_MAX = 21;
 
