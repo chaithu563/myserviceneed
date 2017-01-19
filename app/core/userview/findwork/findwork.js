@@ -39,10 +39,27 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.zone = zone;
                     this._loader = _loader;
                     this.listview = false;
+                    this.datepickerneedonOpts = {
+                        startDate: new Date(),
+                        autoclose: true,
+                        todayBtn: 'linked',
+                        todayHighlight: true,
+                        assumeNearbyYear: true
+                    };
+                    this.datepickerbookedonOpts = {
+                        endDate: new Date(),
+                        autoclose: true,
+                        todayBtn: 'linked',
+                        todayHighlight: true,
+                        assumeNearbyYear: true
+                    };
                     this.servicessearch = {};
                     //this.servicessearch.latitude = 16.3066;
                     //this.servicessearch.longitude = 80.43654;
                     this.servicessearch.zoom = 15;
+                    this.servicessearch.needon = new Date();
+                    this.servicessearch.needtill = new Date();
+                    this.servicessearch.bookedon = '';
                     this.avilableServices = this.msnService.getAvailableServicesURL();
                     this.findCurrentLocation();
                     this.loadAutocomplete();
@@ -55,11 +72,8 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             var place = autocomplete.getPlace();
                             _this.servicessearch.latitude = place.geometry.location.lat();
                             _this.servicessearch.longitude = place.geometry.location.lng();
-                            var h = (place.geometry.viewport);
                             var ne = new google.maps.LatLng(place.geometry.viewport.getNorthEast());
                             var sw = new google.maps.LatLng(place.geometry.viewport.getSouthWest());
-                            //	this.findCity();
-                            //this.userAddress = "";
                             console.log(place);
                             var dim = { height: 500, width: 500 };
                             _this.servicessearch.zoom = _this.getBoundsZoomLevel(place.geometry.viewport, dim);
@@ -108,13 +122,6 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     if (object && object.NAME)
                         this.servicessearch.serviceid = object.ID;
                     console.log(object);
-                };
-                FindWorkComponent.prototype.convertUTCDateToLocalDate = function (date) {
-                    var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-                    var offset = date.getTimezoneOffset() / 60;
-                    var hours = date.getHours();
-                    newDate.setHours(hours - offset);
-                    return newDate;
                 };
                 FindWorkComponent.prototype.onServiceSelected = function (object) {
                     //if (object && object.NAME)
