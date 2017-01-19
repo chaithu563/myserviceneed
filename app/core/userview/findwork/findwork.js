@@ -10,7 +10,27 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, msn_service_1, msn_pager_1, router_1, core_2, FindWorkComponent;
+    function getBoundsZoomLevel(bounds, mapDim) {
+        var WORLD_DIM = { height: 256, width: 256 };
+        var ZOOM_MAX = 21;
+        function latRad(lat) {
+            var sin = Math.sin(lat * Math.PI / 180);
+            var radX2 = Math.log((1 + sin) / (1 - sin)) / 2;
+            return Math.max(Math.min(radX2, Math.PI), -Math.PI) / 2;
+        }
+        function zoom(mapPx, worldPx, fraction) {
+            return Math.floor(Math.log(mapPx / worldPx / fraction) / Math.LN2);
+        }
+        var ne = bounds.getNorthEast();
+        var sw = bounds.getSouthWest();
+        var latFraction = (latRad(ne.lat()) - latRad(sw.lat())) / Math.PI;
+        var lngDiff = ne.lng() - sw.lng();
+        var lngFraction = ((lngDiff < 0) ? (lngDiff + 360) : lngDiff) / 360;
+        var latZoom = zoom(mapDim.height, WORLD_DIM.height, latFraction);
+        var lngZoom = zoom(mapDim.width, WORLD_DIM.width, lngFraction);
+        return Math.min(latZoom, lngZoom, ZOOM_MAX);
+    }
+    var core_1, msn_service_1, msn_pager_1, router_1, core_2, FindWorkComponent, _this, newDate, offset, hours;
     return {
         setters: [
             function (core_1_1) {
@@ -54,47 +74,15 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             var place = autocomplete.getPlace();
                             _this.servicessearch.latitude = place.geometry.location.lat();
                             _this.servicessearch.longitude = place.geometry.location.lng();
+                            var h = (place.geometry.viewport);
+                            var ne = new google.maps.LatLng(place.geometry.viewport.getNorthEast());
+                            var sw = new google.maps.LatLng(place.geometry.viewport.getSouthWest());
                             //	this.findCity();
                             //this.userAddress = "";
                             console.log(place);
+                            getBoundsZoomLevel(place.geometry.viewport, 'passdim');
                         });
                     });
-                };
-                FindWorkComponent.prototype.findCurrentLocation = function () {
-                    var _this = this;
-                    // Try HTML5 geolocation.
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            _this.servicessearch.latitude = position.coords.latitude;
-                            _this.servicessearch.longitude = position.coords.longitude;
-                            //_this.findCity();
-                        }, function () {
-                            alert('error');
-                        });
-                    }
-                    else {
-                        // Browser doesn't support Geolocation
-                        alert('error');
-                    }
-                };
-                FindWorkComponent.prototype.serviceSelected = function (object) {
-                    if (object && object.NAME)
-                        this.servicessearch.serviceid = object.ID;
-                    console.log(object);
-                };
-                FindWorkComponent.prototype.convertUTCDateToLocalDate = function (date) {
-                    var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-                    var offset = date.getTimezoneOffset() / 60;
-                    var hours = date.getHours();
-                    newDate.setHours(hours - offset);
-                    return newDate;
-                };
-                FindWorkComponent.prototype.onServiceSelected = function (object) {
-                    //if (object && object.NAME)
-                    //	this.router.navigate(['postservice', object.ID]);
-                    // this.router.navigateByUrl('postservice/' + object.ID);
-                    this.selectedService = object.value;
-                    console.log(object);
                 };
                 return FindWorkComponent;
             }());
@@ -109,6 +97,46 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 __metadata("design:paramtypes", [msn_service_1.MSNService, msn_pager_1.PagerService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
             ], FindWorkComponent);
             exports_1("FindWorkComponent", FindWorkComponent);
+            findCurrentLocation();
+            {
+                _this = this;
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        _this.servicessearch.latitude = position.coords.latitude;
+                        _this.servicessearch.longitude = position.coords.longitude;
+                        //_this.findCity();
+                    }, function () {
+                        alert('error');
+                    });
+                }
+                else {
+                    // Browser doesn't support Geolocation
+                    alert('error');
+                }
+            }
+            serviceSelected(object);
+            {
+                if (object && object.NAME)
+                    this.servicessearch.serviceid = object.ID;
+                console.log(object);
+            }
+            convertUTCDateToLocalDate(date);
+            {
+                newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+                offset = date.getTimezoneOffset() / 60;
+                hours = date.getHours();
+                newDate.setHours(hours - offset);
+                return newDate;
+            }
+            onServiceSelected(object);
+            {
+                //if (object && object.NAME)
+                //	this.router.navigate(['postservice', object.ID]);
+                // this.router.navigateByUrl('postservice/' + object.ID);
+                this.selectedService = object.value;
+                console.log(object);
+            }
         }
     };
 });
