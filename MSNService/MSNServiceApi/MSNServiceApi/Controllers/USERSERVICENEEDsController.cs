@@ -58,24 +58,34 @@ namespace MSNServiceApi.Controllers
         [ResponseType(typeof(USERSERVICENEED))]
         public object GetUSERSERVICENEED(string query)
         {
-            var filters = JsonConvert.DeserializeObject<object>(query);
+					dynamic filters = JsonConvert.DeserializeObject<dynamic>(query);
 
-            var result = db.USERSERVICENEEDs.Select(x => new
-            {
-                x.ID,
-                x.SERVICETITLE,
-                x.SERVICEDESCRIPTION,
-                x.SERVICELOCATIONADDRESS,
-                x.LOCATIONLATITUDE,
-                x.LOCATIONLONGITUDE,
-                x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
-                x.USERSERVICETIMERECORD.SERVICESTARTDATE,
-                x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-                x.USERINFO.NAME,
-                x.USERINFO.PHONE
-            });
+					var result = db.USERSERVICENEEDs.AsQueryable();
 
-            return result;
+						if (filters["needon"].ToString()!="")
+					{
+						var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
+						//result.Where(x => (x.SERVICEBOOKEDDATE.Value.Date).ToString("dd/MM/yyyy").Equals(needon.ToString("dd/MM/yyyy")));
+					result=	result.Where(x => (x.USERSERVICETIMERECORD.SERVICESTARTDATE.Value.Day == needon.Date.Day) && (x.USERSERVICETIMERECORD.SERVICESTARTDATE.Value.Month == needon.Date.Month) && (x.USERSERVICETIMERECORD.SERVICESTARTDATE.Value.Year == needon.Date.Year)).AsQueryable();
+					}
+
+				var	finalresult=result.Select(x => new
+						{
+							x.ID,
+							x.SERVICETITLE,
+							x.SERVICEDESCRIPTION,
+							x.SERVICELOCATIONADDRESS,
+							x.LOCATIONLATITUDE,
+							x.LOCATIONLONGITUDE,
+							x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
+							x.USERSERVICETIMERECORD.SERVICESTARTDATE,
+							x.USERSERVICETIMERECORD.SERVICESTARTTIME,
+							x.USERINFO.NAME,
+							x.USERINFO.PHONE
+						});
+
+
+				return finalresult;
 
            // return Ok(uSERSERVICENEED);
         }

@@ -141,4 +141,3 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Http.WebHost.xml
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
-D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
