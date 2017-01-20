@@ -59,7 +59,6 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                         this.ngOnInit();
                     }
                     else {
-                        console.log('nothing changed');
                     }
                 };
                 MapViewWorkComponent.prototype.selectedService = function (selectedService) {
@@ -67,6 +66,9 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this.onServiceSelected.emit({
                         value: selectedService
                     });
+                };
+                MapViewWorkComponent.prototype.mapBoundsChange = function (bounds) {
+                    console.log(bounds);
                 };
                 return MapViewWorkComponent;
             }());

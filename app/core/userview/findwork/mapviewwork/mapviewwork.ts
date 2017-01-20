@@ -58,7 +58,7 @@ export class MapViewWorkComponent implements OnInit{
             this.ngOnInit();
             
         } else {
-            console.log('nothing changed');
+          //  console.log('nothing changed');
         }
     }
 
@@ -71,6 +71,11 @@ export class MapViewWorkComponent implements OnInit{
         })
 
     }
+
+		mapBoundsChange(bounds) {
+
+			console.log(bounds);
+		}
 
     
 

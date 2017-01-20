@@ -12,6 +12,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using MSNServiceApi.Models;
 using Newtonsoft.Json;
+using System.Data.Entity.Core.Objects;
 
 namespace MSNServiceApi.Controllers
 {
@@ -21,15 +22,86 @@ namespace MSNServiceApi.Controllers
 
 		// GET: api/USERSERVICENEEDs
 		public dynamic GetUSERSERVICENEEDs()
-        {
-					var result = db.USERSERVICENEEDs.Select(x => new
+		{
+			var result = db.USERSERVICENEEDs.Select(x => new
+			{
+				x.ID,
+				x.SERVICETITLE,
+				x.SERVICEDESCRIPTION,
+				x.SERVICELOCATIONADDRESS,
+				x.LOCATIONLATITUDE,
+				x.LOCATIONLONGITUDE,
+				x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
+				x.USERSERVICETIMERECORD.SERVICESTARTDATE,
+				x.USERSERVICETIMERECORD.SERVICESTARTTIME,
+				x.USERINFO.NAME,
+				x.USERINFO.PHONE
+			});
+
+			return result;
+
+		}
+
+		//// GET: api/USERSERVICENEEDs/5
+		//[ResponseType(typeof(USERSERVICENEED))]
+		//public async Task<IHttpActionResult> GetUSERSERVICENEED(decimal id)
+		//{
+		//	USERSERVICENEED uSERSERVICENEED = await db.USERSERVICENEEDs.FindAsync(id);
+		//	if (uSERSERVICENEED == null)
+		//	{
+		//		return NotFound();
+		//	}
+
+		//	return Ok(uSERSERVICENEED);
+		//}
+
+		// GET: api/USERSERVICENEEDs/5
+		[ResponseType(typeof(USERSERVICENEED))]
+		public object GetUSERSERVICENEED(string query)
+		{
+			dynamic filters = JsonConvert.DeserializeObject<dynamic>(query);
+
+			var result = db.USERSERVICENEEDs.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(DateTime.Today))).AsQueryable();
+
+			if (filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
+			{
+				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
+				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) == EntityFunctions.TruncateTime(needon.Date))).AsQueryable();
+
+			}
+			else if (filters["needon"].ToString() != "" && filters["needtill"].ToString() != "")
+			{
+				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
+				var needtill = (DateTime)Convert.ToDateTime(filters["needtill"]).ToLocalTime();
+
+				result = result.Where(x =>
+
+					(DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(needon.Date)) &&
+
+					(DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) <= EntityFunctions.TruncateTime(needtill.Date))
+
+															).AsQueryable();
+
+
+			}
+
+			if (filters["bookedon"].ToString() != "")
+			{
+				var bookedon = (DateTime)Convert.ToDateTime(filters["bookedon"]).ToLocalTime();
+				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE) == EntityFunctions.TruncateTime(bookedon.Date))).AsQueryable();
+
+			}
+
+
+
+			var finalresult = result.Select(x => new
 					{
 						x.ID,
 						x.SERVICETITLE,
 						x.SERVICEDESCRIPTION,
 						x.SERVICELOCATIONADDRESS,
-            x.LOCATIONLATITUDE,
-            x.LOCATIONLONGITUDE,
+						x.LOCATIONLATITUDE,
+						x.LOCATIONLONGITUDE,
 						x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTTIME,
@@ -37,61 +109,14 @@ namespace MSNServiceApi.Controllers
 						x.USERINFO.PHONE
 					});
 
-					return result;
-           
-        }
 
-        //// GET: api/USERSERVICENEEDs/5
-        //[ResponseType(typeof(USERSERVICENEED))]
-        //public async Task<IHttpActionResult> GetUSERSERVICENEED(decimal id)
-        //{
-        //	USERSERVICENEED uSERSERVICENEED = await db.USERSERVICENEEDs.FindAsync(id);
-        //	if (uSERSERVICENEED == null)
-        //	{
-        //		return NotFound();
-        //	}
+			return finalresult;
 
-        //	return Ok(uSERSERVICENEED);
-        //}
+			// return Ok(uSERSERVICENEED);
+		}
 
-        // GET: api/USERSERVICENEEDs/5
-        [ResponseType(typeof(USERSERVICENEED))]
-        public object GetUSERSERVICENEED(string query)
-        {
-					dynamic filters = JsonConvert.DeserializeObject<dynamic>(query);
-
-					var result = db.USERSERVICENEEDs.AsQueryable();
-
-						if (filters["needon"].ToString()!="")
-					{
-						var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
-						//result.Where(x => (x.SERVICEBOOKEDDATE.Value.Date).ToString("dd/MM/yyyy").Equals(needon.ToString("dd/MM/yyyy")));
-					result=	result.Where(x => (x.USERSERVICETIMERECORD.SERVICESTARTDATE.Value.Day == needon.Date.Day) && (x.USERSERVICETIMERECORD.SERVICESTARTDATE.Value.Month == needon.Date.Month) && (x.USERSERVICETIMERECORD.SERVICESTARTDATE.Value.Year == needon.Date.Year)).AsQueryable();
-					}
-
-				var	finalresult=result.Select(x => new
-						{
-							x.ID,
-							x.SERVICETITLE,
-							x.SERVICEDESCRIPTION,
-							x.SERVICELOCATIONADDRESS,
-							x.LOCATIONLATITUDE,
-							x.LOCATIONLONGITUDE,
-							x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
-							x.USERSERVICETIMERECORD.SERVICESTARTDATE,
-							x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-							x.USERINFO.NAME,
-							x.USERINFO.PHONE
-						});
-
-
-				return finalresult;
-
-           // return Ok(uSERSERVICENEED);
-        }
-
-        // PUT: api/USERSERVICENEEDs/5
-        [ResponseType(typeof(void))]
+		// PUT: api/USERSERVICENEEDs/5
+		[ResponseType(typeof(void))]
 		public async Task<IHttpActionResult> PutUSERSERVICENEED(decimal id, USERSERVICENEED uSERSERVICENEED)
 		{
 			if (!ModelState.IsValid)
@@ -159,12 +184,12 @@ namespace MSNServiceApi.Controllers
 			time.SERVICEBOOKEDDATE = DateTime.Today;
 			time.SERVICESTARTDATE = Convert.ToDateTime(details["servicestartdate"].momentObj);
 			time.SERVICEENDDATE = Convert.ToDateTime(details["serviceenddate"].momentObj);
-		//	time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
+			//	time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
 			//var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
 			//ser.DeserializeObject(details);
 			var starttime = details["service_start_time"];
 			time.SERVICESTARTTIME = Convert.ToDateTime(starttime).ToLocalTime().TimeOfDay;
-		//	time.SERVICEENDTIME = null;
+			//	time.SERVICEENDTIME = null;
 			ob.USERSERVICETIMERECORD = time;
 
 			USERINFO user = new USERINFO();
