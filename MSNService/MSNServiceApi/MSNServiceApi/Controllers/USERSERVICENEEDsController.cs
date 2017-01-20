@@ -92,9 +92,22 @@ namespace MSNServiceApi.Controllers
 
 			}
 
+            if (filters["nelatitude"].ToString() != "")
+            {
+                double nelatitude = Convert.ToDouble(filters["nelatitude"]);
+                double nelongitude = Convert.ToDouble(filters["nelongitude"]);
+                double swlatitude =Convert.ToDouble(filters["swlatitude"]);
+                double swlongitude = Convert.ToDouble(filters["swlongitude"]);
+
+                result = result.Where(x => (x.LOCATIONLATITUDE>= swlatitude) && (x.LOCATIONLATITUDE <= nelatitude) &&
+                                              
+                            (x.LOCATIONLONGITUDE >= swlongitude) && (x.LOCATIONLONGITUDE <= nelongitude)
+                ).AsQueryable();
+
+            }
 
 
-			var finalresult = result.Select(x => new
+            var finalresult = result.Select(x => new
 					{
 						x.ID,
 						x.SERVICETITLE,

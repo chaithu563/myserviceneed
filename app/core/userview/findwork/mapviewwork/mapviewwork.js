@@ -69,6 +69,12 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                 };
                 MapViewWorkComponent.prototype.mapBoundsChange = function (bounds) {
                     console.log(bounds);
+                    var ne = bounds.getNorthEast();
+                    var sw = bounds.getSouthWest();
+                    this.servicessearch.nelatitude = ne.lat();
+                    this.servicessearch.swlatitude = sw.lat();
+                    this.servicessearch.nelongitude = ne.lng();
+                    this.servicessearch.swlongitude = sw.lng();
                 };
                 return MapViewWorkComponent;
             }());
