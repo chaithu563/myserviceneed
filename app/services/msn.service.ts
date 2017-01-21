@@ -73,7 +73,7 @@ export class MSNService {
 		 }
 
 
-     // Fetch all existing comments
+     // Fetch all available servicess by user filter
      public getServiceWorks(data): Observable<any[]> {
 
          // ...using get request
@@ -86,6 +86,23 @@ export class MSNService {
 					 res.json()
 
 					 )
+             //...errors if any
+             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
+     }
+
+     public getServiceById(id): Observable<any[]> {
+
+         // ...using get request
+       
+
+         return this.http.get(this.config.ServiceApi + 'SERVICESUBCATEGORies' + '?id=' + id)
+             // ...and calling .json() on the response to return data
+             .map((res) =>
+                 //JSON.parse(JSON.stringify(res._body))
+                 res.json()
+
+             )
              //...errors if any
              .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 

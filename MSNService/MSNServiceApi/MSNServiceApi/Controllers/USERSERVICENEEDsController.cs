@@ -42,28 +42,36 @@ namespace MSNServiceApi.Controllers
 
 		}
 
-		//// GET: api/USERSERVICENEEDs/5
-		//[ResponseType(typeof(USERSERVICENEED))]
-		//public async Task<IHttpActionResult> GetUSERSERVICENEED(decimal id)
-		//{
-		//	USERSERVICENEED uSERSERVICENEED = await db.USERSERVICENEEDs.FindAsync(id);
-		//	if (uSERSERVICENEED == null)
-		//	{
-		//		return NotFound();
-		//	}
+        // GET: api/USERSERVICENEEDs/5
+        [ResponseType(typeof(USERSERVICENEED))]
+        public async Task<IHttpActionResult> GetUSERSERVICENEED(decimal id)
+        {
+            USERSERVICENEED uSERSERVICENEED = await db.USERSERVICENEEDs.FindAsync(id);
+            if (uSERSERVICENEED == null)
+            {
+                return NotFound();
+            }
 
-		//	return Ok(uSERSERVICENEED);
-		//}
+            return Ok(uSERSERVICENEED);
+        }
 
-		// GET: api/USERSERVICENEEDs/5
-		[ResponseType(typeof(USERSERVICENEED))]
+        // GET: api/USERSERVICENEEDs/5
+        [ResponseType(typeof(USERSERVICENEED))]
 		public object GetUSERSERVICENEED(string query)
 		{
 			dynamic filters = JsonConvert.DeserializeObject<dynamic>(query);
 
 			var result = db.USERSERVICENEEDs.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(DateTime.Today))).AsQueryable();
 
-			if (filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
+            if (filters["serviceid"].ToString() != "")
+            {
+                decimal serviceid = Convert.ToDecimal(filters["serviceid"]);
+                result = result.Where(x => x.SERVICESUBCATEGORYID== serviceid).AsQueryable();
+
+            }
+
+
+            if (filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
 			{
 				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
 				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) == EntityFunctions.TruncateTime(needon.Date))).AsQueryable();

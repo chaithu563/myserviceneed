@@ -2,7 +2,7 @@
 
 import { MSNService } from '../../../services/msn.service';
 import { PagerService } from '../../../services/msn.pager';
-import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router, Route, RouterModule, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import {ListViewWorkComponent} from './listviewwork/listviewwork';
 import {MapViewWorkComponent} from './mapviewwork/mapviewwork';
 //import {RegisterUserComponent} from  '../user/registeruser';
@@ -41,7 +41,7 @@ export class FindWorkComponent {
 	}
 
 	//  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-	constructor(private msnService: MSNService, private pagerService: PagerService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
+    constructor(private msnService: MSNService, private pagerService: PagerService, private router: Router, private route: ActivatedRoute, private zone: NgZone, private _loader: MapsAPILoader) {
 
 		this.servicessearch = {};
 		//this.servicessearch.latitude = 16.3066;
@@ -57,7 +57,30 @@ export class FindWorkComponent {
 
 	}
 
+    ngOnInit() {
+        this.route.params.subscribe(params => {
+            if (params['id']) {
+                //	this.serviceid = params['id'];
+                this.servicessearch.serviceid = params['id'];
 
+               
+                // Subscribe to observable
+                this.msnService.getServiceById(params['id']).subscribe(
+                    service => {
+                        console.log(service);
+                        this.searchString = service.NAME;
+                       
+                    },
+                    err => {
+                        // Log errors if any
+                        console.log(err);
+                    });
+
+
+
+            }
+        });
+    }
 
 	loadAutocomplete() {
 
@@ -130,7 +153,7 @@ export class FindWorkComponent {
 
 	}
 
-	serviceSelected(object) {
+    searchServiceSelected(object) {
     if (object && object.NAME)
 			this.servicessearch.serviceid = object.ID;
     console.log(object);
@@ -142,7 +165,7 @@ export class FindWorkComponent {
     }
 
 
-	onServiceSelected(object) {
+	onServiceSelectedView(object) {
     //if (object && object.NAME)
     //	this.router.navigate(['postservice', object.ID]);
     // this.router.navigateByUrl('postservice/' + object.ID);

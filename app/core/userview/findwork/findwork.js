@@ -32,10 +32,11 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
         execute: function () {
             FindWorkComponent = (function () {
                 //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
-                function FindWorkComponent(msnService, pagerService, router, zone, _loader) {
+                function FindWorkComponent(msnService, pagerService, router, route, zone, _loader) {
                     this.msnService = msnService;
                     this.pagerService = pagerService;
                     this.router = router;
+                    this.route = route;
                     this.zone = zone;
                     this._loader = _loader;
                     this.listview = false;
@@ -65,6 +66,23 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.findCurrentLocation();
                     this.loadAutocomplete();
                 }
+                FindWorkComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.route.params.subscribe(function (params) {
+                        if (params['id']) {
+                            //	this.serviceid = params['id'];
+                            _this.servicessearch.serviceid = params['id'];
+                            // Subscribe to observable
+                            _this.msnService.getServiceById(params['id']).subscribe(function (service) {
+                                console.log(service);
+                                _this.searchString = service.NAME;
+                            }, function (err) {
+                                // Log errors if any
+                                console.log(err);
+                            });
+                        }
+                    });
+                };
                 FindWorkComponent.prototype.loadAutocomplete = function () {
                     var _this = this;
                     this._loader.load().then(function () {
@@ -119,7 +137,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         alert('error');
                     }
                 };
-                FindWorkComponent.prototype.serviceSelected = function (object) {
+                FindWorkComponent.prototype.searchServiceSelected = function (object) {
                     if (object && object.NAME)
                         this.servicessearch.serviceid = object.ID;
                     console.log(object);
@@ -128,7 +146,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     if (object)
                         this.allupcomming = false;
                 };
-                FindWorkComponent.prototype.onServiceSelected = function (object) {
+                FindWorkComponent.prototype.onServiceSelectedView = function (object) {
                     //if (object && object.NAME)
                     //	this.router.navigate(['postservice', object.ID]);
                     // this.router.navigateByUrl('postservice/' + object.ID);
@@ -157,7 +175,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     providers: [msn_service_1.MSNService, msn_pager_1.PagerService],
                     directives: []
                 }),
-                __metadata("design:paramtypes", [msn_service_1.MSNService, msn_pager_1.PagerService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
+                __metadata("design:paramtypes", [msn_service_1.MSNService, msn_pager_1.PagerService, router_1.Router, router_1.ActivatedRoute, core_1.NgZone, core_2.MapsAPILoader])
             ], FindWorkComponent);
             exports_1("FindWorkComponent", FindWorkComponent);
         }

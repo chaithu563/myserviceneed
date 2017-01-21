@@ -69,11 +69,20 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                         .map(function (res) { return res.json(); })
                         .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };
-                // Fetch all existing comments
+                // Fetch all available servicess by user filter
                 MSNService.prototype.getServiceWorks = function (data) {
                     // ...using get request
                     var query = JSON.stringify(data);
                     return this.http.get(this.config.ServiceApi + 'USERSERVICENEEDs' + '?query=' + encodeURIComponent(query))
+                        .map(function (res) {
+                        //JSON.parse(JSON.stringify(res._body))
+                        return res.json();
+                    })
+                        .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
+                };
+                MSNService.prototype.getServiceById = function (id) {
+                    // ...using get request
+                    return this.http.get(this.config.ServiceApi + 'SERVICESUBCATEGORies' + '?id=' + id)
                         .map(function (res) {
                         //JSON.parse(JSON.stringify(res._body))
                         return res.json();
