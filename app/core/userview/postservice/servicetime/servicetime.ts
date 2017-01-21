@@ -58,7 +58,12 @@ export class ServiceTimeComponent implements OnInit {
 
 			}
 
-		}
+    }
+        serviceDateChange(object) {
+            this.serviceinfo.servicestartdate = object;
+            this.serviceinfo.serviceenddate = object;
+
+        }
 
 
 }

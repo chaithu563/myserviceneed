@@ -29,7 +29,7 @@
 				<label for="date">Service Required Date:</label>
 
 				<form class="datecomponent">
-					<ng2-datepicker [(ngModel)]="serviceinfo.servicedate"  [options]="calendarOptions" name="servicedate"></ng2-datepicker>
+					<ng2-datepicker [(ngModel)]="serviceinfo.servicedate" (ngModelChange)="serviceDateChange($event)" [options]="calendarOptions" name="servicedate"></ng2-datepicker>
 				</form>
 			</div>
 			<br/>

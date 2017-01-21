@@ -58,6 +58,10 @@ System.register(["@angular/core", "@angular/router", "@angular/forms", "../../..
                         this.serviceinfo.serviceenddate = this.serviceinfo.servicedate;
                     }
                 };
+                ServiceTimeComponent.prototype.serviceDateChange = function (object) {
+                    this.serviceinfo.servicestartdate = object;
+                    this.serviceinfo.serviceenddate = object;
+                };
                 return ServiceTimeComponent;
             }());
             __decorate([
