@@ -61,11 +61,11 @@
 	margin-top:23px;
 margin-right:10px;
 }
-.chooseCity{
+.userInfo{
 	 opacity:0.9;
 	height:10px;
 }
 
-.chooseCity >.dropdown > a{
+.userInfo >.dropdown > a{
 	color: white;
 }

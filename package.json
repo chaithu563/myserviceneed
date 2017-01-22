@@ -53,6 +53,7 @@
     "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
+    "ng2-facebook-sdk": "^1.2.0",
     "typescript": "^2.0.10"
   }
 }

@@ -16,12 +16,12 @@ import {ServiceInfoComponent} from './core/userview/postservice/serviceinfo/serv
 import {ServiceTimeComponent} from './core/userview/postservice/servicetime/servicetime';
 import {UserVerifyComponent} from './core/userview/postservice/userverify/userverify';
 import { GoogleplaceDirective } from './shared/directives/googleplace.directive';
-
+import { FacebookLoginComponent } from './shared/components/facebooklogin';
 import { FileSelectDirective } from 'ng2-file-upload';
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
-    ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent,
+    ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent,
     FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent,
 	 FileSelectDirective,
 ];
