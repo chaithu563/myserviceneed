@@ -37,7 +37,7 @@ System.register(["@angular/core", "@angular/router"], function (exports_1, conte
                     var _this = this;
                     FB.login(function (response) {
                         _this.statusChangeCallback(response);
-                    });
+                    }, { perms: 'user_address, user_mobile_phone' });
                 };
                 FacebookLoginComponent.prototype.statusChangeCallback = function (resp) {
                     if (resp.status === 'connected') {
@@ -55,7 +55,7 @@ System.register(["@angular/core", "@angular/router"], function (exports_1, conte
                 ;
                 FacebookLoginComponent.prototype.fetchUserDetails = function (response) {
                     this.isUserLogin = true;
-                    FB.api('/me', { access_token: response.accessToken, fields: 'id,name,email,gender,permissions' }, function (response) {
+                    FB.api('/me', { access_token: response.accessToken, fields: 'id,name,email,gender,address,permissions' }, function (response) {
                         // alert('Your name is ' + response.name);
                         console.log(response);
                     });

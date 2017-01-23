@@ -30,7 +30,7 @@ export class FacebookLoginComponent implements OnInit {
         FB.login(function (response) {
            
             _this.statusChangeCallback(response);
-        });
+        },  { perms: 'user_address, user_mobile_phone' });
     }
 
     statusChangeCallback(resp) {
@@ -48,7 +48,7 @@ export class FacebookLoginComponent implements OnInit {
 
     fetchUserDetails(response) {
         this.isUserLogin = true;
-        FB.api('/me', { access_token: response.accessToken, fields: 'id,name,email,gender,permissions' }, function (response) {
+        FB.api('/me', { access_token: response.accessToken, fields: 'id,name,email,gender,address,permissions' }, function (response) {
            // alert('Your name is ' + response.name);
             console.log(response);
         });
