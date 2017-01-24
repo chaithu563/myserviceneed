@@ -45,13 +45,13 @@ System.register([], function (exports_1, context_1) {
                             else {
                                 reject();
                             }
-                        }, options);
+                        });
                     });
                 };
                 LoginService.prototype.fetchFacebookUserDetails = function () {
                     return new Promise(function (resolve) {
                         //access_token: response.accessToken,
-                        FB.api('/me', { fields: 'id,name,email,gender,address,permissions' }, function (response) {
+                        FB.api('/me', { fields: 'id,name,email,gender,permissions' }, function (response) {
                             // alert('Your name is ' + response.name);
                             resolve(response);
                         });

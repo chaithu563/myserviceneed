@@ -32,13 +32,18 @@
 .login-modal{
 	
 	top:15%;
-	width:20%;
-	height:40%;
+	width:17%;
+	height:34%;
 
 }
 .form-body{
     background:#fff;
-    padding:20px;
+    padding:0px 10px 10px 0px;
+}
+.form-body p{
+   font-size:12px;
+	 color: #333;
+   line-height: 17px;
 }
 .login-form{
     background:rgba(255,255,255,0.8);
@@ -46,7 +51,7 @@
 	border-top:3px solid#3e4043;
 }
 .innter-form{
-	padding-top:20px;
+	padding-top:5px;
 }
 .final-login li{
 	width:50%;
