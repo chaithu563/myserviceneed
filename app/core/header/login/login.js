@@ -35,6 +35,17 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.msnService = msnService;
                     this.loginService = loginService;
                 }
+                LoginComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
+                    gapi.signin2.render('my-signin2', {
+                        'scope': 'profile email',
+                        'width': 240,
+                        'height': 50,
+                        'longtitle': true,
+                        'theme': 'light',
+                        'onsuccess': function (param) { return _this.onSignIn(param); }
+                    });
+                };
                 LoginComponent.prototype.onFacebookLoginClick = function () {
                     // FB.login();
                     var _this = this;
@@ -53,6 +64,13 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             alert("facebook login failed");
                         }
                     }, function (error) { return console.error(error); });
+                };
+                LoginComponent.prototype.onSignIn = function (googleUser) {
+                    var profile = googleUser.getBasicProfile();
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail());
                 };
                 return LoginComponent;
             }());
