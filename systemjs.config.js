@@ -40,7 +40,8 @@
       'ng2-datetime': 'npm:ng2-datetime',
       'ng2-slimscroll': 'npm:ng2-slimscroll',
       'underscore': 'npm:underscore/underscore.js',
-      "ng2-modal": "node_modules/ng2-modal"
+      "ng2-modal": "node_modules/ng2-modal",
+      "angular-google-signin": "node_modules/angular-google-signin"
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -77,7 +78,8 @@
       	main: "index.js",
       	defaultExtension: "js"
       },
-      "ng2-modal": { main: "index.js", defaultExtension: "js" }
+      "ng2-modal": { main: "index.js", defaultExtension: "js" },
+      "angular-google-signin": { main: "index.js", defaultExtension: "js" }
 
 			
     },

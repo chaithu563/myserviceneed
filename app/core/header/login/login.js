@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../../services/msn.service", "../../../services/msn.login", "@angular/router", "ng2-bootstrap"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../../services/msn.service", "../../../services/msn.login", "@angular/router", "ng2-bootstrap", "angular-google-signin"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, msn_service_1, msn_login_1, router_1, ng2_bootstrap_1, LoginComponent;
+    var core_1, msn_service_1, msn_login_1, router_1, ng2_bootstrap_1, angular_google_signin_1, LoginComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -27,24 +27,31 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
             },
             function (ng2_bootstrap_1_1) {
                 ng2_bootstrap_1 = ng2_bootstrap_1_1;
+            },
+            function (angular_google_signin_1_1) {
+                angular_google_signin_1 = angular_google_signin_1_1;
             }
         ],
         execute: function () {
             LoginComponent = (function () {
-                function LoginComponent(msnService, loginService) {
+                function LoginComponent(msnService, loginService, ngZone) {
                     this.msnService = msnService;
                     this.loginService = loginService;
+                    this.myGoogleClientId = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
+                    //  window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
                 }
                 LoginComponent.prototype.ngAfterViewInit = function () {
-                    var _this = this;
-                    gapi.signin2.render('my-signin2', {
-                        'scope': 'profile email',
-                        'width': 240,
-                        'height': 50,
-                        'longtitle': true,
-                        'theme': 'light',
-                        'onsuccess': function (param) { return _this.onSignIn(param); }
-                    });
+                    // gapi.signin2.render('my-signin2', {
+                    //'scope': 'profile email',
+                    //'width': 240,
+                    //'height': 50,
+                    //'longtitle': true,
+                    //'theme': 'light',
+                    //'onsuccess': param => this.onSignIn(param)
+                    // });
+                    //gapi.load('auth2', function () {
+                    //    gapi.auth2.init();
+                    //});
                 };
                 LoginComponent.prototype.onFacebookLoginClick = function () {
                     // FB.login();
@@ -65,12 +72,21 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         }
                     }, function (error) { return console.error(error); });
                 };
-                LoginComponent.prototype.onSignIn = function (googleUser) {
+                //	  onSignIn(googleUser) {
+                //  var profile = googleUser.getBasicProfile();
+                //  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                //  console.log('Name: ' + profile.getName());
+                //  console.log('Image URL: ' + profile.getImageUrl());
+                //  console.log('Email: ' + profile.getEmail());
+                //}
+                LoginComponent.prototype.onGoogleSignInSuccess = function (event) {
+                    var googleUser = event.googleUser;
+                    var id = googleUser.getId();
                     var profile = googleUser.getBasicProfile();
-                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('ID: ' +
+                        profile
+                            .getId()); // Do not send to your backend! Use an ID token instead.
                     console.log('Name: ' + profile.getName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail());
                 };
                 return LoginComponent;
             }());
@@ -83,9 +99,9 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     selector: 'login',
                     templateUrl: 'app/core/header/login/login.html',
                     styleUrls: ['app/core/header/login/login.css'],
-                    providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink]
+                    providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink, angular_google_signin_1.GoogleSignInComponent]
                 }),
-                __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService])
+                __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, core_1.NgZone])
             ], LoginComponent);
             exports_1("LoginComponent", LoginComponent);
         }

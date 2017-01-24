@@ -27,6 +27,7 @@
     "@angular/upgrade": "~2.4.1",
     "ag-grid": "^6.4.2",
     "ag-grid-ng2": "^6.4.1",
+    "angular-google-signin": "^0.1.5",
     "angular-in-memory-web-api": "~0.1.15",
     "angular2-google-maps": "^0.17.0",
     "angular2-polyfill": "0.0.32",

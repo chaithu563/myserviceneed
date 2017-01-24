@@ -32,9 +32,10 @@
 
 
 	<!-- google api login-->
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-scope" content="profile email">
-	<meta name="google-signin-client_id" content="765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com">
+	
+	<!--<meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com">-->
+    <script src="https://apis.google.com/js/platform.js"  defer></script>
 	<!--client secreat    cHgKIHW92uBhKvXt8uajfVAU-->
 
 
@@ -44,7 +45,12 @@
 	<link href="lib/smartmenu/css/sm-simple/sm-simple.css" rel="stylesheet" />
 	<link href="app/assets/css/common.css" rel="stylesheet" />
 	<script>
-		System.import('app').catch(function (err) { console.error(err); });
+        System.import('app').catch(function (err) { console.error(err); });
+
+
+        //gapi.load('auth2', function () {
+        //    gapi.auth2.init();
+        //});
 	</script>
 	<style>
 		

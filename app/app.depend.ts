@@ -19,10 +19,11 @@ import {UserVerifyComponent} from './core/userview/postservice/userverify/userve
 import { GoogleplaceDirective } from './shared/directives/googleplace.directive';
 import { FacebookLoginComponent } from './shared/components/facebooklogin';
 import { FileSelectDirective } from 'ng2-file-upload';
+import {GoogleSignInComponent} from 'angular-google-signin';
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
-    ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent,
+    ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent, GoogleSignInComponent,
     FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent,
 	 FileSelectDirective, LoginComponent
 ];

@@ -26,7 +26,16 @@
 				</li>-->
 
 				<li><a  (click)="myLoginModal.open()"><i class="fa fa-twitter"></i> Login/Register </a></li>
+                <!--<li>
+                    <google-signin [clientId]="myGoogleClientId"
+                                   width="240"
+                                   theme="dark"
+                                   scope="email,profile"
+                                   longTitle="true"
+                                   (googleSignInSuccess)="onGoogleSignInSuccess($event)">
 
+                    </google-signin>
+                </li>-->
 			</ul>
 		</div>
 
@@ -75,10 +84,30 @@
 						<p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
 						<ul>
 							<li><a (click)="onFacebookLoginClick()"><i class="fa fa-facebook"></i> Facebook</a></li>
-							<!--<li> <div id="my-signin2" class="fa fa-google-plus" data-onsuccess="onSignIn">Google+</div>  </li>-->
-						  <li><a ><i class="fa fa-google-plus g-signin2"></i> Google+</a></li>
+							<li>
+                           
+
+                                <google-signin [clientId]="myGoogleClientId"
+                                                width="240"
+                                                 theme="dark"
+                                                 scope="email,profile"
+                                                longTitle="true"
+                                               (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+                                </google-signin>
+                                 
+                            </li>
+                            <!--<div class="g-signin2" data-onsuccess="onSignIn">Google+</div>-->
+						  <!--<li><a ><i class="fa fa-google-plus "></i> Google+</a></li>-->
 						</ul>
 					</div>
+                    <!--<google-signin [clientId]="myGoogleClientId"
+                                   width="240"
+                                   theme="dark"
+                                   scope="email,profile"
+                                   longTitle="true"
+                                   (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+                        
+                    </google-signin>-->
 					<div class="clearfix"></div>
 				</div>
 				<div id="sectionB" class="tab-pane fade">
