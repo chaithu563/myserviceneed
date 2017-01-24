@@ -15,11 +15,11 @@ import { DatePickerModule } from 'ng2-datepicker';
 import { ReactiveFormsModule } from '@angular/forms'
 import { NKDatetimeModule } from 'ng2-datetime';
 import {Ng2CloudinaryModule} from 'ng2-cloudinary';
-
+import {ModalModule} from "ng2-modal";
 
 @NgModule({
     imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
-			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule, NKDatetimeModule, Ng2CloudinaryModule,
+			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule, NKDatetimeModule, Ng2CloudinaryModule, ModalModule
 		AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
             libraries: ['places']

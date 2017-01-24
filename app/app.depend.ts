@@ -1,5 +1,6 @@
 ﻿import { AppComponent }   from './app.component';
 import { HeaderComponent } from './core/header/header';
+import {LoginComponent } from './core/header/login/login';
 import {TopMenuComponent} from './core/topmenu/topmenu';
 import {UserViewComponent} from './core/userview/userview';
 import {RegisterUserComponent} from './core/userview/user/registeruser';
@@ -23,7 +24,7 @@ export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
     ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent,
     FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent,
-	 FileSelectDirective,
+	 FileSelectDirective, LoginComponent
 ];
 
 export const myDirectives = [

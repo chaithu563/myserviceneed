@@ -1,72 +1,78 @@
 ﻿<html>
 <head>
-    <title>Online Platform where people can request services and professionals who can provide needed services will respond in there locality by bidding their price.</title>
-		<meta name="description" content="Online Platform where people can request services and professionals who can provide needed services will respond in there locality by bidding their price.">
-		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" href="styles.css">-->
-    <!-- 1. Load libraries -->
-    <!-- Polyfill for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-  
+	<title>Online Platform where people can request services and professionals who can provide needed services will respond in there locality by bidding their price.</title>
+	<meta name="description" content="Online Platform where people can request services and professionals who can provide needed services will respond in there locality by bidding their price.">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="styles.css">-->
+	<!-- 1. Load libraries -->
+	<!-- Polyfill for older browsers -->
+	<script src="node_modules/core-js/client/shim.min.js"></script>
+	<script src="node_modules/zone.js/dist/zone.js"></script>
+	<script src="node_modules/reflect-metadata/Reflect.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="//connect.facebook.net/en_US/sdk.js"></script>
-	
+	<script src="//connect.facebook.net/en_US/sdk.js"></script>
+
 	<!--<link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />-->
 	<link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css" rel="stylesheet">
 	<link href="node_modules/ag-grid/dist/styles/ag-grid.css" rel="stylesheet" />
 	<link href="node_modules/ag-grid/dist/styles/theme-fresh.css" rel="stylesheet" />
-    <script src="node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="node_modules/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+	<script src="node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+	<script src="node_modules/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 	<link href="node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
 	<link href="node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
+	<!-- 2. Configure SystemJS -->
+	<script src="systemjs.config.js"></script>
 
 
-  
-    <script src="lib/smartmenu/jquery.smartmenus.min.js"></script>
-    <link href="lib/smartmenu/css/sm-core-css.css" rel="stylesheet" />
-    <link href="lib/smartmenu/css/sm-blue/sm-blue.css" rel="stylesheet" />
-    <link href="lib/smartmenu/css/sm-simple/sm-simple.css" rel="stylesheet" />
-    
-    <script>
-      System.import('app').catch(function(err){ console.error(err); });
-    </script>
+
+	<script src="lib/smartmenu/jquery.smartmenus.min.js"></script>
+	<link href="lib/smartmenu/css/sm-core-css.css" rel="stylesheet" />
+	<link href="lib/smartmenu/css/sm-blue/sm-blue.css" rel="stylesheet" />
+	<link href="lib/smartmenu/css/sm-simple/sm-simple.css" rel="stylesheet" />
+
+	<script>
+		System.import('app').catch(function (err) { console.error(err); });
+	</script>
 	<style>
-		body {    
+		body {
 			margin: 0 !important;
 			padding: 0 !important;
 		}
-         .ng2-auto-complete {
-     display:inline-block;
-        width: 60%;
-    }
 
-       .findworkheader   > .ng2-auto-complete {
-     display:inline-block;
-        width: 30%;
-    }
-          ng2-auto-complete, input {
-      display: block;
-    }
+		.ng2-auto-complete {
+			display: inline-block;
+			width: 60%;
+		}
 
-					.galleryItem > cl-image img{
+		.findworkheader > .ng2-auto-complete {
+			display: inline-block;
+			width: 30%;
+		}
 
-  width:100% !important;
+		ng2-auto-complete, input {
+			display: block;
+		}
+
+		.galleryItem > cl-image img {
+			width: 100% !important;
+		}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
 }
 	</style>
 </head>
 <!-- 3. Display the application -->
 <body>
-    <my-app>Loading...</my-app>
+	<my-app>Loading...</my-app>
 </body>
 </html>
 
