@@ -14,7 +14,11 @@ import {GoogleSignInComponent} from 'angular-google-signin';
 
 })
 export class LoginComponent implements AfterViewInit {
-	@ViewChild('myLoginModal') public myLoginModal: ModalDirective;
+    @ViewChild('myLoginModal') public myLoginModal: ModalDirective;
+    @ViewChild('googlesignin') public googlesignin: ElementRef;
+    @ViewChild('googlesignin2') public googlesignin2: ElementRef;
+    @ViewChild('googlesignindiv') public googlesignindiv: ElementRef;
+    @ViewChild('googlesignindiv2') public googlesignindiv2: ElementRef;
 	categories: any;
 	cities: any;
 	UserCity: string;
@@ -25,7 +29,7 @@ export class LoginComponent implements AfterViewInit {
      myGoogleClientId: string = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com'
 
 	ngAfterViewInit() {
-   // gapi.signin2.render('my-signin2', {
+   // gapi.signin2.render('goolge-signin2', {
 			//'scope': 'profile email',
 			//'width': 240,
 			//'height': 50,
@@ -36,8 +40,51 @@ export class LoginComponent implements AfterViewInit {
         //gapi.load('auth2', function () {
         //    gapi.auth2.init();
         //});
-	}
 
+
+       
+     }
+
+    declare const gapi: any;
+    public auth2: any;
+    public googleInit() {
+        let that = this;
+        gapi.load('auth2', function () {
+            that.auth2 = gapi.auth2.init({
+                client_id: '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com',
+                cookiepolicy: 'single_host_origin',
+                scope: 'profile email'
+            });
+            that.attachSignin(document.getElementById('googleBtn'));
+        });
+    }
+    public attachSignin(element) {
+        let that = this;
+        this.auth2.attachClickHandler(element, {},
+            function (googleUser) {
+
+                let profile = googleUser.getBasicProfile();
+                console.log('Token || ' + googleUser.getAuthResponse().id_token);
+                console.log('ID: ' + profile.getId());
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+                //YOUR CODE HERE
+
+
+            }, function (error) {
+                alert(JSON.stringify(error, undefined, 2));
+            });
+    }
+    loginOrSignupclick() {
+       // this.googlesignindiv2.nativeElement.innerHTML = this.googlesignindiv.nativeElement.innerHTML;
+        //this.googlesignindiv.nativeElement.innerHTML = "";
+        //this.googlesignin2 = this.googlesignin;
+        this.myLoginModal.open();
+        this.googleInit();
+  
+      
+    }
 
 	onFacebookLoginClick() {
 		// FB.login();

@@ -41,7 +41,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     //  window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
                 }
                 LoginComponent.prototype.ngAfterViewInit = function () {
-                    // gapi.signin2.render('my-signin2', {
+                    // gapi.signin2.render('goolge-signin2', {
                     //'scope': 'profile email',
                     //'width': 240,
                     //'height': 50,
@@ -52,6 +52,38 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     //gapi.load('auth2', function () {
                     //    gapi.auth2.init();
                     //});
+                };
+                LoginComponent.prototype.googleInit = function () {
+                    var that = this;
+                    gapi.load('auth2', function () {
+                        that.auth2 = gapi.auth2.init({
+                            client_id: '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com',
+                            cookiepolicy: 'single_host_origin',
+                            scope: 'profile email'
+                        });
+                        that.attachSignin(document.getElementById('googleBtn'));
+                    });
+                };
+                LoginComponent.prototype.attachSignin = function (element) {
+                    var that = this;
+                    this.auth2.attachClickHandler(element, {}, function (googleUser) {
+                        var profile = googleUser.getBasicProfile();
+                        console.log('Token || ' + googleUser.getAuthResponse().id_token);
+                        console.log('ID: ' + profile.getId());
+                        console.log('Name: ' + profile.getName());
+                        console.log('Image URL: ' + profile.getImageUrl());
+                        console.log('Email: ' + profile.getEmail());
+                        //YOUR CODE HERE
+                    }, function (error) {
+                        alert(JSON.stringify(error, undefined, 2));
+                    });
+                };
+                LoginComponent.prototype.loginOrSignupclick = function () {
+                    // this.googlesignindiv2.nativeElement.innerHTML = this.googlesignindiv.nativeElement.innerHTML;
+                    //this.googlesignindiv.nativeElement.innerHTML = "";
+                    //this.googlesignin2 = this.googlesignin;
+                    this.myLoginModal.open();
+                    this.googleInit();
                 };
                 LoginComponent.prototype.onFacebookLoginClick = function () {
                     // FB.login();
@@ -94,6 +126,22 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 core_1.ViewChild('myLoginModal'),
                 __metadata("design:type", ng2_bootstrap_1.ModalDirective)
             ], LoginComponent.prototype, "myLoginModal", void 0);
+            __decorate([
+                core_1.ViewChild('googlesignin'),
+                __metadata("design:type", core_1.ElementRef)
+            ], LoginComponent.prototype, "googlesignin", void 0);
+            __decorate([
+                core_1.ViewChild('googlesignin2'),
+                __metadata("design:type", core_1.ElementRef)
+            ], LoginComponent.prototype, "googlesignin2", void 0);
+            __decorate([
+                core_1.ViewChild('googlesignindiv'),
+                __metadata("design:type", core_1.ElementRef)
+            ], LoginComponent.prototype, "googlesignindiv", void 0);
+            __decorate([
+                core_1.ViewChild('googlesignindiv2'),
+                __metadata("design:type", core_1.ElementRef)
+            ], LoginComponent.prototype, "googlesignindiv2", void 0);
             LoginComponent = __decorate([
                 core_1.Component({
                     selector: 'login',
