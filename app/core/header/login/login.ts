@@ -22,36 +22,28 @@ export class LoginComponent implements AfterViewInit {
 	categories: any;
 	cities: any;
 	UserCity: string;
+
+	declare const gapi: any;
+	public auth2: any;
+	myGoogleClientId: string = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
     constructor(private msnService: MSNService, private loginService: LoginService, ngZone: NgZone) {
 
-      //  window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
+
 	}
-     myGoogleClientId: string = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com'
+  
 
 	ngAfterViewInit() {
-   // gapi.signin2.render('goolge-signin2', {
-			//'scope': 'profile email',
-			//'width': 240,
-			//'height': 50,
-			//'longtitle': true,
-			//'theme': 'light',
-			//'onsuccess': param => this.onSignIn(param)
-   // });
-        //gapi.load('auth2', function () {
-        //    gapi.auth2.init();
-        //});
+ 
 
 
        
      }
 
-    declare const gapi: any;
-    public auth2: any;
     public googleInit() {
         let that = this;
         gapi.load('auth2', function () {
             that.auth2 = gapi.auth2.init({
-                client_id: '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com',
+							client_id: '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com',
                 cookiepolicy: 'single_host_origin',
                 scope: 'profile email'
             });
@@ -59,27 +51,27 @@ export class LoginComponent implements AfterViewInit {
         });
     }
     public attachSignin(element) {
-        let that = this;
+			let that = this;
+			if (element)
         this.auth2.attachClickHandler(element, {},
             function (googleUser) {
 
-                let profile = googleUser.getBasicProfile();
+							let profile = googleUser.getBasicProfile();
+							console.log(profile);
                 console.log('Token || ' + googleUser.getAuthResponse().id_token);
                 console.log('ID: ' + profile.getId());
                 console.log('Name: ' + profile.getName());
                 console.log('Image URL: ' + profile.getImageUrl());
                 console.log('Email: ' + profile.getEmail());
                 //YOUR CODE HERE
-
+								that.myLoginModal.close();
 
             }, function (error) {
                 alert(JSON.stringify(error, undefined, 2));
             });
     }
     loginOrSignupclick() {
-       // this.googlesignindiv2.nativeElement.innerHTML = this.googlesignindiv.nativeElement.innerHTML;
-        //this.googlesignindiv.nativeElement.innerHTML = "";
-        //this.googlesignin2 = this.googlesignin;
+
         this.myLoginModal.open();
         this.googleInit();
   
@@ -91,51 +83,61 @@ export class LoginComponent implements AfterViewInit {
 		var _this = this;
 		this.loginService.FBInit();
 
-
-		this.loginService.facebookLogin(null).then(
+		
+		this.loginService.getFacebookLoginStatus().then(
 			function (response) {
+
 				console.log(response);
 				if (response.status === 'connected') {
 
 
-					_this.loginService.fetchFacebookUserDetails().then(function (response) {
+					_this.fetchFacebookUserDetails();
 
-						console.log(response);
-						_this.myLoginModal.close();
-					},
-						function (error) {
-							alert("facebook login failed");
-						}
-						);
 				}
 
 				else {
 
-					alert("facebook login failed");
+					_this.loginService.facebookLogin(null).then(
+						function (response) {
+							console.log(response);
+							if (response.status === 'connected') {
+
+
+								_this.fetchFacebookUserDetails();
+							}
+
+							else {
+
+								alert("facebook login failed");
+							}
+
+						},
+						(error: any) => console.error(error)
+						);
+
+
 				}
-        
-			},
-      (error: any) => console.error(error)
+			}
 			);
+
+		
 
 
 	}
 
-//	  onSignIn(googleUser) {
-//  var profile = googleUser.getBasicProfile();
-//  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-//  console.log('Name: ' + profile.getName());
-//  console.log('Image URL: ' + profile.getImageUrl());
-//  console.log('Email: ' + profile.getEmail());
-//}
-    onGoogleSignInSuccess(event: GoogleSignInSuccess) {
-        let googleUser: gapi.auth2.GoogleUser = event.googleUser;
-        let id: string = googleUser.getId();
-        let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
-        console.log('ID: ' +
-            profile
-                .getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
+
+	fetchFacebookUserDetails() {
+		var _this = this;
+			this.loginService.fetchFacebookUserDetails().then(function (response) {
+
+				console.log(response);
+				_this.myLoginModal.close();
+			},
+				function (error) {
+					alert("facebook login failed");
+				}
+				);
+				}
     }
 
 

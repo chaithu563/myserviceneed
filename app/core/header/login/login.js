@@ -38,20 +38,8 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.msnService = msnService;
                     this.loginService = loginService;
                     this.myGoogleClientId = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
-                    //  window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));
                 }
                 LoginComponent.prototype.ngAfterViewInit = function () {
-                    // gapi.signin2.render('goolge-signin2', {
-                    //'scope': 'profile email',
-                    //'width': 240,
-                    //'height': 50,
-                    //'longtitle': true,
-                    //'theme': 'light',
-                    //'onsuccess': param => this.onSignIn(param)
-                    // });
-                    //gapi.load('auth2', function () {
-                    //    gapi.auth2.init();
-                    //});
                 };
                 LoginComponent.prototype.googleInit = function () {
                     var that = this;
@@ -66,22 +54,22 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 };
                 LoginComponent.prototype.attachSignin = function (element) {
                     var that = this;
-                    this.auth2.attachClickHandler(element, {}, function (googleUser) {
-                        var profile = googleUser.getBasicProfile();
-                        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-                        console.log('ID: ' + profile.getId());
-                        console.log('Name: ' + profile.getName());
-                        console.log('Image URL: ' + profile.getImageUrl());
-                        console.log('Email: ' + profile.getEmail());
-                        //YOUR CODE HERE
-                    }, function (error) {
-                        alert(JSON.stringify(error, undefined, 2));
-                    });
+                    if (element)
+                        this.auth2.attachClickHandler(element, {}, function (googleUser) {
+                            var profile = googleUser.getBasicProfile();
+                            console.log(profile);
+                            console.log('Token || ' + googleUser.getAuthResponse().id_token);
+                            console.log('ID: ' + profile.getId());
+                            console.log('Name: ' + profile.getName());
+                            console.log('Image URL: ' + profile.getImageUrl());
+                            console.log('Email: ' + profile.getEmail());
+                            //YOUR CODE HERE
+                            that.myLoginModal.close();
+                        }, function (error) {
+                            alert(JSON.stringify(error, undefined, 2));
+                        });
                 };
                 LoginComponent.prototype.loginOrSignupclick = function () {
-                    // this.googlesignindiv2.nativeElement.innerHTML = this.googlesignindiv.nativeElement.innerHTML;
-                    //this.googlesignindiv.nativeElement.innerHTML = "";
-                    //this.googlesignin2 = this.googlesignin;
                     this.myLoginModal.open();
                     this.googleInit();
                 };
@@ -89,36 +77,32 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     // FB.login();
                     var _this = this;
                     this.loginService.FBInit();
-                    this.loginService.facebookLogin(null).then(function (response) {
+                    this.loginService.getFacebookLoginStatus().then(function (response) {
                         console.log(response);
                         if (response.status === 'connected') {
-                            _this.loginService.fetchFacebookUserDetails().then(function (response) {
-                                console.log(response);
-                                _this.myLoginModal.close();
-                            }, function (error) {
-                                alert("facebook login failed");
-                            });
+                            _this.fetchFacebookUserDetails();
                         }
                         else {
-                            alert("facebook login failed");
+                            _this.loginService.facebookLogin(null).then(function (response) {
+                                console.log(response);
+                                if (response.status === 'connected') {
+                                    _this.fetchFacebookUserDetails();
+                                }
+                                else {
+                                    alert("facebook login failed");
+                                }
+                            }, function (error) { return console.error(error); });
                         }
-                    }, function (error) { return console.error(error); });
+                    });
                 };
-                //	  onSignIn(googleUser) {
-                //  var profile = googleUser.getBasicProfile();
-                //  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                //  console.log('Name: ' + profile.getName());
-                //  console.log('Image URL: ' + profile.getImageUrl());
-                //  console.log('Email: ' + profile.getEmail());
-                //}
-                LoginComponent.prototype.onGoogleSignInSuccess = function (event) {
-                    var googleUser = event.googleUser;
-                    var id = googleUser.getId();
-                    var profile = googleUser.getBasicProfile();
-                    console.log('ID: ' +
-                        profile
-                            .getId()); // Do not send to your backend! Use an ID token instead.
-                    console.log('Name: ' + profile.getName());
+                LoginComponent.prototype.fetchFacebookUserDetails = function () {
+                    var _this = this;
+                    this.loginService.fetchFacebookUserDetails().then(function (response) {
+                        console.log(response);
+                        _this.myLoginModal.close();
+                    }, function (error) {
+                        alert("facebook login failed");
+                    });
                 };
                 return LoginComponent;
             }());

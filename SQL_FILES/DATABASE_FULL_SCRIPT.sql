@@ -209,7 +209,14 @@ FILEPUBLICKKEY varchar(50)  -- clodinary public key
 ALTER TABLE USERSERVICENEED
 ADD ALLOCATEDBIDID numeric foreign key references SERVICEBID(ID)
 
+INSERT INTO [myserviceneed].[dbo].[SOCIALLOGIN]
+VALUES ('facebook','for facebook social logins')
 
+INSERT INTO [myserviceneed].[dbo].[SOCIALLOGIN]
+VALUES ('google','for google social logins')
+
+INSERT INTO [myserviceneed].[dbo].[SOCIALLOGIN]
+VALUES ('myserviceneed','for myserviceneed logins')
 
 
 

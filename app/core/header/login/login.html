@@ -7,44 +7,16 @@
 	</div>
 	<div class="notloggedinuser">
         <div >
-        <!--<div style="display:none">
-            <div #googlesignindiv>
-                <google-signin #googlesignin [clientId]="myGoogleClientId"
-                               width="240"
-                               theme="dark"
-                               scope="email,profile"
-                               longTitle="true"
-                               (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-
-                </google-signin>
-            </div>
-        </div>-->
+       
 		<div class="dropdown" dropdown>
 			<a dropdown-open class="dropdown-toggle">Login <span class="glyphicon glyphicon-menu-down"> </span></a>
 			<ul class="dropdown-menu">
-				<!--<li *ngfor="let x of cities" (click)="onCityChange(x.NAME)" [value]="x.ID">{{x.NAME}}</li>-->
 
 				<li > <a href="# ">Requested Needs  </a></li>
 				<li> <a href="# ">Your Works  </a></li>
-				<!--<li> 
-				<a href="# ">Login/Register </a>
-
-					<button class="btn btn-lg" style="font-size: 1.0em;">
-						Login/Register 
-					</button>
-				</li>-->
 
 				<li><a  (click)="loginOrSignupclick()"><i class="fa fa-twitter"></i> Login/Register </a></li>
-                <!--<li>
-                    <google-signin [clientId]="myGoogleClientId"
-                                   width="240"
-                                   theme="dark"
-                                   scope="email,profile"
-                                   longTitle="true"
-                                   (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-
-                    </google-signin>
-                </li>-->
+               
 			</ul>
 		</div>
 
@@ -62,10 +34,7 @@
 	</modal-header>
 	<modal-content>
 		<div class="form-body">
-			<!--<ul class="nav nav-tabs final-login">
-				<li class="active"><a data-toggle="tab" href="#sectionA">Sign In</a></li>
-				<li><a data-toggle="tab" href="#sectionB">Join us!</a></li>
-			</ul>-->
+
 			<p>
 				Please provide your Mobile Number or Email to Login/ Sign Up on MyServiceNeed
 			</p>
@@ -89,13 +58,7 @@
                            
                                 <!--<div #googlesignindiv2></div>-->
                                 <div id="googleBtn"><a><i class="fa fa-google-plus "></i> Google+</a></div>
-                                <!--<google-signin  clientId="{{myGoogleClientId}}"
-                                                width="240"
-                                                 theme="dark"
-                                                 scope="email,profile"
-                                                longTitle="true"
-                                               (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-                                </google-signin>-->
+
                                  
                             </li>
                             <!--<div class="g-signin2" data-onsuccess="onSignIn">Google+</div>-->
