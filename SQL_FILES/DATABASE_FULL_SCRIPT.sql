@@ -54,6 +54,7 @@ CREATE TABLE USERINFO
 ID numeric IDENTITY(1,1) PRIMARY KEY,
 NAME varchar(60),
 EMAIL varchar(60),
+GENDER BIT,
 PHONE varchar(20),
 CITYID numeric foreign key references CITY(ID),-- need to think why we need again when we have city id
 CITYAREAID numeric foreign key references CITYAREA(ID),

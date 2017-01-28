@@ -5,27 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="db7e25c5fa084a77815e7d608533f6e2" Name="Diagram1">
-        <EntityTypeShape EntityType="MSNModel.ADMININFO" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MSNModel.CITY" Width="1.5" PointX="0.75" PointY="11.5" />
-        <EntityTypeShape EntityType="MSNModel.CITYAREA" Width="1.5" PointX="3" PointY="11.25" />
-        <EntityTypeShape EntityType="MSNModel.MEMBERSHIP" Width="1.5" PointX="8.25" PointY="6.5" />
-        <EntityTypeShape EntityType="MSNModel.SERVICEBID" Width="1.5" PointX="10.5" PointY="11" />
-        <EntityTypeShape EntityType="MSNModel.SERVICEBIDNEEDFILE" Width="1.5" PointX="12.75" PointY="17.875" />
-        <EntityTypeShape EntityType="MSNModel.SERVICECATEGORY" Width="1.5" PointX="5.25" PointY="16" />
-        <EntityTypeShape EntityType="MSNModel.SERVICESTATE" Width="1.5" PointX="10.5" PointY="20.125" />
-        <EntityTypeShape EntityType="MSNModel.SERVICESUBCATEGORY" Width="1.5" PointX="5.25" PointY="6.75" />
-        <EntityTypeShape EntityType="MSNModel.SERVICETIMETYPE" Width="1.5" PointX="10.5" PointY="4" />
-        <EntityTypeShape EntityType="MSNModel.SOCIALLOGIN" Width="1.5" PointX="3" PointY="8.5" />
-        <EntityTypeShape EntityType="MSNModel.USERBID" Width="1.5" PointX="7.5" PointY="23.25" />
-        <EntityTypeShape EntityType="MSNModel.USERFUND" Width="1.5" PointX="7.5" PointY="17.875" />
-        <EntityTypeShape EntityType="MSNModel.USERINFO" Width="1.5" PointX="5.25" PointY="10.25" />
-        <EntityTypeShape EntityType="MSNModel.USERMEMBERSHIP" Width="1.5" PointX="10.5" PointY="7.25" />
-        <EntityTypeShape EntityType="MSNModel.USERPWD" Width="1.5" PointX="7.5" PointY="12.125" />
-        <EntityTypeShape EntityType="MSNModel.USERSERVICE" Width="1.5" PointX="7.5" PointY="9.25" />
-        <EntityTypeShape EntityType="MSNModel.USERSERVICEFILE" Width="1.5" PointX="9.75" PointY="14.5" />
-        <EntityTypeShape EntityType="MSNModel.USERSERVICENEED" Width="1.5" PointX="12.75" PointY="9.5" />
-        <EntityTypeShape EntityType="MSNModel.USERSERVICENEEDFILE" Width="1.5" PointX="15" PointY="11.5" />
-        <EntityTypeShape EntityType="MSNModel.USERSERVICETIMERECORD" Width="1.5" PointX="10.5" PointY="17.25" />
+        <EntityTypeShape EntityType="MSNModel.ADMININFO" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MSNModel.CITY" Width="1.5" PointX="0.75" PointY="14.375" />
+        <EntityTypeShape EntityType="MSNModel.CITYAREA" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="MSNModel.MEMBERSHIP" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="MSNModel.SERVICEBID" Width="1.5" PointX="13.5" PointY="7.75" />
+        <EntityTypeShape EntityType="MSNModel.SERVICEBIDNEEDFILE" Width="1.5" PointX="15.75" PointY="8.25" />
+        <EntityTypeShape EntityType="MSNModel.SERVICECATEGORY" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="MSNModel.SERVICESTATE" Width="1.5" PointX="6" PointY="16" />
+        <EntityTypeShape EntityType="MSNModel.SERVICESUBCATEGORY" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="MSNModel.SERVICETIMETYPE" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="MSNModel.SOCIALLOGIN" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MSNModel.USERBID" Width="1.5" PointX="5.25" PointY="11.75" />
+        <EntityTypeShape EntityType="MSNModel.USERFUND" Width="1.5" PointX="5.25" PointY="24.875" />
+        <EntityTypeShape EntityType="MSNModel.USERINFO" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="MSNModel.USERMEMBERSHIP" Width="1.5" PointX="5.25" PointY="0.875" />
+        <EntityTypeShape EntityType="MSNModel.USERPWD" Width="1.5" PointX="5.25" PointY="22.375" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICE" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICEFILE" Width="1.5" PointX="7.5" PointY="13.25" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICENEED" Width="1.5" PointX="8.25" PointY="6" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICENEEDFILE" Width="1.5" PointX="10.5" PointY="8.25" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICETIMERECORD" Width="1.5" PointX="6" PointY="18.5" />
         <AssociationConnector Association="MSNModel.FK__CITYAREA__CITYID__08EA5793" />
         <AssociationConnector Association="MSNModel.FK__USERINFO__CITYID__117F9D94" />
         <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__5441852A" />

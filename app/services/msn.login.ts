@@ -1,15 +1,24 @@
 ﻿import {Component, OnInit} from '@angular/core';
 //import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {Injectable} from '@angular/core';
-
+import { Observable } from 'rxjs/Observable';
+import {MSN_DI_CONFIG } from '../app.config';
+import { Http, Response, Headers, RequestOptions} from '@angular/http';
 declare const FB: any;
 
 
-
+@Injectable()
 export class LoginService  {
     isUserLogin: boolean = false;
     userDetails: any = {};
-    
+    private config = {
+
+        ServiceApi: MSN_DI_CONFIG.MSNServiceApi
+    };
+    constructor(private http: Http) {
+
+    }
+
     FBInit() {
 
         FB.init({
@@ -71,6 +80,24 @@ export class LoginService  {
     }
 
 
+    validateSocialLoginDetails(user): Observable<any[]> {
 
+   
+
+        // ...using get request
+
+         return this.http.get(this.config.ServiceApi + 'USERINFOes' + '?details=' + JSON.stringify(user))
+            // ...and calling .json() on the response to return data
+            .map((res) =>
+                //JSON.parse(JSON.stringify(res._body))
+                res.json()
+
+            )
+            //...errors if any
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
+    
+
+    }
    
 }

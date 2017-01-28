@@ -64,6 +64,12 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             console.log('Image URL: ' + profile.getImageUrl());
                             console.log('Email: ' + profile.getEmail());
                             //YOUR CODE HERE
+                            that.validateSocialLoginDetails({
+                                name: profile.getName(),
+                                email: profile.getEmail(),
+                                logintype: 1,
+                                phone: "",
+                            });
                             that.myLoginModal.close();
                         }, function (error) {
                             alert(JSON.stringify(error, undefined, 2));
@@ -99,9 +105,25 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     var _this = this;
                     this.loginService.fetchFacebookUserDetails().then(function (response) {
                         console.log(response);
+                        _this.validateSocialLoginDetails({
+                            name: response.name,
+                            email: response.email,
+                            gender: response.gender,
+                            phone: "",
+                            logintype: 2
+                        });
                         _this.myLoginModal.close();
                     }, function (error) {
                         alert("facebook login failed");
+                    });
+                };
+                LoginComponent.prototype.validateSocialLoginDetails = function (details) {
+                    this.loginService.validateSocialLoginDetails(details).subscribe(function (user) {
+                        console.log(user);
+                        //need to handle after login success in UI
+                    }, function (err) {
+                        // Log errors if any
+                        console.log(err);
                     });
                 };
                 return LoginComponent;
@@ -110,22 +132,6 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 core_1.ViewChild('myLoginModal'),
                 __metadata("design:type", ng2_bootstrap_1.ModalDirective)
             ], LoginComponent.prototype, "myLoginModal", void 0);
-            __decorate([
-                core_1.ViewChild('googlesignin'),
-                __metadata("design:type", core_1.ElementRef)
-            ], LoginComponent.prototype, "googlesignin", void 0);
-            __decorate([
-                core_1.ViewChild('googlesignin2'),
-                __metadata("design:type", core_1.ElementRef)
-            ], LoginComponent.prototype, "googlesignin2", void 0);
-            __decorate([
-                core_1.ViewChild('googlesignindiv'),
-                __metadata("design:type", core_1.ElementRef)
-            ], LoginComponent.prototype, "googlesignindiv", void 0);
-            __decorate([
-                core_1.ViewChild('googlesignindiv2'),
-                __metadata("design:type", core_1.ElementRef)
-            ], LoginComponent.prototype, "googlesignindiv2", void 0);
             LoginComponent = __decorate([
                 core_1.Component({
                     selector: 'login',
