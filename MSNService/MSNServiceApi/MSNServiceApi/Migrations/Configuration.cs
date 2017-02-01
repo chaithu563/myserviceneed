@@ -37,7 +37,7 @@ namespace MSNServiceApi.Migrations
                     ApplicationType = MSNServiceApi.Models.ApplicationTypes.JavaScript, 
                     Active = true, 
                     RefreshTokenLifeTime = 7200, 
-                    AllowedOrigin = "http://ngauthenticationweb.azurewebsites.net"
+                    AllowedOrigin = "http://localhost:3000"
                 },
                 new Client
                 { Id = "consoleApp", 

@@ -57,8 +57,8 @@ namespace MSNServiceApi
             //Configure Google External Login
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "xxxxxx",
-                ClientSecret = "xxxxxx",
+                ClientId = "765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com",
+                ClientSecret = "cHgKIHW92uBhKvXt8uajfVAU",
                 Provider = new GoogleAuthProvider()
             };
             app.UseGoogleAuthentication(googleAuthOptions);
@@ -66,8 +66,8 @@ namespace MSNServiceApi
             //Configure Facebook External Login
             facebookAuthOptions = new FacebookAuthenticationOptions()
             {
-                AppId = "xxxxxx",
-                AppSecret = "xxxxxx",
+                AppId = "1520026344681982",
+                AppSecret = "17c3ea26f2daa2f61b17b4cb3cf6ca19",
                 Provider = new FacebookAuthProvider()
             };
             app.UseFacebookAuthentication(facebookAuthOptions);
