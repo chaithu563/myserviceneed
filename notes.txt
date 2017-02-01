@@ -19,30 +19,15 @@ https://github.com/anthonyvscode/LonelySharp/blob/master/LonelySharp/GeoLocation
 http://gis.stackexchange.com/questions/19760/how-do-i-calculate-the-bounding-box-for-given-a-distance-and-latitude-longitude
 
 
-<sebm-google-map 
-      [latitude]="lat"
-      [longitude]="lng"
-      [zoom]="zoom"
-      [disableDefaultUI]="false"
-      [zoomControl]="true"
-      (mapClick)="mapClicked($event)">
-      
-        <sebm-google-map-marker [latitude]="lat" [longitude]="lng"
-        
-        [iconUrl]="'https://i.stack.imgur.com/7b0HJ.png'"
-        (markerClick)="markerClick()" >
-        
-        </sebm-google-map-marker>
-      <sebm-google-map-circle
-          [latitude]="lat" [longitude]="lng"
-          (centerChange)="lat = $event.lat; lng = $event.lng"
-          [(radius)]="radius"
-          [fillColor]="'red'"
-          [circleDraggable]="true"
-          [editable]="true">
-      </sebm-google-map-circle>
+authentication
 
-    </sebm-google-map>
+http://saifikram.com/2014/06/token-based-authentication-using-asp-net-web-api-2-with-owin
+https://www.asp.net/aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
+
+http://localhost/MSNServiceApi/token?grant_type=password&username=test&password=test  (not working, in body send it)
+http://bitoftech.net/2014/08/11/asp-net-web-api-2-external-logins-social-logins-facebook-google-angularjs-app/
+
+
 
 
 
