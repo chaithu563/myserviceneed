@@ -44,6 +44,7 @@ namespace MSNServiceApi
             {
 
                 AllowInsecureHttp = true,
+								AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 Provider = new SimpleAuthorizationServerProvider(),
