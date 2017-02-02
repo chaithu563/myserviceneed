@@ -52,7 +52,8 @@ PWD varchar(MAX)
 CREATE TABLE USERINFO
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-NAME varchar(60),
+USERNAME varchar(60),
+PASSWORDWD varchar(MAX)
 EMAIL varchar(60),
 GENDER BIT,
 PHONE varchar(20),
@@ -65,12 +66,12 @@ USERLOCATIONLONGITUDE float  NULL
 
 );
 
-CREATE TABLE USERPWD
-(
-ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
-PWD varchar(MAX)
-)
+--CREATE TABLE USERPWD
+--(
+--ID numeric IDENTITY(1,1) PRIMARY KEY,
+--USERID numeric foreign key references USERINFO(ID),
+--PWD varchar(MAX)
+--)
 
 CREATE TABLE MEMBERSHIP
 (

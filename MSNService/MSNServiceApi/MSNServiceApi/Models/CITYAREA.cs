@@ -17,8 +17,8 @@ namespace MSNServiceApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CITYAREA()
         {
-            this.USERINFOes = new HashSet<USERINFO>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
+            this.USERINFOes = new HashSet<USERINFO>();
         }
     
         public decimal ID { get; set; }
@@ -28,8 +28,8 @@ namespace MSNServiceApi.Models
     
         public virtual CITY CITY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERINFO> USERINFOes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERINFO> USERINFOes { get; set; }
     }
 }

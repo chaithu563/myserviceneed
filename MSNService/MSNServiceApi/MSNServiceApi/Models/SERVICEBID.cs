@@ -30,9 +30,9 @@ namespace MSNServiceApi.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICEBIDNEEDFILE> SERVICEBIDNEEDFILES { get; set; }
-        public virtual USERINFO USERINFO { get; set; }
         public virtual USERSERVICENEED USERSERVICENEED { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        public virtual USERINFO USERINFO { get; set; }
     }
 }

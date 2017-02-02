@@ -48,9 +48,9 @@ namespace MSNServiceApi.Models
         public virtual SERVICESTATE SERVICESTATE1 { get; set; }
         public virtual SERVICESUBCATEGORY SERVICESUBCATEGORY { get; set; }
         public virtual SERVICETIMETYPE SERVICETIMETYPE1 { get; set; }
-        public virtual USERINFO USERINFO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
         public virtual USERSERVICETIMERECORD USERSERVICETIMERECORD { get; set; }
+        public virtual USERINFO USERINFO { get; set; }
     }
 }

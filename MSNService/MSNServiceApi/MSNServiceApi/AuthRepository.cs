@@ -25,14 +25,14 @@ namespace MSNServiceApi
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 
-        public async Task<IdentityResult> RegisterUser(UserModel userModel)
+        public async Task<IdentityResult> RegisterUser(USERINFO userModel)
         {
             IdentityUser user = new IdentityUser
             {
-                UserName = userModel.UserName
+                UserName = userModel.USERNAME
             };
 
-            var result = await _userManager.CreateAsync(user, userModel.Password);
+            var result = await _userManager.CreateAsync(user, userModel.PASSWORD);
 
             return result;
         }

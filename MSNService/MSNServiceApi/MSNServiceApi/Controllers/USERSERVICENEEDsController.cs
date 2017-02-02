@@ -34,7 +34,7 @@ namespace MSNServiceApi.Controllers
 				x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 				x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 				x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-				x.USERINFO.NAME,
+				x.USERINFO.USERNAME,
 				x.USERINFO.PHONE
 			});
 
@@ -126,7 +126,7 @@ namespace MSNServiceApi.Controllers
 						x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-						x.USERINFO.NAME,
+						x.USERINFO.USERNAME,
 						x.USERINFO.PHONE
 					});
 
@@ -214,7 +214,7 @@ namespace MSNServiceApi.Controllers
 			ob.USERSERVICETIMERECORD = time;
 
 			USERINFO user = new USERINFO();
-			user.NAME = details["username"];
+			user.USERNAME = details["username"];
 			user.PHONE = details["mobile"];
 			ob.USERINFO = user;
 

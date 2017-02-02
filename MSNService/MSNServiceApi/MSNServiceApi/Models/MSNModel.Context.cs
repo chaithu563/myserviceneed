@@ -38,13 +38,12 @@ namespace MSNServiceApi.Models
         public virtual DbSet<SOCIALLOGIN> SOCIALLOGINs { get; set; }
         public virtual DbSet<USERBID> USERBIDS { get; set; }
         public virtual DbSet<USERFUND> USERFUNDS { get; set; }
-        public virtual DbSet<USERINFO> USERINFOes { get; set; }
         public virtual DbSet<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
-        public virtual DbSet<USERPWD> USERPWDs { get; set; }
         public virtual DbSet<USERSERVICE> USERSERVICEs { get; set; }
         public virtual DbSet<USERSERVICEFILE> USERSERVICEFILES { get; set; }
         public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
         public virtual DbSet<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
         public virtual DbSet<USERSERVICETIMERECORD> USERSERVICETIMERECORDs { get; set; }
+        public virtual DbSet<USERINFO> USERINFOes { get; set; }
     }
 }

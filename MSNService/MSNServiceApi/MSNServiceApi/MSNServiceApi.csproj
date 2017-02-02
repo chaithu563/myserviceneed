@@ -316,9 +316,6 @@
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\USERPWD.cs">
-      <DependentUpon>MSNModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\USERSERVICE.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>

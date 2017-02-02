@@ -11,7 +11,7 @@ namespace MSNServiceApi
     public class AuthContext : IdentityDbContext<IdentityUser>
     {
         public AuthContext()
-            : base("AuthContext")
+            : base("MSNEntities")
         {
      
         }

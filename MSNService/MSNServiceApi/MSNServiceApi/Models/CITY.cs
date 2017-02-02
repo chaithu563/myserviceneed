@@ -18,8 +18,8 @@ namespace MSNServiceApi.Models
         public CITY()
         {
             this.CITYAREAs = new HashSet<CITYAREA>();
-            this.USERINFOes = new HashSet<USERINFO>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
+            this.USERINFOes = new HashSet<USERINFO>();
         }
     
         public decimal ID { get; set; }
@@ -28,8 +28,8 @@ namespace MSNServiceApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CITYAREA> CITYAREAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERINFO> USERINFOes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERINFO> USERINFOes { get; set; }
     }
 }
