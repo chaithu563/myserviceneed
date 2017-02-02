@@ -1,4 +1,4 @@
-﻿using MSNServiceApi.Entities;
+﻿//using MSNServiceApi.Entities;
 using MSNServiceApi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -15,13 +15,13 @@ namespace MSNServiceApi
 
     public class AuthRepository : IDisposable
     {
-        private AuthContext _ctx;
+        private MSNEntities _ctx;
 
         private UserManager<IdentityUser> _userManager;
 
         public AuthRepository()
         {
-            _ctx = new AuthContext();
+            _ctx = new MSNEntities();
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 

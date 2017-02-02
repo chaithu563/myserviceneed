@@ -14,7 +14,6 @@ namespace MSNServiceApi.Models
     
     public partial class USERSERVICETIMERECORD
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USERSERVICETIMERECORD()
         {
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
@@ -27,7 +26,6 @@ namespace MSNServiceApi.Models
         public Nullable<System.TimeSpan> SERVICESTARTTIME { get; set; }
         public Nullable<System.TimeSpan> SERVICEENDTIME { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
 }

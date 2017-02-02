@@ -1,4 +1,4 @@
-﻿using MSNServiceApi.Entities;
+﻿using MSNServiceApi.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -45,7 +45,7 @@ namespace MSNServiceApi.Providers
                 return Task.FromResult<object>(null);
             }
 
-            if (client.ApplicationType == Models.ApplicationTypes.NativeConfidential)
+            if (client.ApplicationType == 1 )
             {
                 if (string.IsNullOrWhiteSpace(clientSecret))
                 {
@@ -62,7 +62,7 @@ namespace MSNServiceApi.Providers
                 }
             }
 
-            if (!client.Active)
+            if (!(bool)client.Active)
             {
                 context.SetError("invalid_clientId", "Client is inactive.");
                 return Task.FromResult<object>(null);

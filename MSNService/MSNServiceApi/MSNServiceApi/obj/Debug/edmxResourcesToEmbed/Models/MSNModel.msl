@@ -126,6 +126,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="USERINFOes">
+      <EntityTypeMapping TypeName="MSNModel.USERINFO">
+        <MappingFragment StoreEntitySet="USERINFO">
+          <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
+          <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
+          <ScalarProperty Name="CURRENTLOCATION" ColumnName="CURRENTLOCATION" />
+          <ScalarProperty Name="LOGINTYPEID" ColumnName="LOGINTYPEID" />
+          <ScalarProperty Name="CITYAREAID" ColumnName="CITYAREAID" />
+          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="USERMEMBERSHIPs">
       <EntityTypeMapping TypeName="MSNModel.USERMEMBERSHIP">
         <MappingFragment StoreEntitySet="USERMEMBERSHIP">
@@ -201,21 +219,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="USERINFOes">
-      <EntityTypeMapping TypeName="MSNModel.USERINFO">
-        <MappingFragment StoreEntitySet="USERINFO">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="MSNModel.Client">
+        <MappingFragment StoreEntitySet="Client">
           <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
           <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
           <ScalarProperty Name="CURRENTLOCATION" ColumnName="CURRENTLOCATION" />
           <ScalarProperty Name="LOGINTYPEID" ColumnName="LOGINTYPEID" />
           <ScalarProperty Name="CITYAREAID" ColumnName="CITYAREAID" />
-          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
-          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RefreshTokenLifeTime" ColumnName="RefreshTokenLifeTime" />
+          <ScalarProperty Name="AllowedOrigin" ColumnName="AllowedOrigin" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Secret" ColumnName="Secret" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefreshTokens">
+      <EntityTypeMapping TypeName="MSNModel.RefreshToken">
+        <MappingFragment StoreEntitySet="RefreshToken">
+          <ScalarProperty Name="ProtectedTicket" ColumnName="ProtectedTicket" />
+          <ScalarProperty Name="ExpiresUtc" ColumnName="ExpiresUtc" />
+          <ScalarProperty Name="IssuedUtc" ColumnName="IssuedUtc" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

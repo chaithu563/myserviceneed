@@ -12,19 +12,14 @@ namespace MSNServiceApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SOCIALLOGIN
+    public partial class RefreshToken
     {
-        public SOCIALLOGIN()
-        {
-            this.USERINFOes = new HashSet<USERINFO>();
-            this.Clients = new HashSet<Client>();
-        }
-    
-        public int ID { get; set; }
-        public string NAME { get; set; }
-        public string DESCRIPTION { get; set; }
-    
-        public virtual ICollection<USERINFO> USERINFOes { get; set; }
-        public virtual ICollection<Client> Clients { get; set; }
+        public int id { get; set; }
+        public string key { get; set; }
+        public string Subject { get; set; }
+        public string ClientId { get; set; }
+        public Nullable<System.DateTime> IssuedUtc { get; set; }
+        public Nullable<System.DateTime> ExpiresUtc { get; set; }
+        public string ProtectedTicket { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using MSNServiceApi.Entities;
+﻿using MSNServiceApi.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,14 @@ namespace MSNServiceApi
 {
     public class AuthContext : IdentityDbContext<IdentityUser>
     {
-        public AuthContext()
-            : base("MSNEntities")
-        {
+				//public AuthContext()
+				//		: base("MSNEntities")
+				//{
      
-        }
+				//}
 
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
+				//public DbSet<Client> Clients { get; set; }
+				//public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 
 }

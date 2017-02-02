@@ -53,7 +53,7 @@ CREATE TABLE USERINFO
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
 USERNAME varchar(60),
-PASSWORDWD varchar(MAX)
+PASSWORD varchar(MAX),
 EMAIL varchar(60),
 GENDER BIT,
 PHONE varchar(20),
@@ -63,6 +63,36 @@ LOGINTYPEID int foreign key references SOCIALLOGIN(ID),
 CURRENTLOCATION varchar(max),
 USERLOCATIONLATITUDE float  NULL, 
 USERLOCATIONLONGITUDE float  NULL
+
+);
+
+CREATE TABLE Client
+(
+ [id] INTEGER PRIMARY KEY IDENTITY NOT NULL, 
+    [key] nvarchar(MAX)  NOT NULL, 
+Secret varchar(MAX),
+Name varchar(MAX),
+ApplicationType numeric,
+Active BIT,
+AllowedOrigin varchar(100),
+RefreshTokenLifeTime numeric ,
+CITYAREAID numeric foreign key references CITYAREA(ID),
+LOGINTYPEID int foreign key references SOCIALLOGIN(ID),
+CURRENTLOCATION varchar(max),
+USERLOCATIONLATITUDE float  NULL, 
+USERLOCATIONLONGITUDE float  NULL
+
+);
+
+CREATE TABLE RefreshToken
+(
+ [id] INTEGER PRIMARY KEY IDENTITY NOT NULL, 
+    [key] nvarchar(MAX)  NOT NULL, 
+Subject varchar(MAX),
+ClientId  nvarchar(MAX),
+IssuedUtc datetime,
+ExpiresUtc datetime,
+ProtectedTicket varchar(MAX)
 
 );
 

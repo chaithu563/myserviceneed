@@ -14,7 +14,6 @@ namespace MSNServiceApi.Models
     
     public partial class USERINFO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USERINFO()
         {
             this.SERVICEBIDs = new HashSet<SERVICEBID>();
@@ -40,18 +39,12 @@ namespace MSNServiceApi.Models
     
         public virtual CITY CITY { get; set; }
         public virtual CITYAREA CITYAREA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICEBID> SERVICEBIDs { get; set; }
         public virtual SOCIALLOGIN SOCIALLOGIN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERBID> USERBIDS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERFUND> USERFUNDS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
 }

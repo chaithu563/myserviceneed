@@ -14,7 +14,6 @@ namespace MSNServiceApi.Models
     
     public partial class SERVICECATEGORY
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SERVICECATEGORY()
         {
             this.SERVICESUBCATEGORies = new HashSet<SERVICESUBCATEGORY>();
@@ -26,11 +25,8 @@ namespace MSNServiceApi.Models
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICESUBCATEGORY> SERVICESUBCATEGORies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
 }

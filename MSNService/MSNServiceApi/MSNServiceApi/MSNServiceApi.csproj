@@ -218,19 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Models\MSNModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MSNModel.edmx</DependentUpon>
-      <LastGenOutput>MSNModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\MSNModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MSNModel.edmx</DependentUpon>
-      <LastGenOutput>MSNModel.cs</LastGenOutput>
-    </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -262,6 +254,9 @@
     <Compile Include="Models\CITYAREA.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\ExternalLoginModels.cs" />
     <Compile Include="Models\MEMBERSHIP.cs">
@@ -281,6 +276,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MSNModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RefreshToken.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SERVICEBID.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
@@ -343,14 +341,24 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Fakes Include="Fakes\System.Web.Cors.fakes" />
     <EntityDeploy Include="Models\MSNModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MSNModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Models\MSNModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MSNModel.edmx</DependentUpon>
+      <LastGenOutput>MSNModel.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\MSNModel.edmx.diagram">
       <DependentUpon>MSNModel.edmx</DependentUpon>
     </Content>
-    <Fakes Include="Fakes\System.Web.Cors.fakes" />
+    <Content Include="Models\MSNModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MSNModel.edmx</DependentUpon>
+      <LastGenOutput>MSNModel.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

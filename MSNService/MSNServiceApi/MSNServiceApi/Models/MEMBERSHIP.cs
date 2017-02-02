@@ -14,7 +14,6 @@ namespace MSNServiceApi.Models
     
     public partial class MEMBERSHIP
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MEMBERSHIP()
         {
             this.USERMEMBERSHIPs = new HashSet<USERMEMBERSHIP>();
@@ -24,7 +23,6 @@ namespace MSNServiceApi.Models
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
     }
 }

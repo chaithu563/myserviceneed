@@ -1,4 +1,4 @@
-﻿using MSNServiceApi.Entities;
+﻿using MSNServiceApi.Models;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Infrastructure;
 using System;
@@ -30,7 +30,7 @@ namespace MSNServiceApi.Providers
                
                 var token = new RefreshToken() 
                 { 
-                    Id = Helper.GetHash(refreshTokenId),
+                    key = Helper.GetHash(refreshTokenId),
                     ClientId = clientid, 
                     Subject = context.Ticket.Identity.Name,
                     IssuedUtc = DateTime.UtcNow,
