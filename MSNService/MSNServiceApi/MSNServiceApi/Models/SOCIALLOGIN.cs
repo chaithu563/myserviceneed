@@ -16,15 +16,15 @@ namespace MSNServiceApi.Models
     {
         public SOCIALLOGIN()
         {
-            this.USERINFOes = new HashSet<USERINFO>();
             this.Clients = new HashSet<Client>();
+            this.USERINFOes = new HashSet<USERINFO>();
         }
     
         public int ID { get; set; }
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
     
-        public virtual ICollection<USERINFO> USERINFOes { get; set; }
         public virtual ICollection<Client> Clients { get; set; }
+        public virtual ICollection<USERINFO> USERINFOes { get; set; }
     }
 }

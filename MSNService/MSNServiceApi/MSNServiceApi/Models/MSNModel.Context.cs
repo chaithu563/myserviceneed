@@ -9,11 +9,12 @@
 
 namespace MSNServiceApi.Models
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class MSNEntities : DbContext
+
+    public partial class MSNEntities : IdentityDbContext<USERINFO>
     {
         public MSNEntities()
             : base("name=MSNEntities")
@@ -22,13 +23,16 @@ namespace MSNServiceApi.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<ADMININFO> ADMININFOes { get; set; }
         public virtual DbSet<CITY> CITies { get; set; }
         public virtual DbSet<CITYAREA> CITYAREAs { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<MEMBERSHIP> MEMBERSHIPs { get; set; }
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
         public virtual DbSet<SERVICEBID> SERVICEBIDs { get; set; }
         public virtual DbSet<SERVICEBIDNEEDFILE> SERVICEBIDNEEDFILES { get; set; }
         public virtual DbSet<SERVICECATEGORY> SERVICECATEGORies { get; set; }
@@ -45,7 +49,5 @@ namespace MSNServiceApi.Models
         public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
         public virtual DbSet<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
         public virtual DbSet<USERSERVICETIMERECORD> USERSERVICETIMERECORDs { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

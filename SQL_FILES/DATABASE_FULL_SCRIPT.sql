@@ -52,8 +52,8 @@ PWD varchar(MAX)
 CREATE TABLE USERINFO
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERNAME varchar(60),
-PASSWORD varchar(MAX),
+UserName varchar(60),
+Password varchar(MAX),
 EMAIL varchar(60),
 GENDER BIT,
 PHONE varchar(20),

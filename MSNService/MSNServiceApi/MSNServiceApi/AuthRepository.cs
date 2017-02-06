@@ -17,31 +17,37 @@ namespace MSNServiceApi
     {
         private MSNEntities _ctx;
 
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<USERINFO > _userManager;
 
         public AuthRepository()
         {
             _ctx = new MSNEntities();
-            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
+            //  _userManager = new UserManager<USERINFO >(new UserStore<USERINFO >(_ctx));
+            _userManager = new UserManager<USERINFO>(new UserStore<USERINFO>(_ctx));
         }
 
         public async Task<IdentityResult> RegisterUser(USERINFO userModel)
         {
-            IdentityUser user = new IdentityUser
+            USERINFO  user = new USERINFO 
             {
-                UserName = userModel.USERNAME
+                UserName = userModel.UserName
             };
 
-            var result = await _userManager.CreateAsync(user, userModel.PASSWORD);
+            var result = await _userManager.CreateAsync(user, userModel.Password);
 
             return result;
         }
 
-        public async Task<IdentityUser> FindUser(string userName, string password)
+        public  USERINFO FindUser(string userName, string password)
         {
-            IdentityUser user = await _userManager.FindAsync(userName, password);
 
-            return user;
+            //USERINFO  user =  _userManager.Find(userName, password)
+
+            string name =  _userManager.Find(userName, password).UserName;
+            var info = new USERINFO();
+            info.UserName = name;
+           
+            return info ;
         }
 
         public Client FindClient(string clientId)
@@ -96,14 +102,14 @@ namespace MSNServiceApi
              return  _ctx.RefreshTokens.ToList();
         }
 
-        public async Task<IdentityUser> FindAsync(UserLoginInfo loginInfo)
+        public async Task<USERINFO > FindAsync(UserLoginInfo loginInfo)
         {
-            IdentityUser user = await _userManager.FindAsync(loginInfo);
+            USERINFO  user = await _userManager.FindAsync(loginInfo);
 
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(IdentityUser user)
+        public async Task<IdentityResult> CreateAsync(USERINFO  user)
         {
             var result = await _userManager.CreateAsync(user);
 

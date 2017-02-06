@@ -108,7 +108,7 @@ namespace MSNServiceApi.Controllers
             }
             USERINFO ob = new USERINFO();
           
-            ob.USERNAME = details["name"];
+            ob.UserName = details["name"];
             ob.EMAIL = details["email"];
             ob.LOGINTYPEID = details["logintype"];
             ob.PHONE = details["phone"];

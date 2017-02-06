@@ -34,7 +34,7 @@ namespace MSNServiceApi.Controllers
 				x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 				x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 				x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-				x.USERINFO.USERNAME,
+				x.USERINFO.UserName,
 				x.USERINFO.PHONE
 			});
 
@@ -100,7 +100,7 @@ namespace MSNServiceApi.Controllers
 
 			}
 
-            if (filters["nelatitude"].ToString() != "")
+            if ( filters["nelatitude"].ToString() != "")
             {
                 double nelatitude = Convert.ToDouble(filters["nelatitude"]);
                 double nelongitude = Convert.ToDouble(filters["nelongitude"]);
@@ -126,7 +126,7 @@ namespace MSNServiceApi.Controllers
 						x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-						x.USERINFO.USERNAME,
+						x.USERINFO.UserName,
 						x.USERINFO.PHONE
 					});
 
@@ -214,7 +214,7 @@ namespace MSNServiceApi.Controllers
 			ob.USERSERVICETIMERECORD = time;
 
 			USERINFO user = new USERINFO();
-			user.USERNAME = details["username"];
+			user.UserName = details["username"];
 			user.PHONE = details["mobile"];
 			ob.USERINFO = user;
 

@@ -9,10 +9,11 @@
 
 namespace MSNServiceApi.Models
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
-    
-    public partial class USERINFO
+
+    public partial class USERINFO : IdentityUser
     {
         public USERINFO()
         {
@@ -22,11 +23,12 @@ namespace MSNServiceApi.Models
             this.USERMEMBERSHIPs = new HashSet<USERMEMBERSHIP>();
             this.USERSERVICEs = new HashSet<USERSERVICE>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
+            this.Roles = new HashSet<IdentityUserRole>(); ;
         }
     
         public decimal ID { get; set; }
-        public string USERNAME { get; set; }
-        public string PASSWORD { get; set; }
+        public override string UserName { get; set; }
+        public string Password { get; set; }
         public string EMAIL { get; set; }
         public Nullable<bool> GENDER { get; set; }
         public string PHONE { get; set; }
@@ -46,5 +48,6 @@ namespace MSNServiceApi.Models
         public virtual ICollection<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
         public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        public  override ICollection<IdentityUserRole> Roles { get; }
     }
 }
