@@ -310,8 +310,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
     <Property Name="GENDER" Type="Boolean" />
     <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />

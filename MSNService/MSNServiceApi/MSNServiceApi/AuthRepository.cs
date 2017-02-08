@@ -33,7 +33,7 @@ namespace MSNServiceApi
                 UserName = userModel.UserName
             };
 
-            var result = await _userManager.CreateAsync(user, userModel.Password);
+            var result = await _userManager.CreateAsync(user, userModel.PASSWORD);
 
             return result;
         }

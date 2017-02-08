@@ -9,12 +9,11 @@
 
 namespace MSNServiceApi.Models
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class MSNEntities : IdentityDbContext<USERINFO>
+    
+    public partial class MSNEntities : DbContext
     {
         public MSNEntities()
             : base("name=MSNEntities")
@@ -23,7 +22,6 @@ namespace MSNServiceApi.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             throw new UnintentionalCodeFirstException();
         }
     
