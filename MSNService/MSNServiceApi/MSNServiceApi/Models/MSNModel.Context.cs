@@ -47,5 +47,10 @@ namespace MSNServiceApi.Models
         public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
         public virtual DbSet<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
         public virtual DbSet<USERSERVICETIMERECORD> USERSERVICETIMERECORDs { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }

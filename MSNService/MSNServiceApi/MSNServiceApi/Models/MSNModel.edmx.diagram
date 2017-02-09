@@ -55,6 +55,14 @@
         <AssociationConnector Association="MSNModel.FK__USERSERVI__USERS__440B1D61" />
         <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__5FB337D6" />
         <AssociationConnector Association="MSNModel.FK__USERSERVI__USERS__5AEE82B9" />
+        <EntityTypeShape EntityType="MSNModel.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MSNModel.AspNetRole" Width="1.5" PointX="10.375" PointY="12.375" />
+        <EntityTypeShape EntityType="MSNModel.AspNetUserClaim" Width="1.5" PointX="14.875" PointY="11" />
+        <EntityTypeShape EntityType="MSNModel.AspNetUserLogin" Width="1.5" PointX="14.875" PointY="13.5" />
+        <EntityTypeShape EntityType="MSNModel.AspNetUser" Width="1.5" PointX="12.625" PointY="11.375" />
+        <AssociationConnector Association="MSNModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MSNModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MSNModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

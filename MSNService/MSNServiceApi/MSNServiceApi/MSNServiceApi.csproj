@@ -250,6 +250,18 @@
     <Compile Include="Models\ADMININFO.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CITY.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
@@ -257,6 +269,9 @@
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Client.cs">
+      <DependentUpon>MSNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enums.cs" />
