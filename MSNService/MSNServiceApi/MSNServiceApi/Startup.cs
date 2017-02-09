@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using MSNServiceApi.Models;
 
 [assembly: OwinStartup(typeof(MSNServiceApi.Startup))]
 
@@ -20,7 +21,9 @@ namespace MSNServiceApi
         public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
         public static GoogleOAuth2AuthenticationOptions googleAuthOptions { get; private set; }
         public static FacebookAuthenticationOptions facebookAuthOptions { get; private set; }
+				public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
+				public static string PublicClientId { get; private set; }
         public void Configuration(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
@@ -36,24 +39,32 @@ namespace MSNServiceApi
 
         public void ConfigureOAuth(IAppBuilder app)
         {
+					// Configure the db context and user manager to use a single instance per request
+					app.CreatePerOwinContext(ApplicationDbContext.Create);
+					app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+
             //use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
-
+						// Configure the application for OAuth based flow
+						PublicClientId = "self";
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
 
                 AllowInsecureHttp = true,
 								AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-                Provider = new SimpleAuthorizationServerProvider(),
-                RefreshTokenProvider = new SimpleRefreshTokenProvider()
+								//AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+								AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+								Provider = new ApplicationOAuthProvider(PublicClientId),
+              //  RefreshTokenProvider = new SimpleRefreshTokenProvider()
             };
 
             // Token Generation
-            app.UseOAuthAuthorizationServer(OAuthServerOptions);
-            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+						//app.UseOAuthAuthorizationServer(OAuthServerOptions);
+						//app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+						// Enable the application to use bearer tokens to authenticate users
+						app.UseOAuthBearerTokens(OAuthServerOptions);
 
             //Configure Google External Login
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions()

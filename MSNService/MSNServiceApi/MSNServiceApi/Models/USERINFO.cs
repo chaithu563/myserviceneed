@@ -9,11 +9,10 @@
 
 namespace MSNServiceApi.Models
 {
-	using Microsoft.AspNet.Identity.EntityFramework;
-	using System;
-	using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
     
-    public partial class USERINFO :IdentityUser
+    public partial class USERINFO
     {
         public USERINFO()
         {
@@ -26,8 +25,8 @@ namespace MSNServiceApi.Models
         }
     
         public decimal ID { get; set; }
-        public string USERNAME { get; set; }
-        public string PASSWORD { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
         public string EMAIL { get; set; }
         public Nullable<bool> GENDER { get; set; }
         public string PHONE { get; set; }

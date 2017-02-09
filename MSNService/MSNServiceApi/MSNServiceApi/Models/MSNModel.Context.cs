@@ -9,23 +9,34 @@
 
 namespace MSNServiceApi.Models
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
+    using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
     
-    public partial class MSNEntities : DbContext
+    public partial class MSNEntities :   IdentityDbContext<ApplicationUser>
     {
         public MSNEntities()
-            : base("name=MSNEntities")
+            : base("name=MSNEntities", throwIfV1Schema: false)
         {
+				//	Database.SetInitializer<MSNEntities>(null);
         }
+				//public static MSNEntities Create()
+				//{
+				//	return new MSNEntities();
+				//}
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
+				//protected override void OnModelCreating(DbModelBuilder modelBuilder)
+				//{
+				//		throw new UnintentionalCodeFirstException();
+				//}
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<ADMININFO> ADMININFOes { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<CITY> CITies { get; set; }
         public virtual DbSet<CITYAREA> CITYAREAs { get; set; }
         public virtual DbSet<Client> Clients { get; set; }

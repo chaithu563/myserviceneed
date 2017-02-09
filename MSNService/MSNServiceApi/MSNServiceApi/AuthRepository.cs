@@ -13,121 +13,121 @@ using System.Web;
 namespace MSNServiceApi
 {
 
-    public class AuthRepository : IDisposable
-    {
-        private MSNEntities _ctx;
+		//public class AuthRepository : IDisposable
+		//{
+		//		private MSNEntities _ctx;
 
-        private UserManager<USERINFO > _userManager;
+		//		private UserManager<User> _userManager;
 
-        public AuthRepository()
-        {
-            _ctx = new MSNEntities();
-            //  _userManager = new UserManager<USERINFO >(new UserStore<USERINFO >(_ctx));
-            _userManager = new UserManager<USERINFO>(new UserStore<USERINFO>(_ctx));
-        }
+		//		public AuthRepository()
+		//		{
+		//				_ctx = new MSNEntities();
+		//				//  _userManager = new UserManager<USERINFO >(new UserStore<USERINFO >(_ctx));
+		//				_userManager = new UserManager<User>(new UserStore<User>(_ctx));
+		//		}
 
-        public async Task<IdentityResult> RegisterUser(USERINFO userModel)
-        {
-            USERINFO  user = new USERINFO 
-            {
-                UserName = userModel.UserName
-            };
+		//		public async Task<IdentityResult> RegisterUser(User userModel)
+		//		{
+		//				User   user = new User 
+		//				{
+		//						UserName = userModel.UserName
+		//				};
 
-            var result = await _userManager.CreateAsync(user, userModel.PASSWORD);
+		//				var result = await _userManager.CreateAsync(user, userModel.PasswordHash);
 
-            return result;
-        }
+		//				return result;
+		//		}
 
-        public  USERINFO FindUser(string userName, string password)
-        {
+		//		public  User FindUser(string userName, string password)
+		//		{
 
-            //USERINFO  user =  _userManager.Find(userName, password)
+		//				//USERINFO  user =  _userManager.Find(userName, password)
 
-            string name =  _userManager.Find(userName, password).UserName;
-            var info = new USERINFO();
-            info.UserName = name;
+		//				string name =  _userManager.Find(userName, password).UserName;
+		//				var info = new User();
+		//				info.UserName = name;
            
-            return info ;
-        }
+		//				return info ;
+		//		}
 
-        public Client FindClient(string clientId)
-        {
-            var client = _ctx.Clients.Find(clientId);
+		//		public Client FindClient(string clientId)
+		//		{
+		//				var client = _ctx.Clients.Find(clientId);
 
-            return client;
-        }
+		//				return client;
+		//		}
 
-        public async Task<bool> AddRefreshToken(RefreshToken token)
-        {
+		//		public async Task<bool> AddRefreshToken(RefreshToken token)
+		//		{
 
-           var existingToken = _ctx.RefreshTokens.Where(r => r.Subject == token.Subject && r.ClientId == token.ClientId).SingleOrDefault();
+		//			 var existingToken = _ctx.RefreshTokens.Where(r => r.Subject == token.Subject && r.ClientId == token.ClientId).SingleOrDefault();
 
-           if (existingToken != null)
-           {
-             var result = await RemoveRefreshToken(existingToken);
-           }
+		//			 if (existingToken != null)
+		//			 {
+		//				 var result = await RemoveRefreshToken(existingToken);
+		//			 }
           
-            _ctx.RefreshTokens.Add(token);
+		//				_ctx.RefreshTokens.Add(token);
 
-            return await _ctx.SaveChangesAsync() > 0;
-        }
+		//				return await _ctx.SaveChangesAsync() > 0;
+		//		}
 
-        public async Task<bool> RemoveRefreshToken(string refreshTokenId)
-        {
-           var refreshToken = await _ctx.RefreshTokens.FindAsync(refreshTokenId);
+		//		public async Task<bool> RemoveRefreshToken(string refreshTokenId)
+		//		{
+		//			 var refreshToken = await _ctx.RefreshTokens.FindAsync(refreshTokenId);
 
-           if (refreshToken != null) {
-               _ctx.RefreshTokens.Remove(refreshToken);
-               return await _ctx.SaveChangesAsync() > 0;
-           }
+		//			 if (refreshToken != null) {
+		//					 _ctx.RefreshTokens.Remove(refreshToken);
+		//					 return await _ctx.SaveChangesAsync() > 0;
+		//			 }
 
-           return false;
-        }
+		//			 return false;
+		//		}
 
-        public async Task<bool> RemoveRefreshToken(RefreshToken refreshToken)
-        {
-            _ctx.RefreshTokens.Remove(refreshToken);
-             return await _ctx.SaveChangesAsync() > 0;
-        }
+		//		public async Task<bool> RemoveRefreshToken(RefreshToken refreshToken)
+		//		{
+		//				_ctx.RefreshTokens.Remove(refreshToken);
+		//				 return await _ctx.SaveChangesAsync() > 0;
+		//		}
 
-        public async Task<RefreshToken> FindRefreshToken(string refreshTokenId)
-        {
-            var refreshToken = await _ctx.RefreshTokens.FindAsync(refreshTokenId);
+		//		public async Task<RefreshToken> FindRefreshToken(string refreshTokenId)
+		//		{
+		//				var refreshToken = await _ctx.RefreshTokens.FindAsync(refreshTokenId);
 
-            return refreshToken;
-        }
+		//				return refreshToken;
+		//		}
 
-        public List<RefreshToken> GetAllRefreshTokens()
-        {
-             return  _ctx.RefreshTokens.ToList();
-        }
+		//		public List<RefreshToken> GetAllRefreshTokens()
+		//		{
+		//				 return  _ctx.RefreshTokens.ToList();
+		//		}
 
-        public async Task<USERINFO > FindAsync(UserLoginInfo loginInfo)
-        {
-            USERINFO  user = await _userManager.FindAsync(loginInfo);
+		//		public async Task<User > FindAsync(UserLoginInfo loginInfo)
+		//		{
+		//				User  user = await _userManager.FindAsync(loginInfo);
 
-            return user;
-        }
+		//				return user;
+		//		}
 
-        public async Task<IdentityResult> CreateAsync(USERINFO  user)
-        {
-            var result = await _userManager.CreateAsync(user);
+		//		public async Task<IdentityResult> CreateAsync(User  user)
+		//		{
+		//				var result = await _userManager.CreateAsync(user);
 
-            return result;
-        }
+		//				return result;
+		//		}
 
-        public async Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login)
-        {
-            var result = await _userManager.AddLoginAsync(userId, login);
+		//		public async Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login)
+		//		{
+		//				var result = await _userManager.AddLoginAsync(userId, login);
 
-            return result;
-        }
+		//				return result;
+		//		}
 
-        public void Dispose()
-        {
-            _ctx.Dispose();
-            _userManager.Dispose();
+		//		public void Dispose()
+		//		{
+		//				_ctx.Dispose();
+		//				_userManager.Dispose();
 
-        }
-    }
+		//		}
+		//}
 }

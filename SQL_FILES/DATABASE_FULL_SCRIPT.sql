@@ -22,6 +22,120 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[__MigrationHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ContextKey] [nvarchar](300) NOT NULL,
+	[Model] [varbinary](max) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK_dbo.__MigrationHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC,
+	[ContextKey] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](128) NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--CREATE TYPE [dbo].[Email]
+--    FROM NVARCHAR (100) NULL;
+
+--    CREATE TYPE [dbo].[Flag]
+--    FROM BIT NOT NULL;
+    
+--    CREATE TYPE [dbo].[Name]
+--    FROM NVARCHAR (50) NOT NULL;
+    
+--    CREATE TYPE [dbo].[Phone]
+--    FROM NVARCHAR (25) NULL;
+    
+--    CREATE TABLE [dbo].[User]
+--(
+--    [UserID]               INT IDENTITY (1000, 1) NOT NULL,
+--    [UserName]             [dbo].[Name]           NOT NULL,
+--    [Email]                [dbo].[Email]          NULL,
+--    [EmailConfirmed]       [dbo].[Flag]           NOT NULL,
+--    [PasswordHash]         NVARCHAR (100)         NULL,
+--    [SecurityStamp]        NVARCHAR (100)         NULL,
+--    [PhoneNumber]          [dbo].[Phone]          NULL,
+--    [PhoneNumberConfirmed] [dbo].[Flag]           NOT NULL,
+--    [TwoFactorEnabled]     [dbo].[Flag]           NOT NULL,
+--    [LockoutEndDateUtc]    DATETIME               NULL,
+--    [LockoutEnabled]       [dbo].[Flag]           NOT NULL,
+--    [AccessFailedCount]    INT                    NOT NULL,
+
+--    CONSTRAINT [PK_User_UserID] PRIMARY KEY CLUSTERED ([UserID] ASC),
+--    CONSTRAINT [UK_User_UserName] UNIQUE NONCLUSTERED ([UserName] ASC)
+--);
+
+
+--CREATE TABLE [dbo].[UserClaim]
+--(
+--    [UserID]     INT                   NOT NULL,
+--    [ClaimID]    INT IDENTITY (1000,1) NOT NULL,
+--    [ClaimType]  NVARCHAR (MAX)        NULL,
+--    [ClaimValue] NVARCHAR (MAX)        NULL,
+
+--    CONSTRAINT [PK_UserClaim_ClaimID] PRIMARY KEY CLUSTERED ([ClaimID] ASC),
+--    CONSTRAINT [FK_UserClaim_User] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([UserID]) ON DELETE CASCADE
+--);
+
+--GO
+--CREATE NONCLUSTERED INDEX [IX_UserClaim_UserID]
+--    ON [dbo].[UserClaim] ([UserID] ASC);
+    
+--    CREATE TABLE [dbo].[UserLogin]
+--(
+--    [UserID]        INT            NOT NULL,
+--    [LoginProvider] NVARCHAR (128) NOT NULL,
+--    [ProviderKey]   NVARCHAR (128) NOT NULL,
+
+--    CONSTRAINT [PK_UserLogin_UserID_LoginProvider_ProviderKey] PRIMARY KEY CLUSTERED ([UserID] ASC, [LoginProvider] ASC, [ProviderKey] ASC),
+--    CONSTRAINT [FK_UserLogin_User] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([UserID]) ON DELETE CASCADE
+--);
+
+--GO
+--CREATE NONCLUSTERED INDEX [IX_UserLogin_UserID]
+--    ON [dbo].[UserLogin] ([UserID] ASC);
+   
+    
+--    CREATE TABLE [dbo].[UserRole]
+--(
+--    [RoleID] INT          NOT NULL,
+--    [Name]   [dbo].[Name] NOT NULL,
+
+--    CONSTRAINT [PK_UserRole_RoleID] PRIMARY KEY CLUSTERED ([RoleID] ASC),
+--    CONSTRAINT [UK_UserRole_Name] UNIQUE NONCLUSTERED ([Name] ASC)
+--);
+
+--CREATE TABLE [dbo].[UserUserRole]
+--(
+--    [UserID] INT NOT NULL,
+--    [RoleID] INT NOT NULL,
+
+--    CONSTRAINT [PK_UserUserRole_UserID_RoleID] PRIMARY KEY CLUSTERED ([UserID] ASC, [RoleID] ASC),
+--    CONSTRAINT [FK_UserUserRole_User] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([UserID]) ON DELETE CASCADE,
+--    CONSTRAINT [FK_UserUserRole_UserRole] FOREIGN KEY ([RoleID]) REFERENCES [dbo].[UserRole] ([RoleID]) ON DELETE CASCADE
+--);
+
+--GO
+--CREATE NONCLUSTERED INDEX [IX_UserUserRole_UserID]
+--    ON [dbo].[UserUserRole] ([UserID] ASC);
+
+--GO
+--CREATE NONCLUSTERED INDEX [IX_UserUserRole_RoleID]
+--    ON [dbo].[UserUserRole] ([RoleID] ASC);
+
 CREATE TABLE SOCIALLOGIN ---if no social login means(0), our own registered user
 (
 ID int IDENTITY(1,1) PRIMARY KEY,
