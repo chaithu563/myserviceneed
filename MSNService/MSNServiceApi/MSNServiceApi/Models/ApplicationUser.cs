@@ -26,7 +26,7 @@ namespace MSNServiceApi.Models
 		public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 		{
 			public ApplicationDbContext()
-				: base("MSNEntities", throwIfV1Schema: false)
+				: base("MSNUserEntities", throwIfV1Schema: false)
 			{
 			}
 
