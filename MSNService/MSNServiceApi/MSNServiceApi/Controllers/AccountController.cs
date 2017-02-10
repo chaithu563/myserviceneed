@@ -343,8 +343,9 @@ namespace MSNServiceApi.Controllers
         }
 
         // POST api/Account/RegisterExternal
-			[EnableCors("*", "*", "PUT,POST")]
-        [OverrideAuthentication]
+			//[EnableCors("*", "*", "PUT,POST")]
+			//	[OverrideAuthentication]
+		[AllowAnonymous]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]
         public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)

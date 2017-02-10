@@ -23,7 +23,7 @@ namespace MSNServiceApi.Results
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             Request.GetOwinContext().Authentication.Challenge(LoginProvider);
-
+					//	context.RequestContext.HttpContext.Response.SuppressFormsAuthenticationRedirect = true;
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
             response.RequestMessage = Request;
             return Task.FromResult(response);

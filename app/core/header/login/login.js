@@ -65,12 +65,12 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             console.log('Email: ' + profile.getEmail());
                             //YOUR CODE HERE
                             that.validateSocialLoginDetails({
-                                userName: profile.getName(),
-                                externalAccessToken: googleUser.getAuthResponse().id_token,
-                                email: profile.getEmail(),
+                                UserName: profile.getName(),
+                                ExternalAccessToken: googleUser.getAuthResponse().id_token,
+                                Email: profile.getEmail(),
                                 logintype: 1,
                                 phone: "",
-                                provider: "google"
+                                Provider: "Google"
                             });
                             that.myLoginModal.close();
                         }, function (error) {
@@ -110,13 +110,13 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.loginService.fetchFacebookUserDetails().then(function (response) {
                         console.log(response);
                         _this.validateSocialLoginDetails({
-                            userName: response.name,
-                            externalAccessToken: _this.facebooktoken,
-                            email: response.email,
+                            UserName: response.name,
+                            ExternalAccessToken: _this.facebooktoken,
+                            Email: response.email,
                             gender: response.gender,
                             phone: "",
                             logintype: 2,
-                            provider: "facebook"
+                            Provider: "Facebook"
                         });
                         _this.myLoginModal.close();
                     }, function (error) {

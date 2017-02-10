@@ -97,7 +97,7 @@ export class LoginService  {
            
          //   .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 			let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
-			headers.append('Authorization', 'Bearer ' + user.externalAccessToken);
+			headers.append('Authorization', `Bearer ${user.externalAccessToken}` );
 		//	headers.append('Access-Control-Allow-Origin', '*');
 			let options = new RequestOptions({ headers: headers });
 			var json = JSON.stringify(user);

@@ -31,7 +31,7 @@ namespace MSNServiceApi
             ConfigureOAuth(app);
 					//	config.EnableCors();
             WebApiConfig.Register(config);
-          //  app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+						//app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 						
             app.UseWebApi(config);
           //  Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Migrations.Configuration>());
@@ -57,15 +57,16 @@ namespace MSNServiceApi
                 TokenEndpointPath = new PathString("/token"),
 								//AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
 								AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+							//	Provider = new SimpleAuthorizationServerProvider(),
 								Provider = new ApplicationOAuthProvider(PublicClientId),
-              //  RefreshTokenProvider = new SimpleRefreshTokenProvider()
+              // RefreshTokenProvider = new SimpleRefreshTokenProvider()
             };
 
             // Token Generation
-						//app.UseOAuthAuthorizationServer(OAuthServerOptions);
-						//app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+						app.UseOAuthAuthorizationServer(OAuthServerOptions);
+						app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 						// Enable the application to use bearer tokens to authenticate users
-						app.UseOAuthBearerTokens(OAuthServerOptions);
+						//app.UseOAuthBearerTokens(OAuthServerOptions);
 
             //Configure Google External Login
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions()

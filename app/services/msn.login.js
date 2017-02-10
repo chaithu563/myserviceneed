@@ -92,7 +92,7 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                     //   )
                     //   .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
                     var headers = new http_1.Headers({ 'Content-Type': 'application/json; charset=utf-8' });
-                    headers.append('Authorization', 'Bearer ' + user.externalAccessToken);
+                    headers.append('Authorization', "Bearer " + user.externalAccessToken);
                     //	headers.append('Access-Control-Allow-Origin', '*');
                     var options = new http_1.RequestOptions({ headers: headers });
                     var json = JSON.stringify(user);
