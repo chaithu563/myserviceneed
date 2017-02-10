@@ -29,9 +29,10 @@ namespace MSNServiceApi
             HttpConfiguration config = new HttpConfiguration();
 
             ConfigureOAuth(app);
-
+					//	config.EnableCors();
             WebApiConfig.Register(config);
-           // app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+          //  app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+						
             app.UseWebApi(config);
           //  Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Migrations.Configuration>());
 

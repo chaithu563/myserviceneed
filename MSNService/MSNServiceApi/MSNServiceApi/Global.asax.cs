@@ -12,6 +12,11 @@ namespace MSNServiceApi
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+						
         }
+				protected void Application_BeginRequest(object sender, EventArgs e)
+				{
+					//HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+				}
     }
 }

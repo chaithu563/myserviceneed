@@ -8,7 +8,8 @@ System.register([], function (exports_1, context_1) {
             exports_1("MSN_DI_CONFIG", MSN_DI_CONFIG = {
                 oDataEndPoint: 'http://localhost/MSNAdmin/odata',
                 oDataProvider: 'oData',
-                MSNServiceApi: 'http://localhost/MSNServiceApi/api/'
+                MSNServiceApi: 'http://localhost/MSNServiceApi/api/',
+                MSNHost: 'http://localhost/MSNServiceApi/'
             });
         }
     };

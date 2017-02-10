@@ -13,7 +13,8 @@ export class LoginService  {
     userDetails: any = {};
     private config = {
 
-        ServiceApi: MSN_DI_CONFIG.MSNServiceApi
+			ServiceApi: MSN_DI_CONFIG.MSNServiceApi,
+			HostApi: MSN_DI_CONFIG.MSNHost
     };
     constructor(private http: Http) {
 
@@ -86,14 +87,28 @@ export class LoginService  {
 
         // ...using get request
 
-         return this.http.get(this.config.ServiceApi + 'USERINFOes' + '?details=' + JSON.stringify(user))
-            // ...and calling .json() on the response to return data
+         //return this.http.get(this.config.ServiceApi + 'USERINFOes' + '?details=' + JSON.stringify(user))
+           
+         //   .map((res) =>
+               
+         //       res.json()
+
+         //   )
+           
+         //   .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+			let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+			headers.append('Authorization', 'Bearer ' + user.externalAccessToken);
+		//	headers.append('Access-Control-Allow-Origin', '*');
+			let options = new RequestOptions({ headers: headers });
+			var json = JSON.stringify(user);
+			return this.http.post(this.config.HostApi + 'api/Account/RegisterExternal' ,user,options)
+           
             .map((res) =>
-                //JSON.parse(JSON.stringify(res._body))
+               
                 res.json()
 
             )
-            //...errors if any
+           
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 
     

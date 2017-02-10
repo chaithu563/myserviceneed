@@ -28,7 +28,7 @@ namespace MSNServiceApi
 						//																		 "Origin, Content-Type, Accept",
 						//																		 "GET, PUT, POST, DELETE, OPTIONS");
 						//config.EnableCors(enableCorsAttribute);
-						config.EnableCors();
+						//config.EnableCors();
         }
     }
 }

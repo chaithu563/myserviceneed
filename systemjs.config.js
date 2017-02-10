@@ -41,7 +41,8 @@
       'ng2-slimscroll': 'npm:ng2-slimscroll',
       'underscore': 'npm:underscore/underscore.js',
       "ng2-modal": "node_modules/ng2-modal",
-      "angular-google-signin": "node_modules/angular-google-signin"
+      "angular-google-signin": "node_modules/angular-google-signin",
+      "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

@@ -30,6 +30,7 @@
     "angular-google-signin": "^0.1.5",
     "angular-in-memory-web-api": "~0.1.15",
     "angular2-google-maps": "^0.17.0",
+    "angular2-jwt": "^0.1.28",
     "angular2-polyfill": "0.0.32",
     "bootstrap": "^3.3.7",
     "bootstrap-datepicker": "^1.6.4",

@@ -16,9 +16,11 @@ using Microsoft.Owin.Security.OAuth;
 using MSNServiceApi.Models;
 using MSNServiceApi.Providers;
 using MSNServiceApi.Results;
+using System.Web.Http.Cors;
 
 namespace MSNServiceApi.Controllers
 {
+	[EnableCors("*", "*", "PUT,POST")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -341,6 +343,7 @@ namespace MSNServiceApi.Controllers
         }
 
         // POST api/Account/RegisterExternal
+			[EnableCors("*", "*", "PUT,POST")]
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]

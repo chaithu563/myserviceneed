@@ -19,7 +19,7 @@ export class LoginComponent implements AfterViewInit {
     categories: any;
     cities: any;
     UserCity: string;
-
+		facebooktoken: string;
     declare const gapi: any;
     public auth2: any;
     myGoogleClientId: string = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
@@ -62,10 +62,12 @@ export class LoginComponent implements AfterViewInit {
                     console.log('Email: ' + profile.getEmail());
                     //YOUR CODE HERE
                    that.validateSocialLoginDetails({
-                        name:profile.getName(),
+										 userName: profile.getName(),
+										 externalAccessToken: googleUser.getAuthResponse().id_token,
                         email: profile.getEmail(),
                         logintype: 1,
                         phone: "",
+												provider:"google"
                     });
                     that.myLoginModal.close();
 
@@ -94,7 +96,7 @@ export class LoginComponent implements AfterViewInit {
                 console.log(response);
                 if (response.status === 'connected') {
 
-
+									_this.facebooktoken = response.authResponse.accessToken;
                     _this.fetchFacebookUserDetails();
 
                 }
@@ -106,7 +108,7 @@ export class LoginComponent implements AfterViewInit {
                             console.log(response);
                             if (response.status === 'connected') {
 
-
+															_this.facebooktoken=response.authResponse.accessToken;
                                 _this.fetchFacebookUserDetails();
                             }
 
@@ -136,11 +138,13 @@ export class LoginComponent implements AfterViewInit {
 
             console.log(response);
             _this.validateSocialLoginDetails({
-                name: response.name,
+							userName: response.name,
+							externalAccessToken:_this.facebooktoken,
                 email: response.email,
                 gender: response.gender,
                 phone:"",
-                logintype: 2
+                logintype: 2,
+								provider: "facebook"
             });
             _this.myLoginModal.close();
         },

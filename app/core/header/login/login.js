@@ -65,10 +65,12 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             console.log('Email: ' + profile.getEmail());
                             //YOUR CODE HERE
                             that.validateSocialLoginDetails({
-                                name: profile.getName(),
+                                userName: profile.getName(),
+                                externalAccessToken: googleUser.getAuthResponse().id_token,
                                 email: profile.getEmail(),
                                 logintype: 1,
                                 phone: "",
+                                provider: "google"
                             });
                             that.myLoginModal.close();
                         }, function (error) {
@@ -86,12 +88,14 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.loginService.getFacebookLoginStatus().then(function (response) {
                         console.log(response);
                         if (response.status === 'connected') {
+                            _this.facebooktoken = response.authResponse.accessToken;
                             _this.fetchFacebookUserDetails();
                         }
                         else {
                             _this.loginService.facebookLogin(null).then(function (response) {
                                 console.log(response);
                                 if (response.status === 'connected') {
+                                    _this.facebooktoken = response.authResponse.accessToken;
                                     _this.fetchFacebookUserDetails();
                                 }
                                 else {
@@ -106,11 +110,13 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.loginService.fetchFacebookUserDetails().then(function (response) {
                         console.log(response);
                         _this.validateSocialLoginDetails({
-                            name: response.name,
+                            userName: response.name,
+                            externalAccessToken: _this.facebooktoken,
                             email: response.email,
                             gender: response.gender,
                             phone: "",
-                            logintype: 2
+                            logintype: 2,
+                            provider: "facebook"
                         });
                         _this.myLoginModal.close();
                     }, function (error) {

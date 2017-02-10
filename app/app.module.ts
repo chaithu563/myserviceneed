@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { NKDatetimeModule } from 'ng2-datetime';
 import {Ng2CloudinaryModule} from 'ng2-cloudinary';
 import {ModalModule} from "ng2-modal";
-
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 @NgModule({
     imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
 			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule, NKDatetimeModule, Ng2CloudinaryModule, ModalModule
@@ -26,7 +26,7 @@ import {ModalModule} from "ng2-modal";
 		})
 		],
     declarations: [...myComponents, ...myDirectives],
-	 providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+		providers: [{ provide: APP_BASE_HREF, useValue: '/' }, ...AUTH_PROVIDERS],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
