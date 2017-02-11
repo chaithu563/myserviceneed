@@ -101,7 +101,7 @@ export class LoginService  {
 		//	headers.append('Access-Control-Allow-Origin', '*');
 			let options = new RequestOptions({ headers: headers });
 			var json = JSON.stringify(user);
-			return this.http.post(this.config.HostApi + 'api/Account/RegisterExternal' ,user,options)
+			return this.http.post(this.config.HostApi + 'api/Account/RegisterExternalToken' ,user,options)
            
             .map((res) =>
                

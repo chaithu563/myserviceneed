@@ -17,6 +17,7 @@ using MSNServiceApi.Models;
 using MSNServiceApi.Providers;
 using MSNServiceApi.Results;
 using System.Web.Http.Cors;
+using Newtonsoft.Json.Linq;
 
 namespace MSNServiceApi.Controllers
 {
@@ -377,6 +378,97 @@ namespace MSNServiceApi.Controllers
             return Ok();
         }
 
+        // POST api/Account/RegisterExternalToken
+        [OverrideAuthentication]
+        [AllowAnonymous]
+        [Route("RegisterExternalToken")]
+        public async Task<IHttpActionResult> RegisterExternalToken(RegisterExternalBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ExternalLoginData externalLogin = await ExternalLoginData.FromToken(model.Provider, model.ExternalAccessToken);
+
+
+
+            if (externalLogin == null)
+            {
+                return InternalServerError();
+            }
+
+            if (externalLogin.LoginProvider != model.Provider)
+            {
+                Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                return InternalServerError();
+            }
+
+            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+                externalLogin.ProviderKey));
+
+            bool hasRegistered = user != null;
+            ClaimsIdentity identity = null;
+            IdentityResult result;
+
+            if (hasRegistered)
+            {
+                identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
+                IEnumerable<Claim> claims = externalLogin.GetClaims();
+                identity.AddClaims(claims);
+                Authentication.SignIn(identity);
+            }
+            else
+            {
+                user = new ApplicationUser() { Id = Guid.NewGuid().ToString(), UserName = model.UserName, Email = model.Email };
+
+                result = await UserManager.CreateAsync(user);
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                var info = new ExternalLoginInfo()
+                {
+                    DefaultUserName = model.Email,
+                    Login = new UserLoginInfo(model.Provider, externalLogin.ProviderKey)
+                };
+
+                result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
+                IEnumerable<Claim> claims = externalLogin.GetClaims();
+                identity.AddClaims(claims);
+                Authentication.SignIn(identity);
+            }
+
+            AuthenticationTicket ticket = new AuthenticationTicket(identity, new AuthenticationProperties());
+            var currentUtc = new Microsoft.Owin.Infrastructure.SystemClock().UtcNow;
+            ticket.Properties.IssuedUtc = currentUtc;
+            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(365));
+            var accessToken = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+            Request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+
+
+            // Create the response building a JSON object that mimics exactly the one issued by the default /Token endpoint
+            JObject token = new JObject(
+                new JProperty("userName", user.UserName),
+                new JProperty("id", user.Id),
+                new JProperty("access_token", accessToken),
+                new JProperty("token_type", "bearer"),
+                new JProperty("expires_in", TimeSpan.FromDays(365).TotalSeconds.ToString()),
+                new JProperty(".issued", currentUtc.ToString("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'")),
+                new JProperty(".expires", currentUtc.Add(TimeSpan.FromDays(365)).ToString("ddd, dd MMM yyyy HH:mm:ss 'GMT'"))
+            );
+            return Ok(token);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -442,6 +534,7 @@ namespace MSNServiceApi.Controllers
                 return claims;
             }
 
+
             public static ExternalLoginData FromIdentity(ClaimsIdentity identity)
             {
                 if (identity == null)
@@ -469,7 +562,97 @@ namespace MSNServiceApi.Controllers
                     UserName = identity.FindFirstValue(ClaimTypes.Name)
                 };
             }
-        }
+
+            public static async Task<ExternalLoginData> FromToken(string provider, string accessToken)
+            {
+
+                string verifyTokenEndPoint = "", verifyAppEndpoint = "";
+
+                if (provider == "Facebook")
+                {
+                    verifyTokenEndPoint = string.Format("https://graph.facebook.com/me?access_token={0}", accessToken);
+                    verifyAppEndpoint = string.Format("https://graph.facebook.com/app?access_token={0}", accessToken);
+                }
+                else if (provider == "Google")
+                {
+                    // not implemented yet
+                  //  return null;
+                    verifyTokenEndPoint = string.Format("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token={0}", accessToken);
+                    verifyAppEndpoint = string.Format("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token={0}", accessToken);
+                }
+                else
+                {
+                    return null;
+                }
+
+                HttpClient client = new HttpClient();
+                Uri uri = new Uri(verifyTokenEndPoint);
+                HttpResponseMessage response = await client.GetAsync(uri);
+                ClaimsIdentity identity = null;
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    dynamic iObj = (Newtonsoft.Json.Linq.JObject)Newtonsoft.Json.JsonConvert.DeserializeObject(content);
+
+                    uri = new Uri(verifyAppEndpoint);
+                    response = await client.GetAsync(uri);
+                    content = await response.Content.ReadAsStringAsync();
+                    dynamic appObj = (Newtonsoft.Json.Linq.JObject)Newtonsoft.Json.JsonConvert.DeserializeObject(content);
+
+                    identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
+
+                    if (provider == "Facebook")
+                    {
+                        if (appObj["id"] != Startup.facebookAuthOptions.AppId)
+                        {
+                            return null;
+                        }
+
+                        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, iObj["id"].ToString(), ClaimValueTypes.String, "Facebook", "Facebook"));
+
+                    }
+                    else if (provider == "Google")
+                    {
+                        //not implemented yet
+
+                        if (appObj["azp"] != Startup.googleAuthOptions.ClientId)
+                        {
+                            return null;
+                        }
+
+                        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, iObj["azp"].ToString(), ClaimValueTypes.String, "Google", "Google"));
+
+                    }
+
+                }
+
+                if (identity == null)
+                {
+                    return null;
+                }
+
+                Claim providerKeyClaim = identity.FindFirst(ClaimTypes.NameIdentifier);
+
+                if (providerKeyClaim == null || String.IsNullOrEmpty(providerKeyClaim.Issuer) || String.IsNullOrEmpty(providerKeyClaim.Value))
+                {
+                    return null;
+                }
+
+                if (providerKeyClaim.Issuer == ClaimsIdentity.DefaultIssuer)
+                {
+                    return null;
+                }
+                return new ExternalLoginData
+                {
+                    LoginProvider = providerKeyClaim.Issuer,
+                    ProviderKey = providerKeyClaim.Value,
+                    UserName = identity.FindFirstValue(ClaimTypes.Name)
+                };
+            }
+        
+
+
+    }
 
         private static class RandomOAuthStateGenerator
         {

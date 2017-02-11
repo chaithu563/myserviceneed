@@ -21,7 +21,7 @@ namespace MSNServiceApi.Migrations
                 return;
             }
 
-            context.Clients.AddRange(BuildClientsList());
+           // context.Clients.AddRange(BuildClientsList());
             context.SaveChanges();
         }
 

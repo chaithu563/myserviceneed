@@ -46,8 +46,8 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     gapi.load('auth2', function () {
                         that.auth2 = gapi.auth2.init({
                             client_id: '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com',
-                            cookiepolicy: 'single_host_origin',
-                            scope: 'profile email'
+                            // cookiepolicy: 'single_host_origin',
+                            scope: 'profile email openid'
                         });
                         that.attachSignin(document.getElementById('googleBtn'));
                     });
@@ -58,7 +58,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         this.auth2.attachClickHandler(element, {}, function (googleUser) {
                             var profile = googleUser.getBasicProfile();
                             console.log(profile);
-                            console.log('Token || ' + googleUser.getAuthResponse().id_token);
+                            console.log('Token || ' + googleUser.getAuthResponse().access_token);
                             console.log('ID: ' + profile.getId());
                             console.log('Name: ' + profile.getName());
                             console.log('Image URL: ' + profile.getImageUrl());
@@ -66,7 +66,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             //YOUR CODE HERE
                             that.validateSocialLoginDetails({
                                 UserName: profile.getName(),
-                                ExternalAccessToken: googleUser.getAuthResponse().id_token,
+                                ExternalAccessToken: googleUser.getAuthResponse().access_token,
                                 Email: profile.getEmail(),
                                 logintype: 1,
                                 phone: "",

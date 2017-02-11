@@ -14,7 +14,6 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\roslyn\VBCSCompiler.
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\MSNServiceApi.dll.config
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\MSNServiceApi.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\MSNServiceApi.pdb
-C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Cors.Fakes.fakesconfig
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\EntityFramework.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\EntityFramework.SqlServer.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.ApplicationInsights.dll
@@ -65,7 +64,6 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csproj.GenerateResource.Cache
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
-C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojFakesResolveAssemblyReference.cache
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.AI.Agent.Intercept.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.AI.DependencyCollector.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -182,3 +180,6 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNS
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojFakesResolveAssemblyReference.cache
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Cors.Fakes.fakesconfig

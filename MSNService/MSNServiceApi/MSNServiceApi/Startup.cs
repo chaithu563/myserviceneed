@@ -82,7 +82,7 @@ namespace MSNServiceApi
             {
                 AppId = "1520026344681982",
                 AppSecret = "17c3ea26f2daa2f61b17b4cb3cf6ca19",
-                Provider = new FacebookAuthProvider()
+                Provider = new FacebookAuthenticationProvider()
             };
             app.UseFacebookAuthentication(facebookAuthOptions);
 

@@ -96,7 +96,7 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                     //	headers.append('Access-Control-Allow-Origin', '*');
                     var options = new http_1.RequestOptions({ headers: headers });
                     var json = JSON.stringify(user);
-                    return this.http.post(this.config.HostApi + 'api/Account/RegisterExternal', user, options)
+                    return this.http.post(this.config.HostApi + 'api/Account/RegisterExternalToken', user, options)
                         .map(function (res) {
                         return res.json();
                     })

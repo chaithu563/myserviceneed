@@ -56,8 +56,19 @@ namespace MSNServiceApi.Models
 
 		public string Email { get; set; }
 	}
-
-	public class ParsedExternalAccessToken
+    public class RegisterExternalTokenBindingModel
+    {
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Required]
+        [Display(Name = "Token")]
+        public string Token { get; set; }
+        [Required]
+        [Display(Name = "Provider")]
+        public string Provider { get; set; }
+    }
+    public class ParsedExternalAccessToken
 	{
 		public string user_id { get; set; }
 		public string app_id { get; set; }
