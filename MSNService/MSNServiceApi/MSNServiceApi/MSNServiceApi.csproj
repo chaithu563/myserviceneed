@@ -354,6 +354,7 @@
     <Compile Include="Providers\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="validation\CustomUserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

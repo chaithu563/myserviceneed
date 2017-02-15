@@ -18,7 +18,7 @@ using MSNServiceApi.Providers;
 using MSNServiceApi.Results;
 using System.Web.Http.Cors;
 using Newtonsoft.Json.Linq;
-
+using MSNServiceApi.validation;
 namespace MSNServiceApi.Controllers
 {
 	[EnableCors("*", "*", "PUT,POST")]
@@ -37,6 +37,7 @@ namespace MSNServiceApi.Controllers
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
+						UserManager.UserValidator = new CustomUserValidator<ApplicationUser>(UserManager);
             AccessTokenFormat = accessTokenFormat;
         }
 
@@ -434,7 +435,7 @@ namespace MSNServiceApi.Controllers
                     Login = new UserLoginInfo(model.Provider, externalLogin.ProviderKey)
                 };
 
-                result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                result =  UserManager.AddLogin(user.Id, info.Login);
                 if (!result.Succeeded)
                 {
                     return GetErrorResult(result);
