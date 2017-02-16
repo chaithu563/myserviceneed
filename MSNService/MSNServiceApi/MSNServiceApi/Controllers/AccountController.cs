@@ -424,27 +424,51 @@ namespace MSNServiceApi.Controllers
                 user = new ApplicationUser() { Id = Guid.NewGuid().ToString(), UserName = model.UserName, Email = model.Email };
 
                 result = await UserManager.CreateAsync(user);
-                if (!result.Succeeded)
+                if (!result.Succeeded && UserManager.FindByEmail(model.Email) != null)
                 {
+                    var usr = await UserManager.FindByEmailAsync(model.Email);
+
+                    result = await UserManager.AddLoginAsync(usr.Id, new UserLoginInfo(externalLogin.LoginProvider,
+                externalLogin.ProviderKey));
+
+                    identity = await UserManager.CreateIdentityAsync(usr, OAuthDefaults.AuthenticationType);
+                   // IEnumerable<Claim> claims = externalLogin.GetClaims();
+                  //  identity.AddClaims(claims);
+                    Authentication.SignIn(identity);
+
+
+                    // return GetErrorResult(result);
+                }
+                else if (!result.Succeeded && UserManager.FindByEmail(model.Email) == null)
+                {
+
                     return GetErrorResult(result);
                 }
-
-                var info = new ExternalLoginInfo()
+                else
                 {
-                    DefaultUserName = model.Email,
-                    Login = new UserLoginInfo(model.Provider, externalLogin.ProviderKey)
-                };
 
-                result =  UserManager.AddLogin(user.Id, info.Login);
-                if (!result.Succeeded)
-                {
-                    return GetErrorResult(result);
+
+
+                    var info = new ExternalLoginInfo()
+                    {
+                        DefaultUserName = model.Email,
+                        Login = new UserLoginInfo(model.Provider, externalLogin.ProviderKey)
+                    };
+
+                    result = UserManager.AddLogin(user.Id, info.Login);
+                    if (!result.Succeeded)
+                    {
+                        return GetErrorResult(result);
+                    }
+
+                    identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
+                    IEnumerable<Claim> claims = externalLogin.GetClaims();
+                    identity.AddClaims(claims);
+                    Authentication.SignIn(identity);
                 }
 
-                identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
-                IEnumerable<Claim> claims = externalLogin.GetClaims();
-                identity.AddClaims(claims);
-                Authentication.SignIn(identity);
+                  
+                
             }
 
             AuthenticationTicket ticket = new AuthenticationTicket(identity, new AuthenticationProperties());
