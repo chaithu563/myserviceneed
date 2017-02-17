@@ -33,14 +33,15 @@ export class LoginComponent implements AfterViewInit {
     initialLoad() {
 
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-
+				this.isLoggedIn = false;
+				if (currentUser)
         this.loginService.loginUserInfo(currentUser).subscribe(
             user=> {
-                if (user.HasRegistered)
+							if (user.HasRegistered) {
                 this.isLoggedIn = true;
                 this.user = user;
                 console.log(user);
+							}
             }
 
 
@@ -48,10 +49,11 @@ export class LoginComponent implements AfterViewInit {
 
     }
 
-    logout(): void {
+    logOutClick(): void {
         // clear token remove user from local storage to log user out
        // this.token = null;
-        localStorage.removeItem('currentUser');
+			localStorage.removeItem('currentUser');
+			this.initialLoad();
     }
 
     ngAfterViewInit() {
@@ -188,6 +190,7 @@ export class LoginComponent implements AfterViewInit {
                 //need to handle after login success in UI
 
                 localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
+								this.initialLoad();
             },
             err => {
                 // Log errors if any

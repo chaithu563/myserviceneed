@@ -1,10 +1,19 @@
 ﻿<div>
 
-	<div *ngIf="isLoggedIn" class="loggedinuser">
+	<div *ngIf="isLoggedIn && user!=null " class="loggedinuser">
 
-		{{user.Email}}
+		<div class="dropdown" dropdown>
+			<a dropdown-open class="dropdown-toggle"> {{user.Email}} <span class="glyphicon glyphicon-menu-down"> </span></a>
+			<ul class="dropdown-menu">
 
-	</div>
+				<li> <a href="# ">Requested Needs  </a></li>
+				<li> <a href="# ">Your Works  </a></li>
+
+				<li><a (click)="logOutClick()"><i class="fa fa-twitter"></i> Logout </a></li>
+
+			</ul>
+			</div>
+		</div>
 	<div *ngIf="!isLoggedIn" class="notloggedinuser">
         <div >
        

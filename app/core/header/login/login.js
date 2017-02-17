@@ -44,17 +44,21 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 LoginComponent.prototype.initialLoad = function () {
                     var _this = this;
                     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                    this.loginService.loginUserInfo(currentUser).subscribe(function (user) {
-                        if (user.HasRegistered)
-                            _this.isLoggedIn = true;
-                        _this.user = user;
-                        console.log(user);
-                    });
+                    this.isLoggedIn = false;
+                    if (currentUser)
+                        this.loginService.loginUserInfo(currentUser).subscribe(function (user) {
+                            if (user.HasRegistered) {
+                                _this.isLoggedIn = true;
+                                _this.user = user;
+                                console.log(user);
+                            }
+                        });
                 };
-                LoginComponent.prototype.logout = function () {
+                LoginComponent.prototype.logOutClick = function () {
                     // clear token remove user from local storage to log user out
                     // this.token = null;
                     localStorage.removeItem('currentUser');
+                    this.initialLoad();
                 };
                 LoginComponent.prototype.ngAfterViewInit = function () {
                 };
@@ -141,10 +145,12 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     });
                 };
                 LoginComponent.prototype.validateSocialLoginDetails = function (details) {
+                    var _this = this;
                     this.loginService.validateSocialLoginDetails(details).subscribe(function (user) {
                         console.log(user);
                         //need to handle after login success in UI
                         localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
+                        _this.initialLoad();
                     }, function (err) {
                         // Log errors if any
                         console.log(err);
