@@ -34,8 +34,8 @@ namespace MSNServiceApi.Controllers
 				x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 				x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 				x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-				x.USERINFO.UserName,
-				x.USERINFO.PHONE
+				x.AspNetUser.UserName,
+				x.AspNetUser.PhoneNumber
 			});
 
 			return result;
@@ -126,8 +126,8 @@ namespace MSNServiceApi.Controllers
 						x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTDATE,
 						x.USERSERVICETIMERECORD.SERVICESTARTTIME,
-						x.USERINFO.UserName,
-						x.USERINFO.PHONE
+						x.AspNetUser.UserName,
+						x.AspNetUser.PhoneNumber
 					});
 
 
@@ -213,10 +213,10 @@ namespace MSNServiceApi.Controllers
 			//	time.SERVICEENDTIME = null;
 			ob.USERSERVICETIMERECORD = time;
 
-			USERINFO user = new USERINFO();
+			AspNetUser user = new AspNetUser();
 			user.UserName = details["username"];
-			user.PHONE = details["mobile"];
-			ob.USERINFO = user;
+			user.PhoneNumber = details["mobile"];
+			ob.AspNetUser = user;
 
 
 			var uploadedimages = details["uploadedimages"];

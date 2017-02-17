@@ -59,6 +59,8 @@ CREATE TABLE [dbo].[AspNetUsers](
 	[LockoutEnabled] [bit] NOT NULL,
 	[AccessFailedCount] [int] NOT NULL,
 	[UserName] [nvarchar](256) NOT NULL,
+	GENDER BIT,
+	LASTUSEDADDRESS varchar(max),
 	USERLOCATIONLATITUDE float  NULL, 
     USERLOCATIONLONGITUDE float  NULL
  CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED 
@@ -173,22 +175,22 @@ EMAIL varchar(60),
 PHONE varchar(20),
 PWD varchar(MAX)
 );
-CREATE TABLE USERINFO
-(
-ID numeric IDENTITY(1,1) PRIMARY KEY,
-UserName varchar(60),
-Password varchar(MAX),
-EMAIL varchar(60),
-GENDER BIT,
-PHONE varchar(20),
-CITYID numeric foreign key references CITY(ID),-- need to think why we need again when we have city id
-CITYAREAID numeric foreign key references CITYAREA(ID),
-LOGINTYPEID int foreign key references SOCIALLOGIN(ID),
-CURRENTLOCATION varchar(max),
-USERLOCATIONLATITUDE float  NULL, 
-USERLOCATIONLONGITUDE float  NULL
+--CREATE TABLE USERINFO
+--(
+--ID numeric IDENTITY(1,1) PRIMARY KEY,
+--UserName varchar(60),
+--Password varchar(MAX),
+--EMAIL varchar(60),
+--GENDER BIT,
+--PHONE varchar(20),
+--CITYID numeric foreign key references CITY(ID),-- need to think why we need again when we have city id
+--CITYAREAID numeric foreign key references CITYAREA(ID),
+--LOGINTYPEID int foreign key references SOCIALLOGIN(ID),
+--CURRENTLOCATION varchar(max),
+--USERLOCATIONLATITUDE float  NULL, 
+--USERLOCATIONLONGITUDE float  NULL
 
-);
+--);
 
 CREATE TABLE Client
 (
@@ -237,7 +239,7 @@ DESCRIPTION varchar(MAX)
 CREATE TABLE USERMEMBERSHIP
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
+USERID nvarchar(128) foreign key references AspNetUsers(Id),
 MEMBERSHIPID numeric foreign key references MEMBERSHIP(ID),
 STARTDATE datetime,
 ENDDATE datetime,
@@ -247,14 +249,14 @@ COMMENTS varchar(MAX) --any user level rule breaks/requests made then admin will
 CREATE TABLE USERFUNDS
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
+USERID nvarchar(128) foreign key references AspNetUsers(Id),
 BALANCE money 
 )
 
 CREATE TABLE USERBIDS
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
+USERID nvarchar(128) foreign key references AspNetUsers(Id),
 BIDS int --available bids for user
 )
 
@@ -276,7 +278,7 @@ SERVICECATEGORYID numeric foreign key references SERVICECATEGORY(ID)
 CREATE TABLE USERSERVICE --if user provides any service then we will link
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
+USERID nvarchar(128) foreign key references AspNetUsers(Id),
 SERVICECATEGORYID numeric foreign key references SERVICECATEGORY(ID),
 SERVICESUBCATEGORYID numeric foreign key references SERVICESUBCATEGORY(ID)
 )
@@ -315,7 +317,7 @@ SERVICEENDTIME TIME  --if any specific end time of day
 CREATE TABLE USERSERVICENEED  ---User service request info 
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
+USERID nvarchar(128) foreign key references AspNetUsers(Id),
 SERVICELOCATIONADDRESS varchar(max),
 SERVICETITLE varchar(300),
 SERVICEDESCRIPTION varchar(MAX),
@@ -349,7 +351,7 @@ FILEPUBLICKKEY varchar(50)  -- clodinary public key
 CREATE TABLE SERVICEBID  ---User service BID info 
 (
 ID numeric IDENTITY(1,1) PRIMARY KEY,
-USERID numeric foreign key references USERINFO(ID),
+USERID nvarchar(128) foreign key references AspNetUsers(Id),
 USERSERVICENEEDID numeric foreign key references USERSERVICENEED(ID),
 BIDTITLE varchar(300),
 BIDDESCRIPTION varchar(MAX),

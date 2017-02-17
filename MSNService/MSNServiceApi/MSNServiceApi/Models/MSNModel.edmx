@@ -75,6 +75,8 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="GENDER" Type="bit" />
+          <Property Name="LASTUSEDADDRESS" Type="varchar(max)" />
           <Property Name="USERLOCATIONLATITUDE" Type="float" />
           <Property Name="USERLOCATIONLONGITUDE" Type="float" />
         </EntityType>
@@ -137,7 +139,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="128" />
           <Property Name="USERSERVICENEEDID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="BIDTITLE" Type="varchar" MaxLength="300" />
           <Property Name="BIDDESCRIPTION" Type="varchar(max)" />
@@ -199,7 +201,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="128" />
           <Property Name="BIDS" Type="int" />
         </EntityType>
         <EntityType Name="USERFUNDS">
@@ -207,32 +209,15 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="128" />
           <Property Name="BALANCE" Type="money" />
-        </EntityType>
-        <EntityType Name="USERINFO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="60" />
-          <Property Name="Password" Type="varchar(max)" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="60" />
-          <Property Name="GENDER" Type="bit" />
-          <Property Name="PHONE" Type="varchar" MaxLength="20" />
-          <Property Name="CITYID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="CITYAREAID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="LOGINTYPEID" Type="int" />
-          <Property Name="CURRENTLOCATION" Type="varchar(max)" />
-          <Property Name="USERLOCATIONLATITUDE" Type="float" />
-          <Property Name="USERLOCATIONLONGITUDE" Type="float" />
         </EntityType>
         <EntityType Name="USERMEMBERSHIP">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="128" />
           <Property Name="MEMBERSHIPID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="STARTDATE" Type="datetime" />
           <Property Name="ENDDATE" Type="datetime" />
@@ -243,7 +228,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="128" />
           <Property Name="SERVICECATEGORYID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SERVICESUBCATEGORYID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
@@ -260,7 +245,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="128" />
           <Property Name="SERVICELOCATIONADDRESS" Type="varchar(max)" />
           <Property Name="SERVICETITLE" Type="varchar" MaxLength="300" />
           <Property Name="SERVICEDESCRIPTION" Type="varchar(max)" />
@@ -308,7 +293,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client__CITYAREA__276EDEB3">
+        <Association Name="FK__Client__CITYAREA__20C1E124">
           <End Role="CITYAREA" Type="Self.CITYAREA" Multiplicity="0..1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,7 +305,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client__LOGINTYP__286302EC">
+        <Association Name="FK__Client__LOGINTYP__21B6055D">
           <End Role="SOCIALLOGIN" Type="Self.SOCIALLOGIN" Multiplicity="0..1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
@@ -332,7 +317,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__BIDID__797309D9">
+        <Association Name="FK__SERVICEBI__BIDID__72C60C4A">
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="0..1" />
           <End Role="SERVICEBIDNEEDFILES" Type="Self.SERVICEBIDNEEDFILES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -344,19 +329,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__USERI__73BA3083">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+        <Association Name="FK__SERVICEBI__USERI__6D0D32F4">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="SERVICEBID">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__USERS__74AE54BC">
+        <Association Name="FK__SERVICEBI__USERS__6E01572D">
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="0..1" />
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
           <ReferentialConstraint>
@@ -368,7 +353,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICESU__SERVI__47DBAE45">
+        <Association Name="FK__SERVICESU__SERVI__412EB0B6">
           <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
           <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -380,67 +365,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERBIDS__USERID__3F466844">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+        <Association Name="FK__USERBIDS__USERID__38996AB5">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="USERBIDS" Type="Self.USERBIDS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="USERBIDS">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERFUNDS__USERI__3A81B327">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+        <Association Name="FK__USERFUNDS__USERI__33D4B598">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="USERFUNDS" Type="Self.USERFUNDS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="USERFUNDS">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERINFO__CITYAR__21B6055D">
-          <End Role="CITYAREA" Type="Self.CITYAREA" Multiplicity="0..1" />
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CITYAREA">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERINFO">
-              <PropertyRef Name="CITYAREAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERINFO__CITYID__20C1E124">
-          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CITY">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERINFO">
-              <PropertyRef Name="CITYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERINFO__LOGINT__22AA2996">
-          <End Role="SOCIALLOGIN" Type="Self.SOCIALLOGIN" Multiplicity="0..1" />
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SOCIALLOGIN">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERINFO">
-              <PropertyRef Name="LOGINTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERMEMBE__MEMBE__35BCFE0A">
+        <Association Name="FK__USERMEMBE__MEMBE__2F10007B">
           <End Role="MEMBERSHIP" Type="Self.MEMBERSHIP" Multiplicity="0..1" />
           <End Role="USERMEMBERSHIP" Type="Self.USERMEMBERSHIP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -452,19 +401,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERMEMBE__USERI__34C8D9D1">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+        <Association Name="FK__USERMEMBE__USERI__2E1BDC42">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="USERMEMBERSHIP" Type="Self.USERMEMBERSHIP" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="USERMEMBERSHIP">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__ALLOC__7A672E12">
+        <Association Name="FK__USERSERVI__ALLOC__73BA3083">
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -476,7 +425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__4D94879B">
+        <Association Name="FK__USERSERVI__SERVI__46E78A0C">
           <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
           <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -488,7 +437,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__4E88ABD4">
+        <Association Name="FK__USERSERVI__SERVI__47DBAE45">
           <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="0..1" />
           <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -500,7 +449,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__6477ECF3">
+        <Association Name="FK__USERSERVI__SERVI__5DCAEF64">
           <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -512,7 +461,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__656C112C">
+        <Association Name="FK__USERSERVI__SERVI__5EBF139D">
           <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -524,7 +473,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__66603565">
+        <Association Name="FK__USERSERVI__SERVI__5FB337D6">
           <End Role="SERVICESTATE" Type="Self.SERVICESTATE" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -536,7 +485,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__6754599E">
+        <Association Name="FK__USERSERVI__SERVI__60A75C0F">
           <End Role="SERVICETIMETYPE" Type="Self.SERVICETIMETYPE" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -548,7 +497,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__68487DD7">
+        <Association Name="FK__USERSERVI__SERVI__619B8048">
           <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -560,7 +509,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__693CA210">
+        <Association Name="FK__USERSERVI__SERVI__628FA481">
           <End Role="CITYAREA" Type="Self.CITYAREA" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -572,7 +521,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__6EF57B66">
+        <Association Name="FK__USERSERVI__SERVI__68487DD7">
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="0..1" />
           <End Role="USERSERVICENEEDFILES" Type="Self.USERSERVICENEEDFILES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -584,31 +533,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__USERI__4CA06362">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+        <Association Name="FK__USERSERVI__USERI__45F365D3">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="USERSERVICE">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__USERI__6383C8BA">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+        <Association Name="FK__USERSERVI__USERI__5CD6CB2B">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="USERSERVICENEED">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__USERS__534D60F1">
+        <Association Name="FK__USERSERVI__USERS__4CA06362">
           <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="0..1" />
           <End Role="USERSERVICEFILES" Type="Self.USERSERVICEFILES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -620,7 +569,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__USERS__6A30C649">
+        <Association Name="FK__USERSERVI__USERS__6383C8BA">
           <End Role="USERSERVICETIMERECORD" Type="Self.USERSERVICETIMERECORD" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -710,7 +659,6 @@
           <EntitySet Name="SOCIALLOGIN" EntityType="Self.SOCIALLOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERBIDS" EntityType="Self.USERBIDS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERFUNDS" EntityType="Self.USERFUNDS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USERINFO" EntityType="Self.USERINFO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERMEMBERSHIP" EntityType="Self.USERMEMBERSHIP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERSERVICE" EntityType="Self.USERSERVICE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERSERVICEFILES" EntityType="Self.USERSERVICEFILES" Schema="dbo" store:Type="Tables" />
@@ -721,111 +669,99 @@
             <End Role="CITY" EntitySet="CITY" />
             <End Role="CITYAREA" EntitySet="CITYAREA" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client__CITYAREA__276EDEB3" Association="Self.FK__Client__CITYAREA__276EDEB3">
+          <AssociationSet Name="FK__Client__CITYAREA__20C1E124" Association="Self.FK__Client__CITYAREA__20C1E124">
             <End Role="CITYAREA" EntitySet="CITYAREA" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client__LOGINTYP__286302EC" Association="Self.FK__Client__LOGINTYP__286302EC">
+          <AssociationSet Name="FK__Client__LOGINTYP__21B6055D" Association="Self.FK__Client__LOGINTYP__21B6055D">
             <End Role="SOCIALLOGIN" EntitySet="SOCIALLOGIN" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__BIDID__797309D9" Association="Self.FK__SERVICEBI__BIDID__797309D9">
+          <AssociationSet Name="FK__SERVICEBI__BIDID__72C60C4A" Association="Self.FK__SERVICEBI__BIDID__72C60C4A">
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
             <End Role="SERVICEBIDNEEDFILES" EntitySet="SERVICEBIDNEEDFILES" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERI__73BA3083" Association="Self.FK__SERVICEBI__USERI__73BA3083">
-            <End Role="USERINFO" EntitySet="USERINFO" />
+          <AssociationSet Name="FK__SERVICEBI__USERI__6D0D32F4" Association="Self.FK__SERVICEBI__USERI__6D0D32F4">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERS__74AE54BC" Association="Self.FK__SERVICEBI__USERS__74AE54BC">
+          <AssociationSet Name="FK__SERVICEBI__USERS__6E01572D" Association="Self.FK__SERVICEBI__USERS__6E01572D">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICESU__SERVI__47DBAE45" Association="Self.FK__SERVICESU__SERVI__47DBAE45">
+          <AssociationSet Name="FK__SERVICESU__SERVI__412EB0B6" Association="Self.FK__SERVICESU__SERVI__412EB0B6">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORY" />
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORY" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERBIDS__USERID__3F466844" Association="Self.FK__USERBIDS__USERID__3F466844">
-            <End Role="USERINFO" EntitySet="USERINFO" />
+          <AssociationSet Name="FK__USERBIDS__USERID__38996AB5" Association="Self.FK__USERBIDS__USERID__38996AB5">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="USERBIDS" EntitySet="USERBIDS" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERFUNDS__USERI__3A81B327" Association="Self.FK__USERFUNDS__USERI__3A81B327">
-            <End Role="USERINFO" EntitySet="USERINFO" />
+          <AssociationSet Name="FK__USERFUNDS__USERI__33D4B598" Association="Self.FK__USERFUNDS__USERI__33D4B598">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="USERFUNDS" EntitySet="USERFUNDS" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERINFO__CITYAR__21B6055D" Association="Self.FK__USERINFO__CITYAR__21B6055D">
-            <End Role="CITYAREA" EntitySet="CITYAREA" />
-            <End Role="USERINFO" EntitySet="USERINFO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERINFO__CITYID__20C1E124" Association="Self.FK__USERINFO__CITYID__20C1E124">
-            <End Role="CITY" EntitySet="CITY" />
-            <End Role="USERINFO" EntitySet="USERINFO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERINFO__LOGINT__22AA2996" Association="Self.FK__USERINFO__LOGINT__22AA2996">
-            <End Role="SOCIALLOGIN" EntitySet="SOCIALLOGIN" />
-            <End Role="USERINFO" EntitySet="USERINFO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERMEMBE__MEMBE__35BCFE0A" Association="Self.FK__USERMEMBE__MEMBE__35BCFE0A">
+          <AssociationSet Name="FK__USERMEMBE__MEMBE__2F10007B" Association="Self.FK__USERMEMBE__MEMBE__2F10007B">
             <End Role="MEMBERSHIP" EntitySet="MEMBERSHIP" />
             <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIP" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERMEMBE__USERI__34C8D9D1" Association="Self.FK__USERMEMBE__USERI__34C8D9D1">
-            <End Role="USERINFO" EntitySet="USERINFO" />
+          <AssociationSet Name="FK__USERMEMBE__USERI__2E1BDC42" Association="Self.FK__USERMEMBE__USERI__2E1BDC42">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIP" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__ALLOC__7A672E12" Association="Self.FK__USERSERVI__ALLOC__7A672E12">
+          <AssociationSet Name="FK__USERSERVI__ALLOC__73BA3083" Association="Self.FK__USERSERVI__ALLOC__73BA3083">
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4D94879B" Association="Self.FK__USERSERVI__SERVI__4D94879B">
+          <AssociationSet Name="FK__USERSERVI__SERVI__46E78A0C" Association="Self.FK__USERSERVI__SERVI__46E78A0C">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORY" />
             <End Role="USERSERVICE" EntitySet="USERSERVICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4E88ABD4" Association="Self.FK__USERSERVI__SERVI__4E88ABD4">
+          <AssociationSet Name="FK__USERSERVI__SERVI__47DBAE45" Association="Self.FK__USERSERVI__SERVI__47DBAE45">
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORY" />
             <End Role="USERSERVICE" EntitySet="USERSERVICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__6477ECF3" Association="Self.FK__USERSERVI__SERVI__6477ECF3">
+          <AssociationSet Name="FK__USERSERVI__SERVI__5DCAEF64" Association="Self.FK__USERSERVI__SERVI__5DCAEF64">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORY" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__656C112C" Association="Self.FK__USERSERVI__SERVI__656C112C">
+          <AssociationSet Name="FK__USERSERVI__SERVI__5EBF139D" Association="Self.FK__USERSERVI__SERVI__5EBF139D">
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORY" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__66603565" Association="Self.FK__USERSERVI__SERVI__66603565">
+          <AssociationSet Name="FK__USERSERVI__SERVI__5FB337D6" Association="Self.FK__USERSERVI__SERVI__5FB337D6">
             <End Role="SERVICESTATE" EntitySet="SERVICESTATE" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__6754599E" Association="Self.FK__USERSERVI__SERVI__6754599E">
+          <AssociationSet Name="FK__USERSERVI__SERVI__60A75C0F" Association="Self.FK__USERSERVI__SERVI__60A75C0F">
             <End Role="SERVICETIMETYPE" EntitySet="SERVICETIMETYPE" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__68487DD7" Association="Self.FK__USERSERVI__SERVI__68487DD7">
+          <AssociationSet Name="FK__USERSERVI__SERVI__619B8048" Association="Self.FK__USERSERVI__SERVI__619B8048">
             <End Role="CITY" EntitySet="CITY" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__693CA210" Association="Self.FK__USERSERVI__SERVI__693CA210">
+          <AssociationSet Name="FK__USERSERVI__SERVI__628FA481" Association="Self.FK__USERSERVI__SERVI__628FA481">
             <End Role="CITYAREA" EntitySet="CITYAREA" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__6EF57B66" Association="Self.FK__USERSERVI__SERVI__6EF57B66">
+          <AssociationSet Name="FK__USERSERVI__SERVI__68487DD7" Association="Self.FK__USERSERVI__SERVI__68487DD7">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
             <End Role="USERSERVICENEEDFILES" EntitySet="USERSERVICENEEDFILES" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERI__4CA06362" Association="Self.FK__USERSERVI__USERI__4CA06362">
-            <End Role="USERINFO" EntitySet="USERINFO" />
+          <AssociationSet Name="FK__USERSERVI__USERI__45F365D3" Association="Self.FK__USERSERVI__USERI__45F365D3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="USERSERVICE" EntitySet="USERSERVICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERI__6383C8BA" Association="Self.FK__USERSERVI__USERI__6383C8BA">
-            <End Role="USERINFO" EntitySet="USERINFO" />
+          <AssociationSet Name="FK__USERSERVI__USERI__5CD6CB2B" Association="Self.FK__USERSERVI__USERI__5CD6CB2B">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERS__534D60F1" Association="Self.FK__USERSERVI__USERS__534D60F1">
+          <AssociationSet Name="FK__USERSERVI__USERS__4CA06362" Association="Self.FK__USERSERVI__USERS__4CA06362">
             <End Role="USERSERVICE" EntitySet="USERSERVICE" />
             <End Role="USERSERVICEFILES" EntitySet="USERSERVICEFILES" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERS__6A30C649" Association="Self.FK__USERSERVI__USERS__6A30C649">
+          <AssociationSet Name="FK__USERSERVI__USERS__6383C8BA" Association="Self.FK__USERSERVI__USERS__6383C8BA">
             <End Role="USERSERVICETIMERECORD" EntitySet="USERSERVICETIMERECORD" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
@@ -871,7 +807,6 @@
           <EntitySet Name="SOCIALLOGINs" EntityType="MSNModel.SOCIALLOGIN" />
           <EntitySet Name="USERBIDS" EntityType="MSNModel.USERBID" />
           <EntitySet Name="USERFUNDS" EntityType="MSNModel.USERFUND" />
-          <EntitySet Name="USERINFOes" EntityType="MSNModel.USERINFO" />
           <EntitySet Name="USERMEMBERSHIPs" EntityType="MSNModel.USERMEMBERSHIP" />
           <EntitySet Name="USERSERVICEs" EntityType="MSNModel.USERSERVICE" />
           <EntitySet Name="USERSERVICEFILES" EntityType="MSNModel.USERSERVICEFILE" />
@@ -886,115 +821,103 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK__SERVICEBI__USERI__6D0D32F4" Association="MSNModel.FK__SERVICEBI__USERI__6D0D32F4">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERBIDS__USERID__38996AB5" Association="MSNModel.FK__USERBIDS__USERID__38996AB5">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="USERBID" EntitySet="USERBIDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERFUNDS__USERI__33D4B598" Association="MSNModel.FK__USERFUNDS__USERI__33D4B598">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="USERFUND" EntitySet="USERFUNDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERMEMBE__USERI__2E1BDC42" Association="MSNModel.FK__USERMEMBE__USERI__2E1BDC42">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__USERI__45F365D3" Association="MSNModel.FK__USERSERVI__USERI__45F365D3">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__USERI__5CD6CB2B" Association="MSNModel.FK__USERSERVI__USERI__5CD6CB2B">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
           <AssociationSet Name="FK__CITYAREA__CITYID__182C9B23" Association="MSNModel.FK__CITYAREA__CITYID__182C9B23">
             <End Role="CITY" EntitySet="CITies" />
             <End Role="CITYAREA" EntitySet="CITYAREAs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERINFO__CITYID__20C1E124" Association="MSNModel.FK__USERINFO__CITYID__20C1E124">
-            <End Role="CITY" EntitySet="CITies" />
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__68487DD7" Association="MSNModel.FK__USERSERVI__SERVI__68487DD7">
+          <AssociationSet Name="FK__USERSERVI__SERVI__619B8048" Association="MSNModel.FK__USERSERVI__SERVI__619B8048">
             <End Role="CITY" EntitySet="CITies" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client__CITYAREA__276EDEB3" Association="MSNModel.FK__Client__CITYAREA__276EDEB3">
+          <AssociationSet Name="FK__Client__CITYAREA__20C1E124" Association="MSNModel.FK__Client__CITYAREA__20C1E124">
             <End Role="CITYAREA" EntitySet="CITYAREAs" />
             <End Role="Client" EntitySet="Clients" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERINFO__CITYAR__21B6055D" Association="MSNModel.FK__USERINFO__CITYAR__21B6055D">
-            <End Role="CITYAREA" EntitySet="CITYAREAs" />
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__693CA210" Association="MSNModel.FK__USERSERVI__SERVI__693CA210">
+          <AssociationSet Name="FK__USERSERVI__SERVI__628FA481" Association="MSNModel.FK__USERSERVI__SERVI__628FA481">
             <End Role="CITYAREA" EntitySet="CITYAREAs" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client__LOGINTYP__286302EC" Association="MSNModel.FK__Client__LOGINTYP__286302EC">
+          <AssociationSet Name="FK__Client__LOGINTYP__21B6055D" Association="MSNModel.FK__Client__LOGINTYP__21B6055D">
             <End Role="SOCIALLOGIN" EntitySet="SOCIALLOGINs" />
             <End Role="Client" EntitySet="Clients" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERMEMBE__MEMBE__35BCFE0A" Association="MSNModel.FK__USERMEMBE__MEMBE__35BCFE0A">
+          <AssociationSet Name="FK__USERMEMBE__MEMBE__2F10007B" Association="MSNModel.FK__USERMEMBE__MEMBE__2F10007B">
             <End Role="MEMBERSHIP" EntitySet="MEMBERSHIPs" />
             <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__BIDID__797309D9" Association="MSNModel.FK__SERVICEBI__BIDID__797309D9">
+          <AssociationSet Name="FK__SERVICEBI__BIDID__72C60C4A" Association="MSNModel.FK__SERVICEBI__BIDID__72C60C4A">
             <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
             <End Role="SERVICEBIDNEEDFILE" EntitySet="SERVICEBIDNEEDFILES" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERI__73BA3083" Association="MSNModel.FK__SERVICEBI__USERI__73BA3083">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERS__74AE54BC" Association="MSNModel.FK__SERVICEBI__USERS__74AE54BC">
+          <AssociationSet Name="FK__SERVICEBI__USERS__6E01572D" Association="MSNModel.FK__SERVICEBI__USERS__6E01572D">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
             <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__ALLOC__7A672E12" Association="MSNModel.FK__USERSERVI__ALLOC__7A672E12">
+          <AssociationSet Name="FK__USERSERVI__ALLOC__73BA3083" Association="MSNModel.FK__USERSERVI__ALLOC__73BA3083">
             <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICESU__SERVI__47DBAE45" Association="MSNModel.FK__SERVICESU__SERVI__47DBAE45">
+          <AssociationSet Name="FK__SERVICESU__SERVI__412EB0B6" Association="MSNModel.FK__SERVICESU__SERVI__412EB0B6">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4D94879B" Association="MSNModel.FK__USERSERVI__SERVI__4D94879B">
+          <AssociationSet Name="FK__USERSERVI__SERVI__46E78A0C" Association="MSNModel.FK__USERSERVI__SERVI__46E78A0C">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
             <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__6477ECF3" Association="MSNModel.FK__USERSERVI__SERVI__6477ECF3">
+          <AssociationSet Name="FK__USERSERVI__SERVI__5DCAEF64" Association="MSNModel.FK__USERSERVI__SERVI__5DCAEF64">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__66603565" Association="MSNModel.FK__USERSERVI__SERVI__66603565">
+          <AssociationSet Name="FK__USERSERVI__SERVI__5FB337D6" Association="MSNModel.FK__USERSERVI__SERVI__5FB337D6">
             <End Role="SERVICESTATE" EntitySet="SERVICESTATEs" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4E88ABD4" Association="MSNModel.FK__USERSERVI__SERVI__4E88ABD4">
+          <AssociationSet Name="FK__USERSERVI__SERVI__47DBAE45" Association="MSNModel.FK__USERSERVI__SERVI__47DBAE45">
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
             <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__656C112C" Association="MSNModel.FK__USERSERVI__SERVI__656C112C">
+          <AssociationSet Name="FK__USERSERVI__SERVI__5EBF139D" Association="MSNModel.FK__USERSERVI__SERVI__5EBF139D">
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__6754599E" Association="MSNModel.FK__USERSERVI__SERVI__6754599E">
+          <AssociationSet Name="FK__USERSERVI__SERVI__60A75C0F" Association="MSNModel.FK__USERSERVI__SERVI__60A75C0F">
             <End Role="SERVICETIMETYPE" EntitySet="SERVICETIMETYPEs" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERINFO__LOGINT__22AA2996" Association="MSNModel.FK__USERINFO__LOGINT__22AA2996">
-            <End Role="SOCIALLOGIN" EntitySet="SOCIALLOGINs" />
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERBIDS__USERID__3F466844" Association="MSNModel.FK__USERBIDS__USERID__3F466844">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="USERBID" EntitySet="USERBIDS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERFUNDS__USERI__3A81B327" Association="MSNModel.FK__USERFUNDS__USERI__3A81B327">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="USERFUND" EntitySet="USERFUNDS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERMEMBE__USERI__34C8D9D1" Association="MSNModel.FK__USERMEMBE__USERI__34C8D9D1">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIPs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERI__4CA06362" Association="MSNModel.FK__USERSERVI__USERI__4CA06362">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERI__6383C8BA" Association="MSNModel.FK__USERSERVI__USERI__6383C8BA">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERS__534D60F1" Association="MSNModel.FK__USERSERVI__USERS__534D60F1">
+          <AssociationSet Name="FK__USERSERVI__USERS__4CA06362" Association="MSNModel.FK__USERSERVI__USERS__4CA06362">
             <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
             <End Role="USERSERVICEFILE" EntitySet="USERSERVICEFILES" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__6EF57B66" Association="MSNModel.FK__USERSERVI__SERVI__6EF57B66">
+          <AssociationSet Name="FK__USERSERVI__SERVI__68487DD7" Association="MSNModel.FK__USERSERVI__SERVI__68487DD7">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
             <End Role="USERSERVICENEEDFILE" EntitySet="USERSERVICENEEDFILES" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERS__6A30C649" Association="MSNModel.FK__USERSERVI__USERS__6A30C649">
+          <AssociationSet Name="FK__USERSERVI__USERS__6383C8BA" Association="MSNModel.FK__USERSERVI__USERS__6383C8BA">
             <End Role="USERSERVICETIMERECORD" EntitySet="USERSERVICETIMERECORDs" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
@@ -1068,10 +991,18 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="Boolean" />
+          <Property Name="LASTUSEDADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="USERLOCATIONLATITUDE" Type="Double" />
           <Property Name="USERLOCATIONLONGITUDE" Type="Double" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="MSNModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="MSNModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="SERVICEBIDs" Relationship="MSNModel.FK__SERVICEBI__USERI__6D0D32F4" FromRole="AspNetUser" ToRole="SERVICEBID" />
+          <NavigationProperty Name="USERBIDS" Relationship="MSNModel.FK__USERBIDS__USERID__38996AB5" FromRole="AspNetUser" ToRole="USERBID" />
+          <NavigationProperty Name="USERFUNDS" Relationship="MSNModel.FK__USERFUNDS__USERI__33D4B598" FromRole="AspNetUser" ToRole="USERFUND" />
+          <NavigationProperty Name="USERMEMBERSHIPs" Relationship="MSNModel.FK__USERMEMBE__USERI__2E1BDC42" FromRole="AspNetUser" ToRole="USERMEMBERSHIP" />
+          <NavigationProperty Name="USERSERVICEs" Relationship="MSNModel.FK__USERSERVI__USERI__45F365D3" FromRole="AspNetUser" ToRole="USERSERVICE" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__USERI__5CD6CB2B" FromRole="AspNetUser" ToRole="USERSERVICENEED" />
           <NavigationProperty Name="AspNetRoles" Relationship="MSNModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="CITY">
@@ -1081,8 +1012,7 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CITYAREAs" Relationship="MSNModel.FK__CITYAREA__CITYID__182C9B23" FromRole="CITY" ToRole="CITYAREA" />
-          <NavigationProperty Name="USERINFOes" Relationship="MSNModel.FK__USERINFO__CITYID__20C1E124" FromRole="CITY" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__68487DD7" FromRole="CITY" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__619B8048" FromRole="CITY" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="CITYAREA">
           <Key>
@@ -1093,9 +1023,8 @@
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CITYID" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="CITY" Relationship="MSNModel.FK__CITYAREA__CITYID__182C9B23" FromRole="CITYAREA" ToRole="CITY" />
-          <NavigationProperty Name="Clients" Relationship="MSNModel.FK__Client__CITYAREA__276EDEB3" FromRole="CITYAREA" ToRole="Client" />
-          <NavigationProperty Name="USERINFOes" Relationship="MSNModel.FK__USERINFO__CITYAR__21B6055D" FromRole="CITYAREA" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__693CA210" FromRole="CITYAREA" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="Clients" Relationship="MSNModel.FK__Client__CITYAREA__20C1E124" FromRole="CITYAREA" ToRole="Client" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__628FA481" FromRole="CITYAREA" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -1114,8 +1043,8 @@
           <Property Name="CURRENTLOCATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="USERLOCATIONLATITUDE" Type="Double" />
           <Property Name="USERLOCATIONLONGITUDE" Type="Double" />
-          <NavigationProperty Name="CITYAREA" Relationship="MSNModel.FK__Client__CITYAREA__276EDEB3" FromRole="Client" ToRole="CITYAREA" />
-          <NavigationProperty Name="SOCIALLOGIN" Relationship="MSNModel.FK__Client__LOGINTYP__286302EC" FromRole="Client" ToRole="SOCIALLOGIN" />
+          <NavigationProperty Name="CITYAREA" Relationship="MSNModel.FK__Client__CITYAREA__20C1E124" FromRole="Client" ToRole="CITYAREA" />
+          <NavigationProperty Name="SOCIALLOGIN" Relationship="MSNModel.FK__Client__LOGINTYP__21B6055D" FromRole="Client" ToRole="SOCIALLOGIN" />
         </EntityType>
         <EntityType Name="MEMBERSHIP">
           <Key>
@@ -1124,7 +1053,7 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERMEMBERSHIPs" Relationship="MSNModel.FK__USERMEMBE__MEMBE__35BCFE0A" FromRole="MEMBERSHIP" ToRole="USERMEMBERSHIP" />
+          <NavigationProperty Name="USERMEMBERSHIPs" Relationship="MSNModel.FK__USERMEMBE__MEMBE__2F10007B" FromRole="MEMBERSHIP" ToRole="USERMEMBERSHIP" />
         </EntityType>
         <EntityType Name="RefreshToken">
           <Key>
@@ -1143,15 +1072,15 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="USERSERVICENEEDID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="BIDTITLE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="BIDDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BIDAMOUNT" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="SERVICEBIDNEEDFILES" Relationship="MSNModel.FK__SERVICEBI__BIDID__797309D9" FromRole="SERVICEBID" ToRole="SERVICEBIDNEEDFILE" />
-          <NavigationProperty Name="USERINFO" Relationship="MSNModel.FK__SERVICEBI__USERI__73BA3083" FromRole="SERVICEBID" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICENEED" Relationship="MSNModel.FK__SERVICEBI__USERS__74AE54BC" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__ALLOC__7A672E12" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="AspNetUser" Relationship="MSNModel.FK__SERVICEBI__USERI__6D0D32F4" FromRole="SERVICEBID" ToRole="AspNetUser" />
+          <NavigationProperty Name="SERVICEBIDNEEDFILES" Relationship="MSNModel.FK__SERVICEBI__BIDID__72C60C4A" FromRole="SERVICEBID" ToRole="SERVICEBIDNEEDFILE" />
+          <NavigationProperty Name="USERSERVICENEED" Relationship="MSNModel.FK__SERVICEBI__USERS__6E01572D" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__ALLOC__73BA3083" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICEBIDNEEDFILE">
           <Key>
@@ -1160,7 +1089,7 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BIDID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="FILEPUBLICKKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SERVICEBID" Relationship="MSNModel.FK__SERVICEBI__BIDID__797309D9" FromRole="SERVICEBIDNEEDFILE" ToRole="SERVICEBID" />
+          <NavigationProperty Name="SERVICEBID" Relationship="MSNModel.FK__SERVICEBI__BIDID__72C60C4A" FromRole="SERVICEBIDNEEDFILE" ToRole="SERVICEBID" />
         </EntityType>
         <EntityType Name="SERVICECATEGORY">
           <Key>
@@ -1169,9 +1098,9 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SERVICESUBCATEGORies" Relationship="MSNModel.FK__SERVICESU__SERVI__47DBAE45" FromRole="SERVICECATEGORY" ToRole="SERVICESUBCATEGORY" />
-          <NavigationProperty Name="USERSERVICEs" Relationship="MSNModel.FK__USERSERVI__SERVI__4D94879B" FromRole="SERVICECATEGORY" ToRole="USERSERVICE" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__6477ECF3" FromRole="SERVICECATEGORY" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="SERVICESUBCATEGORies" Relationship="MSNModel.FK__SERVICESU__SERVI__412EB0B6" FromRole="SERVICECATEGORY" ToRole="SERVICESUBCATEGORY" />
+          <NavigationProperty Name="USERSERVICEs" Relationship="MSNModel.FK__USERSERVI__SERVI__46E78A0C" FromRole="SERVICECATEGORY" ToRole="USERSERVICE" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__5DCAEF64" FromRole="SERVICECATEGORY" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICESTATE">
           <Key>
@@ -1180,7 +1109,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__66603565" FromRole="SERVICESTATE" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__5FB337D6" FromRole="SERVICESTATE" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICESUBCATEGORY">
           <Key>
@@ -1192,9 +1121,9 @@
           <Property Name="IMAGEPUBLICKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ICONPUBLICKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="SERVICECATEGORY" Relationship="MSNModel.FK__SERVICESU__SERVI__47DBAE45" FromRole="SERVICESUBCATEGORY" ToRole="SERVICECATEGORY" />
-          <NavigationProperty Name="USERSERVICEs" Relationship="MSNModel.FK__USERSERVI__SERVI__4E88ABD4" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICE" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__656C112C" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="SERVICECATEGORY" Relationship="MSNModel.FK__SERVICESU__SERVI__412EB0B6" FromRole="SERVICESUBCATEGORY" ToRole="SERVICECATEGORY" />
+          <NavigationProperty Name="USERSERVICEs" Relationship="MSNModel.FK__USERSERVI__SERVI__47DBAE45" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICE" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__5EBF139D" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICETIMETYPE">
           <Key>
@@ -1203,7 +1132,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__6754599E" FromRole="SERVICETIMETYPE" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__SERVI__60A75C0F" FromRole="SERVICETIMETYPE" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SOCIALLOGIN">
           <Key>
@@ -1212,78 +1141,51 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Clients" Relationship="MSNModel.FK__Client__LOGINTYP__286302EC" FromRole="SOCIALLOGIN" ToRole="Client" />
-          <NavigationProperty Name="USERINFOes" Relationship="MSNModel.FK__USERINFO__LOGINT__22AA2996" FromRole="SOCIALLOGIN" ToRole="USERINFO" />
+          <NavigationProperty Name="Clients" Relationship="MSNModel.FK__Client__LOGINTYP__21B6055D" FromRole="SOCIALLOGIN" ToRole="Client" />
         </EntityType>
         <EntityType Name="USERBID">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="BIDS" Type="Int32" />
-          <NavigationProperty Name="USERINFO" Relationship="MSNModel.FK__USERBIDS__USERID__3F466844" FromRole="USERBID" ToRole="USERINFO" />
+          <NavigationProperty Name="AspNetUser" Relationship="MSNModel.FK__USERBIDS__USERID__38996AB5" FromRole="USERBID" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="USERFUND">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="BALANCE" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="USERINFO" Relationship="MSNModel.FK__USERFUNDS__USERI__3A81B327" FromRole="USERFUND" ToRole="USERINFO" />
-        </EntityType>
-        <EntityType Name="USERINFO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="GENDER" Type="Boolean" />
-          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CITYID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CITYAREAID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="LOGINTYPEID" Type="Int32" />
-          <Property Name="CURRENTLOCATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="USERLOCATIONLATITUDE" Type="Double" />
-          <Property Name="USERLOCATIONLONGITUDE" Type="Double" />
-          <NavigationProperty Name="CITY" Relationship="MSNModel.FK__USERINFO__CITYID__20C1E124" FromRole="USERINFO" ToRole="CITY" />
-          <NavigationProperty Name="CITYAREA" Relationship="MSNModel.FK__USERINFO__CITYAR__21B6055D" FromRole="USERINFO" ToRole="CITYAREA" />
-          <NavigationProperty Name="SERVICEBIDs" Relationship="MSNModel.FK__SERVICEBI__USERI__73BA3083" FromRole="USERINFO" ToRole="SERVICEBID" />
-          <NavigationProperty Name="SOCIALLOGIN" Relationship="MSNModel.FK__USERINFO__LOGINT__22AA2996" FromRole="USERINFO" ToRole="SOCIALLOGIN" />
-          <NavigationProperty Name="USERBIDS" Relationship="MSNModel.FK__USERBIDS__USERID__3F466844" FromRole="USERINFO" ToRole="USERBID" />
-          <NavigationProperty Name="USERFUNDS" Relationship="MSNModel.FK__USERFUNDS__USERI__3A81B327" FromRole="USERINFO" ToRole="USERFUND" />
-          <NavigationProperty Name="USERMEMBERSHIPs" Relationship="MSNModel.FK__USERMEMBE__USERI__34C8D9D1" FromRole="USERINFO" ToRole="USERMEMBERSHIP" />
-          <NavigationProperty Name="USERSERVICEs" Relationship="MSNModel.FK__USERSERVI__USERI__4CA06362" FromRole="USERINFO" ToRole="USERSERVICE" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__USERI__6383C8BA" FromRole="USERINFO" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="AspNetUser" Relationship="MSNModel.FK__USERFUNDS__USERI__33D4B598" FromRole="USERFUND" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="USERMEMBERSHIP">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="MEMBERSHIPID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="STARTDATE" Type="DateTime" Precision="3" />
           <Property Name="ENDDATE" Type="DateTime" Precision="3" />
           <Property Name="COMMENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MEMBERSHIP" Relationship="MSNModel.FK__USERMEMBE__MEMBE__35BCFE0A" FromRole="USERMEMBERSHIP" ToRole="MEMBERSHIP" />
-          <NavigationProperty Name="USERINFO" Relationship="MSNModel.FK__USERMEMBE__USERI__34C8D9D1" FromRole="USERMEMBERSHIP" ToRole="USERINFO" />
+          <NavigationProperty Name="AspNetUser" Relationship="MSNModel.FK__USERMEMBE__USERI__2E1BDC42" FromRole="USERMEMBERSHIP" ToRole="AspNetUser" />
+          <NavigationProperty Name="MEMBERSHIP" Relationship="MSNModel.FK__USERMEMBE__MEMBE__2F10007B" FromRole="USERMEMBERSHIP" ToRole="MEMBERSHIP" />
         </EntityType>
         <EntityType Name="USERSERVICE">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SERVICESUBCATEGORYID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="SERVICECATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__4D94879B" FromRole="USERSERVICE" ToRole="SERVICECATEGORY" />
-          <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__4E88ABD4" FromRole="USERSERVICE" ToRole="SERVICESUBCATEGORY" />
-          <NavigationProperty Name="USERINFO" Relationship="MSNModel.FK__USERSERVI__USERI__4CA06362" FromRole="USERSERVICE" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICEFILES" Relationship="MSNModel.FK__USERSERVI__USERS__534D60F1" FromRole="USERSERVICE" ToRole="USERSERVICEFILE" />
+          <NavigationProperty Name="AspNetUser" Relationship="MSNModel.FK__USERSERVI__USERI__45F365D3" FromRole="USERSERVICE" ToRole="AspNetUser" />
+          <NavigationProperty Name="SERVICECATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__46E78A0C" FromRole="USERSERVICE" ToRole="SERVICECATEGORY" />
+          <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__47DBAE45" FromRole="USERSERVICE" ToRole="SERVICESUBCATEGORY" />
+          <NavigationProperty Name="USERSERVICEFILES" Relationship="MSNModel.FK__USERSERVI__USERS__4CA06362" FromRole="USERSERVICE" ToRole="USERSERVICEFILE" />
         </EntityType>
         <EntityType Name="USERSERVICEFILE">
           <Key>
@@ -1292,14 +1194,14 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USERSERVICEID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="FILEPUBLICKKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERSERVICE" Relationship="MSNModel.FK__USERSERVI__USERS__534D60F1" FromRole="USERSERVICEFILE" ToRole="USERSERVICE" />
+          <NavigationProperty Name="USERSERVICE" Relationship="MSNModel.FK__USERSERVI__USERS__4CA06362" FromRole="USERSERVICEFILE" ToRole="USERSERVICE" />
         </EntityType>
         <EntityType Name="USERSERVICENEED">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="SERVICELOCATIONADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SERVICETITLE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="SERVICEDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1315,17 +1217,17 @@
           <Property Name="SERVICECITYAREAID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="USERSERVICETIMERECORDID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ALLOCATEDBIDID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="CITY" Relationship="MSNModel.FK__USERSERVI__SERVI__68487DD7" FromRole="USERSERVICENEED" ToRole="CITY" />
-          <NavigationProperty Name="CITYAREA" Relationship="MSNModel.FK__USERSERVI__SERVI__693CA210" FromRole="USERSERVICENEED" ToRole="CITYAREA" />
-          <NavigationProperty Name="SERVICEBIDs" Relationship="MSNModel.FK__SERVICEBI__USERS__74AE54BC" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
-          <NavigationProperty Name="SERVICEBID" Relationship="MSNModel.FK__USERSERVI__ALLOC__7A672E12" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
-          <NavigationProperty Name="SERVICECATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__6477ECF3" FromRole="USERSERVICENEED" ToRole="SERVICECATEGORY" />
-          <NavigationProperty Name="SERVICESTATE1" Relationship="MSNModel.FK__USERSERVI__SERVI__66603565" FromRole="USERSERVICENEED" ToRole="SERVICESTATE" />
-          <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__656C112C" FromRole="USERSERVICENEED" ToRole="SERVICESUBCATEGORY" />
-          <NavigationProperty Name="SERVICETIMETYPE1" Relationship="MSNModel.FK__USERSERVI__SERVI__6754599E" FromRole="USERSERVICENEED" ToRole="SERVICETIMETYPE" />
-          <NavigationProperty Name="USERINFO" Relationship="MSNModel.FK__USERSERVI__USERI__6383C8BA" FromRole="USERSERVICENEED" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICENEEDFILES" Relationship="MSNModel.FK__USERSERVI__SERVI__6EF57B66" FromRole="USERSERVICENEED" ToRole="USERSERVICENEEDFILE" />
-          <NavigationProperty Name="USERSERVICETIMERECORD" Relationship="MSNModel.FK__USERSERVI__USERS__6A30C649" FromRole="USERSERVICENEED" ToRole="USERSERVICETIMERECORD" />
+          <NavigationProperty Name="AspNetUser" Relationship="MSNModel.FK__USERSERVI__USERI__5CD6CB2B" FromRole="USERSERVICENEED" ToRole="AspNetUser" />
+          <NavigationProperty Name="CITY" Relationship="MSNModel.FK__USERSERVI__SERVI__619B8048" FromRole="USERSERVICENEED" ToRole="CITY" />
+          <NavigationProperty Name="CITYAREA" Relationship="MSNModel.FK__USERSERVI__SERVI__628FA481" FromRole="USERSERVICENEED" ToRole="CITYAREA" />
+          <NavigationProperty Name="SERVICEBIDs" Relationship="MSNModel.FK__SERVICEBI__USERS__6E01572D" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
+          <NavigationProperty Name="SERVICEBID" Relationship="MSNModel.FK__USERSERVI__ALLOC__73BA3083" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
+          <NavigationProperty Name="SERVICECATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__5DCAEF64" FromRole="USERSERVICENEED" ToRole="SERVICECATEGORY" />
+          <NavigationProperty Name="SERVICESTATE1" Relationship="MSNModel.FK__USERSERVI__SERVI__5FB337D6" FromRole="USERSERVICENEED" ToRole="SERVICESTATE" />
+          <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="MSNModel.FK__USERSERVI__SERVI__5EBF139D" FromRole="USERSERVICENEED" ToRole="SERVICESUBCATEGORY" />
+          <NavigationProperty Name="SERVICETIMETYPE1" Relationship="MSNModel.FK__USERSERVI__SERVI__60A75C0F" FromRole="USERSERVICENEED" ToRole="SERVICETIMETYPE" />
+          <NavigationProperty Name="USERSERVICENEEDFILES" Relationship="MSNModel.FK__USERSERVI__SERVI__68487DD7" FromRole="USERSERVICENEED" ToRole="USERSERVICENEEDFILE" />
+          <NavigationProperty Name="USERSERVICETIMERECORD" Relationship="MSNModel.FK__USERSERVI__USERS__6383C8BA" FromRole="USERSERVICENEED" ToRole="USERSERVICETIMERECORD" />
         </EntityType>
         <EntityType Name="USERSERVICENEEDFILE">
           <Key>
@@ -1334,7 +1236,7 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SERVICEID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="FILEPUBLICKKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERSERVICENEED" Relationship="MSNModel.FK__USERSERVI__SERVI__6EF57B66" FromRole="USERSERVICENEEDFILE" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEED" Relationship="MSNModel.FK__USERSERVI__SERVI__68487DD7" FromRole="USERSERVICENEEDFILE" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="USERSERVICETIMERECORD">
           <Key>
@@ -1346,7 +1248,7 @@
           <Property Name="SERVICEENDDATE" Type="DateTime" Precision="0" />
           <Property Name="SERVICESTARTTIME" Type="Time" Precision="7" />
           <Property Name="SERVICEENDTIME" Type="Time" Precision="7" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__USERS__6A30C649" FromRole="USERSERVICETIMERECORD" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="MSNModel.FK__USERSERVI__USERS__6383C8BA" FromRole="USERSERVICETIMERECORD" ToRole="USERSERVICENEED" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -1376,6 +1278,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SERVICEBI__USERI__6D0D32F4">
+          <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MSNModel.SERVICEBID" Role="SERVICEBID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SERVICEBID">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERBIDS__USERID__38996AB5">
+          <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MSNModel.USERBID" Role="USERBID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USERBID">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERFUNDS__USERI__33D4B598">
+          <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MSNModel.USERFUND" Role="USERFUND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USERFUND">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERMEMBE__USERI__2E1BDC42">
+          <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MSNModel.USERMEMBERSHIP" Role="USERMEMBERSHIP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USERMEMBERSHIP">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__USERI__45F365D3">
+          <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MSNModel.USERSERVICE" Role="USERSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USERSERVICE">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__USERI__5CD6CB2B">
+          <End Type="MSNModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CITYAREA__CITYID__182C9B23">
           <End Type="MSNModel.CITY" Role="CITY" Multiplicity="0..1" />
           <End Type="MSNModel.CITYAREA" Role="CITYAREA" Multiplicity="*" />
@@ -1388,19 +1362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERINFO__CITYID__20C1E124">
-          <End Type="MSNModel.CITY" Role="CITY" Multiplicity="0..1" />
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CITY">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERINFO">
-              <PropertyRef Name="CITYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__SERVI__68487DD7">
+        <Association Name="FK__USERSERVI__SERVI__619B8048">
           <End Type="MSNModel.CITY" Role="CITY" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1412,7 +1374,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client__CITYAREA__276EDEB3">
+        <Association Name="FK__Client__CITYAREA__20C1E124">
           <End Type="MSNModel.CITYAREA" Role="CITYAREA" Multiplicity="0..1" />
           <End Type="MSNModel.Client" Role="Client" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1424,19 +1386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERINFO__CITYAR__21B6055D">
-          <End Type="MSNModel.CITYAREA" Role="CITYAREA" Multiplicity="0..1" />
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CITYAREA">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERINFO">
-              <PropertyRef Name="CITYAREAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__SERVI__693CA210">
+        <Association Name="FK__USERSERVI__SERVI__628FA481">
           <End Type="MSNModel.CITYAREA" Role="CITYAREA" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1448,7 +1398,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client__LOGINTYP__286302EC">
+        <Association Name="FK__Client__LOGINTYP__21B6055D">
           <End Type="MSNModel.SOCIALLOGIN" Role="SOCIALLOGIN" Multiplicity="0..1" />
           <End Type="MSNModel.Client" Role="Client" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1460,7 +1410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERMEMBE__MEMBE__35BCFE0A">
+        <Association Name="FK__USERMEMBE__MEMBE__2F10007B">
           <End Type="MSNModel.MEMBERSHIP" Role="MEMBERSHIP" Multiplicity="0..1" />
           <End Type="MSNModel.USERMEMBERSHIP" Role="USERMEMBERSHIP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1472,7 +1422,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__BIDID__797309D9">
+        <Association Name="FK__SERVICEBI__BIDID__72C60C4A">
           <End Type="MSNModel.SERVICEBID" Role="SERVICEBID" Multiplicity="0..1" />
           <End Type="MSNModel.SERVICEBIDNEEDFILE" Role="SERVICEBIDNEEDFILE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1484,19 +1434,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__USERI__73BA3083">
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
-          <End Type="MSNModel.SERVICEBID" Role="SERVICEBID" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SERVICEBID">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SERVICEBI__USERS__74AE54BC">
+        <Association Name="FK__SERVICEBI__USERS__6E01572D">
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="0..1" />
           <End Type="MSNModel.SERVICEBID" Role="SERVICEBID" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1508,7 +1446,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__ALLOC__7A672E12">
+        <Association Name="FK__USERSERVI__ALLOC__73BA3083">
           <End Type="MSNModel.SERVICEBID" Role="SERVICEBID" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1520,7 +1458,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICESU__SERVI__47DBAE45">
+        <Association Name="FK__SERVICESU__SERVI__412EB0B6">
           <End Type="MSNModel.SERVICECATEGORY" Role="SERVICECATEGORY" Multiplicity="0..1" />
           <End Type="MSNModel.SERVICESUBCATEGORY" Role="SERVICESUBCATEGORY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1532,7 +1470,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__4D94879B">
+        <Association Name="FK__USERSERVI__SERVI__46E78A0C">
           <End Type="MSNModel.SERVICECATEGORY" Role="SERVICECATEGORY" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICE" Role="USERSERVICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1544,7 +1482,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__6477ECF3">
+        <Association Name="FK__USERSERVI__SERVI__5DCAEF64">
           <End Type="MSNModel.SERVICECATEGORY" Role="SERVICECATEGORY" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1556,7 +1494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__66603565">
+        <Association Name="FK__USERSERVI__SERVI__5FB337D6">
           <End Type="MSNModel.SERVICESTATE" Role="SERVICESTATE" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1568,7 +1506,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__4E88ABD4">
+        <Association Name="FK__USERSERVI__SERVI__47DBAE45">
           <End Type="MSNModel.SERVICESUBCATEGORY" Role="SERVICESUBCATEGORY" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICE" Role="USERSERVICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1580,7 +1518,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__656C112C">
+        <Association Name="FK__USERSERVI__SERVI__5EBF139D">
           <End Type="MSNModel.SERVICESUBCATEGORY" Role="SERVICESUBCATEGORY" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1592,7 +1530,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__6754599E">
+        <Association Name="FK__USERSERVI__SERVI__60A75C0F">
           <End Type="MSNModel.SERVICETIMETYPE" Role="SERVICETIMETYPE" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1604,79 +1542,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERINFO__LOGINT__22AA2996">
-          <End Type="MSNModel.SOCIALLOGIN" Role="SOCIALLOGIN" Multiplicity="0..1" />
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SOCIALLOGIN">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERINFO">
-              <PropertyRef Name="LOGINTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERBIDS__USERID__3F466844">
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
-          <End Type="MSNModel.USERBID" Role="USERBID" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERBID">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERFUNDS__USERI__3A81B327">
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
-          <End Type="MSNModel.USERFUND" Role="USERFUND" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERFUND">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERMEMBE__USERI__34C8D9D1">
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
-          <End Type="MSNModel.USERMEMBERSHIP" Role="USERMEMBERSHIP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERMEMBERSHIP">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__USERI__4CA06362">
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
-          <End Type="MSNModel.USERSERVICE" Role="USERSERVICE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICE">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__USERI__6383C8BA">
-          <End Type="MSNModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
-          <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__USERS__534D60F1">
+        <Association Name="FK__USERSERVI__USERS__4CA06362">
           <End Type="MSNModel.USERSERVICE" Role="USERSERVICE" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICEFILE" Role="USERSERVICEFILE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1688,7 +1554,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__6EF57B66">
+        <Association Name="FK__USERSERVI__SERVI__68487DD7">
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEEDFILE" Role="USERSERVICENEEDFILE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1700,7 +1566,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__USERS__6A30C649">
+        <Association Name="FK__USERSERVI__USERS__6383C8BA">
           <End Type="MSNModel.USERSERVICETIMERECORD" Role="USERSERVICETIMERECORD" Multiplicity="0..1" />
           <End Type="MSNModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1775,6 +1641,8 @@
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
                 <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
+                <ScalarProperty Name="LASTUSEDADDRESS" ColumnName="LASTUSEDADDRESS" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
@@ -1932,24 +1800,6 @@
               <MappingFragment StoreEntitySet="USERFUNDS">
                 <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
                 <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USERINFOes">
-            <EntityTypeMapping TypeName="MSNModel.USERINFO">
-              <MappingFragment StoreEntitySet="USERINFO">
-                <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
-                <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
-                <ScalarProperty Name="CURRENTLOCATION" ColumnName="CURRENTLOCATION" />
-                <ScalarProperty Name="LOGINTYPEID" ColumnName="LOGINTYPEID" />
-                <ScalarProperty Name="CITYAREAID" ColumnName="CITYAREAID" />
-                <ScalarProperty Name="CITYID" ColumnName="CITYID" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

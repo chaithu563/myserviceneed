@@ -324,9 +324,6 @@
     <Compile Include="Models\USERFUND.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\USERINFO.cs">
-      <DependentUpon>MSNModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\USERMEMBERSHIP.cs">
       <DependentUpon>MSNModel.tt</DependentUpon>
     </Compile>

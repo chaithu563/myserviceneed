@@ -54,6 +54,8 @@
         <MappingFragment StoreEntitySet="AspNetUsers">
           <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
           <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
+          <ScalarProperty Name="LASTUSEDADDRESS" ColumnName="LASTUSEDADDRESS" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
           <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
@@ -211,24 +213,6 @@
         <MappingFragment StoreEntitySet="USERFUNDS">
           <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
           <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="USERINFOes">
-      <EntityTypeMapping TypeName="MSNModel.USERINFO">
-        <MappingFragment StoreEntitySet="USERINFO">
-          <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
-          <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
-          <ScalarProperty Name="CURRENTLOCATION" ColumnName="CURRENTLOCATION" />
-          <ScalarProperty Name="LOGINTYPEID" ColumnName="LOGINTYPEID" />
-          <ScalarProperty Name="CITYAREAID" ColumnName="CITYAREAID" />
-          <ScalarProperty Name="CITYID" ColumnName="CITYID" />
-          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
