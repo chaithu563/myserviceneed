@@ -38,7 +38,24 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.msnService = msnService;
                     this.loginService = loginService;
                     this.myGoogleClientId = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
+                    this.isLoggedIn = false;
+                    this.initialLoad();
                 }
+                LoginComponent.prototype.initialLoad = function () {
+                    var _this = this;
+                    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    this.loginService.loginUserInfo(currentUser).subscribe(function (user) {
+                        if (user.HasRegistered)
+                            _this.isLoggedIn = true;
+                        _this.user = user;
+                        console.log(user);
+                    });
+                };
+                LoginComponent.prototype.logout = function () {
+                    // clear token remove user from local storage to log user out
+                    // this.token = null;
+                    localStorage.removeItem('currentUser');
+                };
                 LoginComponent.prototype.ngAfterViewInit = function () {
                 };
                 LoginComponent.prototype.googleInit = function () {
@@ -127,6 +144,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     this.loginService.validateSocialLoginDetails(details).subscribe(function (user) {
                         console.log(user);
                         //need to handle after login success in UI
+                        localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
                     }, function (err) {
                         // Log errors if any
                         console.log(err);

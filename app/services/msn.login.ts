@@ -83,19 +83,7 @@ export class LoginService  {
 
     validateSocialLoginDetails(user): Observable<any[]> {
 
-   
-
-        // ...using get request
-
-         //return this.http.get(this.config.ServiceApi + 'USERINFOes' + '?details=' + JSON.stringify(user))
-           
-         //   .map((res) =>
-               
-         //       res.json()
-
-         //   )
-           
-         //   .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  
 			let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
 			headers.append('Authorization', `Bearer ${user.externalAccessToken}` );
 		//	headers.append('Access-Control-Allow-Origin', '*');
@@ -112,6 +100,28 @@ export class LoginService  {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 
     
+
+    }
+
+    loginUserInfo(user): Promise<any> {
+
+
+        let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+        headers.append('Authorization', `Bearer ${user.token}`);
+        //	headers.append('Access-Control-Allow-Origin', '*');
+        let options = new RequestOptions({ headers: headers });
+        var json = JSON.stringify(user);
+        return this.http.get(this.config.HostApi + 'api/Account/UserInfo',options)
+
+            .map((res) =>
+
+                res.json()
+
+            )
+
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
+
 
     }
    

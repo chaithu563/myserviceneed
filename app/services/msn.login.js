@@ -85,18 +85,24 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                     });
                 };
                 LoginService.prototype.validateSocialLoginDetails = function (user) {
-                    // ...using get request
-                    //return this.http.get(this.config.ServiceApi + 'USERINFOes' + '?details=' + JSON.stringify(user))
-                    //   .map((res) =>
-                    //       res.json()
-                    //   )
-                    //   .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
                     var headers = new http_1.Headers({ 'Content-Type': 'application/json; charset=utf-8' });
                     headers.append('Authorization', "Bearer " + user.externalAccessToken);
                     //	headers.append('Access-Control-Allow-Origin', '*');
                     var options = new http_1.RequestOptions({ headers: headers });
                     var json = JSON.stringify(user);
                     return this.http.post(this.config.HostApi + 'api/Account/RegisterExternalToken', user, options)
+                        .map(function (res) {
+                        return res.json();
+                    })
+                        .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
+                };
+                LoginService.prototype.loginUserInfo = function (user) {
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+                    headers.append('Authorization', "Bearer " + user.token);
+                    //	headers.append('Access-Control-Allow-Origin', '*');
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    var json = JSON.stringify(user);
+                    return this.http.get(this.config.HostApi + 'api/Account/UserInfo', options)
                         .map(function (res) {
                         return res.json();
                     })

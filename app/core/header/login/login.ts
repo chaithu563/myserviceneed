@@ -15,19 +15,44 @@ import {GoogleSignInComponent} from 'angular-google-signin';
 })
 export class LoginComponent implements AfterViewInit {
     @ViewChild('myLoginModal') public myLoginModal: ModalDirective;
-
+    isLoggedIn: boolean;
     categories: any;
     cities: any;
+    user: any;
     UserCity: string;
 		facebooktoken: string;
     declare const gapi: any;
     public auth2: any;
     myGoogleClientId: string = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
     constructor(private msnService: MSNService, private loginService: LoginService, ngZone: NgZone) {
-
+        this.isLoggedIn = false;
+        this.initialLoad();
 
     }
 
+    initialLoad() {
+
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+
+        this.loginService.loginUserInfo(currentUser).subscribe(
+            user=> {
+                if (user.HasRegistered)
+                this.isLoggedIn = true;
+                this.user = user;
+                console.log(user);
+            }
+
+
+        );
+
+    }
+
+    logout(): void {
+        // clear token remove user from local storage to log user out
+       // this.token = null;
+        localStorage.removeItem('currentUser');
+    }
 
     ngAfterViewInit() {
 
@@ -161,6 +186,8 @@ export class LoginComponent implements AfterViewInit {
             user => {
                 console.log(user);
                 //need to handle after login success in UI
+
+                localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
             },
             err => {
                 // Log errors if any

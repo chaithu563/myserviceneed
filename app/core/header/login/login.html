@@ -1,11 +1,11 @@
 ﻿<div>
 
-	<div class="loggedinuser">
+	<div *ngIf="isLoggedIn" class="loggedinuser">
 
-		
+		{{user.Email}}
 
 	</div>
-	<div class="notloggedinuser">
+	<div *ngIf="!isLoggedIn" class="notloggedinuser">
         <div >
        
 		<div class="dropdown" dropdown>
