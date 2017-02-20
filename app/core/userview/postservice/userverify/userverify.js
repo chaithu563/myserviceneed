@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "../../../../services/msn.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "ng2-bootstrap", "../../../../services/msn.service"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, msn_service_1, UserVerifyComponent;
+    var core_1, router_1, ng2_bootstrap_1, msn_service_1, UserVerifyComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,6 +18,9 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (ng2_bootstrap_1_1) {
+                ng2_bootstrap_1 = ng2_bootstrap_1_1;
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
@@ -51,8 +54,16 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.s
                     this.isOTPVerifyPhase = false;
                     this.postUserRequest.emit(this.serviceinfo);
                 };
+                UserVerifyComponent.prototype.loginOrSignupclick = function () {
+                    this.myLoginModal.open();
+                    this.googleInit();
+                };
                 return UserVerifyComponent;
             }());
+            __decorate([
+                core_1.ViewChild('myLoginModal'),
+                __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+            ], UserVerifyComponent.prototype, "myLoginModal", void 0);
             __decorate([
                 core_1.Input(),
                 __metadata("design:type", Object)
