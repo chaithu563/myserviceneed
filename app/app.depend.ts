@@ -17,6 +17,7 @@ import {ServiceInfoComponent} from './core/userview/postservice/serviceinfo/serv
 import {ServiceTimeComponent} from './core/userview/postservice/servicetime/servicetime';
 import {UserVerifyComponent} from './core/userview/postservice/userverify/userverify';
 import { GoogleplaceDirective } from './shared/directives/googleplace.directive';
+import { ModalLoginComponent } from './shared/components/login/modallogin';
 import { FacebookLoginComponent } from './shared/components/facebooklogin';
 import { FileSelectDirective } from 'ng2-file-upload';
 import {GoogleSignInComponent} from 'angular-google-signin';

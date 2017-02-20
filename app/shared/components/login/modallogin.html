@@ -1,0 +1,63 @@
+﻿<modal-header>
+	<h4>Login/Sign Up On MyServiceNeed</h4>
+</modal-header>
+<modal-content>
+	<div class="form-body">
+
+		<p>
+			Please provide your Mobile Number or Email to Login/ Sign Up on MyServiceNeed
+		</p>
+		<div class="tab-content">
+			<div id="sectionA" class="tab-pane fade in active">
+				<div class="innter-form">
+					<form class="sa-innate-form" method="post">
+						<!--<label>Email Address</label>-->
+						<input type="text" name="username" placeholder="Mobile Number or Email">
+						<!--<label>Password</label>
+						<input type="password" name="password">-->
+						<button type="submit">Continue</button>
+						<!--<a href="">Forgot Password?</a>-->
+					</form>
+				</div>
+				<div class="social-login">
+					<p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
+					<ul>
+						<li><a (click)="onFacebookLoginClick()"><i class="fa fa-facebook"></i> Facebook</a></li>
+						<li>
+
+							<!--<div #googlesignindiv2></div>-->
+							<div id="googleBtn"><a><i class="fa fa-google-plus "></i> Google+</a></div>
+
+
+						</li>
+						<!--<div class="g-signin2" data-onsuccess="onSignIn">Google+</div>-->
+						<!--<li><a ><i class="fa fa-google-plus "></i> Google+</a></li>-->
+					</ul>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+			<div id="sectionB" class="tab-pane fade">
+				<div class="innter-form">
+					<form class="sa-innate-form" method="post">
+						<label>Name</label>
+						<input type="text" name="username">
+						<label>Email Address</label>
+						<input type="text" name="username">
+						<label>Password</label>
+						<input type="password" name="password">
+						<button type="submit">Join now</button>
+						<p>By clicking Join now, you agree to hifriends's User Agreement, Privacy Policy, and Cookie Policy.</p>
+					</form>
+				</div>
+				<div class="social-login">
+					<p>- - - - - - - - - - - - - Register With - - - - - - - - - - - - - </p>
+					<ul>
+						<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+						<li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</modal-content>
