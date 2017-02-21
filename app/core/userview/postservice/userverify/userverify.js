@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "ng2-bootstrap", "../../../../services/msn.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "../../../../shared/components/login/modallogin", "../../../../services/msn.service"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "ng2-bootstrap", "../../../
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, ng2_bootstrap_1, msn_service_1, UserVerifyComponent;
+    var core_1, router_1, modallogin_1, msn_service_1, UserVerifyComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -19,8 +19,8 @@ System.register(["@angular/core", "@angular/router", "ng2-bootstrap", "../../../
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (ng2_bootstrap_1_1) {
-                ng2_bootstrap_1 = ng2_bootstrap_1_1;
+            function (modallogin_1_1) {
+                modallogin_1 = modallogin_1_1;
             },
             function (msn_service_1_1) {
                 msn_service_1 = msn_service_1_1;
@@ -56,13 +56,13 @@ System.register(["@angular/core", "@angular/router", "ng2-bootstrap", "../../../
                 };
                 UserVerifyComponent.prototype.loginOrSignupclick = function () {
                     this.myLoginModal.open();
-                    this.googleInit();
+                    // this.googleInit();
                 };
                 return UserVerifyComponent;
             }());
             __decorate([
-                core_1.ViewChild('myLoginModal'),
-                __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+                core_1.ViewChild('modallogin'),
+                __metadata("design:type", modallogin_1.ModalLoginComponent)
             ], UserVerifyComponent.prototype, "myLoginModal", void 0);
             __decorate([
                 core_1.Input(),

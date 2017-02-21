@@ -70,7 +70,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             // cookiepolicy: 'single_host_origin',
                             scope: 'profile email openid'
                         });
-                        that.attachSignin(document.getElementById('googleBtn'));
+                        that.attachSignin(document.getElementById('googleBtnmodal'));
                     });
                 };
                 ModalLoginComponent.prototype.attachSignin = function (element) {
@@ -102,6 +102,10 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 //	this.myLoginModal.open();
                 //	this.googleInit();
                 //}
+                ModalLoginComponent.prototype.open = function () {
+                    this.myLoginModal.open();
+                    this.googleInit();
+                };
                 ModalLoginComponent.prototype.onFacebookLoginClick = function () {
                     // FB.login();
                     var _this = this;
@@ -165,8 +169,8 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
             ModalLoginComponent = __decorate([
                 core_1.Component({
                     selector: 'modallogin',
-                    templateUrl: 'app/shared/component/login/modallogin.html',
-                    styleUrls: ['app/shared/component/login/modallogin.css'],
+                    templateUrl: 'app/shared/components/login/modallogin.html',
+                    styleUrls: ['app/shared/components/login/modallogin.css'],
                     providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink, angular_google_signin_1.GoogleSignInComponent]
                 }),
                 __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, core_1.NgZone])

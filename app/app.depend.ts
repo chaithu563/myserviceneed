@@ -25,7 +25,7 @@ import {GoogleSignInComponent} from 'angular-google-signin';
 export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
     ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent, GoogleSignInComponent,
-    FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent,
+	FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent, ModalLoginComponent,
 	 FileSelectDirective, LoginComponent
 ];
 

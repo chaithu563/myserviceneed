@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Routes, Router, ActivatedRoute, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
 //import {AdminUserComponent} from './user/adminuser';
 import {ModalDirective} from 'ng2-bootstrap';
+import {ModalLoginComponent} from '../../../../shared/components/login/modallogin';
 import { MSNService } from '../../../../services/msn.service';
 @Component({
     selector: 'userverify',
@@ -12,7 +13,8 @@ import { MSNService } from '../../../../services/msn.service';
     directives: []
 })
 export class UserVerifyComponent {
-    @ViewChild('myLoginModal') public myLoginModal: ModalDirective;
+    //@ViewChild('myLoginModal') public myLoginModal: ModalDirective;
+	 @ViewChild('modallogin') public myLoginModal: ModalLoginComponent;
     @Input() serviceinfo: any;
     @Output() serviceinfoChange: EventEmitter = new EventEmitter<any>();
     @Output() postUserRequest: EventEmitter = new EventEmitter<any>();
@@ -54,7 +56,7 @@ export class UserVerifyComponent {
         loginOrSignupclick() {
 
             this.myLoginModal.open();
-            this.googleInit();
+           // this.googleInit();
 
 
         }

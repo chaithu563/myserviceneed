@@ -8,8 +8,8 @@ import {GoogleSignInSuccess} from 'angular-google-signin';
 import {GoogleSignInComponent} from 'angular-google-signin';
 @Component({
 	selector: 'modallogin',
-	templateUrl: 'app/shared/component/login/modallogin.html',
-	styleUrls: ['app/shared/component/login/modallogin.css'],
+	templateUrl: 'app/shared/components/login/modallogin.html',
+	styleUrls: ['app/shared/components/login/modallogin.css'],
 	providers: [MSNService, LoginService, RouterLink, GoogleSignInComponent]
 
 })
@@ -27,7 +27,7 @@ export class ModalLoginComponent implements AfterViewInit {
 	constructor(private msnService: MSNService, private loginService: LoginService, ngZone: NgZone) {
 		this.isLoggedIn = false;
 	//	this.initialLoad();
-
+	
 	}
 
 	initialLoad() {
@@ -71,7 +71,7 @@ export class ModalLoginComponent implements AfterViewInit {
 				// cookiepolicy: 'single_host_origin',
 				scope: 'profile email openid'
 			});
-			that.attachSignin(document.getElementById('googleBtn'));
+			that.attachSignin(document.getElementById('googleBtnmodal'));
 		});
 	}
 	public attachSignin(element) {
@@ -110,6 +110,14 @@ export class ModalLoginComponent implements AfterViewInit {
 
 
 	//}
+
+		open() {
+
+		this.myLoginModal.open();
+		this.googleInit();
+
+
+	}
 
 	onFacebookLoginClick() {
 		// FB.login();
