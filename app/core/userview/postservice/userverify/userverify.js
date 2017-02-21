@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "../../../../shared/components/login/modallogin", "../../../../services/msn.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "../../../../services/msn.login", "../../../../shared/components/login/modallogin", "../../../../services/msn.service"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "../../../../shared/compone
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, modallogin_1, msn_service_1, UserVerifyComponent;
+    var core_1, router_1, msn_login_1, modallogin_1, msn_service_1, UserVerifyComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,6 +18,9 @@ System.register(["@angular/core", "@angular/router", "../../../../shared/compone
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (msn_login_1_1) {
+                msn_login_1 = msn_login_1_1;
             },
             function (modallogin_1_1) {
                 modallogin_1 = modallogin_1_1;
@@ -28,16 +31,32 @@ System.register(["@angular/core", "@angular/router", "../../../../shared/compone
         ],
         execute: function () {
             UserVerifyComponent = (function () {
-                function UserVerifyComponent(msnService, router, route) {
+                function UserVerifyComponent(msnService, loginService, router, route) {
                     this.msnService = msnService;
+                    this.loginService = loginService;
                     this.router = router;
                     this.route = route;
                     this.serviceinfoChange = new core_1.EventEmitter();
                     this.postUserRequest = new core_1.EventEmitter();
                     this.isOTPVerifyPhase = false;
                     this.isOTPVerifyDone = false;
+                    this.isLoggedInUser = false;
+                    this.initialLoad();
                 }
                 UserVerifyComponent.prototype.ngOnInit = function () {
+                };
+                UserVerifyComponent.prototype.initialLoad = function () {
+                    var _this = this;
+                    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    this.isLoggedInUser = false;
+                    if (currentUser)
+                        this.loginService.loginUserInfo(currentUser).subscribe(function (user) {
+                            if (user.HasRegistered) {
+                                _this.isLoggedInUser = true;
+                                _this.user = user;
+                                console.log(user);
+                            }
+                        });
                 };
                 //titleChange(value) {
                 //    this.serviceinfoChange.emit(this.serviceinfo);
@@ -81,10 +100,10 @@ System.register(["@angular/core", "@angular/router", "../../../../shared/compone
                     selector: 'userverify',
                     templateUrl: 'app/core/userview/postservice/userverify/userverify.html',
                     styleUrls: ['app/core/userview/postservice/userverify/userverify.css'],
-                    providers: [msn_service_1.MSNService],
+                    providers: [msn_service_1.MSNService, msn_login_1.LoginService],
                     directives: []
                 }),
-                __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
+                __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, router_1.Router, router_1.ActivatedRoute])
             ], UserVerifyComponent);
             exports_1("UserVerifyComponent", UserVerifyComponent);
         }

@@ -1,10 +1,10 @@
 ﻿<div class="servicebasicInfo">
     <form>
        
-        <div class="loggedInUser">
+        <div *ngIf="isLoggedInUser">
 
 
-            Dear <label for="username">User Name:</label>
+            Dear <label for="username">{{user.Email}}</label>
 
             <div *ngIf="isMobileVerified">
                 <h4>Please Confirm Your details before place your request.</h4>
@@ -44,12 +44,12 @@
 
         </div>
 
-    <h4>OR</h4>
+   
 
-			<div class="notLoggedInUser">
+			<div *ngIf="!isLoggedInUser">
 				<h4> Since you are not a logged in user , myserviceneed requesting  you to login</h4>
-		
-                <a (click)="loginOrSignupclick()"><i class="fa fa-twitter"></i> Login/Register </a>
+
+				<a (click)="loginOrSignupclick()"><i class="fa fa-twitter"></i> Login/Register </a>
 
 			</div>
 

@@ -3,13 +3,14 @@ import { Observable } from 'rxjs/Observable';
 import { Routes, Router, ActivatedRoute, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
 //import {AdminUserComponent} from './user/adminuser';
 import {ModalDirective} from 'ng2-bootstrap';
+import { LoginService } from '../../../../services/msn.login';
 import {ModalLoginComponent} from '../../../../shared/components/login/modallogin';
 import { MSNService } from '../../../../services/msn.service';
 @Component({
     selector: 'userverify',
     templateUrl: 'app/core/userview/postservice/userverify/userverify.html',
     styleUrls: ['app/core/userview/postservice/userverify/userverify.css'],
-    providers: [MSNService],
+    providers: [MSNService, LoginService],
     directives: []
 })
 export class UserVerifyComponent {
@@ -20,13 +21,34 @@ export class UserVerifyComponent {
     @Output() postUserRequest: EventEmitter = new EventEmitter<any>();
 		isOTPVerifyPhase: boolean = false;
 		isOTPVerifyDone: boolean = false;
+		isLoggedInUser: boolean = false;
     serviceid: number;
-    constructor(private msnService: MSNService, private router: Router, private route: ActivatedRoute) {
+		user: any;
+    constructor(private msnService: MSNService, private loginService: LoginService, private router: Router, private route: ActivatedRoute) {
 
 
-
+			this.initialLoad();
     }
     ngOnInit() {
+
+    }
+
+		initialLoad() {
+
+			var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+			this.isLoggedInUser = false;
+			if (currentUser)
+        this.loginService.loginUserInfo(currentUser).subscribe(
+					user=> {
+						if (user.HasRegistered) {
+							this.isLoggedInUser = true;
+							this.user = user;
+							console.log(user);
+						}
+					}
+
+
+					);
 
     }
 
