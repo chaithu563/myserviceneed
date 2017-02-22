@@ -42,7 +42,8 @@ export class UserVerifyComponent {
 					user=> {
 						if (user.HasRegistered) {
 							this.isLoggedInUser = true;
-							this.user = user;
+                            this.user = user;
+                            this.serviceinfo.userid = user.ID;
 							console.log(user);
 						}
 					}

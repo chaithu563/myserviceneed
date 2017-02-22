@@ -54,6 +54,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.l
                             if (user.HasRegistered) {
                                 _this.isLoggedInUser = true;
                                 _this.user = user;
+                                _this.serviceinfo.userid = user.ID;
                                 console.log(user);
                             }
                         });

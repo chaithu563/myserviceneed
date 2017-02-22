@@ -60,11 +60,14 @@ namespace MSNServiceApi.Controllers
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
         {
+            MSNEntities ob = new MSNEntities();
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-
+            string userid = User.Identity.GetUserId();
             return new UserInfoViewModel
             {
-                Email = User.Identity.GetUserName(),
+                ID = userid,
+                Name = User.Identity.GetUserName(),
+                Email = ob.AspNetUsers.Find(userid)!=null ? ob.AspNetUsers.Find (userid ).Email : null,
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
