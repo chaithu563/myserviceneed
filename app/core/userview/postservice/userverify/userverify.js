@@ -41,6 +41,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.l
                     this.isOTPVerifyPhase = false;
                     this.isOTPVerifyDone = false;
                     this.isLoggedInUser = false;
+                    this.isMobileVerified = false;
                     this.initialLoad();
                 }
                 UserVerifyComponent.prototype.ngOnInit = function () {
@@ -55,6 +56,8 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.l
                                 _this.isLoggedInUser = true;
                                 _this.user = user;
                                 _this.serviceinfo.userid = user.ID;
+                                if (user.Phone)
+                                    _this.isMobileVerified = true;
                                 console.log(user);
                             }
                         });
@@ -76,7 +79,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.l
                 };
                 UserVerifyComponent.prototype.loginOrSignupclick = function () {
                     this.myLoginModal.open();
-                    // this.googleInit();
+                    //this.initialLoad();
                 };
                 return UserVerifyComponent;
             }());

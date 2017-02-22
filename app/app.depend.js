@@ -1,7 +1,7 @@
-System.register(["./app.component", "./core/header/header", "./core/header/login/login", "./core/topmenu/topmenu", "./core/userview/userview", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/servicesearch/servicesearch", "./core/userview/default/default", "./core/userview/findwork/findwork", "./core/userview/findwork/listviewwork/listviewwork", "./core/userview/findwork/mapviewwork/mapviewwork", "./core/userview/postservice/address/address", "./core/userview/postservice/serviceinfo/serviceinfo", "./core/userview/postservice/servicetime/servicetime", "./core/userview/postservice/userverify/userverify", "./shared/directives/googleplace.directive", "./shared/components/login/modallogin", "./shared/components/facebooklogin", "ng2-file-upload", "angular-google-signin"], function (exports_1, context_1) {
+System.register(["./app.component", "./core/header/header", "./core/header/login/login", "./core/topmenu/topmenu", "./core/userview/userview", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/servicesearch/servicesearch", "./core/userview/default/default", "./core/userview/findwork/findwork", "./core/userview/userneeds/userneeds", "./core/userview/findwork/listviewwork/listviewwork", "./core/userview/findwork/mapviewwork/mapviewwork", "./core/userview/postservice/address/address", "./core/userview/postservice/serviceinfo/serviceinfo", "./core/userview/postservice/servicetime/servicetime", "./core/userview/postservice/userverify/userverify", "./shared/directives/googleplace.directive", "./shared/components/login/modallogin", "./shared/components/facebooklogin", "ng2-file-upload", "angular-google-signin"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var app_component_1, header_1, login_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_1, default_1, findwork_1, listviewwork_1, mapviewwork_1, address_1, serviceinfo_1, servicetime_1, userverify_1, googleplace_directive_1, modallogin_1, facebooklogin_1, ng2_file_upload_1, angular_google_signin_1, myComponents, myDirectives, myPipes;
+    var app_component_1, header_1, login_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_1, default_1, findwork_1, userneeds_1, listviewwork_1, mapviewwork_1, address_1, serviceinfo_1, servicetime_1, userverify_1, googleplace_directive_1, modallogin_1, facebooklogin_1, ng2_file_upload_1, angular_google_signin_1, myComponents, myDirectives, myPipes;
     return {
         setters: [
             function (app_component_1_1) {
@@ -36,6 +36,9 @@ System.register(["./app.component", "./core/header/header", "./core/header/login
             },
             function (findwork_1_1) {
                 findwork_1 = findwork_1_1;
+            },
+            function (userneeds_1_1) {
+                userneeds_1 = userneeds_1_1;
             },
             function (listviewwork_1_1) {
                 listviewwork_1 = listviewwork_1_1;
@@ -76,7 +79,7 @@ System.register(["./app.component", "./core/header/header", "./core/header/login
             exports_1("myComponents", myComponents = [
                 header_1.HeaderComponent, topmenu_1.TopMenuComponent, userview_1.UserViewComponent, app_component_1.AppComponent, registeruser_1.RegisterUserComponent, edituser_1.EditUserComponent, postservice_1.PostServiceComponent, address_1.AddressComponent,
                 serviceinfo_1.ServiceInfoComponent, servicetime_1.ServiceTimeComponent, userverify_1.UserVerifyComponent, facebooklogin_1.FacebookLoginComponent, angular_google_signin_1.GoogleSignInComponent,
-                findwork_1.FindWorkComponent, listviewwork_1.ListViewWorkComponent, mapviewwork_1.MapViewWorkComponent, servicesearch_1.ServiceSearchComponent, default_1.DefaultViewComponent, modallogin_1.ModalLoginComponent,
+                findwork_1.FindWorkComponent, listviewwork_1.ListViewWorkComponent, mapviewwork_1.MapViewWorkComponent, servicesearch_1.ServiceSearchComponent, default_1.DefaultViewComponent, modallogin_1.ModalLoginComponent, userneeds_1.UserNeedsComponent,
                 ng2_file_upload_1.FileSelectDirective, login_1.LoginComponent
             ]);
             exports_1("myDirectives", myDirectives = [

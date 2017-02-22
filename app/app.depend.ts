@@ -9,6 +9,7 @@ import {PostServiceComponent} from './core/userview/postservice/postservice';
 import {ServiceSearchComponent} from './core/userview/servicesearch/servicesearch';
 import {DefaultViewComponent} from './core/userview/default/default';
 import {FindWorkComponent} from './core/userview/findwork/findwork';
+import {UserNeedsComponent} from './core/userview/userneeds/userneeds';
 import {ListViewWorkComponent} from './core/userview/findwork/listviewwork/listviewwork';
 import {MapViewWorkComponent} from './core/userview/findwork/mapviewwork/mapviewwork';
 
@@ -25,7 +26,7 @@ import {GoogleSignInComponent} from 'angular-google-signin';
 export const myComponents = [
     HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
     ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent, GoogleSignInComponent,
-	FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent, ModalLoginComponent,
+	FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent, ModalLoginComponent, UserNeedsComponent,
 	 FileSelectDirective, LoginComponent
 ];
 

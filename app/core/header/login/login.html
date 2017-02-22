@@ -6,7 +6,7 @@
 			<a dropdown-open class="dropdown-toggle"> {{user.Name}} <span class="glyphicon glyphicon-menu-down"> </span></a>
 			<ul class="dropdown-menu">
 
-				<li> <a href="# ">Requested Needs  </a></li>
+				<li> <a [routerLink]="['/userneeds','']">Your Needs  </a></li>
 				<li> <a href="# ">Your Works  </a></li>
 
 				<li><a (click)="logOutClick()"><i class="fa fa-twitter"></i> Logout </a></li>
@@ -21,7 +21,7 @@
 			<a dropdown-open class="dropdown-toggle">Login <span class="glyphicon glyphicon-menu-down"> </span></a>
 			<ul class="dropdown-menu">
 
-				<li > <a href="# ">Requested Needs  </a></li>
+				<li > <a  [routerLink]="['/userneeds','']">Your Needs  </a></li>
 				<li> <a href="# ">Your Works  </a></li>
 
 				<li><a  (click)="loginOrSignupclick()"><i class="fa fa-twitter"></i> Login/Register </a></li>

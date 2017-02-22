@@ -37,6 +37,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 function ModalLoginComponent(msnService, loginService, ngZone) {
                     this.msnService = msnService;
                     this.loginService = loginService;
+                    this.loginCallBack = new core_1.EventEmitter();
                     this.myGoogleClientId = '765964134907-qgucoo8h671ili4clikg4io886sqgbm6.apps.googleusercontent.com';
                     this.isLoggedIn = false;
                     //	this.initialLoad();
@@ -154,7 +155,8 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         console.log(user);
                         //need to handle after login success in UI
                         localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
-                        _this.initialLoad();
+                        //	this.initialLoad();
+                        _this.loginCallBack.emit(null);
                     }, function (err) {
                         // Log errors if any
                         console.log(err);
@@ -166,6 +168,10 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                 core_1.ViewChild('myLoginModal'),
                 __metadata("design:type", ng2_bootstrap_1.ModalDirective)
             ], ModalLoginComponent.prototype, "myLoginModal", void 0);
+            __decorate([
+                core_1.Output(),
+                __metadata("design:type", core_1.EventEmitter)
+            ], ModalLoginComponent.prototype, "loginCallBack", void 0);
             ModalLoginComponent = __decorate([
                 core_1.Component({
                     selector: 'modallogin',

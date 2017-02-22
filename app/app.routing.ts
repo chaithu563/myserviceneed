@@ -2,6 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from './app.component';
 import {RegisterUserComponent} from './core/userview/user/registeruser';
+import {UserNeedsComponent} from './core/userview/userneeds/userneeds';
 import {EditUserComponent} from './core/userview/user/edituser';
 import {PostServiceComponent} from './core/userview/postservice/postservice';
 import {AddressComponent} from './core/userview/postservice/address/address';
@@ -68,8 +69,8 @@ const appRoutes: Routes = [
 
 
     {
-        path: 'registeruser',
-        component: RegisterUserComponent
+        path: 'userneeds/:id',
+        component: UserNeedsComponent
     },
 
 

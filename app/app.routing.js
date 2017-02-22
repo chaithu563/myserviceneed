@@ -1,14 +1,14 @@
-System.register(["@angular/router", "./core/userview/user/registeruser", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/postservice/address/address", "./core/userview/findwork/findwork", "./core/userview/default/default", "./core/userview/userview"], function (exports_1, context_1) {
+System.register(["@angular/router", "./core/userview/userneeds/userneeds", "./core/userview/user/edituser", "./core/userview/postservice/postservice", "./core/userview/postservice/address/address", "./core/userview/findwork/findwork", "./core/userview/default/default", "./core/userview/userview"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, registeruser_1, edituser_1, postservice_1, address_1, findwork_1, default_1, userview_1, appRoutes, routing;
+    var router_1, userneeds_1, edituser_1, postservice_1, address_1, findwork_1, default_1, userview_1, appRoutes, routing;
     return {
         setters: [
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (registeruser_1_1) {
-                registeruser_1 = registeruser_1_1;
+            function (userneeds_1_1) {
+                userneeds_1 = userneeds_1_1;
             },
             function (edituser_1_1) {
                 edituser_1 = edituser_1_1;
@@ -68,8 +68,8 @@ System.register(["@angular/router", "./core/userview/user/registeruser", "./core
                     path: 'findwork/:id', component: findwork_1.FindWorkComponent
                 },
                 {
-                    path: 'registeruser',
-                    component: registeruser_1.RegisterUserComponent
+                    path: 'userneeds/:id',
+                    component: userneeds_1.UserNeedsComponent
                 },
                 {
                     path: 'user/:id', component: edituser_1.EditUserComponent

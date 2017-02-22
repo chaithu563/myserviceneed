@@ -23,6 +23,7 @@ export class UserVerifyComponent {
 		isOTPVerifyDone: boolean = false;
 		isLoggedInUser: boolean = false;
     serviceid: number;
+		isMobileVerified: boolean = false;
 		user: any;
     constructor(private msnService: MSNService, private loginService: LoginService, private router: Router, private route: ActivatedRoute) {
 
@@ -44,6 +45,9 @@ export class UserVerifyComponent {
 							this.isLoggedInUser = true;
                             this.user = user;
                             this.serviceinfo.userid = user.ID;
+
+														if (user.Phone)
+															this.isMobileVerified = true;
 							console.log(user);
 						}
 					}
@@ -79,7 +83,7 @@ export class UserVerifyComponent {
         loginOrSignupclick() {
 
             this.myLoginModal.open();
-           // this.googleInit();
+						//this.initialLoad();
 
 
         }

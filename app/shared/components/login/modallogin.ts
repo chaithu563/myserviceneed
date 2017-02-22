@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild, ElementRef, AfterViewInit, NgZone  } from '@angular/core';
+﻿import { Component, ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmitter, NgZone  } from '@angular/core';
 import { MSNService } from '../../../services/msn.service';
 import { LoginService } from '../../../services/msn.login';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,7 @@ import {GoogleSignInComponent} from 'angular-google-signin';
 })
 export class ModalLoginComponent implements AfterViewInit {
 	@ViewChild('myLoginModal') public myLoginModal: ModalDirective;
+	@Output() loginCallBack : EventEmitter = new EventEmitter<any>();
 	isLoggedIn: boolean;
 	categories: any;
 	cities: any;
@@ -198,7 +199,8 @@ export class ModalLoginComponent implements AfterViewInit {
 				//need to handle after login success in UI
 
 				localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
-								this.initialLoad();
+							//	this.initialLoad();
+								this.loginCallBack.emit(null);
 			},
 			err => {
 				// Log errors if any

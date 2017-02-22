@@ -63,7 +63,14 @@ namespace MSNServiceApi.Controllers
 
 			var result = db.USERSERVICENEEDs.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(DateTime.Today))).AsQueryable();
 
-            if (filters["serviceid"].ToString() != "")
+			if ( filters["userid"]!=null && filters["userid"].ToString() != "")
+			{
+				string userid = Convert.ToString(filters["userid"]);
+				result = result.Where(x => x.USERID == userid).AsQueryable();
+
+			}
+
+            if (filters["serviceid"] !=null && filters["serviceid"].ToString() != "")
             {
                 decimal serviceid = Convert.ToDecimal(filters["serviceid"]);
                 result = result.Where(x => x.SERVICESUBCATEGORYID== serviceid).AsQueryable();
@@ -71,13 +78,13 @@ namespace MSNServiceApi.Controllers
             }
 
 
-            if (filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
+            if ( filters["needon"] !=null && filters["needtill"] !=null && filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
 			{
 				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
 				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) == EntityFunctions.TruncateTime(needon.Date))).AsQueryable();
 
 			}
-			else if (filters["needon"].ToString() != "" && filters["needtill"].ToString() != "")
+			else if (filters["needon"] !=null && filters["needtill"] !=null  && filters["needon"].ToString() != "" && filters["needtill"].ToString() != "")
 			{
 				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
 				var needtill = (DateTime)Convert.ToDateTime(filters["needtill"]).ToLocalTime();
@@ -93,14 +100,14 @@ namespace MSNServiceApi.Controllers
 
 			}
 
-			if (filters["bookedon"].ToString() != "")
+			if (filters["bookedon"] !=null && filters["bookedon"].ToString() != "")
 			{
 				var bookedon = (DateTime)Convert.ToDateTime(filters["bookedon"]).ToLocalTime();
 				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE) == EntityFunctions.TruncateTime(bookedon.Date))).AsQueryable();
 
 			}
 
-            if ( filters["nelatitude"].ToString() != "")
+            if (filters["nelatitude"] !=null && filters["nelatitude"].ToString() != "")
             {
                 double nelatitude = Convert.ToDouble(filters["nelatitude"]);
                 double nelongitude = Convert.ToDouble(filters["nelongitude"]);
