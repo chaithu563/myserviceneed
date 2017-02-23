@@ -1,2 +1,6 @@
-﻿body {
+﻿ select {
+    width:100px;
+    height:20px;
+    border : 1px #ccc solid;
+    vertical-align:top;
 }

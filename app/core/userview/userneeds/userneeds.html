@@ -11,27 +11,21 @@
 					<thead>
 						<tr >
 							<th>Service</th>
-							<th>Address</th>
+							<!--<th>Address</th>-->
 							<th>Requested On</th>
 							<th>Needed On</th>
-							<th>Contact</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr *ngFor="let item of pagedItems">
 							<td>
 								
-								<h3> {{item.SERVICETITLE}} </h3>
-								<p>
-									{{item.SERVICEDESCRIPTION}}
-								</p>
+							<a> <h3> {{item.SERVICETITLE}} </h3>  </a>	
+								
 							
 							</td>
-							<td class="angular-with-newlines">
-
-								{{item.SERVICELOCATIONADDRESS}}
-
-							</td>
+							
 							<td>
 							
 							{{item.SERVICEBOOKEDDATE | date:'yMMMd'}}
@@ -46,8 +40,13 @@
 
 							<td>
 							
-							{{item.NAME}}<br/>
-								{{item.PHONE}}
+                                <select [value]="0" (change)="onActionChange($event.target.value)">
+                                    <option value="0" selected disabled >Choose</option>
+                                    <option>Delete</option>
+                                    <option>RePost</option>
+                                   
+                                </select>
+
 							
 							</td>
 						</tr>

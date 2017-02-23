@@ -79,6 +79,9 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                             }
                         });
                 };
+                UserNeedsComponent.prototype.onActionChange = function (value) {
+                    alert(value);
+                };
                 return UserNeedsComponent;
             }());
             UserNeedsComponent = __decorate([

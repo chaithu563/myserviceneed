@@ -84,5 +84,8 @@ export class UserNeedsComponent implements OnInit {
 	}
 
 	
+    onActionChange(value) {
+        alert(value);
 
+    }
 }

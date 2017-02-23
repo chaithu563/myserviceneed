@@ -61,64 +61,67 @@ namespace MSNServiceApi.Controllers
 		{
 			dynamic filters = JsonConvert.DeserializeObject<dynamic>(query);
 
-			var result = db.USERSERVICENEEDs.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(DateTime.Today))).AsQueryable();
+			var result = db.USERSERVICENEEDs.AsQueryable();
 
-			if ( filters["userid"]!=null && filters["userid"].ToString() != "")
-			{
-				string userid = Convert.ToString(filters["userid"]);
-				result = result.Where(x => x.USERID == userid).AsQueryable();
-
-			}
-
-            if (filters["serviceid"] !=null && filters["serviceid"].ToString() != "")
+            if (filters["userid"] != null && filters["userid"].ToString() != "")
             {
-                decimal serviceid = Convert.ToDecimal(filters["serviceid"]);
-                result = result.Where(x => x.SERVICESUBCATEGORYID== serviceid).AsQueryable();
+                string userid = Convert.ToString(filters["userid"]);
+                result = result.Where(x => x.USERID == userid).AsQueryable();
 
             }
+            else {
+                result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(DateTime.Today))).AsQueryable();
+
+                if (filters["serviceid"] != null && filters["serviceid"].ToString() != "")
+                {
+                    decimal serviceid = Convert.ToDecimal(filters["serviceid"]);
+                    result = result.Where(x => x.SERVICESUBCATEGORYID == serviceid).AsQueryable();
+
+                }
 
 
-            if ( filters["needon"] !=null && filters["needtill"] !=null && filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
-			{
-				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
-				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) == EntityFunctions.TruncateTime(needon.Date))).AsQueryable();
+                if (filters["needon"] != null && filters["needtill"] != null && filters["needon"].ToString() != "" && filters["needtill"].ToString() == "")
+                {
+                    var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
+                    result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) == EntityFunctions.TruncateTime(needon.Date))).AsQueryable();
 
-			}
-			else if (filters["needon"] !=null && filters["needtill"] !=null  && filters["needon"].ToString() != "" && filters["needtill"].ToString() != "")
-			{
-				var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
-				var needtill = (DateTime)Convert.ToDateTime(filters["needtill"]).ToLocalTime();
+                }
+                else if (filters["needon"] != null && filters["needtill"] != null && filters["needon"].ToString() != "" && filters["needtill"].ToString() != "")
+                {
+                    var needon = (DateTime)Convert.ToDateTime(filters["needon"]).ToLocalTime();
+                    var needtill = (DateTime)Convert.ToDateTime(filters["needtill"]).ToLocalTime();
 
-				result = result.Where(x =>
+                    result = result.Where(x =>
 
-					(DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(needon.Date)) &&
+                        (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) >= EntityFunctions.TruncateTime(needon.Date)) &&
 
-					(DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) <= EntityFunctions.TruncateTime(needtill.Date))
+                        (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICESTARTDATE) <= EntityFunctions.TruncateTime(needtill.Date))
 
-															).AsQueryable();
+                                                                ).AsQueryable();
 
 
-			}
+                }
 
-			if (filters["bookedon"] !=null && filters["bookedon"].ToString() != "")
-			{
-				var bookedon = (DateTime)Convert.ToDateTime(filters["bookedon"]).ToLocalTime();
-				result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE) == EntityFunctions.TruncateTime(bookedon.Date))).AsQueryable();
+                if (filters["bookedon"] != null && filters["bookedon"].ToString() != "")
+                {
+                    var bookedon = (DateTime)Convert.ToDateTime(filters["bookedon"]).ToLocalTime();
+                    result = result.Where(x => (DbFunctions.TruncateTime(x.USERSERVICETIMERECORD.SERVICEBOOKEDDATE) == EntityFunctions.TruncateTime(bookedon.Date))).AsQueryable();
 
-			}
+                }
 
-            if (filters["nelatitude"] !=null && filters["nelatitude"].ToString() != "")
-            {
-                double nelatitude = Convert.ToDouble(filters["nelatitude"]);
-                double nelongitude = Convert.ToDouble(filters["nelongitude"]);
-                double swlatitude =Convert.ToDouble(filters["swlatitude"]);
-                double swlongitude = Convert.ToDouble(filters["swlongitude"]);
+                if (filters["nelatitude"] != null && filters["nelatitude"].ToString() != "")
+                {
+                    double nelatitude = Convert.ToDouble(filters["nelatitude"]);
+                    double nelongitude = Convert.ToDouble(filters["nelongitude"]);
+                    double swlatitude = Convert.ToDouble(filters["swlatitude"]);
+                    double swlongitude = Convert.ToDouble(filters["swlongitude"]);
 
-                result = result.Where(x => (x.LOCATIONLATITUDE>= swlatitude) && (x.LOCATIONLATITUDE <= nelatitude) &&
-                                              
-                            (x.LOCATIONLONGITUDE >= swlongitude) && (x.LOCATIONLONGITUDE <= nelongitude)
-                ).AsQueryable();
+                    result = result.Where(x => (x.LOCATIONLATITUDE >= swlatitude) && (x.LOCATIONLATITUDE <= nelatitude) &&
 
+                                (x.LOCATIONLONGITUDE >= swlongitude) && (x.LOCATIONLONGITUDE <= nelongitude)
+                    ).AsQueryable();
+
+                }
             }
 
 
