@@ -18,11 +18,24 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 })
 export class UserNeedsComponent implements OnInit {
 	 @ViewChild('deletemodal') public deleteModal: ModalDirective;
-
+	 @ViewChild('updatemodal') public updateModal: ModalDirective;
 	 selectedItem: any;
 	avilableServices: any;
 	searchString: string;
 	servicessearch: any;
+	
+	timetype: string;
+	service_start_time: Date;
+	//	multi_day_start_time: Date;
+	serviceid: number;
+		calendarOptions = {
+		format: "DD-MM-YYYY",
+		firstWeekdaySunday: false,
+		minDate: new Date(),
+		//		maxDate: new DateConstructor(). ,
+		initialDate: new Date()
+
+		};
 	constructor(private msnService: MSNService, private loginService: LoginService, private pagerService: PagerService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
 
 		 // this.servicessearch = [];
@@ -30,6 +43,7 @@ export class UserNeedsComponent implements OnInit {
 		this.servicessearch = {};
 		this.selectedItem = [];
 		this.initialLoad();
+		this.selectedItem.service_start_time = new Date();
 	}
 
 	// array of all items to be paged
@@ -90,10 +104,13 @@ export class UserNeedsComponent implements OnInit {
 
 	
     onActionChange(value,item) {
-			alert(value);
+		
 			console.log(item);
 			this.selectedItem = item;
-			this.deleteModal.open();
+			if (value =="Delete")
+				this.deleteModal.open();
+			if (value == "RePost")
+				this.updateModal.open();
 	}
 
 		confirmDelete() {
@@ -108,4 +125,37 @@ export class UserNeedsComponent implements OnInit {
 				this.loadUserServices();
 				});
 		}
+
+		confirmUpdate() {
+
+
+			this.msnService.putUserServiceNeed(this.selectedItem)
+			// .map((response) => response)
+				.subscribe(data => {
+					// set items to json response
+					this.updateModal.close();
+
+					this.loadUserServices();
+				});
+		}
+
+
+		serviceTypeChange(value) {
+
+			this.timetype = value;
+
+			if (value == 'oneday') {
+
+				this.selectedItem.servicestartdate = this.selectedItem.servicedate;
+				this.selectedItem.serviceenddate = this.selectedItem.servicedate;
+
+			}
+
+    }
+		serviceDateChange(object) {
+			this.selectedItem.servicestartdate = object;
+			this.selectedItem.serviceenddate = object;
+
+		}
+
 }

@@ -97,3 +97,116 @@
 	</modal-content>
 
 </modal>
+
+
+<modal #updatemodal
+			 modalclass="modal-lg modal-sm login-modal">
+	<modal-header>
+		<h4>Are you sure to change service time</h4>
+	</modal-header>
+	<modal-content>
+		<div class="form-body">
+
+			<p>
+				Your are about to repost the below selected service.
+			</p>
+			<h4> {{selectedItem.SERVICETITLE}} </h4>
+
+
+			<div class="servicebasicInfo">
+
+	<div class="right-inner-addon">
+
+	</div>
+	<div>
+
+		<h3> Is your service is one day need or multi day need</h3>
+	</div>
+	<div class="radio">
+
+		<div class="btn-group btn-group-vertical" data-toggle="buttons">
+			<label class="btn active">
+				<input type="radio" name='timetype' value="oneday" (change)="serviceTypeChange($event.target.value)"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  One Day Service</span>
+			</label>
+			<label class="btn active">
+				<input type="radio" name='timetype' value="multiday" (change)="serviceTypeChange($event.target.value)"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Multi Day Service </span>
+			</label>
+		</div>
+
+	</div>
+
+	<div class="timeinfo">
+
+		<div class="singleday" *ngIf="timetype=='oneday'">
+
+			<div class="dateSelectionInline">
+
+				<label for="date">Service Required Date:</label>
+
+				<form class="datecomponent">
+					<ng2-datepicker [(ngModel)]="selectedItem.servicedate" (ngmodelchange)="serviceDateChange($event)" [options]="calendarOptions" name="servicedate"></ng2-datepicker>
+				</form>
+			</div>
+			<br/>
+			<div class="dateSelectionInline">
+
+				<label for="date">Service Required Time:</label>
+				<div class="datecomponent timecomponent">
+					<datetime [(ngModel)]="selectedItem.service_start_time" [datepicker]="false"></datetime>
+
+
+
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="multiday" *ngIf="timetype=='multiday'">
+
+			<div class="dateSelectionInline">
+
+				<label for="startdate">Service Start Date:</label>
+
+				<form  class="datecomponent">
+					<ng2-datepicker [(ngModel)]="selectedItem.servicestartdate" [options]="calendarOptions" name="servicestartdate"></ng2-datepicker>
+				</form>
+			</div>
+			<br />
+			<div class="dateSelectionInline">
+
+				<label for="enddate">Service End Date:</label>
+
+				<form  class="datecomponent">
+					<ng2-datepicker  [(ngModel)]="selectedItem.serviceenddate" [options]="calendarOptions" name="serviceenddate"></ng2-datepicker>
+				</form>
+			</div>
+			<br />
+			<div class="dateSelectionInline">
+
+				<label for="date">At what time you need the service for selected days:</label>
+				<div class="datecomponent timecomponent">
+					<datetime [(ngModel)]="selectedItem.service_start_time" [datepicker]="false"></datetime>
+
+
+
+				</div>
+			</div>
+			<br />
+		</div>
+
+	</div>
+
+
+
+</div>
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
+
+			<button type="submit" (click)="confirmDelete()" class="btn btn-default">CONFIRM</button>
+		</div>
+	</modal-content>
+
+</modal>

@@ -44,6 +44,13 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                     this.router = router;
                     this.zone = zone;
                     this._loader = _loader;
+                    this.calendarOptions = {
+                        format: "DD-MM-YYYY",
+                        firstWeekdaySunday: false,
+                        minDate: new Date(),
+                        //		maxDate: new DateConstructor(). ,
+                        initialDate: new Date()
+                    };
                     // pager object
                     this.pager = {};
                     // this.servicessearch = [];
@@ -51,6 +58,7 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                     this.servicessearch = {};
                     this.selectedItem = [];
                     this.initialLoad();
+                    this.selectedItem.service_start_time = new Date();
                 }
                 UserNeedsComponent.prototype.loadUserServices = function () {
                     var _this = this;
@@ -84,10 +92,12 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                         });
                 };
                 UserNeedsComponent.prototype.onActionChange = function (value, item) {
-                    alert(value);
                     console.log(item);
                     this.selectedItem = item;
-                    this.deleteModal.open();
+                    if (value == "Delete")
+                        this.deleteModal.open();
+                    if (value == "RePost")
+                        this.updateModal.open();
                 };
                 UserNeedsComponent.prototype.confirmDelete = function () {
                     var _this = this;
@@ -98,12 +108,36 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                         _this.loadUserServices();
                     });
                 };
+                UserNeedsComponent.prototype.confirmUpdate = function () {
+                    var _this = this;
+                    this.msnService.putUserServiceNeed(this.selectedItem)
+                        .subscribe(function (data) {
+                        // set items to json response
+                        _this.updateModal.close();
+                        _this.loadUserServices();
+                    });
+                };
+                UserNeedsComponent.prototype.serviceTypeChange = function (value) {
+                    this.timetype = value;
+                    if (value == 'oneday') {
+                        this.selectedItem.servicestartdate = this.selectedItem.servicedate;
+                        this.selectedItem.serviceenddate = this.selectedItem.servicedate;
+                    }
+                };
+                UserNeedsComponent.prototype.serviceDateChange = function (object) {
+                    this.selectedItem.servicestartdate = object;
+                    this.selectedItem.serviceenddate = object;
+                };
                 return UserNeedsComponent;
             }());
             __decorate([
                 core_1.ViewChild('deletemodal'),
                 __metadata("design:type", ng2_bootstrap_1.ModalDirective)
             ], UserNeedsComponent.prototype, "deleteModal", void 0);
+            __decorate([
+                core_1.ViewChild('updatemodal'),
+                __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+            ], UserNeedsComponent.prototype, "updateModal", void 0);
             UserNeedsComponent = __decorate([
                 core_1.Component({
                     selector: 'userneeds',
