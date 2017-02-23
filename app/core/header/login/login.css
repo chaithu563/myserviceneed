@@ -5,3 +5,13 @@
 	height:50%;
 
 }
+
+a {
+    color: white;
+   
+}
+
+a:hover {
+       color: #23527c;
+   
+}

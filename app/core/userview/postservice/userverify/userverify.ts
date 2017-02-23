@@ -78,7 +78,12 @@ export class UserVerifyComponent {
 
             this.postUserRequest.emit(this.serviceinfo);
 
-        }
+		}
+
+				confirmRequest() {
+					this.postUserRequest.emit(this.serviceinfo);
+
+				}
 
         loginOrSignupclick() {
 

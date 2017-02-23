@@ -77,6 +77,9 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.l
                     this.isOTPVerifyPhase = false;
                     this.postUserRequest.emit(this.serviceinfo);
                 };
+                UserVerifyComponent.prototype.confirmRequest = function () {
+                    this.postUserRequest.emit(this.serviceinfo);
+                };
                 UserVerifyComponent.prototype.loginOrSignupclick = function () {
                     this.myLoginModal.open();
                     //this.initialLoad();

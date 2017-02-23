@@ -9,7 +9,7 @@
             <div *ngIf="isMobileVerified">
                 <h4>Please Confirm Your details before place your request.</h4>
 
-
+							<button type="submit"  (click)="confirmRequest($event)" class="btn btn-default">CONFIRM</button>
             </div>
 
             <div *ngIf="!isMobileVerified">
