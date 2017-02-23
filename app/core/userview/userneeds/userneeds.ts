@@ -1,8 +1,9 @@
-﻿import { Component, OnInit, ModuleWithProviders, ChangeDetectorRef, NgZone, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, ViewChild, OnInit, ModuleWithProviders, ChangeDetectorRef, NgZone, Input, Output, EventEmitter } from '@angular/core';
 import {LoginService } from '../../../services/msn.login';
 import { MSNService } from '../../../services/msn.service';
 import { PagerService } from '../../../services/msn.pager';
 import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
+import {ModalDirective} from 'ng2-bootstrap';
 //import {AdminUserComponent} from './user/adminuser';
 //import {RegisterUserComponent} from  '../user/registeruser';
 import { Observable } from 'rxjs/Observable';
@@ -16,6 +17,9 @@ import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader, MouseEvent } from 'ang
 
 })
 export class UserNeedsComponent implements OnInit {
+	 @ViewChild('deletemodal') public deleteModal: ModalDirective;
+
+	 selectedItem: any;
 	avilableServices: any;
 	searchString: string;
 	servicessearch: any;
@@ -24,6 +28,7 @@ export class UserNeedsComponent implements OnInit {
 		 // this.servicessearch = [];
 		//  this.avilableServices = this.msnService.getAvailableServicesURL();
 		this.servicessearch = {};
+		this.selectedItem = [];
 		this.initialLoad();
 	}
 
@@ -84,8 +89,23 @@ export class UserNeedsComponent implements OnInit {
 	}
 
 	
-    onActionChange(value) {
-        alert(value);
+    onActionChange(value,item) {
+			alert(value);
+			console.log(item);
+			this.selectedItem = item;
+			this.deleteModal.open();
+	}
 
-    }
+		confirmDelete() {
+
+
+			this.msnService.deleteUserServiceNeed(this.selectedItem.ID)
+			// .map((response) => response)
+				.subscribe(data => {
+					// set items to json response
+				this.deleteModal.close();
+
+				this.loadUserServices();
+				});
+		}
 }

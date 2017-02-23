@@ -40,7 +40,7 @@
 
 							<td>
 							
-                                <select  (change)="onActionChange($event.target.value)">
+                                <select  (change)="onActionChange($event.target.value,item)">
 																	<option selected="selected">Choose</option>
                                     <option>Delete</option>
                                     <option>RePost</option>
@@ -77,3 +77,23 @@
         </ul>
     </div>
 </div>
+
+
+<modal #deletemodal
+			 modalclass="modal-lg modal-sm login-modal">
+	<modal-header>
+		<h4>Are You Sure to Delete</h4>
+	</modal-header>
+	<modal-content>
+		<div class="form-body">
+
+			<p>
+				Your are about to delete the below selected service.
+			</p>
+			<h4> {{selectedItem.SERVICETITLE}} </h4>
+		
+			<button type="submit" (click)="confirmDelete()" class="btn btn-default">CONFIRM</button>
+		</div>
+	</modal-content>
+
+</modal>

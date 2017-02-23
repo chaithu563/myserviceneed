@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../../services/msn.login", "../../../services/msn.service", "../../../services/msn.pager", "@angular/router", "angular2-google-maps/core"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../../services/msn.login", "../../../services/msn.service", "../../../services/msn.pager", "@angular/router", "ng2-bootstrap", "angular2-google-maps/core"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, msn_login_1, msn_service_1, msn_pager_1, router_1, core_2, UserNeedsComponent;
+    var core_1, msn_login_1, msn_service_1, msn_pager_1, router_1, ng2_bootstrap_1, core_2, UserNeedsComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -27,6 +27,9 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (ng2_bootstrap_1_1) {
+                ng2_bootstrap_1 = ng2_bootstrap_1_1;
             },
             function (core_2_1) {
                 core_2 = core_2_1;
@@ -46,6 +49,7 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                     // this.servicessearch = [];
                     //  this.avilableServices = this.msnService.getAvailableServicesURL();
                     this.servicessearch = {};
+                    this.selectedItem = [];
                     this.initialLoad();
                 }
                 UserNeedsComponent.prototype.loadUserServices = function () {
@@ -79,11 +83,27 @@ System.register(["@angular/core", "../../../services/msn.login", "../../../servi
                             }
                         });
                 };
-                UserNeedsComponent.prototype.onActionChange = function (value) {
+                UserNeedsComponent.prototype.onActionChange = function (value, item) {
                     alert(value);
+                    console.log(item);
+                    this.selectedItem = item;
+                    this.deleteModal.open();
+                };
+                UserNeedsComponent.prototype.confirmDelete = function () {
+                    var _this = this;
+                    this.msnService.deleteUserServiceNeed(this.selectedItem.ID)
+                        .subscribe(function (data) {
+                        // set items to json response
+                        _this.deleteModal.close();
+                        _this.loadUserServices();
+                    });
                 };
                 return UserNeedsComponent;
             }());
+            __decorate([
+                core_1.ViewChild('deletemodal'),
+                __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+            ], UserNeedsComponent.prototype, "deleteModal", void 0);
             UserNeedsComponent = __decorate([
                 core_1.Component({
                     selector: 'userneeds',
