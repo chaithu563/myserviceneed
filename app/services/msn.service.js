@@ -91,7 +91,7 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                     var json = JSON.stringify(data);
                     var params = 'json=' + json;
                     // ...using get request
-                    return this.http.put(this.config.ServiceApi + 'USERSERVICENEEDs', json, options)
+                    return this.http.put(this.config.ServiceApi + 'USERSERVICENEEDs/' + data.ID, json, options)
                         .map(function (res) { return res.json(); })
                         .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };

@@ -144,7 +144,7 @@
 				<label for="date">Service Required Date:</label>
 
 				<form class="datecomponent">
-					<ng2-datepicker [(ngModel)]="selectedItem.servicedate" (ngmodelchange)="serviceDateChange($event)" [options]="calendarOptions" name="servicedate"></ng2-datepicker>
+					<ng2-datepicker [(ngModel)]="selectedItem.servicedate" (ngModelChange)="serviceDateChange($event)" [options]="calendarOptions" name="servicedate"></ng2-datepicker>
 				</form>
 			</div>
 			<br/>
@@ -205,7 +205,7 @@
 
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
 
-			<button type="submit" (click)="confirmDelete()" class="btn btn-default">CONFIRM</button>
+			<button type="submit" (click)="confirmUpdate()" class="btn btn-default">CONFIRM</button>
 		</div>
 	</modal-content>
 

@@ -13,6 +13,7 @@ using System.Web.Http.Description;
 using MSNServiceApi.Models;
 using Newtonsoft.Json;
 using System.Data.Entity.Core.Objects;
+using System.Globalization;
 
 namespace MSNServiceApi.Controllers
 {
@@ -148,21 +149,36 @@ namespace MSNServiceApi.Controllers
 
 		// PUT: api/USERSERVICENEEDs/5
 		[ResponseType(typeof(void))]
-		public async Task<IHttpActionResult> PutUSERSERVICENEED(decimal id, USERSERVICENEED uSERSERVICENEED)
+		public async Task<IHttpActionResult> PutUSERSERVICENEED(decimal id, dynamic details)
 		{
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
 
-			if (id != uSERSERVICENEED.ID)
-			{
-				return BadRequest();
-			}
+			//if (id != details["ID"])
+			//{
+			//	return BadRequest();
+			//}
+            USERSERVICENEED ob = db.USERSERVICENEEDs.Find(id);
 
-			db.Entry(uSERSERVICENEED).State = EntityState.Modified;
+            USERSERVICETIMERECORD time = new USERSERVICETIMERECORD();
+            time.SERVICEBOOKEDDATE = DateTime.Today;
+            time.SERVICESTARTDATE = DateTime.ParseExact(Convert.ToString(details["servicestartdate"].formatted).Replace('-', '/'), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            // Convert.ToDateTime(details["servicestartdate"].formatted);
+            time.SERVICEENDDATE = DateTime.ParseExact(Convert.ToString(details["serviceenddate"].formatted).Replace('-', '/'), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            // Convert.ToDateTime(details["serviceenddate"].momentObj);
+            //	time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
+            //var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+            //ser.DeserializeObject(details);
+            var starttime = details["service_start_time"];
+            time.SERVICESTARTTIME = Convert.ToDateTime(starttime).ToLocalTime().TimeOfDay;
+            //	time.SERVICEENDTIME = null;
+            ob.USERSERVICETIMERECORD = time;
 
-			try
+            db.Entry(ob).State = EntityState.Modified;
+
+            try
 			{
 				await db.SaveChangesAsync();
 			}
@@ -213,12 +229,14 @@ namespace MSNServiceApi.Controllers
 
 			USERSERVICETIMERECORD time = new USERSERVICETIMERECORD();
 			time.SERVICEBOOKEDDATE = DateTime.Today;
-			time.SERVICESTARTDATE = Convert.ToDateTime(details["servicestartdate"].momentObj);
-			time.SERVICEENDDATE = Convert.ToDateTime(details["serviceenddate"].momentObj);
-			//	time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
-			//var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
-			//ser.DeserializeObject(details);
-			var starttime = details["service_start_time"];
+            time.SERVICESTARTDATE = DateTime.ParseExact( Convert.ToString( details["servicestartdate"].formatted).Replace('-','/'), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            // Convert.ToDateTime(details["servicestartdate"].formatted);
+			time.SERVICEENDDATE = DateTime.ParseExact(Convert.ToString(details["serviceenddate"].formatted).Replace('-', '/'), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            // Convert.ToDateTime(details["serviceenddate"].momentObj);
+            //	time.SERVICESTARTTIME = Convert.ToDateTime(details["service_start_time"]).TimeOfDay;
+            //var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+            //ser.DeserializeObject(details);
+            var starttime = details["service_start_time"];
 			time.SERVICESTARTTIME = Convert.ToDateTime(starttime).ToLocalTime().TimeOfDay;
 			//	time.SERVICEENDTIME = null;
 			ob.USERSERVICETIMERECORD = time;

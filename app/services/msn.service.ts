@@ -102,7 +102,7 @@ export class MSNService {
 		 var json = JSON.stringify(data);
 		 var params = 'json=' + json;
 		 // ...using get request
-		 return this.http.put(this.config.ServiceApi + 'USERSERVICENEEDs', json, options)
+         return this.http.put(this.config.ServiceApi + 'USERSERVICENEEDs/' + data.ID, json, options)
 		 // ...and calling .json() on the response to return data
 			 .map((res: Response) => res.json())
 		 //...errors if any
