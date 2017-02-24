@@ -86,6 +86,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     this.displayActiveRoute();
                 };
                 PostServiceComponent.prototype.postService = function () {
+                    var _this = this;
                     console.log(this.serviceObject);
                     var userneedOperation;
                     //this.serviceObject.address.replace('\n', '<br/>');
@@ -93,6 +94,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     // Subscribe to observable
                     userneedOperation.subscribe(function (postedneed) {
                         console.log(postedneed);
+                        _this.router.navigate(['/userneeds', '']);
                     }, function (err) {
                         // Log errors if any
                         console.log(err);

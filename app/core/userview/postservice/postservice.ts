@@ -100,7 +100,7 @@ export class PostServiceComponent {
 			userneedOperation.subscribe(
 				postedneed => {
 					console.log(postedneed);
-					
+					this.router.navigate(['/userneeds','']);
 				},
 				err => {
 					// Log errors if any
