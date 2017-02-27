@@ -56,7 +56,7 @@ System.register(["@angular/core", "@angular/router", "../../../../services/msn.l
                                 _this.isLoggedInUser = true;
                                 _this.user = user;
                                 _this.serviceinfo.userid = user.ID;
-                                if (user.Phone)
+                                if (user.Phone != "" && user.Phone != null)
                                     _this.isMobileVerified = true;
                                 console.log(user);
                             }

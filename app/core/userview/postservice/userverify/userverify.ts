@@ -46,7 +46,7 @@ export class UserVerifyComponent {
                             this.user = user;
                             this.serviceinfo.userid = user.ID;
 
-														if (user.Phone)
+														if (user.Phone != "" && user.Phone != null)
 															this.isMobileVerified = true;
 							console.log(user);
 						}

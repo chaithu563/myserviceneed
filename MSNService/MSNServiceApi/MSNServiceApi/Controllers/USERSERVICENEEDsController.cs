@@ -240,14 +240,16 @@ namespace MSNServiceApi.Controllers
 			time.SERVICESTARTTIME = Convert.ToDateTime(starttime).ToLocalTime().TimeOfDay;
 			//	time.SERVICEENDTIME = null;
 			ob.USERSERVICETIMERECORD = time;
-            string userid = details["userid"];
-            if (userid!=null)
-                {
-                AspNetUser user = db.AspNetUsers.Find(userid);
-                //user.UserName = details["username"];
-                user.PhoneNumber = details["mobile"];
-                ob.AspNetUser = user;
-            }
+			ob.USERID = details["userid"];
+			string userid = details["userid"];
+			string mobile = details["mobile"];
+			if (userid != null && mobile != null && mobile != "")
+			{
+				AspNetUser user = db.AspNetUsers.Find(userid);
+				//user.UserName = details["username"];
+				user.PhoneNumber = details["mobile"];
+				ob.AspNetUser = user;
+			}
 
 			var uploadedimages = details["uploadedimages"];
 			foreach (var image in uploadedimages)
