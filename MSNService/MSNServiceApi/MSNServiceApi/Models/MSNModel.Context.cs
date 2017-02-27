@@ -10,9 +10,6 @@
 //------------------------------------------------------------------------------
 
 
-namespace MSNServiceApi.Models
-{
-
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -83,8 +80,6 @@ public partial class MSNEntities : DbContext
     public virtual DbSet<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
 
     public virtual DbSet<USERSERVICETIMERECORD> USERSERVICETIMERECORDs { get; set; }
-
-}
 
 }
 
