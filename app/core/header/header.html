@@ -18,8 +18,8 @@
 							<li *ngFor="let cat of categories">
 								<a> {{cat.NAME}}</a>
 
-								<ul *ngIf=cat.SERVICESUBCATEGORies.length>
-									<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+								<ul *ngIf=cat.PseudoSERVICESUBCATEGORies.length>
+									<li *ngFor="let subcat of cat.PseudoSERVICESUBCATEGORies">
 										<a [routerLink]="['/postservice',subcat.ID]">{{subcat.NAME}}  </a>
 									</li>
 								</ul>
@@ -41,8 +41,8 @@
 							<li *ngFor="let cat of categories">
 								<a> {{cat.NAME}}</a>
 
-								<ul *ngIf=cat.SERVICESUBCATEGORies.length>
-									<li *ngFor="let subcat of cat.SERVICESUBCATEGORies">
+								<ul *ngIf=cat.PseudoSERVICESUBCATEGORies.length>
+									<li *ngFor="let subcat of cat.PseudoSERVICESUBCATEGORies">
 										<a [routerLink]="['/findwork',subcat.ID]">{{subcat.NAME}}  </a>
 									</li>
 								</ul>

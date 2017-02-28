@@ -18,9 +18,36 @@ namespace MSNServiceApi.Controllers
         private MSNEntities db = new MSNEntities();
         
         // GET: api/SERVICECATEGORies
-        public IEnumerable<SERVICECATEGORY> GetSERVICECATEGORies()
+        public IEnumerable<dynamic> GetSERVICECATEGORies()
         {
-            return db.SERVICECATEGORies.ToList();
+            // db.Configuration.ProxyCreationEnabled = true;
+            //var data =  db.SERVICECATEGORies.ToList();
+            // return data;
+
+            //return db.SERVICECATEGORies
+            //.Include(p => p.SERVICESUBCATEGORies)
+            //.Include(p => p.SERVICESUBCATEGORies.Select(x=>x.ID))
+            // .Include(p => p.SERVICESUBCATEGORies.Select(x => x.NAME))
+            // .Include(p => p.SERVICESUBCATEGORies.Select(x => x.DESCRIPTION))
+            // .ToList();
+
+            return db.SERVICECATEGORies.Select(x => new PseudoSERVICECATEGORY
+            {
+                ID = x.ID,
+                NAME=x.NAME,
+                DESCRIPTION = x.DESCRIPTION,
+                PseudoSERVICESUBCATEGORies = x.SERVICESUBCATEGORies.Select(xd => new
+                PseudoSERVICESUBCATEGORY
+                {
+                    ID = xd.ID,
+                    NAME=xd.NAME,
+                    DESCRIPTION = xd.DESCRIPTION
+
+                }
+
+                ).ToList()
+
+            }).AsNoTracking().ToList();
         }
 
         // GET: api/SERVICECATEGORies/5
@@ -51,4 +78,10 @@ namespace MSNServiceApi.Controllers
             return db.SERVICECATEGORies.Count(e => e.ID == id) > 0;
         }
     }
+
+    public class PseudoSERVICECATEGORY : SERVICECATEGORY {
+
+        public virtual ICollection<PseudoSERVICESUBCATEGORY> PseudoSERVICESUBCATEGORies { get; set; }
+    }
+    public class PseudoSERVICESUBCATEGORY : SERVICESUBCATEGORY { }
 }
