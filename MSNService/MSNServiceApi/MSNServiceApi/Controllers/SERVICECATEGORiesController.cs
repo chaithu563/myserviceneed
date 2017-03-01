@@ -20,16 +20,6 @@ namespace MSNServiceApi.Controllers
         // GET: api/SERVICECATEGORies
         public IEnumerable<dynamic> GetSERVICECATEGORies()
         {
-            // db.Configuration.ProxyCreationEnabled = true;
-            //var data =  db.SERVICECATEGORies.ToList();
-            // return data;
-
-            //return db.SERVICECATEGORies
-            //.Include(p => p.SERVICESUBCATEGORies)
-            //.Include(p => p.SERVICESUBCATEGORies.Select(x=>x.ID))
-            // .Include(p => p.SERVICESUBCATEGORies.Select(x => x.NAME))
-            // .Include(p => p.SERVICESUBCATEGORies.Select(x => x.DESCRIPTION))
-            // .ToList();
 
             return db.SERVICECATEGORies.Select(x => new PseudoSERVICECATEGORY
             {
