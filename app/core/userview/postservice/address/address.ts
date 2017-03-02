@@ -102,7 +102,7 @@ export class AddressComponent {
                         });
 
 
-						_this.userAddress = results[0].formatted_address;
+					//	_this.userAddress = results[0].formatted_address;
 
                         _this.serviceinfo.address = "\n" + finaAddress;
 					}

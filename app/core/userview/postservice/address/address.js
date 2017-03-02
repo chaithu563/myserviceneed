@@ -86,7 +86,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                                     else
                                         finaAddress = addr.long_name;
                                 });
-                                _this.userAddress = results[0].formatted_address;
+                                //	_this.userAddress = results[0].formatted_address;
                                 _this.serviceinfo.address = "\n" + finaAddress;
                             }
                             else {

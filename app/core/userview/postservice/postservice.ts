@@ -99,10 +99,31 @@ export class PostServiceComponent {
 		if (this.curretRoute.current == "serviceinfo") {
 
 			if (this.serviceObject.description == "")
-				this.validationMessage = "Please provide service description";
+				this.validationMessage = "Please provide service description.";
 
 			if (this.serviceObject.title == "")
-				this.validationMessage = "Please provide service title";
+				this.validationMessage = "Please provide service title.";
+
+		}
+
+		if (this.curretRoute.current == "address") {
+
+			if (this.serviceObject.address == "")
+				this.validationMessage = "Please provide service address.";
+
+		}
+
+		if (this.curretRoute.current == "servicetime")
+		{
+
+
+			if (this.serviceObject.servicestartdate=="" && this.serviceObject.serviceenddate=="" ) {
+				this.validationMessage = "Please provide Service Date Details";
+
+			}
+
+			if (this.serviceObject.service_start_time == null)
+				this.validationMessage = "Please provide Service Time Details";
 
 		}
 
