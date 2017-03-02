@@ -24,15 +24,18 @@ namespace MSNServiceApi.Controllers
             return db.SERVICECATEGORies.Select(x => new PseudoSERVICECATEGORY
             {
                 ID = x.ID,
-                NAME=x.NAME,
+                NAME = x.NAME,
                 DESCRIPTION = x.DESCRIPTION,
                 PseudoSERVICESUBCATEGORies = x.SERVICESUBCATEGORies.Select(xd => new
                 PseudoSERVICESUBCATEGORY
                 {
                     ID = xd.ID,
-                    NAME=xd.NAME,
-                    DESCRIPTION = xd.DESCRIPTION
-
+                    NAME = xd.NAME,
+                    DESCRIPTION = xd.DESCRIPTION,
+                    IMAGEPUBLICKEY = xd.IMAGEPUBLICKEY,
+                    ICONPUBLICKEY=xd.ICONPUBLICKEY
+            
+                    
                 }
 
                 ).ToList()

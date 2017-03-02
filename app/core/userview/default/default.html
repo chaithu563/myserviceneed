@@ -11,6 +11,7 @@
         <div class="col-sm-2">
 
         </div>
+
         <div class="col-sm-8">
             <form>
                 <div class="right-inner-addon">
@@ -41,11 +42,39 @@
 
           
         </div>
+
         <div class="col-sm-2">
 
 
         </div>
     </div>
+
+    <div class="row" *ngFor="let category of categories;"  >
+      
+        <div class="col-sm-2">
+
+        </div>
+
+        <div class="col-sm-8">
+
+            <div class="container">
+                <div class="galleryItem" *ngFor="let service of category.PseudoSERVICESUBCATEGORies">
+                    <cl-image public-id="{{service.IMAGEPUBLICKEY}}" [options]="cloudinaryOptions"></cl-image>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="col-sm-2">
+
+
+        </div>
+
+
+        </div> 
 </div>
 
 

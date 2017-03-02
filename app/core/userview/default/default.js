@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../../services/msn.service", "@angular/router"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../../services/msn.service", "@angular/router", "ng2-cloudinary"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, msn_service_1, router_1, DefaultViewComponent;
+    var core_1, msn_service_1, router_1, ng2_cloudinary_1, DefaultViewComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -21,6 +21,9 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (ng2_cloudinary_1_1) {
+                ng2_cloudinary_1 = ng2_cloudinary_1_1;
             }
         ],
         execute: function () {
@@ -29,9 +32,28 @@ System.register(["@angular/core", "../../../services/msn.service", "@angular/rou
                 function DefaultViewComponent(msnService, router) {
                     this.msnService = msnService;
                     this.router = router;
+                    this.cloudinaryOptions = new ng2_cloudinary_1.CloudinaryOptions({
+                        cloud_name: 'myserviceneed',
+                        upload_preset: 'e8pd1qgk',
+                        autoUpload: true,
+                        api_key: 375471576546793,
+                        api_secret: "u0oknAWF4KFEswzF-OOs_KubB30"
+                    });
                     this.searchString = "";
                     this.avilableServices = this.msnService.getAvailableServicesURL();
+                    this.loadCategories();
                 }
+                DefaultViewComponent.prototype.loadCategories = function () {
+                    var _this = this;
+                    // Subscribe to observable
+                    this.msnService.getCategories().subscribe(function (categories) {
+                        console.log(categories);
+                        _this.categories = categories;
+                    }, function (err) {
+                        // Log errors if any
+                        console.log(err);
+                    });
+                };
                 DefaultViewComponent.prototype.serviceSelected = function (object) {
                     if (object && object.NAME)
                         this.router.navigate(['postservice', object.ID]);
