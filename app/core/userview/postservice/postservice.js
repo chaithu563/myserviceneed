@@ -39,6 +39,7 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     this.msnService = msnService;
                     this.router = router;
                     this.route = route;
+                    this.validationMessage = "";
                     this.serviceObject = new postServiceRequest_1.PostData();
                     this.handleInitialLoad();
                     this.router.events.subscribe(function (event) {
@@ -81,9 +82,24 @@ System.register(["@angular/core", "@angular/router", "../servicesearch/servicese
                     this.displayActiveRoute();
                 };
                 PostServiceComponent.prototype.handleNext = function (event) {
-                    this.postServiceRoutes[this.curretRoute.current].isActive = false;
-                    this.postServiceRoutes[this.curretRoute.next].isActive = true;
-                    this.displayActiveRoute();
+                    if (this.isPostInfoValid()) {
+                        this.postServiceRoutes[this.curretRoute.current].isActive = false;
+                        this.postServiceRoutes[this.curretRoute.next].isActive = true;
+                        this.displayActiveRoute();
+                    }
+                };
+                PostServiceComponent.prototype.isPostInfoValid = function () {
+                    this.validationMessage = "";
+                    if (this.curretRoute.current == "serviceinfo") {
+                        if (this.serviceObject.description == "")
+                            this.validationMessage = "Please provide service description";
+                        if (this.serviceObject.title == "")
+                            this.validationMessage = "Please provide service title";
+                    }
+                    if (this.validationMessage == "")
+                        return true;
+                    else
+                        return false;
                 };
                 PostServiceComponent.prototype.postService = function () {
                     var _this = this;

@@ -18,7 +18,7 @@ import { IPostData, PostData} from '../../../types/postServiceRequest';
 	directives: []
 })
 export class PostServiceComponent {
-
+	validationMessage: string="";
 	serviceObject: PostData=new PostData();
 	serviceid: number;
 		postServiceRoutes: any;
@@ -81,12 +81,37 @@ export class PostServiceComponent {
 
 	}
 
-	handleNext(event) {
+		handleNext(event) {
 
-		this.postServiceRoutes[this.curretRoute.current].isActive = false;
-		this.postServiceRoutes[this.curretRoute.next].isActive = true;
-		this.displayActiveRoute();
-        }
+			if (this.isPostInfoValid()) {
+
+			this.postServiceRoutes[this.curretRoute.current].isActive = false;
+			this.postServiceRoutes[this.curretRoute.next].isActive = true;
+			this.displayActiveRoute();
+
+		}
+
+		}
+
+	isPostInfoValid() {
+		this.validationMessage = "";
+
+		if (this.curretRoute.current == "serviceinfo") {
+
+			if (this.serviceObject.description == "")
+				this.validationMessage = "Please provide service description";
+
+			if (this.serviceObject.title == "")
+				this.validationMessage = "Please provide service title";
+
+		}
+
+		if (this.validationMessage == "")
+			return true;
+		else
+			return false;
+
+		}
 
 
     postService() {

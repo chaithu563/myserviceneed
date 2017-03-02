@@ -1,6 +1,6 @@
 ﻿export interface IPostData {
 	 title: string;
-	 descrption: string;
+	 description: string;
 	 mobile: string;
 	 username: string;
 	 address: string;
@@ -17,7 +17,7 @@
 export class PostData implements IPostData {
 
 	title: string;
-	 descrption: string;
+	 description: string;
 	 mobile: string;
 	 username: string;
 	 address: string;
@@ -32,7 +32,7 @@ export class PostData implements IPostData {
 	constructor() {
 
 		this.title = '';
-		this.descrption = '';
+		this.description = '';
 
 		this.mobile = '';
 		this.username = '';

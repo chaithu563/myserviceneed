@@ -31,6 +31,7 @@
 
                 </div>
 
+				<p style="color:red"> {{validationMessage}}</p>
 				<button type="submit" *ngIf="curretRoute.previous != ''" (click)="handlePrevious($event)" class="btn btn-default">PREVIOUS</button>
         <button type="submit" *ngIf="curretRoute.next != ''"  (click)="handleNext($event)" class="btn btn-default">NEXT</button>
 			</div>

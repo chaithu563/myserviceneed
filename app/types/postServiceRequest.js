@@ -8,7 +8,7 @@ System.register([], function (exports_1, context_1) {
             PostData = (function () {
                 function PostData() {
                     this.title = '';
-                    this.descrption = '';
+                    this.description = '';
                     this.mobile = '';
                     this.username = '';
                     this.address = '';
