@@ -49,12 +49,12 @@
         </div>
     </div>
 
-    <div class="row" *ngFor="let category of categories;let j = index"  >
+    <div class="row" *ngFor="let category of categories;let j = index;let l = last"   >
       
        
 
         
-        <div class="col-sm-6" >
+        <div class="col-sm-6" *ngIf="categories.length!=j+1">
             <h4>{{category.NAME}}</h4>
             <div class="container">
                 <div class="galleryItem" *ngFor="let service of category.PseudoSERVICESUBCATEGORies;let i = index" >
@@ -70,7 +70,7 @@
 
         </div>
 
-        <div class="col-sm-6" *ngIf="categories[j+1]">
+        <div class="col-sm-6" *ngIf="categories[j+1]" >
             <h4>{{categories[j+1].NAME}}</h4>
             <div class="container">
                 <div class="galleryItem" *ngFor="let service of categories[j+1].PseudoSERVICESUBCATEGORies;let i = index">
