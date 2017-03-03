@@ -49,15 +49,13 @@
         </div>
     </div>
 
-    <div class="row" *ngFor="let category of categories;"  >
+    <div class="row" *ngFor="let category of categories;let j = index"  >
       
-        <!--<div class="col-sm-2">
+       
 
-        </div>-->
-
-        <h4>{{category.NAME}}</h4>
-        <div class="col-sm-6">
-
+        
+        <div class="col-sm-6" >
+            <h4>{{category.NAME}}</h4>
             <div class="container">
                 <div class="galleryItem" *ngFor="let service of category.PseudoSERVICESUBCATEGORies;let i = index" >
                   
@@ -68,16 +66,26 @@
                   
                 </div>
 
-
             </div>
-
 
         </div>
 
-        <!--<div class="col-sm-2">
+        <div class="col-sm-6" *ngIf="categories[j+1]">
+            <h4>{{categories[j+1].NAME}}</h4>
+            <div class="container">
+                <div class="galleryItem" *ngFor="let service of categories[j+1].PseudoSERVICESUBCATEGORies;let i = index">
+
+                    <span class="eachService" *ngIf="i<=3">
+                        <cl-image public-id="{{service.IMAGEPUBLICKEY}}" [options]="cloudinaryOptions"></cl-image>
+                    </span>
 
 
-        </div>-->
+                </div>
+
+            </div>
+
+        </div>
+
 
 
         </div> 
