@@ -33,7 +33,7 @@ export class ServiceTimeComponent implements OnInit {
 	
     constructor(private msnService: MSNService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
 
-		
+			
 
     }
     ngOnInit() {
@@ -44,6 +44,7 @@ export class ServiceTimeComponent implements OnInit {
 			//});
 
 			this.serviceinfo.service_start_time = new Date();
+			this.serviceTypeChange("oneday");
 		//	this.serviceinfo.multi_day_start_time = new Date();
 		}
 

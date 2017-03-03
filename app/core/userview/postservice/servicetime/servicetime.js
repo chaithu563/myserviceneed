@@ -49,6 +49,7 @@ System.register(["@angular/core", "@angular/router", "@angular/forms", "../../..
                     //	serviceenddate:''
                     //});
                     this.serviceinfo.service_start_time = new Date();
+                    this.serviceTypeChange("oneday");
                     //	this.serviceinfo.multi_day_start_time = new Date();
                 };
                 ServiceTimeComponent.prototype.serviceTypeChange = function (value) {

@@ -23,3 +23,15 @@
 
 	font-size:100%;
 }
+.serviceDesc{
+
+	 display: inline;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 24px;     /* fallback */
+   max-height: 48px;      /* fallback */
+   -webkit-line-clamp: 4; /* number of lines to show */
+   -webkit-box-orient: vertical;
+
+}
