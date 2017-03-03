@@ -26,27 +26,27 @@
 }
 
 .container {
-    width: 80%;
-    margin: 30px auto;
+    width: 100%;
+    margin: auto;
     overflow: hidden;
 }
 .galleryItem {
     color: #797478;
     font: 10px/1.5 Verdana, Helvetica, sans-serif;
-    float: left;
+    
 }
 
-.galleryItem img {
+.eachService img {
     max-width: 100%;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-.galleryItem {
+.eachService {
     color: #797478;
     font: 10px/1.5 Verdana, Helvetica, sans-serif;
     float: left;    
      
-    width: 16%;
+    width: 20%;
     margin:  2% 2% 50px 2%; 
 }

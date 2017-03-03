@@ -20,6 +20,9 @@
 		.galleryItem > cl-image img {
 			width: 100% !important;
 		}
+        .eachService > cl-image img {
+			width: 100% !important;
+		}
 
 .modal-backdrop {
     /* bug fix - no overlay */    
