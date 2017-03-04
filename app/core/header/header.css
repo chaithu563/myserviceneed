@@ -34,9 +34,13 @@
 		background-color: #0094ff !important;
 		vertical-align: bottom;
 	}
+    .logo{
+            opacity: 0.5;
+    }
 
 .logo > img {
 	opacity: 0.8;
+
 	height: 100%;
     cursor:pointer;
 }
