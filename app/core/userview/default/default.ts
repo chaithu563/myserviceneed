@@ -1,6 +1,8 @@
 ﻿import { Component, ModuleWithProviders, ChangeDetectorRef } from '@angular/core';
 import { MSNService } from '../../../services/msn.service';
-import { Router,Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
+import {  ViewChild, OnInit, NgZone, Input, Output, EventEmitter } from '@angular/core';
+import {ModalDirective} from 'ng2-bootstrap';
+import { Router, Route, RouterModule, RouterLink, ROUTER_DIRECTIVES } from '@angular/router';
 //import {AdminUserComponent} from './user/adminuser';
 import {RegisterUserComponent} from  '../user/registeruser';
 import {CloudinaryOptions, CloudinaryUploader, CloudinaryImageComponent}  from 'ng2-cloudinary';
@@ -9,13 +11,14 @@ import { Observable } from 'rxjs/Observable';
 	selector: 'userview',
 	templateUrl: 'app/core/userview/default/default.html',
 	styleUrls: ['app/core/userview/default/default.css'],
-    providers: [MSNService],
+    providers: [MSNService, RouterLink],
 	directives: []
 })
 export class DefaultViewComponent {
+    @ViewChild('allServicesModal') public allServicesModal: ModalDirective;
     avilableServices: any;
     categories: any;
-
+    selectedAllServices: any;
     cloudinaryOptions: CloudinaryOptions = new CloudinaryOptions({
         cloud_name: 'myserviceneed',
         upload_preset: 'e8pd1qgk',
@@ -56,5 +59,12 @@ export class DefaultViewComponent {
         console.log(object);
     }
   
+    viewAll(data) {
+
+        console.log(data);
+        this.selectedAllServices = data;
+        this.allServicesModal.open();
+
+    }
 
 }

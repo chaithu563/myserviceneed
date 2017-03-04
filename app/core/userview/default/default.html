@@ -55,12 +55,17 @@
 
         
         <div class="col-sm-6" *ngIf="categories.length!=j+1">
-            <h4>{{category.NAME}}</h4>
+           <span> {{category.NAME}}  <a class="tab" (click)="viewAll(category)">  View All </a> </span>
             <div class="container">
                 <div class="galleryItem" *ngFor="let service of category.PseudoSERVICESUBCATEGORies;let i = index" >
                   
-                    <span class="eachService" *ngIf="i<=3">
-                        <cl-image public-id="{{service.IMAGEPUBLICKEY}}" [options]="cloudinaryOptions"></cl-image>
+                    <span class="eachService" *ngIf="i<=2" [routerLink]="['/postservice',service.ID]">
+                        <cl-image public-id="{{service.IMAGEPUBLICKEY}}" width="170"  height="130"    [options]="cloudinaryOptions">
+
+                           
+
+                        </cl-image>
+                        <h5>{{service.NAME}}</h5>
                     </span>
                   
                   
@@ -71,12 +76,17 @@
         </div>
 
         <div class="col-sm-6" *ngIf="categories[j+1]" >
-            <h4>{{categories[j+1].NAME}}</h4>
+           
+            <span> {{categories[j+1].NAME}}  <a class="tab" (click)="viewAll(categories[j+1])">  View All </a> </span>
             <div class="container">
                 <div class="galleryItem" *ngFor="let service of categories[j+1].PseudoSERVICESUBCATEGORies;let i = index">
 
-                    <span class="eachService" *ngIf="i<=3">
-                        <cl-image public-id="{{service.IMAGEPUBLICKEY}}" [options]="cloudinaryOptions"></cl-image>
+                    <span class="eachService" *ngIf="i<=2" [routerLink]="['/postservice',service.ID]">
+                        <cl-image public-id="{{service.IMAGEPUBLICKEY}}" width="170"  height="130"  [options]="cloudinaryOptions">
+        
+
+                        </cl-image>
+                        <h5>{{service.NAME}}</h5>
                     </span>
 
 
@@ -90,6 +100,29 @@
 
         </div> 
 </div>
+
+
+
+<modal #allServicesModal 
+       modalclass="modal-lg modal-sm login-modal">
+    <modal-header>
+        <h4 *ngIf="selectedAllServices">All Available {{ selectedAllServices.NAME }}</h4>
+    </modal-header>
+    <modal-content>
+        <div class="form-body"  *ngIf="selectedAllServices">
+
+           
+            <div *ngFor="let item of selectedAllServices.PseudoSERVICESUBCATEGORies">
+
+              <a  [routerLink]="['/postservice',item.ID]">  <h5> {{item.NAME}}</h5> </a> 
+
+            </div>
+
+           
+        </div>
+    </modal-content>
+
+</modal>
 
 
 
