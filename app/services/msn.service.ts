@@ -19,6 +19,16 @@ export class MSNService {
        
     }
 
+
+    public getLocation(){
+        return this.http.get('https://ipinfo.io/geo')
+  
+            .map((res: Response) => res.json())
+            //...errors if any
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
+}
+
     // Fetch all existing comments
    public getCategories(): Observable<any[]> {
 

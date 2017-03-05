@@ -11,7 +11,7 @@ export const MSN_DI_CONFIG: AppConfig = {
  // MSNServiceApi: 'http://localhost/MSNServiceApi/api/',
 	//MSNHost:'http://localhost/MSNServiceApi/'
 
-  MSNServiceApi: 'http://msnapi.azurewebsites.net/api/',
-  MSNHost: 'http://msnapi.azurewebsites.net/'
+  MSNServiceApi: 'https://msnapi.azurewebsites.net/api/',
+  MSNHost: 'https://msnapi.azurewebsites.net/'
 
 };

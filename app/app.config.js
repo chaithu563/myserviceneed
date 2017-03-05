@@ -10,8 +10,8 @@ System.register([], function (exports_1, context_1) {
                 oDataProvider: 'oData',
                 // MSNServiceApi: 'http://localhost/MSNServiceApi/api/',
                 //MSNHost:'http://localhost/MSNServiceApi/'
-                MSNServiceApi: 'http://msnapi.azurewebsites.net/api/',
-                MSNHost: 'http://msnapi.azurewebsites.net/'
+                MSNServiceApi: 'https://msnapi.azurewebsites.net/api/',
+                MSNHost: 'https://msnapi.azurewebsites.net/'
             });
         }
     };

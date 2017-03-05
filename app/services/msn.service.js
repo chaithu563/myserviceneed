@@ -38,6 +38,11 @@ System.register(["@angular/core", "rxjs/Observable", "../app.config", "@angular/
                         ServiceApi: app_config_1.MSN_DI_CONFIG.MSNServiceApi
                     };
                 }
+                MSNService.prototype.getLocation = function () {
+                    return this.http.get('https://ipinfo.io/geo')
+                        .map(function (res) { return res.json(); })
+                        .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
+                };
                 // Fetch all existing comments
                 MSNService.prototype.getCategories = function () {
                     // ...using get request
