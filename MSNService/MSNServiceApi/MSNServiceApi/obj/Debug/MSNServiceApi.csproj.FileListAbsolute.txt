@@ -181,3 +181,8 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csproj.GenerateResource.Cache
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Swashbuckle.Core.dll
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\WebActivatorEx.dll
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.xml

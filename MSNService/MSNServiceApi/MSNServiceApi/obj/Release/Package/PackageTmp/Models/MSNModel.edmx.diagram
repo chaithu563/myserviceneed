@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb71e6e9f8f546b98e51d5289ab593a0" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="MSNModel.C__MigrationHistory" Width="1.5" PointX="10.75" PointY="4.25" />
+        <EntityTypeShape EntityType="MSNModel.ADMININFO" Width="1.5" PointX="0.75" PointY="15.25" />
+        <EntityTypeShape EntityType="MSNModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="MSNModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="12.25" />
+        <EntityTypeShape EntityType="MSNModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="31.5" />
+        <EntityTypeShape EntityType="MSNModel.AspNetUser" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="MSNModel.CITY" Width="1.5" PointX="6" PointY="17.25" />
+        <EntityTypeShape EntityType="MSNModel.CITYAREA" Width="1.5" PointX="6" PointY="24.875" />
+        <EntityTypeShape EntityType="MSNModel.Client" Width="1.5" PointX="8.25" PointY="24.125" />
+        <EntityTypeShape EntityType="MSNModel.MEMBERSHIP" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="MSNModel.RefreshToken" Width="1.5" PointX="2.75" PointY="15.25" />
+        <EntityTypeShape EntityType="MSNModel.SERVICEBID" Width="1.5" PointX="10.5" PointY="8.25" />
+        <EntityTypeShape EntityType="MSNModel.SERVICEBIDNEEDFILE" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MSNModel.SERVICECATEGORY" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="MSNModel.SERVICESTATE" Width="1.5" PointX="6" PointY="19.75" />
+        <EntityTypeShape EntityType="MSNModel.SERVICESUBCATEGORY" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="MSNModel.SERVICETIMETYPE" Width="1.5" PointX="6" PointY="22.375" />
+        <EntityTypeShape EntityType="MSNModel.SOCIALLOGIN" Width="1.5" PointX="6" PointY="37.125" />
+        <EntityTypeShape EntityType="MSNModel.USERBID" Width="1.5" PointX="5.25" PointY="34.125" />
+        <EntityTypeShape EntityType="MSNModel.USERFUND" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="MSNModel.USERMEMBERSHIP" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICE" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICEFILE" Width="1.5" PointX="7.5" PointY="13.75" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICENEED" Width="1.5" PointX="8.25" PointY="6.5" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICENEEDFILE" Width="1.5" PointX="10.5" PointY="12.5" />
+        <EntityTypeShape EntityType="MSNModel.USERSERVICETIMERECORD" Width="1.5" PointX="6" PointY="28" />
+        <AssociationConnector Association="MSNModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MSNModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERI__6D0D32F4" />
+        <AssociationConnector Association="MSNModel.FK__USERBIDS__USERID__38996AB5" />
+        <AssociationConnector Association="MSNModel.FK__USERFUNDS__USERI__33D4B598" />
+        <AssociationConnector Association="MSNModel.FK__USERMEMBE__USERI__2E1BDC42" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__45F365D3" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERI__5CD6CB2B" />
+        <AssociationConnector Association="MSNModel.FK__CITYAREA__CITYID__182C9B23" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__619B8048" />
+        <AssociationConnector Association="MSNModel.FK__Client__CITYAREA__20C1E124" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__628FA481" />
+        <AssociationConnector Association="MSNModel.FK__Client__LOGINTYP__21B6055D" />
+        <AssociationConnector Association="MSNModel.FK__USERMEMBE__MEMBE__2F10007B" />
+        <AssociationConnector Association="MSNModel.FK__SERVICEBI__BIDID__72C60C4A" />
+        <AssociationConnector Association="MSNModel.FK__SERVICEBI__USERS__6E01572D" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__ALLOC__73BA3083" />
+        <AssociationConnector Association="MSNModel.FK__SERVICESU__SERVI__412EB0B6" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__46E78A0C" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__5DCAEF64" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__5FB337D6" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__47DBAE45" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__5EBF139D" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__60A75C0F" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERS__4CA06362" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__SERVI__68487DD7" />
+        <AssociationConnector Association="MSNModel.FK__USERSERVI__USERS__6383C8BA" />
+        <AssociationConnector Association="MSNModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
