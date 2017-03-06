@@ -417,14 +417,14 @@ namespace MSNServiceApi.Controllers
             ClaimsIdentity identity = null;
             IdentityResult result;
 
-            if (hasRegistered)
-            {
-                identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
-                IEnumerable<Claim> claims = externalLogin.GetClaims();
-                identity.AddClaims(claims);
-                Authentication.SignIn(identity);
-            }
-            else
+						//if (hasRegistered)
+						//{
+						//		identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
+						//		IEnumerable<Claim> claims = externalLogin.GetClaims();
+						//		identity.AddClaims(claims);
+						//		Authentication.SignIn(identity);
+						//}
+						//else
             {
                 user = new ApplicationUser() { Id = Guid.NewGuid().ToString(), UserName = model.UserName, Email = model.Email };
 

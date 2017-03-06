@@ -186,3 +186,8 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Swashbuckle.Core.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\WebActivatorEx.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Swashbuckle.Core.dll
+D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\WebActivatorEx.dll
+D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.xml

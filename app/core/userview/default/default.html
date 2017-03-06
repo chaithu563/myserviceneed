@@ -49,15 +49,14 @@
         </div>
     </div>
 
-    <div class="row" *ngFor="let category of categories;let j = index;let l = last"   >
+    <div class="row" *ngFor="let category of categories;let j = index;let l = last;let even = even;"   >
       
-       
 
         
-        <div class="col-sm-6" *ngIf="categories.length!=j+1">
-           <span> {{category.NAME}}  <a class="tab" (click)="viewAll(category)">  View All </a> </span>
+        <div class="col-sm-6" *ngIf="categories[j] && even">
+           <span> {{categories[j].NAME}}  <a class="tab" (click)="viewAll(category)">  View All </a> </span>
             <div class="container">
-                <div class="galleryItem" *ngFor="let service of category.PseudoSERVICESUBCATEGORies;let i = index" >
+                <div class="galleryItem" *ngFor="let service of categories[j].PseudoSERVICESUBCATEGORies;let i = index" >
                   
                     <span class="eachService" *ngIf="i<=2" [routerLink]="['/postservice',service.ID]">
                         <cl-image public-id="{{service.IMAGEPUBLICKEY}}" width="170"  height="130"    [options]="cloudinaryOptions">
@@ -75,7 +74,7 @@
 
         </div>
 
-        <div class="col-sm-6" *ngIf="categories[j+1]" >
+        <div class="col-sm-6" *ngIf="categories[j+1] && even" >
            
             <span> {{categories[j+1].NAME}}  <a class="tab" (click)="viewAll(categories[j+1])">  View All </a> </span>
             <div class="container">
@@ -95,7 +94,7 @@
             </div>
 
         </div>
-
+		
 
 
         </div> 
