@@ -129,7 +129,10 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             _this.servicessearch.longitude = position.coords.longitude;
                             //_this.findCity();
                         }, function () {
-                            alert('error');
+                            //	alert('error');
+                            _this.servicessearch.latitude = 20.5937;
+                            _this.servicessearch.longitude = 78.9629;
+                            _this.servicessearch.zoom = 5;
                         });
                     }
                     else {

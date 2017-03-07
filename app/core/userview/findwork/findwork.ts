@@ -144,7 +144,11 @@ export class FindWorkComponent {
 				//_this.findCity();
 
 			}, function () {
-				alert('error');
+			//	alert('error');
+
+				_this.servicessearch.latitude =20.5937;
+				_this.servicessearch.longitude = 78.9629;
+				_this.servicessearch.zoom = 5;
 			});
     } else {
 			// Browser doesn't support Geolocation

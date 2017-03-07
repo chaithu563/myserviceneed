@@ -46,11 +46,12 @@ export class UserViewComponent {
                 _this.findCity();
 
             }, function (ob) {
-							alert('error' + ob);
+							//alert('error' + ob);
 							console.log(ob);
+							_this._router.navigateByUrl('home');
 							},
 
-						{ maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
+						{ maximumAge: 60000, timeout: 50000, enableHighAccuracy: true });
         } else {
             // Browser doesn't support Geolocation
             alert('error');

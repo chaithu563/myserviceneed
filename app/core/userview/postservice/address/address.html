@@ -6,7 +6,7 @@
         </div>
         <div>
 
-            <sebm-google-map [latitude]="serviceinfo.latitude" [longitude]="serviceinfo.longitude" [zoom]="15" [disableDefaultUI]="false" [zoomControl]="true">
+            <sebm-google-map [latitude]="serviceinfo.latitude" [longitude]="serviceinfo.longitude" [zoom]="serviceinfo.zoom" [disableDefaultUI]="false" [zoomControl]="true">
                 <sebm-google-map-marker [latitude]="serviceinfo.latitude" [longitude]="serviceinfo.longitude" [markerDraggable]="true" (dragEnd)="markerPostionChanged($event)"></sebm-google-map-marker>
             </sebm-google-map>
 

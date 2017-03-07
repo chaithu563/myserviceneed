@@ -27,7 +27,7 @@ export class AddressComponent {
 	//lng: number;
 	city: string;
 	constructor(public _router: Router, private zone: NgZone, private _loader: MapsAPILoader) {
-
+	//	this.serviceinfo.zoom = 15;
 		this.findCurrentLocation();
 		this.loadAutocomplete()
 		
@@ -43,6 +43,7 @@ export class AddressComponent {
 				let place = autocomplete.getPlace();
 				this.serviceinfo.latitude = place.geometry.location.lat();
 				this.serviceinfo.longitude = place.geometry.location.lng();
+				this.serviceinfo.zoom = 15;
                 this.findCity();
 								this.userAddress = ""; 
 			});
@@ -64,7 +65,10 @@ export class AddressComponent {
 				_this.findCity();
 
 			}, function () {
-				alert('error');
+			//	alert('error');
+				_this.serviceinfo.latitude = 20.5937;
+				_this.serviceinfo.longitude = 78.9629;
+				_this.serviceinfo.zoom = 5;
 			});
 		} else {
 			// Browser doesn't support Geolocation

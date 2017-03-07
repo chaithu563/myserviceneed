@@ -31,6 +31,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                     this.zone = zone;
                     this._loader = _loader;
                     this.serviceinfoChange = new core_1.EventEmitter();
+                    //	this.serviceinfo.zoom = 15;
                     this.findCurrentLocation();
                     this.loadAutocomplete();
                 }
@@ -42,6 +43,7 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                             var place = autocomplete.getPlace();
                             _this.serviceinfo.latitude = place.geometry.location.lat();
                             _this.serviceinfo.longitude = place.geometry.location.lng();
+                            _this.serviceinfo.zoom = 15;
                             _this.findCity();
                             _this.userAddress = "";
                         });
@@ -56,7 +58,10 @@ System.register(["@angular/core", "@angular/router", "angular2-google-maps/core"
                             _this.serviceinfo.longitude = position.coords.longitude;
                             _this.findCity();
                         }, function () {
-                            alert('error');
+                            //	alert('error');
+                            _this.serviceinfo.latitude = 20.5937;
+                            _this.serviceinfo.longitude = 78.9629;
+                            _this.serviceinfo.zoom = 5;
                         });
                     }
                     else {
