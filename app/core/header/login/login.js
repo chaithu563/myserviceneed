@@ -93,7 +93,6 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                                 phone: "",
                                 Provider: "Google"
                             });
-                            that.myLoginModal.close();
                         }, function (error) {
                             alert(JSON.stringify(error, undefined, 2));
                         });
@@ -139,17 +138,18 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                             logintype: 2,
                             Provider: "Facebook"
                         });
-                        _this.myLoginModal.close();
                     }, function (error) {
                         alert("facebook login failed");
                     });
                 };
                 LoginComponent.prototype.validateSocialLoginDetails = function (details) {
                     var _this = this;
+                    var _that = this;
                     this.loginService.validateSocialLoginDetails(details).subscribe(function (user) {
                         console.log(user);
                         //need to handle after login success in UI
                         localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
+                        _that.myLoginModal.close();
                         _this.initialLoad();
                     }, function (err) {
                         // Log errors if any

@@ -96,7 +96,7 @@ export class LoginComponent implements AfterViewInit {
                         phone: "",
 												Provider:"Google"
                     });
-                    that.myLoginModal.close();
+                    
 
                 }, function (error) {
                     alert(JSON.stringify(error, undefined, 2));
@@ -173,7 +173,7 @@ export class LoginComponent implements AfterViewInit {
                 logintype: 2,
 								Provider: "Facebook"
             });
-            _this.myLoginModal.close();
+           
         },
             function (error) {
                 alert("facebook login failed");
@@ -183,14 +183,16 @@ export class LoginComponent implements AfterViewInit {
 
 
     validateSocialLoginDetails(details) {
-
+			var _that = this;
         this.loginService.validateSocialLoginDetails(details).subscribe(
             user => {
                 console.log(user);
                 //need to handle after login success in UI
 
                 localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: user.access_token }));
+								_that.myLoginModal.close();
 								this.initialLoad();
+							
             },
             err => {
                 // Log errors if any

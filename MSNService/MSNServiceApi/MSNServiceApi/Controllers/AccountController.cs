@@ -410,8 +410,9 @@ namespace MSNServiceApi.Controllers
                 return InternalServerError();
             }
 
-            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
-                externalLogin.ProviderKey));
+						ApplicationUser user=null;
+							//= await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+							//	externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
             ClaimsIdentity identity = null;
@@ -461,10 +462,10 @@ namespace MSNServiceApi.Controllers
                     };
 
                     result = UserManager.AddLogin(user.Id, info.Login);
-                    if (!result.Succeeded)
-                    {
-                        return GetErrorResult(result);
-                    }
+										//if (!result.Succeeded)
+										//{
+										//		return GetErrorResult(result);
+										//}
 
                     identity = await UserManager.CreateIdentityAsync(user, OAuthDefaults.AuthenticationType);
                     IEnumerable<Claim> claims = externalLogin.GetClaims();

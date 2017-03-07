@@ -88,7 +88,6 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNS
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csproj.GenerateResource.Cache
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
-D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\ApplicationInsights.config
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\roslyn\csc.exe
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -191,3 +190,4 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Swashbuckl
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\WebActivatorEx.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache

@@ -1,1 +1,1 @@
-{"version":3,"file":"app.config.js","sourceRoot":"","sources":["app.config.ts"],"names":[],"mappings":";;;;;;;YAOA,2BAAa,aAAa,GAAc;gBACtC,aAAa,EAAE,iCAAiC;gBAChD,aAAa,EAAE,OAAO;gBACvB,wDAAwD;gBACxD,2CAA2C;gBAE1C,aAAa,EAAE,uCAAuC;gBACtD,OAAO,EAAE,mCAAmC;aAE7C,EAAC;QACF,CAAC"}
+{"version":3,"file":"app.config.js","sourceRoot":"","sources":["app.config.ts"],"names":[],"mappings":";;;;;;;YAOA,2BAAa,aAAa,GAAc;gBACtC,aAAa,EAAE,iCAAiC;gBAChD,aAAa,EAAE,OAAO;gBACtB,aAAa,EAAE,qCAAqC;gBACrD,OAAO,EAAC,iCAAiC;aAKzC,EAAC;QACF,CAAC"}
