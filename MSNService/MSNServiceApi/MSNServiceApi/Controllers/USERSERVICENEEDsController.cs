@@ -172,7 +172,7 @@ namespace MSNServiceApi.Controllers
             //var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
             //ser.DeserializeObject(details);
             var starttime = details["service_start_time"];
-            time.SERVICESTARTTIME = Convert.ToDateTime(starttime).ToLocalTime().TimeOfDay;
+            time.SERVICESTARTTIME = Convert.ToDateTime(starttime).TimeOfDay;
             //	time.SERVICEENDTIME = null;
             ob.USERSERVICETIMERECORD = time;
 
@@ -237,7 +237,7 @@ namespace MSNServiceApi.Controllers
             //var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
             //ser.DeserializeObject(details);
             var starttime = details["service_start_time"];
-			time.SERVICESTARTTIME = Convert.ToDateTime(starttime).ToLocalTime().TimeOfDay;
+			time.SERVICESTARTTIME = Convert.ToDateTime(starttime).TimeOfDay;
 			//	time.SERVICEENDTIME = null;
 			ob.USERSERVICETIMERECORD = time;
 			ob.USERID = details["userid"];

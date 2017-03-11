@@ -191,3 +191,4 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Ide
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\WebActivatorEx.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.xml
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojFakesResolveAssemblyReference.cache

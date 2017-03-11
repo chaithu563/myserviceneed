@@ -19,7 +19,8 @@ export class FindWorkComponent {
 	zoom: number;
 	avilableServices: any;
 	searchString: string;
-	selectedService: any;
+    selectedService: any;
+    viewstarttime: any;
     listview: boolean = false;
     allupcomming: boolean = true;
 	servicessearch: Observable<any>;
@@ -28,8 +29,8 @@ export class FindWorkComponent {
     autoclose: true,
     todayBtn: 'linked',
     todayHighlight: true,
-    assumeNearbyYear: true
-   
+    assumeNearbyYear: true,
+  
 	}
 	datepickerbookedonOpts = {
     endDate: new Date(),
@@ -175,10 +176,54 @@ export class FindWorkComponent {
     // this.router.navigateByUrl('postservice/' + object.ID);
     this.selectedService = object.value;
 
-
+    var d = new Date();
+    var timezone = d.getTimezoneOffset() / 60;
+    //var viewstarttime;
+    this.viewstarttime = this.addTimes(this.selectedService.SERVICESTARTTIME, this.createOffset(new Date()));
 
     console.log(object);
     }
+
+     
+ createOffset(date) {
+    var sign = (date.getTimezoneOffset() > 0) ? "-" : "+";
+    var offset = Math.abs(date.getTimezoneOffset());
+    var hours = this.pad(Math.floor(offset / 60));
+    var minutes = this.pad(offset % 60);
+   // return sign + hours + ":" + minutes;
+    return hours + ":" + minutes;
+} 
+
+    pad(value) {
+        return value < 10 ? '0' + value : value;
+    }
+     addTimes(start, end) {
+    var times = [];
+    var times1 = start.split(':');
+    var times2 = end.split(':');
+
+    for (var i = 0; i < 3; i++) {
+        times1[i] = (isNaN(parseInt(times1[i]))) ? 0 : parseInt(times1[i])
+        times2[i] = (isNaN(parseInt(times2[i]))) ? 0 : parseInt(times2[i])
+        times[i] = times1[i] + times2[i];
+    }
+
+   // var seconds = times[2];
+    var minutes = times[1];
+    var hours = times[0];
+
+    //if (seconds % 60 === 0) {
+    //    hours += seconds / 60;
+    //}
+
+    if (minutes / 60 >= 1) {
+        var res = Math.floor(minutes / 60);
+      hours += res;
+        minutes = minutes - (60 * res);
+    }
+
+    return hours + ':' + minutes ;
+}
 
     onallupcomming(object) {
         if (this.allupcomming) {

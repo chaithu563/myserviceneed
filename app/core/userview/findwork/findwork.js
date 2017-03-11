@@ -46,7 +46,7 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                         autoclose: true,
                         todayBtn: 'linked',
                         todayHighlight: true,
-                        assumeNearbyYear: true
+                        assumeNearbyYear: true,
                     };
                     this.datepickerbookedonOpts = {
                         endDate: new Date(),
@@ -154,7 +154,44 @@ System.register(["@angular/core", "../../../services/msn.service", "../../../ser
                     //	this.router.navigate(['postservice', object.ID]);
                     // this.router.navigateByUrl('postservice/' + object.ID);
                     this.selectedService = object.value;
+                    var d = new Date();
+                    var timezone = d.getTimezoneOffset() / 60;
+                    //var viewstarttime;
+                    this.viewstarttime = this.addTimes(this.selectedService.SERVICESTARTTIME, this.createOffset(new Date()));
                     console.log(object);
+                };
+                FindWorkComponent.prototype.createOffset = function (date) {
+                    var sign = (date.getTimezoneOffset() > 0) ? "-" : "+";
+                    var offset = Math.abs(date.getTimezoneOffset());
+                    var hours = this.pad(Math.floor(offset / 60));
+                    var minutes = this.pad(offset % 60);
+                    // return sign + hours + ":" + minutes;
+                    return hours + ":" + minutes;
+                };
+                FindWorkComponent.prototype.pad = function (value) {
+                    return value < 10 ? '0' + value : value;
+                };
+                FindWorkComponent.prototype.addTimes = function (start, end) {
+                    var times = [];
+                    var times1 = start.split(':');
+                    var times2 = end.split(':');
+                    for (var i = 0; i < 3; i++) {
+                        times1[i] = (isNaN(parseInt(times1[i]))) ? 0 : parseInt(times1[i]);
+                        times2[i] = (isNaN(parseInt(times2[i]))) ? 0 : parseInt(times2[i]);
+                        times[i] = times1[i] + times2[i];
+                    }
+                    // var seconds = times[2];
+                    var minutes = times[1];
+                    var hours = times[0];
+                    //if (seconds % 60 === 0) {
+                    //    hours += seconds / 60;
+                    //}
+                    if (minutes / 60 >= 1) {
+                        var res = Math.floor(minutes / 60);
+                        hours += res;
+                        minutes = minutes - (60 * res);
+                    }
+                    return hours + ':' + minutes;
                 };
                 FindWorkComponent.prototype.onallupcomming = function (object) {
                     if (this.allupcomming) {
