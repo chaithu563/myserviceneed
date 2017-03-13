@@ -21,7 +21,8 @@
                         <label for="description">Mobile Number:</label>
                         <input type="text" class="form-control verifytxtbox" [(ngModel)]="serviceinfo.mobile" name="mobile" />
 
-                        <input *ngIf="!isOTPVerifyDone" type="button" value="SEND OTP" class="btn btn-default inlinetxtbox" (click)="sendOTPClicked()" />
+                        <!--<input *ngIf="!isOTPVerifyDone" type="button" value="SEND OTP" class="btn btn-default inlinetxtbox" (click)="sendOTPClicked()" />-->
+											  <input  type="button" value="CONFIRM" class="btn btn-default inlinetxtbox" (click)="afterVerifyOTPClick()" />
 
                     </div>
 
