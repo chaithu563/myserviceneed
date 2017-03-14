@@ -42,8 +42,12 @@ export class UserViewComponent {
                 _this.lng = position.coords.longitude;
                 //_this.lat = 16.306652;
                 //_this.lng = 80.436240;
-					
-                _this.findCity();
+
+                if (google.maps == undefined)
+                    _this._router.navigateByUrl('home');
+                else
+                    _this.findCity();
+               
 
             }, function (ob) {
 							//alert('error' + ob);
