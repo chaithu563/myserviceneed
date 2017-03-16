@@ -14,19 +14,20 @@
     }
   ],
   "dependencies": {
-    "@angular/common": "~2.4.1",
-    "@angular/compiler": "~2.4.1",
-    "@angular/compiler-cli": "~2.4.1",
-    "@angular/core": "~2.4.1",
-    "@angular/forms": "~2.4.1",
-    "@angular/http": "~2.4.1",
-    "@angular/platform-browser": "~2.4.1",
-    "@angular/platform-browser-dynamic": "~2.4.1",
-    "@angular/platform-server": "~2.4.1",
+    "@angular/common": "~2.4.3",
+    "@angular/compiler": "~2.4.3",
+    "@angular/compiler-cli": "~2.4.3",
+    "@angular/core": "~2.4.3",
+    "@angular/forms": "~2.4.3",
+    "@angular/http": "~2.4.3",
+    "@angular/platform-browser": "~2.4.3",
+    "@angular/platform-browser-dynamic": "~2.4.3",
+    "@angular/platform-server": "~2.4.3",
     "@angular/router": "~3.3.0",
-    "@angular/upgrade": "~2.4.1",
+    "@angular/upgrade": "~2.4.3",
     "ag-grid": "^6.4.2",
     "ag-grid-ng2": "^6.4.1",
+    "angular-cli": "^1.0.0-beta.28.3",
     "angular-google-signin": "^0.1.5",
     "angular-in-memory-web-api": "~0.1.15",
     "angular2-google-maps": "^0.17.0",
@@ -44,9 +45,10 @@
     "ng2-dropdown": "0.0.15",
     "ng2-modal": "0.0.25",
     "reflect-metadata": "^0.1.9",
-    "rxjs": "5.0.2",
+    "rxjs": "^5.0.3",
     "stylus": "^0.54.5",
     "systemjs": "0.19.41",
+    "typescript": "^2.0.10",
     "underscore": "^1.8.3",
     "zone.js": "^0.7.4"
   },
@@ -57,6 +59,8 @@
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
     "ng2-facebook-sdk": "^1.2.0",
-    "typescript": "^2.0.10"
+    "typescript": "^2.0.10",
+		"ts-loader":  "^0.7.2"
+
   }
 }

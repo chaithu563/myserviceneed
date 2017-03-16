@@ -43,3 +43,10 @@ https://sendotp.msg91.com/
 
 userID:  chaithu563
 PWD:  591115
+
+
+)con-cat all js files and css files include on index.html using  gulp-concat.
+
+2)Bundling angular libraries and app components mentioned in systemjs.config.js file. Using gulp systemjs-builder.
+
+3)Minify bundles using gulp-uglify.

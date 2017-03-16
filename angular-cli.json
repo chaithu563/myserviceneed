@@ -1,0 +1,46 @@
+{
+  "project": {
+    "version": "1.0.0-beta.28.3",
+    "name": "myserviceneed"
+  },
+  "apps": [
+    {
+      "root": "",
+      "outDir": "dist",
+      "index": "index.html",
+      "main": "app/app.main.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "scripts": []
+    
+    }
+  ],
+
+  "lint": [
+    {
+      "files": "**/*.ts",
+      "project": "tsconfig.json"
+    },
+    {
+      "files": "app/e2e/**/*.ts",
+      "project": "app/e2e/tsconfig.json"
+    }
+  ],
+ 
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}
