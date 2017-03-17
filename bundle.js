@@ -12,13 +12,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-System.register("app/app.config", [], function(exports_1, context_1) {
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+System.register("app/app.config", [], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var MSN_DI_CONFIG;
     return {
-        setters:[],
-        execute: function() {
+        setters: [],
+        execute: function () {
             exports_1("MSN_DI_CONFIG", MSN_DI_CONFIG = {
                 oDataEndPoint: 'http://localhost/MSNAdmin/odata',
                 oDataProvider: 'oData',
@@ -26,15 +29,14 @@ System.register("app/app.config", [], function(exports_1, context_1) {
                 MSNHost: 'http://localhost/MSNServiceApi/'
             });
         }
-    }
+    };
 });
-System.register("app/services/msn.odataservice", ['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', "app/app.config", "jaydata/odata"], function(exports_2, context_2) {
+System.register("app/services/msn.odataservice", ["@angular/core", "rxjs/Subject", "../jaydata-model/MSN", "app/app.config", "jaydata/odata"], function (exports_2, context_2) {
     "use strict";
     var __moduleName = context_2 && context_2.id;
-    var core_1, Subject_1, MSN_1, app_config_1;
-    var MSNOdataService;
+    var core_1, Subject_1, MSN_1, app_config_1, MSNOdataService;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -47,8 +49,10 @@ System.register("app/services/msn.odataservice", ['@angular/core', 'rxjs/Subject
             function (app_config_1_1) {
                 app_config_1 = app_config_1_1;
             },
-            function (_1) {}],
-        execute: function() {
+            function (_1) {
+            }
+        ],
+        execute: function () {
             MSNOdataService = (function () {
                 function MSNOdataService() {
                     var _this = this;
@@ -75,58 +79,57 @@ System.register("app/services/msn.odataservice", ['@angular/core', 'rxjs/Subject
                     this.subject.next(this.context);
                     this.subject.complete();
                 };
-                MSNOdataService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], MSNOdataService);
                 return MSNOdataService;
             }());
+            MSNOdataService = __decorate([
+                core_1.Injectable(),
+                __metadata("design:paramtypes", [])
+            ], MSNOdataService);
             exports_2("MSNOdataService", MSNOdataService);
         }
-    }
+    };
 });
-System.register("app/app.component", ['@angular/core', "app/services/msn.odataservice"], function(exports_3, context_3) {
+System.register("app/app.component", ["@angular/core", "app/services/msn.odataservice"], function (exports_3, context_3) {
     "use strict";
     var __moduleName = context_3 && context_3.id;
-    var core_2, msn_odataservice_1;
-    var AppComponent;
+    var core_2, msn_odataservice_1, AppComponent;
     return {
-        setters:[
+        setters: [
             function (core_2_1) {
                 core_2 = core_2_1;
             },
             function (msn_odataservice_1_1) {
                 msn_odataservice_1 = msn_odataservice_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             AppComponent = (function () {
                 function AppComponent(mSNOdataService) {
                     this.mSNOdataService = mSNOdataService;
                 }
-                AppComponent = __decorate([
-                    core_2.Component({
-                        selector: 'my-app',
-                        // 	template: '<header> </header> <div class="row" >  <div class="col-md-2" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-10" style="height: 100%;"> <adminview></adminview>  </div> </div>',
-                        template: '<header> </header>  <router-outlet></router-outlet> ',
-                        providers: [msn_odataservice_1.MSNOdataService],
-                        // directives: [HeaderComponent]
-                        styles: ["\n    ng2-auto-complete, input {\n      display: block;  width: 80%;\n    }\n  "]
-                    }), 
-                    __metadata('design:paramtypes', [msn_odataservice_1.MSNOdataService])
-                ], AppComponent);
                 return AppComponent;
             }());
+            AppComponent = __decorate([
+                core_2.Component({
+                    selector: 'my-app',
+                    // 	template: '<header> </header> <div class="row" >  <div class="col-md-2" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-10" style="height: 100%;"> <adminview></adminview>  </div> </div>',
+                    template: '<header> </header>  <router-outlet></router-outlet> ',
+                    providers: [msn_odataservice_1.MSNOdataService],
+                    // directives: [HeaderComponent]
+                    styles: ["\n    ng2-auto-complete, input {\n      display: block;  width: 80%;\n    }\n  "]
+                }),
+                __metadata("design:paramtypes", [msn_odataservice_1.MSNOdataService])
+            ], AppComponent);
             exports_3("AppComponent", AppComponent);
         }
-    }
+    };
 });
-System.register("app/services/msn.service", ['@angular/core', 'rxjs/Observable', "app/app.config", '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_4, context_4) {
+System.register("app/services/msn.service", ["@angular/core", "rxjs/Observable", "app/app.config", "@angular/http", "rxjs/add/operator/map", "rxjs/add/operator/catch"], function (exports_4, context_4) {
     "use strict";
     var __moduleName = context_4 && context_4.id;
-    var core_3, Observable_1, app_config_2, http_1;
-    var MSNService;
+    var core_3, Observable_1, app_config_2, http_1, MSNService;
     return {
-        setters:[
+        setters: [
             function (core_3_1) {
                 core_3 = core_3_1;
             },
@@ -139,9 +142,12 @@ System.register("app/services/msn.service", ['@angular/core', 'rxjs/Observable',
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (_2) {},
-            function (_3) {}],
-        execute: function() {
+            function (_2) {
+            },
+            function (_3) {
+            }
+        ],
+        execute: function () {
             MSNService = (function () {
                 function MSNService(http) {
                     this.http = http;
@@ -231,23 +237,22 @@ System.register("app/services/msn.service", ['@angular/core', 'rxjs/Observable',
                     })
                         .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
                 };
-                MSNService = __decorate([
-                    core_3.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], MSNService);
                 return MSNService;
             }());
+            MSNService = __decorate([
+                core_3.Injectable(),
+                __metadata("design:paramtypes", [http_1.Http])
+            ], MSNService);
             exports_4("MSNService", MSNService);
         }
-    }
+    };
 });
-System.register("app/core/header/header", ['@angular/core', "app/services/msn.service", '@angular/router'], function(exports_5, context_5) {
+System.register("app/core/header/header", ["@angular/core", "app/services/msn.service", "@angular/router"], function (exports_5, context_5) {
     "use strict";
     var __moduleName = context_5 && context_5.id;
-    var core_4, msn_service_1, router_1;
-    var HeaderComponent;
+    var core_4, msn_service_1, router_1, HeaderComponent;
     return {
-        setters:[
+        setters: [
             function (core_4_1) {
                 core_4 = core_4_1;
             },
@@ -256,8 +261,9 @@ System.register("app/core/header/header", ['@angular/core', "app/services/msn.se
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             HeaderComponent = (function () {
                 function HeaderComponent(msnService) {
                     this.msnService = msnService;
@@ -312,28 +318,27 @@ System.register("app/core/header/header", ['@angular/core', "app/services/msn.se
                 HeaderComponent.prototype.onCityChange = function (value) {
                     this.UserCity = value;
                 };
-                HeaderComponent = __decorate([
-                    core_4.Component({
-                        selector: 'header',
-                        templateUrl: 'app/core/header/header.html',
-                        styleUrls: ['app/core/header/header.css'],
-                        providers: [msn_service_1.MSNService, router_1.RouterLink]
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_1.MSNService])
-                ], HeaderComponent);
                 return HeaderComponent;
             }());
+            HeaderComponent = __decorate([
+                core_4.Component({
+                    selector: 'header',
+                    templateUrl: 'app/core/header/header.html',
+                    styleUrls: ['app/core/header/header.css'],
+                    providers: [msn_service_1.MSNService, router_1.RouterLink]
+                }),
+                __metadata("design:paramtypes", [msn_service_1.MSNService])
+            ], HeaderComponent);
             exports_5("HeaderComponent", HeaderComponent);
         }
-    }
+    };
 });
-System.register("app/services/msn.login", ['@angular/core', 'rxjs/Observable', "app/app.config", '@angular/http'], function(exports_6, context_6) {
+System.register("app/services/msn.login", ["@angular/core", "rxjs/Observable", "app/app.config", "@angular/http"], function (exports_6, context_6) {
     "use strict";
     var __moduleName = context_6 && context_6.id;
-    var core_5, Observable_2, app_config_3, http_2;
-    var LoginService;
+    var core_5, Observable_2, app_config_3, http_2, LoginService;
     return {
-        setters:[
+        setters: [
             function (core_5_1) {
                 core_5 = core_5_1;
             },
@@ -345,8 +350,9 @@ System.register("app/services/msn.login", ['@angular/core', 'rxjs/Observable', "
             },
             function (http_2_1) {
                 http_2 = http_2_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             LoginService = (function () {
                 function LoginService(http) {
                     this.http = http;
@@ -428,23 +434,22 @@ System.register("app/services/msn.login", ['@angular/core', 'rxjs/Observable', "
                     })
                         .catch(function (error) { return Observable_2.Observable.throw(error.json().error || 'Server error'); });
                 };
-                LoginService = __decorate([
-                    core_5.Injectable(), 
-                    __metadata('design:paramtypes', [http_2.Http])
-                ], LoginService);
                 return LoginService;
             }());
+            LoginService = __decorate([
+                core_5.Injectable(),
+                __metadata("design:paramtypes", [http_2.Http])
+            ], LoginService);
             exports_6("LoginService", LoginService);
         }
-    }
+    };
 });
-System.register("app/core/header/login/login", ['@angular/core', "app/services/msn.service", "app/services/msn.login", '@angular/router', 'ng2-bootstrap', 'angular-google-signin'], function(exports_7, context_7) {
+System.register("app/core/header/login/login", ["@angular/core", "app/services/msn.service", "app/services/msn.login", "@angular/router", "ng2-bootstrap", "angular-google-signin"], function (exports_7, context_7) {
     "use strict";
     var __moduleName = context_7 && context_7.id;
-    var core_6, msn_service_2, msn_login_1, router_2, ng2_bootstrap_1, angular_google_signin_1;
-    var LoginComponent;
+    var core_6, msn_service_2, msn_login_1, router_2, ng2_bootstrap_1, angular_google_signin_1, LoginComponent;
     return {
-        setters:[
+        setters: [
             function (core_6_1) {
                 core_6 = core_6_1;
             },
@@ -462,8 +467,9 @@ System.register("app/core/header/login/login", ['@angular/core', "app/services/m
             },
             function (angular_google_signin_1_1) {
                 angular_google_signin_1 = angular_google_signin_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             LoginComponent = (function () {
                 function LoginComponent(msnService, loginService, ngZone) {
                     this.msnService = msnService;
@@ -587,32 +593,31 @@ System.register("app/core/header/login/login", ['@angular/core', "app/services/m
                         console.log(err);
                     });
                 };
-                __decorate([
-                    core_6.ViewChild('myLoginModal'), 
-                    __metadata('design:type', ng2_bootstrap_1.ModalDirective)
-                ], LoginComponent.prototype, "myLoginModal", void 0);
-                LoginComponent = __decorate([
-                    core_6.Component({
-                        selector: 'login',
-                        templateUrl: 'app/core/header/login/login.html',
-                        styleUrls: ['app/core/header/login/login.css'],
-                        providers: [msn_service_2.MSNService, msn_login_1.LoginService, router_2.RouterLink, angular_google_signin_1.GoogleSignInComponent]
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_2.MSNService, msn_login_1.LoginService, core_6.NgZone])
-                ], LoginComponent);
                 return LoginComponent;
             }());
+            __decorate([
+                core_6.ViewChild('myLoginModal'),
+                __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+            ], LoginComponent.prototype, "myLoginModal", void 0);
+            LoginComponent = __decorate([
+                core_6.Component({
+                    selector: 'login',
+                    templateUrl: 'app/core/header/login/login.html',
+                    styleUrls: ['app/core/header/login/login.css'],
+                    providers: [msn_service_2.MSNService, msn_login_1.LoginService, router_2.RouterLink, angular_google_signin_1.GoogleSignInComponent]
+                }),
+                __metadata("design:paramtypes", [msn_service_2.MSNService, msn_login_1.LoginService, core_6.NgZone])
+            ], LoginComponent);
             exports_7("LoginComponent", LoginComponent);
         }
-    }
+    };
 });
-System.register("app/core/topmenu/topmenu", ['@angular/core', 'ng2-bootstrap', '@angular/router'], function(exports_8, context_8) {
+System.register("app/core/topmenu/topmenu", ["@angular/core", "ng2-bootstrap", "@angular/router"], function (exports_8, context_8) {
     "use strict";
     var __moduleName = context_8 && context_8.id;
-    var core_7, ng2_bootstrap_2, router_3;
-    var TopMenuComponent;
+    var core_7, ng2_bootstrap_2, router_3, TopMenuComponent;
     return {
-        setters:[
+        setters: [
             function (core_7_1) {
                 core_7 = core_7_1;
             },
@@ -621,43 +626,44 @@ System.register("app/core/topmenu/topmenu", ['@angular/core', 'ng2-bootstrap', '
             },
             function (router_3_1) {
                 router_3 = router_3_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             TopMenuComponent = (function () {
                 function TopMenuComponent(router) {
                     this.router = router;
                 }
-                TopMenuComponent = __decorate([
-                    core_7.Component({
-                        selector: 'leftmenu',
-                        templateUrl: 'app/core/topmenu/topmenu.html',
-                        styleUrls: ['app/core/topmenu/topmenu.css'],
-                        providers: [ng2_bootstrap_2.AccordionComponent, ng2_bootstrap_2.AccordionPanelComponent],
-                        directives: [router_3.ROUTER_DIRECTIVES]
-                    }), 
-                    __metadata('design:paramtypes', [router_3.Router])
-                ], TopMenuComponent);
                 return TopMenuComponent;
             }());
+            TopMenuComponent = __decorate([
+                core_7.Component({
+                    selector: 'leftmenu',
+                    templateUrl: 'app/core/topmenu/topmenu.html',
+                    styleUrls: ['app/core/topmenu/topmenu.css'],
+                    providers: [ng2_bootstrap_2.AccordionComponent, ng2_bootstrap_2.AccordionPanelComponent],
+                    directives: [router_3.ROUTER_DIRECTIVES]
+                }),
+                __metadata("design:paramtypes", [router_3.Router])
+            ], TopMenuComponent);
             exports_8("TopMenuComponent", TopMenuComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/userview", ['@angular/core', '@angular/router'], function(exports_9, context_9) {
+System.register("app/core/userview/userview", ["@angular/core", "@angular/router"], function (exports_9, context_9) {
     "use strict";
     var __moduleName = context_9 && context_9.id;
-    var core_8, router_4;
-    var UserViewComponent;
+    var core_8, router_4, UserViewComponent;
     return {
-        setters:[
+        setters: [
             function (core_8_1) {
                 core_8 = core_8_1;
             },
             function (router_4_1) {
                 router_4 = router_4_1;
-            }],
-        execute: function() {
-            //import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
+            }
+        ],
+        execute: function () {
+            //@Injectable()
             UserViewComponent = (function () {
                 function UserViewComponent(_router) {
                     this._router = _router;
@@ -714,29 +720,28 @@ System.register("app/core/userview/userview", ['@angular/core', '@angular/router
                         }
                     });
                 };
-                UserViewComponent = __decorate([
-                    core_8.Component({
-                        selector: 'userview',
-                        templateUrl: 'app/core/userview/userview.html',
-                        styleUrls: ['app/core/userview/userview.css'],
-                        providers: [],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [router_4.Router])
-                ], UserViewComponent);
                 return UserViewComponent;
             }());
+            UserViewComponent = __decorate([
+                core_8.Component({
+                    selector: 'userview',
+                    templateUrl: 'app/core/userview/userview.html',
+                    styleUrls: ['app/core/userview/userview.css'],
+                    providers: [],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [router_4.Router])
+            ], UserViewComponent);
             exports_9("UserViewComponent", UserViewComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/user/registeruser", ['@angular/core', "app/services/msn.service", '@angular/router'], function(exports_10, context_10) {
+System.register("app/core/userview/user/registeruser", ["@angular/core", "app/services/msn.service", "@angular/router"], function (exports_10, context_10) {
     "use strict";
     var __moduleName = context_10 && context_10.id;
-    var core_9, msn_service_3, router_5;
-    var RegisterUserComponent;
+    var core_9, msn_service_3, router_5, RegisterUserComponent;
     return {
-        setters:[
+        setters: [
             function (core_9_1) {
                 core_9 = core_9_1;
             },
@@ -745,8 +750,9 @@ System.register("app/core/userview/user/registeruser", ['@angular/core', "app/se
             },
             function (router_5_1) {
                 router_5 = router_5_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             RegisterUserComponent = (function () {
                 function RegisterUserComponent(mSNService, router) {
                     this.mSNService = mSNService;
@@ -775,26 +781,25 @@ System.register("app/core/userview/user/registeruser", ['@angular/core', "app/se
                     //    _this.router.navigate(['manageadmins']);
                     //});
                 };
-                RegisterUserComponent = __decorate([
-                    core_9.Component({
-                        selector: 'registeruser',
-                        templateUrl: 'app/core/userview/user/registeruser.html',
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_3.MSNService, router_5.Router])
-                ], RegisterUserComponent);
                 return RegisterUserComponent;
             }());
+            RegisterUserComponent = __decorate([
+                core_9.Component({
+                    selector: 'registeruser',
+                    templateUrl: 'app/core/userview/user/registeruser.html',
+                }),
+                __metadata("design:paramtypes", [msn_service_3.MSNService, router_5.Router])
+            ], RegisterUserComponent);
             exports_10("RegisterUserComponent", RegisterUserComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/user/edituser", ['@angular/core', "app/services/msn.service", '@angular/router'], function(exports_11, context_11) {
+System.register("app/core/userview/user/edituser", ["@angular/core", "app/services/msn.service", "@angular/router"], function (exports_11, context_11) {
     "use strict";
     var __moduleName = context_11 && context_11.id;
-    var core_10, msn_service_4, router_6;
-    var EditUserComponent;
+    var core_10, msn_service_4, router_6, EditUserComponent;
     return {
-        setters:[
+        setters: [
             function (core_10_1) {
                 core_10 = core_10_1;
             },
@@ -803,8 +808,9 @@ System.register("app/core/userview/user/edituser", ['@angular/core', "app/servic
             },
             function (router_6_1) {
                 router_6 = router_6_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             EditUserComponent = (function () {
                 function EditUserComponent(mSNService, route, router) {
                     this.mSNService = mSNService;
@@ -841,33 +847,33 @@ System.register("app/core/userview/user/edituser", ['@angular/core', "app/servic
                         _this.router.navigate(['manageadmins']);
                     });
                 };
-                EditUserComponent = __decorate([
-                    core_10.Component({
-                        selector: 'editadmin',
-                        templateUrl: 'app/core/userview/user/edituser.html',
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_4.MSNService, router_6.ActivatedRoute, router_6.Router])
-                ], EditUserComponent);
                 return EditUserComponent;
             }());
+            EditUserComponent = __decorate([
+                core_10.Component({
+                    selector: 'editadmin',
+                    templateUrl: 'app/core/userview/user/edituser.html',
+                }),
+                __metadata("design:paramtypes", [msn_service_4.MSNService, router_6.ActivatedRoute, router_6.Router])
+            ], EditUserComponent);
             exports_11("EditUserComponent", EditUserComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/servicesearch/servicesearch", ['@angular/core', "app/services/msn.service"], function(exports_12, context_12) {
+System.register("app/core/userview/servicesearch/servicesearch", ["@angular/core", "app/services/msn.service"], function (exports_12, context_12) {
     "use strict";
     var __moduleName = context_12 && context_12.id;
-    var core_11, msn_service_5;
-    var ServiceSearchComponent;
+    var core_11, msn_service_5, ServiceSearchComponent;
     return {
-        setters:[
+        setters: [
             function (core_11_1) {
                 core_11 = core_11_1;
             },
             function (msn_service_5_1) {
                 msn_service_5 = msn_service_5_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ServiceSearchComponent = (function () {
                 function ServiceSearchComponent(msnService) {
                     this.msnService = msnService;
@@ -911,29 +917,28 @@ System.register("app/core/userview/servicesearch/servicesearch", ['@angular/core
                     this.cities.filter(function (x) { return x.ID == value.ID; }).map(function (data) { return _this.areas = data.CITYAREAs; });
                     console.log(this.areas);
                 };
-                ServiceSearchComponent = __decorate([
-                    core_11.Component({
-                        selector: 'servicesearch',
-                        templateUrl: 'app/core/userview/servicesearch/servicesearch.html',
-                        styleUrls: ['app/core/userview/servicesearch/servicesearch.css'],
-                        providers: [msn_service_5.MSNService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_5.MSNService])
-                ], ServiceSearchComponent);
                 return ServiceSearchComponent;
             }());
+            ServiceSearchComponent = __decorate([
+                core_11.Component({
+                    selector: 'servicesearch',
+                    templateUrl: 'app/core/userview/servicesearch/servicesearch.html',
+                    styleUrls: ['app/core/userview/servicesearch/servicesearch.css'],
+                    providers: [msn_service_5.MSNService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_5.MSNService])
+            ], ServiceSearchComponent);
             exports_12("ServiceSearchComponent", ServiceSearchComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/postservice/serviceinfo/serviceinfo", ['@angular/core', '@angular/router', 'ng2-cloudinary', "app/services/msn.service"], function(exports_13, context_13) {
+System.register("app/core/userview/postservice/serviceinfo/serviceinfo", ["@angular/core", "@angular/router", "ng2-cloudinary", "app/services/msn.service"], function (exports_13, context_13) {
     "use strict";
     var __moduleName = context_13 && context_13.id;
-    var core_12, router_7, ng2_cloudinary_1, msn_service_6;
-    var ServiceInfoComponent;
+    var core_12, router_7, ng2_cloudinary_1, msn_service_6, ServiceInfoComponent;
     return {
-        setters:[
+        setters: [
             function (core_12_1) {
                 core_12 = core_12_1;
             },
@@ -945,8 +950,9 @@ System.register("app/core/userview/postservice/serviceinfo/serviceinfo", ['@angu
             },
             function (msn_service_6_1) {
                 msn_service_6 = msn_service_6_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ServiceInfoComponent = (function () {
                 function ServiceInfoComponent(msnService, router, route) {
                     this.msnService = msnService;
@@ -981,37 +987,37 @@ System.register("app/core/userview/postservice/serviceinfo/serviceinfo", ['@angu
                 ServiceInfoComponent.prototype.descriptionChange = function (value) {
                     this.serviceinfoChange.emit(this.serviceinfo);
                 };
-                __decorate([
-                    core_12.Input(), 
-                    __metadata('design:type', Object)
-                ], ServiceInfoComponent.prototype, "serviceinfo", void 0);
-                __decorate([
-                    core_12.Output(), 
-                    __metadata('design:type', core_12.EventEmitter)
-                ], ServiceInfoComponent.prototype, "serviceinfoChange", void 0);
-                ServiceInfoComponent = __decorate([
-                    core_12.Component({
-                        selector: 'serviceinfo',
-                        templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
-                        styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
-                        providers: [msn_service_6.MSNService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_6.MSNService, router_7.Router, router_7.ActivatedRoute])
-                ], ServiceInfoComponent);
                 return ServiceInfoComponent;
             }());
+            __decorate([
+                core_12.Input(),
+                __metadata("design:type", Object)
+            ], ServiceInfoComponent.prototype, "serviceinfo", void 0);
+            __decorate([
+                core_12.Output(),
+                __metadata("design:type", core_12.EventEmitter)
+            ], ServiceInfoComponent.prototype, "serviceinfoChange", void 0);
+            ServiceInfoComponent = __decorate([
+                core_12.Component({
+                    selector: 'serviceinfo',
+                    templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
+                    styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
+                    providers: [msn_service_6.MSNService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_6.MSNService, router_7.Router, router_7.ActivatedRoute])
+            ], ServiceInfoComponent);
             exports_13("ServiceInfoComponent", ServiceInfoComponent);
         }
-    }
+    };
 });
-System.register("app/types/postServiceRoute", [], function(exports_14, context_14) {
+System.register("app/types/postServiceRoute", [], function (exports_14, context_14) {
     "use strict";
     var __moduleName = context_14 && context_14.id;
     var Dictionary, postServiceRoute;
     return {
-        setters:[],
-        execute: function() {
+        setters: [],
+        execute: function () {
             Dictionary = (function () {
                 function Dictionary(init) {
                     this._keys = new Array();
@@ -1053,7 +1059,7 @@ System.register("app/types/postServiceRoute", [], function(exports_14, context_1
             postServiceRoute = (function (_super) {
                 __extends(postServiceRoute, _super);
                 function postServiceRoute(init) {
-                    _super.call(this, init);
+                    return _super.call(this, init) || this;
                 }
                 postServiceRoute.prototype.values = function () {
                     return this._values;
@@ -1065,15 +1071,15 @@ System.register("app/types/postServiceRoute", [], function(exports_14, context_1
             }(Dictionary));
             exports_14("postServiceRoute", postServiceRoute);
         }
-    }
+    };
 });
-System.register("app/types/postServiceRequest", [], function(exports_15, context_15) {
+System.register("app/types/postServiceRequest", [], function (exports_15, context_15) {
     "use strict";
     var __moduleName = context_15 && context_15.id;
     var PostData;
     return {
-        setters:[],
-        execute: function() {
+        setters: [],
+        execute: function () {
             PostData = (function () {
                 function PostData() {
                     this.title = '';
@@ -1094,15 +1100,14 @@ System.register("app/types/postServiceRequest", [], function(exports_15, context
             }());
             exports_15("PostData", PostData);
         }
-    }
+    };
 });
-System.register("app/core/userview/postservice/postservice", ['@angular/core', '@angular/router', "app/core/userview/servicesearch/servicesearch", "app/services/msn.service", "app/types/postServiceRoute", "app/types/postServiceRequest"], function(exports_16, context_16) {
+System.register("app/core/userview/postservice/postservice", ["@angular/core", "@angular/router", "app/core/userview/servicesearch/servicesearch", "app/services/msn.service", "app/types/postServiceRoute", "app/types/postServiceRequest"], function (exports_16, context_16) {
     "use strict";
     var __moduleName = context_16 && context_16.id;
-    var core_13, router_8, servicesearch_1, msn_service_7, postServiceRoute_1, postServiceRequest_1;
-    var PostServiceComponent;
+    var core_13, router_8, servicesearch_1, msn_service_7, postServiceRoute_1, postServiceRequest_1, PostServiceComponent;
     return {
-        setters:[
+        setters: [
             function (core_13_1) {
                 core_13 = core_13_1;
             },
@@ -1120,8 +1125,9 @@ System.register("app/core/userview/postservice/postservice", ['@angular/core', '
             },
             function (postServiceRequest_1_1) {
                 postServiceRequest_1 = postServiceRequest_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             PostServiceComponent = (function () {
                 function PostServiceComponent(msnService, router, route) {
                     var _this = this;
@@ -1216,29 +1222,28 @@ System.register("app/core/userview/postservice/postservice", ['@angular/core', '
                         console.log(err);
                     });
                 };
-                PostServiceComponent = __decorate([
-                    core_13.Component({
-                        selector: 'postservice',
-                        templateUrl: 'app/core/userview/postservice/postservice.html',
-                        styleUrls: ['app/core/userview/postservice/postservice.css'],
-                        providers: [servicesearch_1.ServiceSearchComponent, msn_service_7.MSNService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_7.MSNService, router_8.Router, router_8.ActivatedRoute])
-                ], PostServiceComponent);
                 return PostServiceComponent;
             }());
+            PostServiceComponent = __decorate([
+                core_13.Component({
+                    selector: 'postservice',
+                    templateUrl: 'app/core/userview/postservice/postservice.html',
+                    styleUrls: ['app/core/userview/postservice/postservice.css'],
+                    providers: [servicesearch_1.ServiceSearchComponent, msn_service_7.MSNService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_7.MSNService, router_8.Router, router_8.ActivatedRoute])
+            ], PostServiceComponent);
             exports_16("PostServiceComponent", PostServiceComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/default/default", ['@angular/core', "app/services/msn.service", 'ng2-bootstrap', '@angular/router', 'ng2-cloudinary'], function(exports_17, context_17) {
+System.register("app/core/userview/default/default", ["@angular/core", "app/services/msn.service", "ng2-bootstrap", "@angular/router", "ng2-cloudinary"], function (exports_17, context_17) {
     "use strict";
     var __moduleName = context_17 && context_17.id;
-    var core_14, msn_service_8, core_15, ng2_bootstrap_3, router_9, ng2_cloudinary_2;
-    var DefaultViewComponent;
+    var core_14, msn_service_8, core_15, ng2_bootstrap_3, router_9, ng2_cloudinary_2, DefaultViewComponent;
     return {
-        setters:[
+        setters: [
             function (core_14_1) {
                 core_14 = core_14_1;
                 core_15 = core_14_1;
@@ -1254,8 +1259,9 @@ System.register("app/core/userview/default/default", ['@angular/core', "app/serv
             },
             function (ng2_cloudinary_2_1) {
                 ng2_cloudinary_2 = ng2_cloudinary_2_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             DefaultViewComponent = (function () {
                 //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
                 function DefaultViewComponent(msnService, router) {
@@ -1294,37 +1300,37 @@ System.register("app/core/userview/default/default", ['@angular/core', "app/serv
                     this.selectedAllServices = data;
                     this.allServicesModal.open();
                 };
-                __decorate([
-                    core_15.ViewChild('allServicesModal'), 
-                    __metadata('design:type', ng2_bootstrap_3.ModalDirective)
-                ], DefaultViewComponent.prototype, "allServicesModal", void 0);
-                DefaultViewComponent = __decorate([
-                    core_14.Component({
-                        selector: 'userview',
-                        templateUrl: 'app/core/userview/default/default.html',
-                        styleUrls: ['app/core/userview/default/default.css'],
-                        providers: [msn_service_8.MSNService, router_9.RouterLink],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_8.MSNService, router_9.Router])
-                ], DefaultViewComponent);
                 return DefaultViewComponent;
             }());
+            __decorate([
+                core_15.ViewChild('allServicesModal'),
+                __metadata("design:type", ng2_bootstrap_3.ModalDirective)
+            ], DefaultViewComponent.prototype, "allServicesModal", void 0);
+            DefaultViewComponent = __decorate([
+                core_14.Component({
+                    selector: 'userview',
+                    templateUrl: 'app/core/userview/default/default.html',
+                    styleUrls: ['app/core/userview/default/default.css'],
+                    providers: [msn_service_8.MSNService, router_9.RouterLink],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_8.MSNService, router_9.Router])
+            ], DefaultViewComponent);
             exports_17("DefaultViewComponent", DefaultViewComponent);
         }
-    }
+    };
 });
-System.register("app/services/msn.pager", ['underscore'], function(exports_18, context_18) {
+System.register("app/services/msn.pager", ["underscore"], function (exports_18, context_18) {
     "use strict";
     var __moduleName = context_18 && context_18.id;
-    var _;
-    var PagerService;
+    var _, PagerService;
     return {
-        setters:[
+        setters: [
             function (_4) {
                 _ = _4;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             PagerService = (function () {
                 function PagerService() {
                 }
@@ -1376,15 +1382,14 @@ System.register("app/services/msn.pager", ['underscore'], function(exports_18, c
             }());
             exports_18("PagerService", PagerService);
         }
-    }
+    };
 });
-System.register("app/core/userview/findwork/listviewwork/listviewwork", ['@angular/core', "app/services/msn.service", "app/services/msn.pager", '@angular/router', 'angular2-google-maps/core'], function(exports_19, context_19) {
+System.register("app/core/userview/findwork/listviewwork/listviewwork", ["@angular/core", "app/services/msn.service", "app/services/msn.pager", "@angular/router", "angular2-google-maps/core"], function (exports_19, context_19) {
     "use strict";
     var __moduleName = context_19 && context_19.id;
-    var core_16, msn_service_9, msn_pager_1, router_10, core_17;
-    var ListViewWorkComponent;
+    var core_16, msn_service_9, msn_pager_1, router_10, core_17, ListViewWorkComponent;
     return {
-        setters:[
+        setters: [
             function (core_16_1) {
                 core_16 = core_16_1;
             },
@@ -1399,8 +1404,9 @@ System.register("app/core/userview/findwork/listviewwork/listviewwork", ['@angul
             },
             function (core_17_1) {
                 core_17 = core_17_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ListViewWorkComponent = (function () {
                 function ListViewWorkComponent(msnService, pagerService, router, zone, _loader) {
                     //  this.servicessearch = [];
@@ -1433,36 +1439,36 @@ System.register("app/core/userview/findwork/listviewwork/listviewwork", ['@angul
                     // get current page of items
                     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
                 };
-                ListViewWorkComponent = __decorate([
-                    core_16.Component({
-                        selector: 'listviewwork',
-                        templateUrl: 'app/core/userview/findwork/listviewwork/listviewwork.html',
-                        styleUrls: ['app/core/userview/findwork/listviewwork/listviewwork.css'],
-                        providers: [msn_service_9.MSNService, msn_pager_1.PagerService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_9.MSNService, msn_pager_1.PagerService, router_10.Router, core_16.NgZone, core_17.MapsAPILoader])
-                ], ListViewWorkComponent);
                 return ListViewWorkComponent;
             }());
+            ListViewWorkComponent = __decorate([
+                core_16.Component({
+                    selector: 'listviewwork',
+                    templateUrl: 'app/core/userview/findwork/listviewwork/listviewwork.html',
+                    styleUrls: ['app/core/userview/findwork/listviewwork/listviewwork.css'],
+                    providers: [msn_service_9.MSNService, msn_pager_1.PagerService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_9.MSNService, msn_pager_1.PagerService, router_10.Router, core_16.NgZone, core_17.MapsAPILoader])
+            ], ListViewWorkComponent);
             exports_19("ListViewWorkComponent", ListViewWorkComponent);
         }
-    }
+    };
 });
-System.register("app/shared/directives/googleplace.directive", ['@angular/core', '@angular/forms'], function(exports_20, context_20) {
+System.register("app/shared/directives/googleplace.directive", ["@angular/core", "@angular/forms"], function (exports_20, context_20) {
     "use strict";
     var __moduleName = context_20 && context_20.id;
-    var core_18, forms_1;
-    var GoogleplaceDirective;
+    var core_18, forms_1, GoogleplaceDirective;
     return {
-        setters:[
+        setters: [
             function (core_18_1) {
                 core_18 = core_18_1;
             },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             GoogleplaceDirective = (function () {
                 function GoogleplaceDirective(el, model) {
                     var _this = this;
@@ -1482,33 +1488,32 @@ System.register("app/shared/directives/googleplace.directive", ['@angular/core',
                 };
                 GoogleplaceDirective.prototype.onInputChange = function () {
                 };
-                __decorate([
-                    core_18.Output(), 
-                    __metadata('design:type', core_18.EventEmitter)
-                ], GoogleplaceDirective.prototype, "setAddress", void 0);
-                GoogleplaceDirective = __decorate([
-                    core_18.Directive({
-                        selector: '[googleplace]',
-                        providers: [forms_1.NgModel],
-                        host: {
-                            '(input)': 'onInputChange()'
-                        }
-                    }), 
-                    __metadata('design:paramtypes', [core_18.ElementRef, forms_1.NgModel])
-                ], GoogleplaceDirective);
                 return GoogleplaceDirective;
             }());
+            __decorate([
+                core_18.Output(),
+                __metadata("design:type", core_18.EventEmitter)
+            ], GoogleplaceDirective.prototype, "setAddress", void 0);
+            GoogleplaceDirective = __decorate([
+                core_18.Directive({
+                    selector: '[googleplace]',
+                    providers: [forms_1.NgModel],
+                    host: {
+                        '(input)': 'onInputChange()'
+                    }
+                }),
+                __metadata("design:paramtypes", [core_18.ElementRef, forms_1.NgModel])
+            ], GoogleplaceDirective);
             exports_20("GoogleplaceDirective", GoogleplaceDirective);
         }
-    }
+    };
 });
-System.register("app/core/userview/findwork/mapviewwork/mapviewwork", ['@angular/core', '@angular/router', 'angular2-google-maps/core', "app/services/msn.service", 'rxjs/Observable'], function(exports_21, context_21) {
+System.register("app/core/userview/findwork/mapviewwork/mapviewwork", ["@angular/core", "@angular/router", "angular2-google-maps/core", "app/services/msn.service", "rxjs/Observable"], function (exports_21, context_21) {
     "use strict";
     var __moduleName = context_21 && context_21.id;
-    var core_19, router_11, core_20, msn_service_10, Observable_3;
-    var MapViewWorkComponent;
+    var core_19, router_11, core_20, msn_service_10, Observable_3, MapViewWorkComponent;
     return {
-        setters:[
+        setters: [
             function (core_19_1) {
                 core_19 = core_19_1;
             },
@@ -1523,8 +1528,10 @@ System.register("app/core/userview/findwork/mapviewwork/mapviewwork", ['@angular
             },
             function (Observable_3_1) {
                 Observable_3 = Observable_3_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            //@Injectable()
             MapViewWorkComponent = (function () {
                 function MapViewWorkComponent(msnService, _router, zone, _loader, differs) {
                     this.msnService = msnService;
@@ -1570,36 +1577,35 @@ System.register("app/core/userview/findwork/mapviewwork/mapviewwork", ['@angular
                     this.servicessearch.nelongitude = ne.lng();
                     this.servicessearch.swlongitude = sw.lng();
                 };
-                __decorate([
-                    core_19.Input(), 
-                    __metadata('design:type', Observable_3.Observable)
-                ], MapViewWorkComponent.prototype, "servicessearch", void 0);
-                __decorate([
-                    core_19.Output(), 
-                    __metadata('design:type', Object)
-                ], MapViewWorkComponent.prototype, "onServiceSelected", void 0);
-                MapViewWorkComponent = __decorate([
-                    core_19.Component({
-                        selector: 'mapviewwork',
-                        templateUrl: 'app/core/userview/findwork/mapviewwork/mapviewwork.html',
-                        styleUrls: ['app/core/userview/findwork/mapviewwork/mapviewwork.css'],
-                        providers: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_10.MSNService, router_11.Router, core_19.NgZone, core_20.MapsAPILoader, core_19.KeyValueDiffers])
-                ], MapViewWorkComponent);
                 return MapViewWorkComponent;
             }());
+            __decorate([
+                core_19.Input(),
+                __metadata("design:type", Observable_3.Observable)
+            ], MapViewWorkComponent.prototype, "servicessearch", void 0);
+            __decorate([
+                core_19.Output(),
+                __metadata("design:type", Object)
+            ], MapViewWorkComponent.prototype, "onServiceSelected", void 0);
+            MapViewWorkComponent = __decorate([
+                core_19.Component({
+                    selector: 'mapviewwork',
+                    templateUrl: 'app/core/userview/findwork/mapviewwork/mapviewwork.html',
+                    styleUrls: ['app/core/userview/findwork/mapviewwork/mapviewwork.css'],
+                    providers: []
+                }),
+                __metadata("design:paramtypes", [msn_service_10.MSNService, router_11.Router, core_19.NgZone, core_20.MapsAPILoader, core_19.KeyValueDiffers])
+            ], MapViewWorkComponent);
             exports_21("MapViewWorkComponent", MapViewWorkComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/findwork/findwork", ['@angular/core', "app/services/msn.service", "app/services/msn.pager", '@angular/router', 'angular2-google-maps/core'], function(exports_22, context_22) {
+System.register("app/core/userview/findwork/findwork", ["@angular/core", "app/services/msn.service", "app/services/msn.pager", "@angular/router", "angular2-google-maps/core"], function (exports_22, context_22) {
     "use strict";
     var __moduleName = context_22 && context_22.id;
-    var core_21, msn_service_11, msn_pager_2, router_12, core_22;
-    var FindWorkComponent;
+    var core_21, msn_service_11, msn_pager_2, router_12, core_22, FindWorkComponent;
     return {
-        setters:[
+        setters: [
             function (core_21_1) {
                 core_21 = core_21_1;
             },
@@ -1614,8 +1620,9 @@ System.register("app/core/userview/findwork/findwork", ['@angular/core', "app/se
             },
             function (core_22_1) {
                 core_22 = core_22_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             FindWorkComponent = (function () {
                 //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
                 function FindWorkComponent(msnService, pagerService, router, route, zone, _loader) {
@@ -1791,29 +1798,28 @@ System.register("app/core/userview/findwork/findwork", ['@angular/core', "app/se
                         this.servicessearch.bookedon = '';
                     }
                 };
-                FindWorkComponent = __decorate([
-                    core_21.Component({
-                        selector: 'findwork',
-                        templateUrl: 'app/core/userview/findwork/findwork.html',
-                        styleUrls: ['app/core/userview/findwork/findwork.css'],
-                        providers: [msn_service_11.MSNService, msn_pager_2.PagerService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_11.MSNService, msn_pager_2.PagerService, router_12.Router, router_12.ActivatedRoute, core_21.NgZone, core_22.MapsAPILoader])
-                ], FindWorkComponent);
                 return FindWorkComponent;
             }());
+            FindWorkComponent = __decorate([
+                core_21.Component({
+                    selector: 'findwork',
+                    templateUrl: 'app/core/userview/findwork/findwork.html',
+                    styleUrls: ['app/core/userview/findwork/findwork.css'],
+                    providers: [msn_service_11.MSNService, msn_pager_2.PagerService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_11.MSNService, msn_pager_2.PagerService, router_12.Router, router_12.ActivatedRoute, core_21.NgZone, core_22.MapsAPILoader])
+            ], FindWorkComponent);
             exports_22("FindWorkComponent", FindWorkComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/userneeds/userneeds", ['@angular/core', "app/services/msn.login", "app/services/msn.service", "app/services/msn.pager", '@angular/router', 'ng2-bootstrap', 'angular2-google-maps/core'], function(exports_23, context_23) {
+System.register("app/core/userview/userneeds/userneeds", ["@angular/core", "app/services/msn.login", "app/services/msn.service", "app/services/msn.pager", "@angular/router", "ng2-bootstrap", "angular2-google-maps/core"], function (exports_23, context_23) {
     "use strict";
     var __moduleName = context_23 && context_23.id;
-    var core_23, msn_login_2, msn_service_12, msn_pager_3, router_13, ng2_bootstrap_4, core_24;
-    var UserNeedsComponent;
+    var core_23, msn_login_2, msn_service_12, msn_pager_3, router_13, ng2_bootstrap_4, core_24, UserNeedsComponent;
     return {
-        setters:[
+        setters: [
             function (core_23_1) {
                 core_23 = core_23_1;
             },
@@ -1834,8 +1840,9 @@ System.register("app/core/userview/userneeds/userneeds", ['@angular/core', "app/
             },
             function (core_24_1) {
                 core_24 = core_24_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             UserNeedsComponent = (function () {
                 function UserNeedsComponent(msnService, loginService, pagerService, router, zone, _loader) {
                     this.msnService = msnService;
@@ -1928,37 +1935,36 @@ System.register("app/core/userview/userneeds/userneeds", ['@angular/core', "app/
                     this.selectedItem.servicestartdate = object;
                     this.selectedItem.serviceenddate = object;
                 };
-                __decorate([
-                    core_23.ViewChild('deletemodal'), 
-                    __metadata('design:type', ng2_bootstrap_4.ModalDirective)
-                ], UserNeedsComponent.prototype, "deleteModal", void 0);
-                __decorate([
-                    core_23.ViewChild('updatemodal'), 
-                    __metadata('design:type', ng2_bootstrap_4.ModalDirective)
-                ], UserNeedsComponent.prototype, "updateModal", void 0);
-                UserNeedsComponent = __decorate([
-                    core_23.Component({
-                        selector: 'userneeds',
-                        templateUrl: 'app/core/userview/userneeds/userneeds.html',
-                        styleUrls: ['app/core/userview/userneeds/userneeds.css'],
-                        providers: [msn_service_12.MSNService, msn_pager_3.PagerService, msn_login_2.LoginService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_12.MSNService, msn_login_2.LoginService, msn_pager_3.PagerService, router_13.Router, core_23.NgZone, core_24.MapsAPILoader])
-                ], UserNeedsComponent);
                 return UserNeedsComponent;
             }());
+            __decorate([
+                core_23.ViewChild('deletemodal'),
+                __metadata("design:type", ng2_bootstrap_4.ModalDirective)
+            ], UserNeedsComponent.prototype, "deleteModal", void 0);
+            __decorate([
+                core_23.ViewChild('updatemodal'),
+                __metadata("design:type", ng2_bootstrap_4.ModalDirective)
+            ], UserNeedsComponent.prototype, "updateModal", void 0);
+            UserNeedsComponent = __decorate([
+                core_23.Component({
+                    selector: 'userneeds',
+                    templateUrl: 'app/core/userview/userneeds/userneeds.html',
+                    styleUrls: ['app/core/userview/userneeds/userneeds.css'],
+                    providers: [msn_service_12.MSNService, msn_pager_3.PagerService, msn_login_2.LoginService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_12.MSNService, msn_login_2.LoginService, msn_pager_3.PagerService, router_13.Router, core_23.NgZone, core_24.MapsAPILoader])
+            ], UserNeedsComponent);
             exports_23("UserNeedsComponent", UserNeedsComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/postservice/address/address", ['@angular/core', '@angular/router', 'angular2-google-maps/core'], function(exports_24, context_24) {
+System.register("app/core/userview/postservice/address/address", ["@angular/core", "@angular/router", "angular2-google-maps/core"], function (exports_24, context_24) {
     "use strict";
     var __moduleName = context_24 && context_24.id;
-    var core_25, router_14, core_26;
-    var AddressComponent;
+    var core_25, router_14, core_26, AddressComponent;
     return {
-        setters:[
+        setters: [
             function (core_25_1) {
                 core_25 = core_25_1;
             },
@@ -1967,8 +1973,10 @@ System.register("app/core/userview/postservice/address/address", ['@angular/core
             },
             function (core_26_1) {
                 core_26 = core_26_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            //@Injectable()
             AddressComponent = (function () {
                 function AddressComponent(_router, zone, _loader) {
                     this._router = _router;
@@ -2058,36 +2066,35 @@ System.register("app/core/userview/postservice/address/address", ['@angular/core
                 AddressComponent.prototype.addressChange = function (value) {
                     this.serviceinfoChange.emit(this.serviceinfo);
                 };
-                __decorate([
-                    core_25.Input(), 
-                    __metadata('design:type', Object)
-                ], AddressComponent.prototype, "serviceinfo", void 0);
-                __decorate([
-                    core_25.Output(), 
-                    __metadata('design:type', core_25.EventEmitter)
-                ], AddressComponent.prototype, "serviceinfoChange", void 0);
-                AddressComponent = __decorate([
-                    core_25.Component({
-                        selector: 'address',
-                        templateUrl: 'app/core/userview/postservice/address/address.html',
-                        styleUrls: ['app/core/userview/postservice/address/address.css'],
-                        providers: []
-                    }), 
-                    __metadata('design:paramtypes', [router_14.Router, core_25.NgZone, core_26.MapsAPILoader])
-                ], AddressComponent);
                 return AddressComponent;
             }());
+            __decorate([
+                core_25.Input(),
+                __metadata("design:type", Object)
+            ], AddressComponent.prototype, "serviceinfo", void 0);
+            __decorate([
+                core_25.Output(),
+                __metadata("design:type", core_25.EventEmitter)
+            ], AddressComponent.prototype, "serviceinfoChange", void 0);
+            AddressComponent = __decorate([
+                core_25.Component({
+                    selector: 'address',
+                    templateUrl: 'app/core/userview/postservice/address/address.html',
+                    styleUrls: ['app/core/userview/postservice/address/address.css'],
+                    providers: []
+                }),
+                __metadata("design:paramtypes", [router_14.Router, core_25.NgZone, core_26.MapsAPILoader])
+            ], AddressComponent);
             exports_24("AddressComponent", AddressComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/postservice/servicetime/servicetime", ['@angular/core', '@angular/router', '@angular/forms', "app/services/msn.service"], function(exports_25, context_25) {
+System.register("app/core/userview/postservice/servicetime/servicetime", ["@angular/core", "@angular/router", "@angular/forms", "app/services/msn.service"], function (exports_25, context_25) {
     "use strict";
     var __moduleName = context_25 && context_25.id;
-    var core_27, router_15, forms_2, msn_service_13;
-    var ServiceTimeComponent;
+    var core_27, router_15, forms_2, msn_service_13, ServiceTimeComponent;
     return {
-        setters:[
+        setters: [
             function (core_27_1) {
                 core_27 = core_27_1;
             },
@@ -2099,8 +2106,9 @@ System.register("app/core/userview/postservice/servicetime/servicetime", ['@angu
             },
             function (msn_service_13_1) {
                 msn_service_13 = msn_service_13_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ServiceTimeComponent = (function () {
                 function ServiceTimeComponent(msnService, router, route, formBuilder) {
                     this.msnService = msnService;
@@ -2137,37 +2145,36 @@ System.register("app/core/userview/postservice/servicetime/servicetime", ['@angu
                     this.serviceinfo.servicestartdate = object;
                     this.serviceinfo.serviceenddate = object;
                 };
-                __decorate([
-                    core_27.Input(), 
-                    __metadata('design:type', Object)
-                ], ServiceTimeComponent.prototype, "serviceinfo", void 0);
-                __decorate([
-                    core_27.Output(), 
-                    __metadata('design:type', core_27.EventEmitter)
-                ], ServiceTimeComponent.prototype, "serviceinfoChange", void 0);
-                ServiceTimeComponent = __decorate([
-                    core_27.Component({
-                        selector: 'servicetime',
-                        templateUrl: 'app/core/userview/postservice/servicetime/servicetime.html',
-                        styleUrls: ['app/core/userview/postservice/servicetime/servicetime.css'],
-                        providers: [msn_service_13.MSNService, forms_2.FormBuilder],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_13.MSNService, router_15.Router, router_15.ActivatedRoute, forms_2.FormBuilder])
-                ], ServiceTimeComponent);
                 return ServiceTimeComponent;
             }());
+            __decorate([
+                core_27.Input(),
+                __metadata("design:type", Object)
+            ], ServiceTimeComponent.prototype, "serviceinfo", void 0);
+            __decorate([
+                core_27.Output(),
+                __metadata("design:type", core_27.EventEmitter)
+            ], ServiceTimeComponent.prototype, "serviceinfoChange", void 0);
+            ServiceTimeComponent = __decorate([
+                core_27.Component({
+                    selector: 'servicetime',
+                    templateUrl: 'app/core/userview/postservice/servicetime/servicetime.html',
+                    styleUrls: ['app/core/userview/postservice/servicetime/servicetime.css'],
+                    providers: [msn_service_13.MSNService, forms_2.FormBuilder],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_13.MSNService, router_15.Router, router_15.ActivatedRoute, forms_2.FormBuilder])
+            ], ServiceTimeComponent);
             exports_25("ServiceTimeComponent", ServiceTimeComponent);
         }
-    }
+    };
 });
-System.register("app/shared/components/login/modallogin", ['@angular/core', "app/services/msn.service", "app/services/msn.login", '@angular/router', 'ng2-bootstrap', 'angular-google-signin'], function(exports_26, context_26) {
+System.register("app/shared/components/login/modallogin", ["@angular/core", "app/services/msn.service", "app/services/msn.login", "@angular/router", "ng2-bootstrap", "angular-google-signin"], function (exports_26, context_26) {
     "use strict";
     var __moduleName = context_26 && context_26.id;
-    var core_28, msn_service_14, msn_login_3, router_16, ng2_bootstrap_5, angular_google_signin_2;
-    var ModalLoginComponent;
+    var core_28, msn_service_14, msn_login_3, router_16, ng2_bootstrap_5, angular_google_signin_2, ModalLoginComponent;
     return {
-        setters:[
+        setters: [
             function (core_28_1) {
                 core_28 = core_28_1;
             },
@@ -2185,8 +2192,9 @@ System.register("app/shared/components/login/modallogin", ['@angular/core', "app
             },
             function (angular_google_signin_2_1) {
                 angular_google_signin_2 = angular_google_signin_2_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ModalLoginComponent = (function () {
                 function ModalLoginComponent(msnService, loginService, ngZone) {
                     this.msnService = msnService;
@@ -2316,36 +2324,35 @@ System.register("app/shared/components/login/modallogin", ['@angular/core', "app
                         console.log(err);
                     });
                 };
-                __decorate([
-                    core_28.ViewChild('myLoginModal'), 
-                    __metadata('design:type', ng2_bootstrap_5.ModalDirective)
-                ], ModalLoginComponent.prototype, "myLoginModal", void 0);
-                __decorate([
-                    core_28.Output(), 
-                    __metadata('design:type', core_28.EventEmitter)
-                ], ModalLoginComponent.prototype, "loginCallBack", void 0);
-                ModalLoginComponent = __decorate([
-                    core_28.Component({
-                        selector: 'modallogin',
-                        templateUrl: 'app/shared/components/login/modallogin.html',
-                        styleUrls: ['app/shared/components/login/modallogin.css'],
-                        providers: [msn_service_14.MSNService, msn_login_3.LoginService, router_16.RouterLink, angular_google_signin_2.GoogleSignInComponent]
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_14.MSNService, msn_login_3.LoginService, core_28.NgZone])
-                ], ModalLoginComponent);
                 return ModalLoginComponent;
             }());
+            __decorate([
+                core_28.ViewChild('myLoginModal'),
+                __metadata("design:type", ng2_bootstrap_5.ModalDirective)
+            ], ModalLoginComponent.prototype, "myLoginModal", void 0);
+            __decorate([
+                core_28.Output(),
+                __metadata("design:type", core_28.EventEmitter)
+            ], ModalLoginComponent.prototype, "loginCallBack", void 0);
+            ModalLoginComponent = __decorate([
+                core_28.Component({
+                    selector: 'modallogin',
+                    templateUrl: 'app/shared/components/login/modallogin.html',
+                    styleUrls: ['app/shared/components/login/modallogin.css'],
+                    providers: [msn_service_14.MSNService, msn_login_3.LoginService, router_16.RouterLink, angular_google_signin_2.GoogleSignInComponent]
+                }),
+                __metadata("design:paramtypes", [msn_service_14.MSNService, msn_login_3.LoginService, core_28.NgZone])
+            ], ModalLoginComponent);
             exports_26("ModalLoginComponent", ModalLoginComponent);
         }
-    }
+    };
 });
-System.register("app/core/userview/postservice/userverify/userverify", ['@angular/core', '@angular/router', "app/services/msn.login", "app/shared/components/login/modallogin", "app/services/msn.service"], function(exports_27, context_27) {
+System.register("app/core/userview/postservice/userverify/userverify", ["@angular/core", "@angular/router", "app/services/msn.login", "app/shared/components/login/modallogin", "app/services/msn.service"], function (exports_27, context_27) {
     "use strict";
     var __moduleName = context_27 && context_27.id;
-    var core_29, router_17, msn_login_4, modallogin_1, msn_service_15;
-    var UserVerifyComponent;
+    var core_29, router_17, msn_login_4, modallogin_1, msn_service_15, UserVerifyComponent;
     return {
-        setters:[
+        setters: [
             function (core_29_1) {
                 core_29 = core_29_1;
             },
@@ -2360,8 +2367,9 @@ System.register("app/core/userview/postservice/userverify/userverify", ['@angula
             },
             function (msn_service_15_1) {
                 msn_service_15 = msn_service_15_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             UserVerifyComponent = (function () {
                 function UserVerifyComponent(msnService, loginService, router, route) {
                     this.msnService = msnService;
@@ -2416,52 +2424,52 @@ System.register("app/core/userview/postservice/userverify/userverify", ['@angula
                     this.myLoginModal.open();
                     //this.initialLoad();
                 };
-                __decorate([
-                    core_29.ViewChild('modallogin'), 
-                    __metadata('design:type', modallogin_1.ModalLoginComponent)
-                ], UserVerifyComponent.prototype, "myLoginModal", void 0);
-                __decorate([
-                    core_29.Input(), 
-                    __metadata('design:type', Object)
-                ], UserVerifyComponent.prototype, "serviceinfo", void 0);
-                __decorate([
-                    core_29.Output(), 
-                    __metadata('design:type', core_29.EventEmitter)
-                ], UserVerifyComponent.prototype, "serviceinfoChange", void 0);
-                __decorate([
-                    core_29.Output(), 
-                    __metadata('design:type', core_29.EventEmitter)
-                ], UserVerifyComponent.prototype, "postUserRequest", void 0);
-                UserVerifyComponent = __decorate([
-                    core_29.Component({
-                        selector: 'userverify',
-                        templateUrl: 'app/core/userview/postservice/userverify/userverify.html',
-                        styleUrls: ['app/core/userview/postservice/userverify/userverify.css'],
-                        providers: [msn_service_15.MSNService, msn_login_4.LoginService],
-                        directives: []
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_15.MSNService, msn_login_4.LoginService, router_17.Router, router_17.ActivatedRoute])
-                ], UserVerifyComponent);
                 return UserVerifyComponent;
             }());
+            __decorate([
+                core_29.ViewChild('modallogin'),
+                __metadata("design:type", modallogin_1.ModalLoginComponent)
+            ], UserVerifyComponent.prototype, "myLoginModal", void 0);
+            __decorate([
+                core_29.Input(),
+                __metadata("design:type", Object)
+            ], UserVerifyComponent.prototype, "serviceinfo", void 0);
+            __decorate([
+                core_29.Output(),
+                __metadata("design:type", core_29.EventEmitter)
+            ], UserVerifyComponent.prototype, "serviceinfoChange", void 0);
+            __decorate([
+                core_29.Output(),
+                __metadata("design:type", core_29.EventEmitter)
+            ], UserVerifyComponent.prototype, "postUserRequest", void 0);
+            UserVerifyComponent = __decorate([
+                core_29.Component({
+                    selector: 'userverify',
+                    templateUrl: 'app/core/userview/postservice/userverify/userverify.html',
+                    styleUrls: ['app/core/userview/postservice/userverify/userverify.css'],
+                    providers: [msn_service_15.MSNService, msn_login_4.LoginService],
+                    directives: []
+                }),
+                __metadata("design:paramtypes", [msn_service_15.MSNService, msn_login_4.LoginService, router_17.Router, router_17.ActivatedRoute])
+            ], UserVerifyComponent);
             exports_27("UserVerifyComponent", UserVerifyComponent);
         }
-    }
+    };
 });
-System.register("app/shared/components/facebooklogin", ['@angular/core', '@angular/router'], function(exports_28, context_28) {
+System.register("app/shared/components/facebooklogin", ["@angular/core", "@angular/router"], function (exports_28, context_28) {
     "use strict";
     var __moduleName = context_28 && context_28.id;
-    var core_30, router_18;
-    var FacebookLoginComponent;
+    var core_30, router_18, FacebookLoginComponent;
     return {
-        setters:[
+        setters: [
             function (core_30_1) {
                 core_30 = core_30_1;
             },
             function (router_18_1) {
                 router_18 = router_18_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             FacebookLoginComponent = (function () {
                 function FacebookLoginComponent() {
                     this.isUserLogin = true;
@@ -2507,29 +2515,28 @@ System.register("app/shared/components/facebooklogin", ['@angular/core', '@angul
                         _this.statusChangeCallback(response);
                     });
                 };
-                FacebookLoginComponent = __decorate([
-                    core_30.Component({
-                        selector: 'facebook-login',
-                        templateUrl: 'app/shared/components/facebooklogin.html',
-                        //styleUrls: ['app/shared/components/facebooklogin.css'],
-                        //  templateUrl: 'facebooklogin.html',
-                        directives: [router_18.ROUTER_DIRECTIVES]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], FacebookLoginComponent);
                 return FacebookLoginComponent;
             }());
+            FacebookLoginComponent = __decorate([
+                core_30.Component({
+                    selector: 'facebook-login',
+                    templateUrl: 'app/shared/components/facebooklogin.html',
+                    //styleUrls: ['app/shared/components/facebooklogin.css'],
+                    //  templateUrl: 'facebooklogin.html',
+                    directives: [router_18.ROUTER_DIRECTIVES]
+                }),
+                __metadata("design:paramtypes", [])
+            ], FacebookLoginComponent);
             exports_28("FacebookLoginComponent", FacebookLoginComponent);
         }
-    }
+    };
 });
-System.register("app/app.depend", ["app/app.component", "app/core/header/header", "app/core/header/login/login", "app/core/topmenu/topmenu", "app/core/userview/userview", "app/core/userview/user/registeruser", "app/core/userview/user/edituser", "app/core/userview/postservice/postservice", "app/core/userview/servicesearch/servicesearch", "app/core/userview/default/default", "app/core/userview/findwork/findwork", "app/core/userview/userneeds/userneeds", "app/core/userview/findwork/listviewwork/listviewwork", "app/core/userview/findwork/mapviewwork/mapviewwork", "app/core/userview/postservice/address/address", "app/core/userview/postservice/serviceinfo/serviceinfo", "app/core/userview/postservice/servicetime/servicetime", "app/core/userview/postservice/userverify/userverify", "app/shared/directives/googleplace.directive", "app/shared/components/login/modallogin", "app/shared/components/facebooklogin", 'ng2-file-upload', 'angular-google-signin'], function(exports_29, context_29) {
+System.register("app/app.depend", ["app/app.component", "app/core/header/header", "app/core/header/login/login", "app/core/topmenu/topmenu", "app/core/userview/userview", "app/core/userview/user/registeruser", "app/core/userview/user/edituser", "app/core/userview/postservice/postservice", "app/core/userview/servicesearch/servicesearch", "app/core/userview/default/default", "app/core/userview/findwork/findwork", "app/core/userview/userneeds/userneeds", "app/core/userview/findwork/listviewwork/listviewwork", "app/core/userview/findwork/mapviewwork/mapviewwork", "app/core/userview/postservice/address/address", "app/core/userview/postservice/serviceinfo/serviceinfo", "app/core/userview/postservice/servicetime/servicetime", "app/core/userview/postservice/userverify/userverify", "app/shared/directives/googleplace.directive", "app/shared/components/login/modallogin", "app/shared/components/facebooklogin", "ng2-file-upload", "angular-google-signin"], function (exports_29, context_29) {
     "use strict";
     var __moduleName = context_29 && context_29.id;
-    var app_component_1, header_1, login_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_2, default_1, findwork_1, userneeds_1, listviewwork_1, mapviewwork_1, address_1, serviceinfo_1, servicetime_1, userverify_1, googleplace_directive_1, modallogin_2, facebooklogin_1, ng2_file_upload_1, angular_google_signin_3;
-    var myComponents, myDirectives, myPipes;
+    var app_component_1, header_1, login_1, topmenu_1, userview_1, registeruser_1, edituser_1, postservice_1, servicesearch_2, default_1, findwork_1, userneeds_1, listviewwork_1, mapviewwork_1, address_1, serviceinfo_1, servicetime_1, userverify_1, googleplace_directive_1, modallogin_2, facebooklogin_1, ng2_file_upload_1, angular_google_signin_3, myComponents, myDirectives, myPipes;
     return {
-        setters:[
+        setters: [
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
             },
@@ -2598,8 +2605,9 @@ System.register("app/app.depend", ["app/app.component", "app/core/header/header"
             },
             function (angular_google_signin_3_1) {
                 angular_google_signin_3 = angular_google_signin_3_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
             exports_29("myComponents", myComponents = [
                 header_1.HeaderComponent, topmenu_1.TopMenuComponent, userview_1.UserViewComponent, app_component_1.AppComponent, registeruser_1.RegisterUserComponent, edituser_1.EditUserComponent, postservice_1.PostServiceComponent, address_1.AddressComponent,
@@ -2612,15 +2620,14 @@ System.register("app/app.depend", ["app/app.component", "app/core/header/header"
             ]);
             exports_29("myPipes", myPipes = []);
         }
-    }
+    };
 });
-System.register("app/services/provider", ["app/services/msn.service", "app/services/msn.pager", "app/services/msn.login"], function(exports_30, context_30) {
+System.register("app/services/provider", ["app/services/msn.service", "app/services/msn.pager", "app/services/msn.login"], function (exports_30, context_30) {
     "use strict";
     var __moduleName = context_30 && context_30.id;
-    var msn_service_16, msn_pager_4, msn_login_5;
-    var APP_PROVIDERS;
+    var msn_service_16, msn_pager_4, msn_login_5, APP_PROVIDERS;
     return {
-        setters:[
+        setters: [
             function (msn_service_16_1) {
                 msn_service_16 = msn_service_16_1;
             },
@@ -2629,40 +2636,42 @@ System.register("app/services/provider", ["app/services/msn.service", "app/servi
             },
             function (msn_login_5_1) {
                 msn_login_5 = msn_login_5_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             exports_30("APP_PROVIDERS", APP_PROVIDERS = [
                 msn_service_16.MSNService, msn_pager_4.PagerService, msn_login_5.LoginService
             ]);
         }
-    }
+    };
 });
-System.register("app/services/index", ["app/services/provider"], function(exports_31, context_31) {
+System.register("app/services/index", ["app/services/provider"], function (exports_31, context_31) {
     "use strict";
     var __moduleName = context_31 && context_31.id;
     function exportStar_1(m) {
         var exports = {};
-        for(var n in m) {
-            if (n !== "default") exports[n] = m[n];
+        for (var n in m) {
+            if (n !== "default")
+                exports[n] = m[n];
         }
         exports_31(exports);
     }
     return {
-        setters:[
+        setters: [
             function (provider_1_1) {
                 exportStar_1(provider_1_1);
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
         }
-    }
+    };
 });
-System.register("app/app.routing", ['@angular/router', "app/core/userview/userneeds/userneeds", "app/core/userview/user/edituser", "app/core/userview/postservice/postservice", "app/core/userview/postservice/address/address", "app/core/userview/findwork/findwork", "app/core/userview/default/default", "app/core/userview/userview"], function(exports_32, context_32) {
+System.register("app/app.routing", ["@angular/router", "app/core/userview/userneeds/userneeds", "app/core/userview/user/edituser", "app/core/userview/postservice/postservice", "app/core/userview/postservice/address/address", "app/core/userview/findwork/findwork", "app/core/userview/default/default", "app/core/userview/userview"], function (exports_32, context_32) {
     "use strict";
     var __moduleName = context_32 && context_32.id;
-    var router_19, userneeds_2, edituser_2, postservice_2, address_2, findwork_2, default_2, userview_2;
-    var appRoutes, routing;
+    var router_19, userneeds_2, edituser_2, postservice_2, address_2, findwork_2, default_2, userview_2, appRoutes, routing;
     return {
-        setters:[
+        setters: [
             function (router_19_1) {
                 router_19 = router_19_1;
             },
@@ -2686,8 +2695,9 @@ System.register("app/app.routing", ['@angular/router', "app/core/userview/userne
             },
             function (userview_2_1) {
                 userview_2 = userview_2_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             // Route Configuration
             //export const routes: Routes = [
             //		{ path: '/manageadmins', component: AdminUserComponent }
@@ -2735,17 +2745,692 @@ System.register("app/app.routing", ['@angular/router', "app/core/userview/userne
             ];
             exports_32("routing", routing = router_19.RouterModule.forRoot(appRoutes));
         }
-    }
+    };
 });
-System.register("app/app.module", ['@angular/core', '@angular/http', '@angular/platform-browser', "app/app.component", "app/app.depend", 'ng2-bootstrap', '@angular/common', '@angular/router', "app/app.routing", 'ag-grid-ng2/main', "ng2-dropdown", 'angular2-google-maps/core', 'ng2-auto-complete', 'ng2-datepicker', '@angular/forms', 'ng2-datetime', 'ng2-cloudinary', "ng2-modal", 'angular2-jwt'], function(exports_33, context_33) {
+System.register("node_modules/ng2-slimscroll/src/directives/slimscroll.directive", ["@angular/core"], function (exports_33, context_33) {
     "use strict";
     var __moduleName = context_33 && context_33.id;
-    var core_31, http_3, platform_browser_1, app_component_2, app_depend_1, ng2_bootstrap_6, common_1, router_20, app_routing_1, main_1, ng2_dropdown_1, core_32, ng2_auto_complete_1, ng2_datepicker_1, forms_3, ng2_datetime_1, ng2_cloudinary_3, ng2_modal_1, angular2_jwt_1;
-    var AppModule;
+    var core_31, SlimScrollOptions, SlimScrollDirective;
     return {
-        setters:[
+        setters: [
             function (core_31_1) {
                 core_31 = core_31_1;
+            }
+        ],
+        execute: function () {
+            SlimScrollOptions = (function () {
+                function SlimScrollOptions(obj) {
+                    this.position = obj && obj.position ? obj.position : 'right';
+                    this.barBackground = obj && obj.barBackground ? obj.barBackground : '#343a40';
+                    this.barOpacity = obj && obj.barOpacity ? obj.barOpacity : '1';
+                    this.barWidth = obj && obj.barWidth ? obj.barWidth : '12';
+                    this.barBorderRadius = obj && obj.barBorderRadius ? obj.barBorderRadius : '5';
+                    this.barMargin = obj && obj.barMargin ? obj.barMargin : '1px 0';
+                    this.gridBackground = obj && obj.gridBackground ? obj.gridBackground : '#adb5bd';
+                    this.gridOpacity = obj && obj.gridOpacity ? obj.gridOpacity : '1';
+                    this.gridWidth = obj && obj.gridWidth ? obj.gridWidth : '8';
+                    this.gridBorderRadius = obj && obj.gridBorderRadius ? obj.gridBorderRadius : '10';
+                    this.gridMargin = obj && obj.gridMargin ? obj.gridMargin : '1px 2px';
+                }
+                return SlimScrollOptions;
+            }());
+            exports_33("SlimScrollOptions", SlimScrollOptions);
+            SlimScrollDirective = (function () {
+                function SlimScrollDirective(viewContainer, renderer) {
+                    var _this = this;
+                    this.viewContainer = viewContainer;
+                    this.renderer = renderer;
+                    this.onWheel = function (e) {
+                        var delta = 0;
+                        var target = e.target || e.srcElement;
+                        if (e.wheelDelta) {
+                            delta = -e.wheelDelta / 120;
+                        }
+                        if (e.detail) {
+                            delta = e.detail / 3;
+                        }
+                        _this.scrollContent(delta, true, false);
+                        if (e.preventDefault) {
+                            e.preventDefault();
+                        }
+                    };
+                    this.makeBarDraggable = function () {
+                        var body = document.getElementsByTagName('body')[0];
+                        var el = _this.el;
+                        var bar = _this.bar;
+                        bar.addEventListener('mousedown', function (e) {
+                            if (!_this.dragging) {
+                                _this.pageY = e.pageY;
+                                _this.top = parseFloat(getComputedStyle(_this.bar).top);
+                            }
+                            _this.dragging = true;
+                            _this.body.addEventListener('mousemove', _this.barDraggableListener, false);
+                            _this.body.addEventListener('selectstart', _this.preventDefaultEvent, false);
+                        }, false);
+                        _this.body.addEventListener('mouseup', function () {
+                            _this.body.removeEventListener('mousemove', _this.barDraggableListener, false);
+                            _this.body.removeEventListener('selectstart', _this.preventDefaultEvent, false);
+                            _this.dragging = false;
+                        }, false);
+                    };
+                    this.preventDefaultEvent = function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    };
+                    this.barDraggableListener = function (e) {
+                        var top = _this.top + e.pageY - _this.pageY;
+                        _this.renderer.setElementStyle(_this.bar, 'top', top + "px");
+                        _this.scrollContent(0, true, false);
+                    };
+                    if (typeof window === 'undefined') {
+                        return;
+                    }
+                    this.viewContainer = viewContainer;
+                    this.el = viewContainer.element.nativeElement;
+                    this.body = document.documentElement.querySelector('body');
+                    this.mutationThrottleTimeout = 50;
+                }
+                SlimScrollDirective.prototype.ngOnInit = function () {
+                    var _this = this;
+                    if (typeof window === 'undefined') {
+                        return;
+                    }
+                    this.options = new SlimScrollOptions(this.options);
+                    this.destroy();
+                    this.setElementStyle();
+                    this.wrapContainer();
+                    this.initGrid();
+                    this.initBar();
+                    this.getBarHeight();
+                    this.attachWheel(this.el);
+                    this.makeBarDraggable();
+                    if (MutationObserver) {
+                        this.mutationObserver = new MutationObserver(function () {
+                            if (_this.mutationThrottleTimeout) {
+                                clearTimeout(_this.mutationThrottleTimeout);
+                                _this.mutationThrottleTimeout = setTimeout(_this.onMutation.bind(_this), 50);
+                            }
+                        });
+                        this.mutationObserver.observe(this.el, { subtree: true, childList: true });
+                    }
+                };
+                SlimScrollDirective.prototype.setElementStyle = function () {
+                    var el = this.el;
+                    this.renderer.setElementStyle(el, 'overflow', 'hidden');
+                    this.renderer.setElementStyle(el, 'position', 'relative');
+                    this.renderer.setElementStyle(el, 'display', 'block');
+                };
+                SlimScrollDirective.prototype.onMutation = function () {
+                    this.getBarHeight();
+                };
+                SlimScrollDirective.prototype.wrapContainer = function () {
+                    this.wrapper = document.createElement('div');
+                    var wrapper = this.wrapper;
+                    var el = this.el;
+                    this.renderer.setElementClass(wrapper, 'slimscroll-wrapper', true);
+                    this.renderer.setElementStyle(wrapper, 'position', 'relative');
+                    this.renderer.setElementStyle(wrapper, 'overflow', 'hidden');
+                    this.renderer.setElementStyle(wrapper, 'display', 'block');
+                    this.renderer.setElementStyle(wrapper, 'margin', getComputedStyle(el).margin);
+                    this.renderer.setElementStyle(wrapper, 'width', getComputedStyle(el).width);
+                    this.renderer.setElementStyle(wrapper, 'height', getComputedStyle(el).height);
+                    el.parentNode.insertBefore(wrapper, el);
+                    wrapper.appendChild(el);
+                };
+                SlimScrollDirective.prototype.initGrid = function () {
+                    this.grid = document.createElement('div');
+                    var grid = this.grid;
+                    this.renderer.setElementClass(grid, 'slimscroll-grid', true);
+                    this.renderer.setElementStyle(grid, 'position', 'absolute');
+                    this.renderer.setElementStyle(grid, 'top', '0');
+                    this.renderer.setElementStyle(grid, this.options.position, '0');
+                    this.renderer.setElementStyle(grid, 'width', this.options.gridWidth + "px");
+                    this.renderer.setElementStyle(grid, 'height', '100%');
+                    this.renderer.setElementStyle(grid, 'background', this.options.gridBackground);
+                    this.renderer.setElementStyle(grid, 'opacity', this.options.gridOpacity);
+                    this.renderer.setElementStyle(grid, 'display', 'block');
+                    this.renderer.setElementStyle(grid, 'cursor', 'pointer');
+                    this.renderer.setElementStyle(grid, 'z-index', '99');
+                    this.renderer.setElementStyle(grid, 'border-radius', this.options.gridBorderRadius + "px");
+                    this.renderer.setElementStyle(grid, 'margin', this.options.gridMargin);
+                    this.wrapper.appendChild(grid);
+                };
+                SlimScrollDirective.prototype.initBar = function () {
+                    this.bar = document.createElement('div');
+                    var bar = this.bar;
+                    var el = this.el;
+                    this.renderer.setElementClass(bar, 'slimscroll-bar', true);
+                    this.renderer.setElementStyle(bar, 'position', 'absolute');
+                    this.renderer.setElementStyle(bar, 'top', '0');
+                    this.renderer.setElementStyle(bar, this.options.position, '0');
+                    this.renderer.setElementStyle(bar, 'width', this.options.barWidth + "px");
+                    this.renderer.setElementStyle(bar, 'background', this.options.barBackground);
+                    this.renderer.setElementStyle(bar, 'opacity', this.options.barOpacity);
+                    this.renderer.setElementStyle(bar, 'display', 'block');
+                    this.renderer.setElementStyle(bar, 'cursor', 'pointer');
+                    this.renderer.setElementStyle(bar, 'z-index', '100');
+                    this.renderer.setElementStyle(bar, 'border-radius', this.options.barBorderRadius + "px");
+                    this.renderer.setElementStyle(bar, 'margin', this.options.barMargin);
+                    this.wrapper.appendChild(bar);
+                };
+                SlimScrollDirective.prototype.getBarHeight = function () {
+                    var _this = this;
+                    setTimeout(function () {
+                        var barHeight = Math.max((_this.el.offsetHeight / _this.el.scrollHeight) * _this.el.offsetHeight, 30) + 'px';
+                        var display = parseInt(barHeight, 10) === _this.el.offsetHeight ? 'none' : 'block';
+                        _this.renderer.setElementStyle(_this.bar, 'height', barHeight);
+                        _this.renderer.setElementStyle(_this.bar, 'display', display);
+                    }, 1);
+                };
+                SlimScrollDirective.prototype.attachWheel = function (target) {
+                    target.addEventListener('DOMMouseScroll', this.onWheel, false);
+                    target.addEventListener('mousewheel', this.onWheel, false);
+                };
+                SlimScrollDirective.prototype.scrollContent = function (y, isWheel, isJump) {
+                    var delta = y;
+                    var maxTop = this.el.offsetHeight - this.bar.offsetHeight;
+                    var percentScroll;
+                    var barTop;
+                    var bar = this.bar;
+                    var el = this.el;
+                    if (isWheel) {
+                        delta = parseInt(getComputedStyle(bar).top, 10) + y * 20 / 100 * bar.offsetHeight;
+                        delta = Math.min(Math.max(delta, 0), maxTop);
+                        delta = (y > 0) ? Math.ceil(delta) : Math.floor(delta);
+                        this.renderer.setElementStyle(bar, 'top', delta + 'px');
+                    }
+                    percentScroll = parseInt(getComputedStyle(bar).top, 10) / (el.offsetHeight - bar.offsetHeight);
+                    delta = percentScroll * (el.scrollHeight - el.offsetHeight);
+                    el.scrollTop = delta;
+                };
+                SlimScrollDirective.prototype.destroy = function () {
+                    if (this.mutationObserver) {
+                        this.mutationObserver.disconnect();
+                        this.mutationObserver = null;
+                    }
+                    if (this.el.parentElement.classList.contains('slimscroll-wrapper')) {
+                        var wrapper = this.el.parentElement;
+                        var bar = this.el.querySelector('.slimscroll-bar');
+                        this.el.removeChild(bar);
+                        this.unwrap(wrapper);
+                    }
+                };
+                SlimScrollDirective.prototype.unwrap = function (wrapper) {
+                    var docFrag = document.createDocumentFragment();
+                    while (wrapper.firstChild) {
+                        var child = wrapper.removeChild(wrapper.firstChild);
+                        docFrag.appendChild(child);
+                    }
+                    wrapper.parentNode.replaceChild(docFrag, wrapper);
+                };
+                return SlimScrollDirective;
+            }());
+            __decorate([
+                core_31.Input(),
+                __metadata("design:type", SlimScrollOptions)
+            ], SlimScrollDirective.prototype, "options", void 0);
+            SlimScrollDirective = __decorate([
+                core_31.Directive({
+                    selector: '[slimScroll]'
+                }),
+                __param(0, core_31.Inject(core_31.ViewContainerRef)),
+                __param(1, core_31.Inject(core_31.Renderer)),
+                __metadata("design:paramtypes", [core_31.ViewContainerRef,
+                    core_31.Renderer])
+            ], SlimScrollDirective);
+            exports_33("SlimScrollDirective", SlimScrollDirective);
+        }
+    };
+});
+System.register("node_modules/ng2-slimscroll/index", ["@angular/core", "node_modules/ng2-slimscroll/src/directives/slimscroll.directive"], function (exports_34, context_34) {
+    "use strict";
+    var __moduleName = context_34 && context_34.id;
+    var core_32, slimscroll_directive_1, SlimScrollModule;
+    return {
+        setters: [
+            function (core_32_1) {
+                core_32 = core_32_1;
+            },
+            function (slimscroll_directive_1_1) {
+                slimscroll_directive_1 = slimscroll_directive_1_1;
+                exports_34({
+                    "SlimScrollOptions": slimscroll_directive_1_1["SlimScrollOptions"]
+                });
+            }
+        ],
+        execute: function () {
+            SlimScrollModule = (function () {
+                function SlimScrollModule() {
+                }
+                return SlimScrollModule;
+            }());
+            SlimScrollModule = __decorate([
+                core_32.NgModule({
+                    declarations: [
+                        slimscroll_directive_1.SlimScrollDirective
+                    ],
+                    exports: [
+                        slimscroll_directive_1.SlimScrollDirective
+                    ]
+                }),
+                __metadata("design:paramtypes", [])
+            ], SlimScrollModule);
+            exports_34("SlimScrollModule", SlimScrollModule);
+        }
+    };
+});
+System.register("node_modules/ng2-slimscroll/ng2-slimscroll", ["node_modules/ng2-slimscroll/index"], function (exports_35, context_35) {
+    "use strict";
+    var __moduleName = context_35 && context_35.id;
+    function exportStar_2(m) {
+        var exports = {};
+        for (var n in m) {
+            if (n !== "default")
+                exports[n] = m[n];
+        }
+        exports_35(exports);
+    }
+    return {
+        setters: [
+            function (index_1_1) {
+                exportStar_2(index_1_1);
+            }
+        ],
+        execute: function () {
+        }
+    };
+});
+System.register("node_modules/ng2-datepicker/src/components/ng2-datepicker.component", ["@angular/core", "@angular/forms", "moment"], function (exports_36, context_36) {
+    "use strict";
+    var __moduleName = context_36 && context_36.id;
+    var core_33, forms_3, moment, Moment, DateModel, DatePickerOptions, CALENDAR_VALUE_ACCESSOR, DatePickerComponent;
+    return {
+        setters: [
+            function (core_33_1) {
+                core_33 = core_33_1;
+            },
+            function (forms_3_1) {
+                forms_3 = forms_3_1;
+            },
+            function (moment_1) {
+                moment = moment_1;
+            }
+        ],
+        execute: function () {
+            Moment = moment.default || moment;
+            DateModel = (function () {
+                function DateModel(obj) {
+                    this.day = obj && obj.day ? obj.day : null;
+                    this.month = obj && obj.month ? obj.month : null;
+                    this.year = obj && obj.year ? obj.year : null;
+                    this.formatted = obj && obj.formatted ? obj.formatted : null;
+                    this.momentObj = obj && obj.momentObj ? obj.momentObj : null;
+                }
+                return DateModel;
+            }());
+            exports_36("DateModel", DateModel);
+            DatePickerOptions = (function () {
+                function DatePickerOptions(obj) {
+                    this.autoApply = (obj && obj.autoApply === true) ? true : false;
+                    this.style = obj && obj.style ? obj.style : 'normal';
+                    this.locale = obj && obj.locale ? obj.locale : 'en';
+                    this.minDate = obj && obj.minDate ? obj.minDate : null;
+                    this.maxDate = obj && obj.maxDate ? obj.maxDate : null;
+                    this.initialDate = obj && obj.initialDate ? obj.initialDate : null;
+                    this.firstWeekdaySunday = obj && obj.firstWeekdaySunday ? obj.firstWeekdaySunday : false;
+                    this.format = obj && obj.format ? obj.format : 'YYYY-MM-DD';
+                }
+                return DatePickerOptions;
+            }());
+            exports_36("DatePickerOptions", DatePickerOptions);
+            exports_36("CALENDAR_VALUE_ACCESSOR", CALENDAR_VALUE_ACCESSOR = {
+                provide: forms_3.NG_VALUE_ACCESSOR,
+                useExisting: core_33.forwardRef(function () { return DatePickerComponent; }),
+                multi: true
+            });
+            DatePickerComponent = (function () {
+                function DatePickerComponent(el) {
+                    var _this = this;
+                    this.el = el;
+                    this.onTouchedCallback = function () { };
+                    this.onChangeCallback = function () { };
+                    this.opened = false;
+                    this.currentDate = Moment();
+                    this.options = this.options || {};
+                    this.days = [];
+                    this.years = [];
+                    this.date = new DateModel({
+                        day: null,
+                        month: null,
+                        year: null,
+                        formatted: null,
+                        momentObj: null
+                    });
+                    this.generateYears();
+                    this.outputEvents = new core_33.EventEmitter();
+                    if (!this.inputEvents) {
+                        return;
+                    }
+                    this.inputEvents.subscribe(function (event) {
+                        if (event.type === 'setDate') {
+                            _this.value = event.data;
+                        }
+                        else if (event.type === 'default') {
+                            if (event.data === 'open') {
+                                _this.open();
+                            }
+                            else if (event.data === 'close') {
+                                _this.close();
+                            }
+                        }
+                    });
+                }
+                Object.defineProperty(DatePickerComponent.prototype, "value", {
+                    get: function () {
+                        return this.date;
+                    },
+                    set: function (date) {
+                        if (!date) {
+                            return;
+                        }
+                        this.date = date;
+                        this.onChangeCallback(date);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                DatePickerComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.options = new DatePickerOptions(this.options);
+                    this.scrollOptions = {
+                        barBackground: '#C9C9C9',
+                        barWidth: '7',
+                        gridBackground: '#C9C9C9',
+                        gridWidth: '2'
+                    };
+                    if (this.options.initialDate instanceof Date) {
+                        this.currentDate = Moment(this.options.initialDate);
+                        this.selectDate(null, this.currentDate);
+                    }
+                    if (this.options.minDate instanceof Date) {
+                        this.minDate = Moment(this.options.minDate);
+                    }
+                    else {
+                        this.minDate = null;
+                    }
+                    if (this.options.maxDate instanceof Date) {
+                        this.maxDate = Moment(this.options.maxDate);
+                    }
+                    else {
+                        this.maxDate = null;
+                    }
+                    this.generateCalendar();
+                    this.outputEvents.emit({ type: 'default', data: 'init' });
+                    if (typeof window !== 'undefined') {
+                        var body = document.querySelector('body');
+                        body.addEventListener('click', function (e) {
+                            if (!_this.opened || !e.target) {
+                                return;
+                            }
+                            ;
+                            if (_this.el.nativeElement !== e.target && !_this.el.nativeElement.contains(e.target)) {
+                                _this.close();
+                            }
+                        }, false);
+                    }
+                    if (this.inputEvents) {
+                        this.inputEvents.subscribe(function (e) {
+                            if (e.type === 'action') {
+                                if (e.data === 'toggle') {
+                                    _this.toggle();
+                                }
+                                if (e.data === 'close') {
+                                    _this.close();
+                                }
+                                if (e.data === 'open') {
+                                    _this.open();
+                                }
+                            }
+                            if (e.type === 'setDate') {
+                                if (!(e.data instanceof Date)) {
+                                    throw new Error("Input data must be an instance of Date!");
+                                }
+                                var date = Moment(e.data);
+                                if (!date) {
+                                    throw new Error("Invalid date: " + e.data);
+                                }
+                                _this.value = {
+                                    day: date.format('DD'),
+                                    month: date.format('MM'),
+                                    year: date.format('YYYY'),
+                                    formatted: date.format(_this.options.format),
+                                    momentObj: date
+                                };
+                            }
+                        });
+                    }
+                };
+                DatePickerComponent.prototype.generateCalendar = function () {
+                    var date = Moment(this.currentDate);
+                    var month = date.month();
+                    var year = date.year();
+                    var n = 1;
+                    var firstWeekDay = (this.options.firstWeekdaySunday) ? date.date(2).day() : date.date(1).day();
+                    if (firstWeekDay !== 1) {
+                        n -= (firstWeekDay + 6) % 7;
+                    }
+                    this.days = [];
+                    var selectedDate = this.date.momentObj;
+                    for (var i = n; i <= date.endOf('month').date(); i += 1) {
+                        var currentDate = Moment(i + "." + (month + 1) + "." + year, 'DD.MM.YYYY');
+                        var today = (Moment().isSame(currentDate, 'day') && Moment().isSame(currentDate, 'month')) ? true : false;
+                        var selected = (selectedDate && selectedDate.isSame(currentDate, 'day')) ? true : false;
+                        var betweenMinMax = true;
+                        if (this.minDate !== null) {
+                            if (this.maxDate !== null) {
+                                betweenMinMax = currentDate.isBetween(this.minDate, this.maxDate, 'day', '[]') ? true : false;
+                            }
+                            else {
+                                betweenMinMax = currentDate.isBefore(this.minDate, 'day') ? false : true;
+                            }
+                        }
+                        else {
+                            if (this.maxDate !== null) {
+                                betweenMinMax = currentDate.isAfter(this.maxDate, 'day') ? false : true;
+                            }
+                        }
+                        var day = {
+                            day: i > 0 ? i : null,
+                            month: i > 0 ? month : null,
+                            year: i > 0 ? year : null,
+                            enabled: i > 0 ? betweenMinMax : false,
+                            today: i > 0 && today ? true : false,
+                            selected: i > 0 && selected ? true : false,
+                            momentObj: currentDate
+                        };
+                        this.days.push(day);
+                    }
+                };
+                DatePickerComponent.prototype.selectDate = function (e, date) {
+                    var _this = this;
+                    if (e) {
+                        e.preventDefault();
+                    }
+                    setTimeout(function () {
+                        _this.value = {
+                            day: date.format('DD'),
+                            month: date.format('MM'),
+                            year: date.format('YYYY'),
+                            formatted: date.format(_this.options.format),
+                            momentObj: date
+                        };
+                        _this.generateCalendar();
+                        _this.outputEvents.emit({ type: 'dateChanged', data: _this.value });
+                    });
+                    if (this.options.autoApply === true && this.opened === true) {
+                        this.opened = false;
+                    }
+                };
+                DatePickerComponent.prototype.selectYear = function (e, year) {
+                    var _this = this;
+                    e.preventDefault();
+                    setTimeout(function () {
+                        var date = _this.currentDate.year(year);
+                        _this.value = {
+                            day: date.format('DD'),
+                            month: date.format('MM'),
+                            year: date.format('YYYY'),
+                            formatted: date.format(_this.options.format),
+                            momentObj: date
+                        };
+                        _this.yearPicker = false;
+                        _this.generateCalendar();
+                    });
+                };
+                DatePickerComponent.prototype.generateYears = function () {
+                    var date = this.options.minDate || Moment().year(Moment().year() - 40);
+                    var toDate = this.options.maxDate || Moment().year(Moment().year() + 40);
+                    var years = toDate.year() - date.year();
+                    for (var i = 0; i < years; i++) {
+                        this.years.push(date.year());
+                        date.add(1, 'year');
+                    }
+                };
+                DatePickerComponent.prototype.writeValue = function (date) {
+                    if (!date) {
+                        return;
+                    }
+                    this.date = date;
+                };
+                DatePickerComponent.prototype.registerOnChange = function (fn) {
+                    this.onChangeCallback = fn;
+                };
+                DatePickerComponent.prototype.registerOnTouched = function (fn) {
+                    this.onTouchedCallback = fn;
+                };
+                DatePickerComponent.prototype.prevMonth = function () {
+                    this.currentDate = this.currentDate.subtract(1, 'month');
+                    this.generateCalendar();
+                };
+                DatePickerComponent.prototype.nextMonth = function () {
+                    this.currentDate = this.currentDate.add(1, 'month');
+                    this.generateCalendar();
+                };
+                DatePickerComponent.prototype.today = function () {
+                    this.currentDate = Moment();
+                    this.selectDate(null, this.currentDate);
+                };
+                DatePickerComponent.prototype.toggle = function () {
+                    this.opened = !this.opened;
+                    if (this.opened) {
+                        this.onOpen();
+                    }
+                    this.outputEvents.emit({ type: 'default', data: 'opened' });
+                };
+                DatePickerComponent.prototype.open = function () {
+                    this.opened = true;
+                    this.onOpen();
+                };
+                DatePickerComponent.prototype.close = function () {
+                    this.opened = false;
+                    this.outputEvents.emit({ type: 'default', data: 'closed' });
+                };
+                DatePickerComponent.prototype.onOpen = function () {
+                    this.yearPicker = false;
+                };
+                DatePickerComponent.prototype.openYearPicker = function () {
+                    var _this = this;
+                    setTimeout(function () { return _this.yearPicker = true; });
+                };
+                return DatePickerComponent;
+            }());
+            __decorate([
+                core_33.Input(),
+                __metadata("design:type", DatePickerOptions)
+            ], DatePickerComponent.prototype, "options", void 0);
+            __decorate([
+                core_33.Input(),
+                __metadata("design:type", core_33.EventEmitter)
+            ], DatePickerComponent.prototype, "inputEvents", void 0);
+            __decorate([
+                core_33.Output(),
+                __metadata("design:type", core_33.EventEmitter)
+            ], DatePickerComponent.prototype, "outputEvents", void 0);
+            DatePickerComponent = __decorate([
+                core_33.Component({
+                    selector: 'ng2-datepicker',
+                    template: "\n  <div class=\"datepicker-container u-is-unselectable\">\n    <div class=\"datepicker-input-container\">\n      <input type=\"text\" class=\"datepicker-input\" [(ngModel)]=\"date.formatted\">\n      <div class=\"datepicker-input-icon\" (click)=\"toggle()\">\n        <i class=\"ion-ios-calendar-outline\"></i>\n      </div>\n    </div>\n    <div class=\"datepicker-calendar\" *ngIf=\"opened\">\n      <div class=\"datepicker-calendar-top\">\n        <span class=\"year-title\">{{ currentDate.format('YYYY') }}</span>\n        <button type=\"button\" (click)=\"openYearPicker()\" *ngIf=\"!yearPicker\">\n          <i class=\"ion-arrow-right-c\"></i>\n          Select Year\n        </button>\n        <i class=\"close ion-android-close\" (click)=\"close()\"></i>\n      </div>\n      <div class=\"datepicker-calendar-container\">\n        <div *ngIf=\"!yearPicker\">\n          <div class=\"datepicker-calendar-month-section\">\n            <i class=\"ion-ios-arrow-back\" (click)=\"prevMonth()\"></i>\n            <span class=\"month-title\">{{ currentDate.format('MMMM') }}</span>\n            <i class=\"ion-ios-arrow-forward\" (click)=\"nextMonth()\"></i>\n          </div>\n          <div class=\"datepicker-calendar-day-names\">\n            <span>S</span>\n            <span>M</span>\n            <span>T</span>\n            <span>W</span>\n            <span>T</span>\n            <span>F</span>\n            <span>S</span>\n          </div>\n          <div class=\"datepicker-calendar-days-container\">\n            <span class=\"day\" *ngFor=\"let d of days; let i = index\"\n                              (click)=\"selectDate($event, d.momentObj)\"\n                              [ngClass]=\"{ 'disabled': !d.enabled, 'today': d.today, 'selected': d.selected }\">\n              {{ d.day }}\n            </span>\n          </div>\n          <div class=\"datepicker-buttons\" *ngIf=\"!options.autoApply\">\n            <button type=\"button\" class=\"a-button u-is-secondary u-is-small\" (click)=\"today()\">Today</button>\n            <button type=\"button\" class=\"a-button u-is-primary u-is-small\" (click)=\"close()\">Apply</button>\n          </div>\n        </div>\n        <div *ngIf=\"yearPicker\">\n          <div class=\"datepicker-calendar-years-container\" slimScroll [options]=\"scrollOptions\">\n            <span class=\"year\" *ngFor=\"let y of years; let i = index\" (click)=\"selectYear($event, y)\">\n              {{ y }}\n            </span>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  ",
+                    styles: ["\n  .datepicker-container {\n  display: inline-block;\n  position: relative; }\n  .datepicker-container .datepicker-input-container {\n    display: inline-block; }\n    .datepicker-container .datepicker-input-container .datepicker-input {\n      display: inline-block;\n      width: 160px;\n      margin-right: 15px;\n      border: none;\n      outline: none;\n      border-bottom: 1px solid #ced4da;\n      font-size: 14px;\n      color: #000000;\n      text-align: center; }\n      .datepicker-container .datepicker-input-container .datepicker-input::-webkit-input-placeholder {\n        color: #343a40; }\n      .datepicker-container .datepicker-input-container .datepicker-input::-moz-placeholder {\n        color: #343a40; }\n      .datepicker-container .datepicker-input-container .datepicker-input:-ms-input-placeholder {\n        color: #343a40; }\n      .datepicker-container .datepicker-input-container .datepicker-input:-moz-placeholder {\n        color: #343a40; }\n    .datepicker-container .datepicker-input-container .datepicker-input-icon {\n      display: inline-block; }\n      .datepicker-container .datepicker-input-container .datepicker-input-icon i {\n        font-size: 20px;\n        cursor: pointer; }\n  .datepicker-container .datepicker-calendar {\n    -webkit-touch-callout: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    width: 250px;\n    top: 40px;\n    position: absolute;\n    z-index: 99;\n    background: #FFFFFF;\n    border-bottom-left-radius: 4px;\n    border-bottom-right-radius: 4px;\n    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }\n    .datepicker-container .datepicker-calendar .datepicker-calendar-top {\n      width: 100%;\n      height: 80px;\n      background: #099268;\n      display: inline-block;\n      position: relative; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-top .year-title {\n        display: block;\n        margin-top: 12px;\n        color: #FFFFFF;\n        font-size: 28px;\n        text-align: center; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-top button {\n        width: 150px;\n        display: block;\n        margin: 0 auto;\n        color: #FFFFFF;\n        text-transform: uppercase;\n        background: transparent;\n        border: none;\n        outline: none;\n        font-size: 12px;\n        cursor: pointer; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-top .close {\n        position: absolute;\n        top: 5px;\n        right: 10px;\n        font-size: 20px;\n        color: #FFFFFF;\n        cursor: pointer; }\n    .datepicker-container .datepicker-calendar .datepicker-calendar-container {\n      display: inline-block;\n      width: 100%;\n      padding: 10px; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        font-size: 14px;\n        color: #000000;\n        text-transform: uppercase; }\n        .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section i {\n          cursor: pointer; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section i:first-child {\n            margin-left: 12px; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section i:last-child {\n            margin-right: 12px; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-day-names {\n        width: 230px;\n        margin-top: 10px;\n        display: inline-block;\n        border: 1px solid transparent; }\n        .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-day-names span {\n          font-size: 12px;\n          display: block;\n          float: left;\n          width: calc(100% / 7);\n          text-align: center; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container {\n        width: 230px;\n        margin-top: 5px;\n        display: inline-block;\n        border: 1px solid transparent; }\n        .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day {\n          display: flex;\n          justify-content: center;\n          align-items: center;\n          float: left;\n          font-size: 14px;\n          color: #000000;\n          width: calc(100% / 7);\n          height: 33px;\n          text-align: center;\n          border-radius: 50%;\n          cursor: pointer; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day:hover:not(.disabled), .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.selected {\n            background: #099268;\n            color: #FFFFFF !important; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.disabled {\n            pointer-events: none; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.today {\n            color: #fa5252; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-years-container {\n        width: 100%;\n        height: 240px; }\n        .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-years-container .year {\n          display: flex;\n          justify-content: center;\n          align-items: center;\n          float: left;\n          font-size: 14px;\n          color: #000000;\n          width: calc(100% / 4);\n          height: 50px;\n          text-align: center;\n          border-radius: 50%;\n          cursor: pointer; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container\n          .datepicker-calendar-years-container .year:hover, .datepicker-container .datepicker-calendar .datepicker-calendar-container\n          .datepicker-calendar-years-container .year.selected {\n            background: #099268;\n            color: #FFFFFF !important; }\n      .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons {\n        width: 235px;\n        display: flex;\n        justify-content: center; }\n        .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button {\n          width: 100%;\n          outline: none;\n          display: inline-block;\n          border: 1px solid #099268;\n          background: #099268;\n          color: #FFFFFF;\n          margin-right: 5px;\n          border-radius: 5px;\n          cursor: pointer;\n          text-align: center;\n          padding: 5px 10px; }\n          .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-secondary {\n            background: #FFFFFF;\n            color: #099268; }\n            .datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-secondary:hover {\n              color: #099268; }\n\n  "],
+                    providers: [CALENDAR_VALUE_ACCESSOR]
+                }),
+                __param(0, core_33.Inject(core_33.ElementRef)),
+                __metadata("design:paramtypes", [core_33.ElementRef])
+            ], DatePickerComponent);
+            exports_36("DatePickerComponent", DatePickerComponent);
+        }
+    };
+});
+System.register("node_modules/ng2-datepicker/index", ["@angular/core", "@angular/common", "@angular/forms", "node_modules/ng2-slimscroll/ng2-slimscroll", "node_modules/ng2-datepicker/src/components/ng2-datepicker.component"], function (exports_37, context_37) {
+    "use strict";
+    var __moduleName = context_37 && context_37.id;
+    var core_34, common_1, forms_4, ng2_slimscroll_1, ng2_datepicker_component_1, DatePickerModule;
+    return {
+        setters: [
+            function (core_34_1) {
+                core_34 = core_34_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (forms_4_1) {
+                forms_4 = forms_4_1;
+            },
+            function (ng2_slimscroll_1_1) {
+                ng2_slimscroll_1 = ng2_slimscroll_1_1;
+            },
+            function (ng2_datepicker_component_1_1) {
+                ng2_datepicker_component_1 = ng2_datepicker_component_1_1;
+                exports_37({
+                    "DatePickerOptions": ng2_datepicker_component_1_1["DatePickerOptions"],
+                    "DateModel": ng2_datepicker_component_1_1["DateModel"]
+                });
+            }
+        ],
+        execute: function () {
+            DatePickerModule = (function () {
+                function DatePickerModule() {
+                }
+                return DatePickerModule;
+            }());
+            DatePickerModule = __decorate([
+                core_34.NgModule({
+                    declarations: [
+                        ng2_datepicker_component_1.DatePickerComponent
+                    ],
+                    imports: [
+                        common_1.CommonModule,
+                        forms_4.FormsModule,
+                        ng2_slimscroll_1.SlimScrollModule
+                    ],
+                    exports: [
+                        ng2_datepicker_component_1.DatePickerComponent,
+                        ng2_slimscroll_1.SlimScrollModule
+                    ]
+                }),
+                __metadata("design:paramtypes", [])
+            ], DatePickerModule);
+            exports_37("DatePickerModule", DatePickerModule);
+        }
+    };
+});
+System.register("app/app.module", ["@angular/core", "@angular/http", "@angular/platform-browser", "app/app.component", "app/app.depend", "ng2-bootstrap", "@angular/common", "@angular/router", "app/app.routing", "ag-grid-ng2/main", "ng2-dropdown", "angular2-google-maps/core", "ng2-auto-complete", "ng2-datepicker", "@angular/forms", "ng2-datetime", "ng2-cloudinary", "ng2-modal", "angular2-jwt"], function (exports_38, context_38) {
+    "use strict";
+    var __moduleName = context_38 && context_38.id;
+    var core_35, http_3, platform_browser_1, app_component_2, app_depend_1, ng2_bootstrap_6, common_2, router_20, app_routing_1, main_1, ng2_dropdown_1, core_36, ng2_auto_complete_1, ng2_datepicker_1, forms_5, ng2_datetime_1, ng2_cloudinary_3, ng2_modal_1, angular2_jwt_1, AppModule;
+    return {
+        setters: [
+            function (core_35_1) {
+                core_35 = core_35_1;
             },
             function (http_3_1) {
                 http_3 = http_3_1;
@@ -2762,8 +3447,8 @@ System.register("app/app.module", ['@angular/core', '@angular/http', '@angular/p
             function (ng2_bootstrap_6_1) {
                 ng2_bootstrap_6 = ng2_bootstrap_6_1;
             },
-            function (common_1_1) {
-                common_1 = common_1_1;
+            function (common_2_1) {
+                common_2 = common_2_1;
             },
             function (router_20_1) {
                 router_20 = router_20_1;
@@ -2777,8 +3462,8 @@ System.register("app/app.module", ['@angular/core', '@angular/http', '@angular/p
             function (ng2_dropdown_1_1) {
                 ng2_dropdown_1 = ng2_dropdown_1_1;
             },
-            function (core_32_1) {
-                core_32 = core_32_1;
+            function (core_36_1) {
+                core_36 = core_36_1;
             },
             function (ng2_auto_complete_1_1) {
                 ng2_auto_complete_1 = ng2_auto_complete_1_1;
@@ -2786,8 +3471,8 @@ System.register("app/app.module", ['@angular/core', '@angular/http', '@angular/p
             function (ng2_datepicker_1_1) {
                 ng2_datepicker_1 = ng2_datepicker_1_1;
             },
-            function (forms_3_1) {
-                forms_3 = forms_3_1;
+            function (forms_5_1) {
+                forms_5 = forms_5_1;
             },
             function (ng2_datetime_1_1) {
                 ng2_datetime_1 = ng2_datetime_1_1;
@@ -2800,44 +3485,44 @@ System.register("app/app.module", ['@angular/core', '@angular/http', '@angular/p
             },
             function (angular2_jwt_1_1) {
                 angular2_jwt_1 = angular2_jwt_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             AppModule = (function () {
                 function AppModule() {
                 }
-                AppModule = __decorate([
-                    core_31.NgModule({
-                        imports: [router_20.RouterModule, platform_browser_1.BrowserModule, http_3.HttpModule, ng2_bootstrap_6.Ng2BootstrapModule, ng2_dropdown_1.DropdownModule, main_1.AgGridModule.withAotSupport(),
-                            app_routing_1.routing, ng2_auto_complete_1.Ng2AutoCompleteModule, ng2_datepicker_1.DatePickerModule, forms_3.ReactiveFormsModule, ng2_datetime_1.NKDatetimeModule, ng2_cloudinary_3.Ng2CloudinaryModule, ng2_modal_1.ModalModule,
-                            core_32.AgmCoreModule.forRoot({
-                                apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
-                                libraries: ['places']
-                            })
-                        ],
-                        declarations: app_depend_1.myComponents.concat(app_depend_1.myDirectives),
-                        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }].concat(angular2_jwt_1.AUTH_PROVIDERS),
-                        bootstrap: [app_component_2.AppComponent]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], AppModule);
                 return AppModule;
             }());
-            exports_33("AppModule", AppModule);
+            AppModule = __decorate([
+                core_35.NgModule({
+                    imports: [router_20.RouterModule, platform_browser_1.BrowserModule, http_3.HttpModule, ng2_bootstrap_6.Ng2BootstrapModule, ng2_dropdown_1.DropdownModule, main_1.AgGridModule.withAotSupport(),
+                        app_routing_1.routing, ng2_auto_complete_1.Ng2AutoCompleteModule, ng2_datepicker_1.DatePickerModule, forms_5.ReactiveFormsModule, ng2_datetime_1.NKDatetimeModule, ng2_cloudinary_3.Ng2CloudinaryModule, ng2_modal_1.ModalModule,
+                        core_36.AgmCoreModule.forRoot({
+                            apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
+                            libraries: ['places']
+                        })
+                    ],
+                    declarations: app_depend_1.myComponents.concat(app_depend_1.myDirectives),
+                    providers: [{ provide: common_2.APP_BASE_HREF, useValue: '/' }].concat(angular2_jwt_1.AUTH_PROVIDERS),
+                    bootstrap: [app_component_2.AppComponent]
+                }),
+                __metadata("design:paramtypes", [])
+            ], AppModule);
+            exports_38("AppModule", AppModule);
         }
-    }
+    };
 });
-System.register("app/app.main", ['@angular/platform-browser-dynamic', "app/services/index", "app/app.module", "app/app.config", 'rxjs/Rx'], function(exports_34, context_34) {
+System.register("app/app.main", ["@angular/platform-browser-dynamic", "app/services/index", "app/app.module", "app/app.config", "rxjs/Rx"], function (exports_39, context_39) {
     "use strict";
-    var __moduleName = context_34 && context_34.id;
-    var platform_browser_dynamic_1, index_1, app_module_1, app_config_4;
-    var platform;
+    var __moduleName = context_39 && context_39.id;
+    var platform_browser_dynamic_1, index_2, app_module_1, app_config_4, platform;
     return {
-        setters:[
+        setters: [
             function (platform_browser_dynamic_1_1) {
                 platform_browser_dynamic_1 = platform_browser_dynamic_1_1;
             },
-            function (index_1_1) {
-                index_1 = index_1_1;
+            function (index_2_1) {
+                index_2 = index_2_1;
             },
             function (app_module_1_1) {
                 app_module_1 = app_module_1_1;
@@ -2845,24 +3530,26 @@ System.register("app/app.main", ['@angular/platform-browser-dynamic', "app/servi
             function (app_config_4_1) {
                 app_config_4 = app_config_4_1;
             },
-            function (_5) {}],
-        execute: function() {
+            function (_5) {
+            }
+        ],
+        execute: function () {
             platform = platform_browser_dynamic_1.platformBrowserDynamic();
-            platform.bootstrapModule(app_module_1.AppModule, index_1.APP_PROVIDERS, app_config_4.MSN_DI_CONFIG);
+            platform.bootstrapModule(app_module_1.AppModule, index_2.APP_PROVIDERS, app_config_4.MSN_DI_CONFIG);
         }
-    }
+    };
 });
-System.register("e2e/app.po", ['protractor'], function(exports_35, context_35) {
+System.register("e2e/app.po", ["protractor"], function (exports_40, context_40) {
     "use strict";
-    var __moduleName = context_35 && context_35.id;
-    var protractor_1;
-    var MyserviceneedPage;
+    var __moduleName = context_40 && context_40.id;
+    var protractor_1, MyserviceneedPage;
     return {
-        setters:[
+        setters: [
             function (protractor_1_1) {
                 protractor_1 = protractor_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             MyserviceneedPage = (function () {
                 function MyserviceneedPage() {
                 }
@@ -2874,20 +3561,21 @@ System.register("e2e/app.po", ['protractor'], function(exports_35, context_35) {
                 };
                 return MyserviceneedPage;
             }());
-            exports_35("MyserviceneedPage", MyserviceneedPage);
+            exports_40("MyserviceneedPage", MyserviceneedPage);
         }
-    }
+    };
 });
-System.register("e2e/app.e2e-spec", ["e2e/app.po"], function(exports_36, context_36) {
+System.register("e2e/app.e2e-spec", ["e2e/app.po"], function (exports_41, context_41) {
     "use strict";
-    var __moduleName = context_36 && context_36.id;
+    var __moduleName = context_41 && context_41.id;
     var app_po_1;
     return {
-        setters:[
+        setters: [
             function (app_po_1_1) {
                 app_po_1 = app_po_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             describe('myserviceneed App', function () {
                 var page;
                 beforeEach(function () {
@@ -2899,6 +3587,64 @@ System.register("e2e/app.e2e-spec", ["e2e/app.po"], function(exports_36, context
                 });
             });
         }
-    }
+    };
 });
+"use strict";
+var gulp = require("gulp");
+var tsc = require("gulp-typescript");
+var sourcemaps = require('gulp-sourcemaps');
+var tsProject = tsc.createProject("tsconfig.json");
+var tslint = require('gulp-tslint');
+/**
+ * Remove build directory.
+ */
+gulp.task('bundle:libs', function () {
+    return gulp.src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/zone.js/dist/zone.js',
+        'lib/smartmenu/jquery.smartmenus.min.js',
+        'node_modules/reflect-metadata/Reflect.js',
+        'node_modules/systemjs/dist/system.src.js',
+        '//connect.facebook.net/en_US/sdk.js',
+        'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
+        'node_modules/bootstrap-timepicker/js/bootstrap-timepicker.js',
+        'https://apis.google.com/js/platform.js',
+        'https://www.gstatic.com/charts/loader.js',
+        'https://www.google.com/jsapi',
+        'system.config.js'
+    ])
+        .pipe(concat('vendors.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('public/lib/js'));
+});
+// Compile TypeScript to JS
+gulp.task('compile:ts', function () {
+    return gulp
+        .src([
+        "src/**/*.ts",
+        "typings/*.d.ts"
+    ])
+        .pipe(sourcemaps.init())
+        .pipe(tsc({
+        "module": "system",
+        "moduleResolution": "node",
+        "outDir": "public/dist/js",
+        "target": "ES5"
+    }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('public/dist'));
+});
+// Generate systemjs-based builds
+gulp.task('bundle:js', function () {
+    var builder = new sysBuilder('public', './system.config.js');
+    return builder.buildStatic('app', 'public/dist/js/app.min.js');
+});
+// Minify JS bundle
+gulp.task('minify:js', function () {
+    return gulp
+        .src('public/dist/js/app.min.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('public/dist/js'));
+});
+gulp.task('scripts', ['compile:ts', 'bundle:js', 'minify:js']);
 //# sourceMappingURL=bundle.js.map

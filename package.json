@@ -2,7 +2,10 @@
   "name": "myserviceneed",
   "version": "1.0.0",
   "scripts": {
-    "start": " concurrently \"tsc -w\" \"lite-server\" ",
+    "clean": "gulp clean",
+    "compile": "gulp compile",
+    "build": "gulp build",
+    "start": " concurrently \"tsc -w\" \"gulp watch\" \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
@@ -37,6 +40,7 @@
     "bootstrap-datepicker": "^1.6.4",
     "bootstrap-timepicker": "^0.5.2",
     "core-js": "^2.4.1",
+    "gulp-uglify": "^2.1.0",
     "ng2-auto-complete": "^0.8.2",
     "ng2-bootstrap": "^1.1.16",
     "ng2-cloudinary": "^0.8.0",
@@ -48,6 +52,8 @@
     "rxjs": "^5.0.3",
     "stylus": "^0.54.5",
     "systemjs": "0.19.41",
+    "systemjs-builder": "^0.16.4",
+    "tsd": "^0.6.5",
     "typescript": "^2.0.10",
     "underscore": "^1.8.3",
     "zone.js": "^0.7.4"
@@ -55,12 +61,19 @@
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/googlemaps": "^3.25.39",
-    "@types/node": "^6.0.45",
+    "@types/node": "^6.0.65",
     "concurrently": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-tslint": "^7.0.1",
+    "gulp-typescript": "^3.1.3",
+    "gulpclass": "^0.1.2",
     "lite-server": "^2.2.2",
     "ng2-facebook-sdk": "^1.2.0",
-    "typescript": "^2.0.10",
-		"ts-loader":  "^0.7.2"
-
+    "ts-loader": "^0.7.2",
+    "ts-node": "^1.7.2",
+    "typescript": "^2.1.4",
+    "typings": "^2.0.0"
   }
 }
