@@ -97,7 +97,7 @@ gulp.task('bundle-app', ['bundle-config', 'tsc'], function () {
 
 	var builder = new systemjsBuilder('', 'systemjs.config.js');
 	return builder
-      .bundle('[dist/**/*]', 'production/app.bundle.min.js', {
+      .bundle('[dist/**/*.js]', 'production/app.bundle.min.js', {
       	minify: true,
       	mangle: true
       })
