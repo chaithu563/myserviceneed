@@ -22,15 +22,20 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
+    	//shims
+      'core-js-shim': 'npm:core-js/client/shim.min.js',
+      'zone': 'npm:zone.js/dist/zone.js',
+      'reflect-metadata': 'npm:reflect-metadata/Reflect.js',
+
       'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js',
       'ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
       'ng2-dropdown': 'node_modules/ng2-dropdown',
       'moment': 'node_modules/moment/moment.js',
       // other libraries
-      'rxjs':                      'npm:rxjs',
+      'rxjs': 'node_modules/rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'jaydata/core': 'lib/jaydata/jaydata.js',
-      'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
+      //'jaydata/core': 'lib/jaydata/jaydata.js',
+      //'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
       'ag-grid': 'node_modules/ag-grid',
       'ng2-cloudinary': 'npm:ng2-cloudinary/dist/umd/ng2-cloudinary.js',
@@ -43,6 +48,10 @@
       "ng2-modal": "node_modules/ng2-modal",
       "angular-google-signin": "node_modules/angular-google-signin",
       "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
+
+
+
+    	
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

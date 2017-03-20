@@ -7,7 +7,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false
+    "noImplicitAny": true,
+		 "suppressImplicitAnyIndexErrors": true
     //"outFile": "bundle.js"
     //"types": [
     //       // add node as an option
@@ -20,11 +21,12 @@
     //       "node_modules/@types"
     //    ]
   },
-  "include": [
-    "node_modules",
-    "**/*/*"
-  ],
+ // "include": [
+//
+ //   "**/*/*"
+ // ],
    "exclude": [
+		     "node_modules",
     "gulpfile.ts",
 		"gulpfile.js"
    

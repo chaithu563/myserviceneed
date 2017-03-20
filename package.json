@@ -41,6 +41,9 @@
     "bootstrap-datepicker": "^1.6.4",
     "bootstrap-timepicker": "^0.5.2",
     "core-js": "^2.4.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-shell": "^0.6.3",
     "gulp-uglify": "^2.1.0",
     "ng2-auto-complete": "^0.8.2",
     "ng2-bootstrap": "^1.1.16",
@@ -57,7 +60,7 @@
     "tsd": "^0.6.5",
     "typescript": "^2.0.10",
     "underscore": "^1.8.3",
-    "zone.js": "^0.7.4"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",
