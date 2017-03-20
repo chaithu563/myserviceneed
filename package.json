@@ -2,10 +2,10 @@
   "name": "myserviceneed",
   "version": "1.0.0",
   "scripts": {
-    "clean": "gulp clean",
+    "production": "gulp production",
     "compile": "gulp compile",
     "build": "gulp build",
-    "start": " concurrently \"tsc -w\" \"gulp watch\" \"lite-server\" ",
+    "start": " concurrently \"tsc -w\"  \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w"

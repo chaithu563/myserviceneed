@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./services/msn.odataservice"], function (exports_1, context_1) {
+System.register(["@angular/core"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,20 +10,16 @@ System.register(["@angular/core", "./services/msn.odataservice"], function (expo
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, msn_odataservice_1, AppComponent;
+    var core_1, AppComponent;
     return {
         setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (msn_odataservice_1_1) {
-                msn_odataservice_1 = msn_odataservice_1_1;
             }
         ],
         execute: function () {
             AppComponent = (function () {
-                function AppComponent(mSNOdataService) {
-                    this.mSNOdataService = mSNOdataService;
+                function AppComponent() {
                 }
                 return AppComponent;
             }());
@@ -32,11 +28,11 @@ System.register(["@angular/core", "./services/msn.odataservice"], function (expo
                     selector: 'my-app',
                     // 	template: '<header> </header> <div class="row" >  <div class="col-md-2" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-10" style="height: 100%;"> <adminview></adminview>  </div> </div>',
                     template: '<header> </header>  <router-outlet></router-outlet> ',
-                    providers: [msn_odataservice_1.MSNOdataService],
+                    // providers: [MSNOdataService],
                     // directives: [HeaderComponent]
                     styles: ["\n    ng2-auto-complete, input {\n      display: block;  width: 80%;\n    }\n  "]
                 }),
-                __metadata("design:paramtypes", [msn_odataservice_1.MSNOdataService])
+                __metadata("design:paramtypes", [])
             ], AppComponent);
             exports_1("AppComponent", AppComponent);
         }

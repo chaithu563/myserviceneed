@@ -19,7 +19,7 @@ import {ModalModule} from "ng2-modal";
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 @NgModule({
     imports: [RouterModule, BrowserModule, HttpModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(),
-			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule, NKDatetimeModule, Ng2CloudinaryModule, ModalModule
+			routing, Ng2AutoCompleteModule, DatePickerModule, ReactiveFormsModule, NKDatetimeModule, Ng2CloudinaryModule, ModalModule,
 		AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBUMARm9vJQWQy27emWKhHvqyg7_faAM9Q',
             libraries: ['places']
