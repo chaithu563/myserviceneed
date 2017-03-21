@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var msn_service_1 = require('../../services/msn.service');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var msn_service_1 = require("../../services/msn.service");
+var router_1 = require("@angular/router");
 var HeaderComponent = (function () {
     function HeaderComponent(msnService) {
         this.msnService = msnService;
@@ -65,16 +65,16 @@ var HeaderComponent = (function () {
     HeaderComponent.prototype.onCityChange = function (value) {
         this.UserCity = value;
     };
-    HeaderComponent = __decorate([
-        core_1.Component({
-            selector: 'header',
-            templateUrl: 'app/core/header/header.html',
-            styleUrls: ['app/core/header/header.css'],
-            providers: [msn_service_1.MSNService, router_1.RouterLink]
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService])
-    ], HeaderComponent);
     return HeaderComponent;
 }());
+HeaderComponent = __decorate([
+    core_1.Component({
+        selector: 'header',
+        templateUrl: 'app/core/header/header.html',
+        styleUrls: ['app/core/header/header.css'],
+        providers: [msn_service_1.MSNService, router_1.RouterLink]
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService])
+], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.js.map

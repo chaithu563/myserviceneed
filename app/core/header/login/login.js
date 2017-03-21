@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var msn_service_1 = require('../../../services/msn.service');
-var msn_login_1 = require('../../../services/msn.login');
-var router_1 = require('@angular/router');
-var ng2_bootstrap_1 = require('ng2-bootstrap');
-var angular_google_signin_1 = require('angular-google-signin');
+var core_1 = require("@angular/core");
+var msn_service_1 = require("../../../services/msn.service");
+var msn_login_1 = require("../../../services/msn.login");
+var router_1 = require("@angular/router");
+var ng2_bootstrap_1 = require("ng2-bootstrap");
+var angular_google_signin_1 = require("angular-google-signin");
 var LoginComponent = (function () {
     function LoginComponent(msnService, loginService, ngZone) {
         this.msnService = msnService;
@@ -137,20 +137,20 @@ var LoginComponent = (function () {
             console.log(err);
         });
     };
-    __decorate([
-        core_1.ViewChild('myLoginModal'), 
-        __metadata('design:type', ng2_bootstrap_1.ModalDirective)
-    ], LoginComponent.prototype, "myLoginModal", void 0);
-    LoginComponent = __decorate([
-        core_1.Component({
-            selector: 'login',
-            templateUrl: 'app/core/header/login/login.html',
-            styleUrls: ['app/core/header/login/login.css'],
-            providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink, angular_google_signin_1.GoogleSignInComponent]
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, msn_login_1.LoginService, core_1.NgZone])
-    ], LoginComponent);
     return LoginComponent;
 }());
+__decorate([
+    core_1.ViewChild('myLoginModal'),
+    __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+], LoginComponent.prototype, "myLoginModal", void 0);
+LoginComponent = __decorate([
+    core_1.Component({
+        selector: 'login',
+        templateUrl: 'app/core/header/login/login.html',
+        styleUrls: ['app/core/header/login/login.css'],
+        providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink, angular_google_signin_1.GoogleSignInComponent]
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, core_1.NgZone])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.js.map

@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var forms_1 = require('@angular/forms');
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var GoogleplaceDirective = (function () {
     function GoogleplaceDirective(el, model) {
         var _this = this;
@@ -29,21 +29,21 @@ var GoogleplaceDirective = (function () {
     };
     GoogleplaceDirective.prototype.onInputChange = function () {
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], GoogleplaceDirective.prototype, "setAddress", void 0);
-    GoogleplaceDirective = __decorate([
-        core_1.Directive({
-            selector: '[googleplace]',
-            providers: [forms_1.NgModel],
-            host: {
-                '(input)': 'onInputChange()'
-            }
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, forms_1.NgModel])
-    ], GoogleplaceDirective);
     return GoogleplaceDirective;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], GoogleplaceDirective.prototype, "setAddress", void 0);
+GoogleplaceDirective = __decorate([
+    core_1.Directive({
+        selector: '[googleplace]',
+        providers: [forms_1.NgModel],
+        host: {
+            '(input)': 'onInputChange()'
+        }
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef, forms_1.NgModel])
+], GoogleplaceDirective);
 exports.GoogleplaceDirective = GoogleplaceDirective;
 //# sourceMappingURL=googleplace.directive.js.map

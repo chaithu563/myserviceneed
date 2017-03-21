@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var core_2 = require('angular2-google-maps/core');
-var msn_service_1 = require('../../../../services/msn.service');
-var Observable_1 = require('rxjs/Observable');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var core_2 = require("angular2-google-maps/core");
+var msn_service_1 = require("../../../../services/msn.service");
+var Observable_1 = require("rxjs/Observable");
 var MapViewWorkComponent = (function () {
     function MapViewWorkComponent(msnService, _router, zone, _loader, differs) {
         this.msnService = msnService;
@@ -58,24 +58,24 @@ var MapViewWorkComponent = (function () {
         this.servicessearch.nelongitude = ne.lng();
         this.servicessearch.swlongitude = sw.lng();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Observable_1.Observable)
-    ], MapViewWorkComponent.prototype, "servicessearch", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], MapViewWorkComponent.prototype, "onServiceSelected", void 0);
-    MapViewWorkComponent = __decorate([
-        core_1.Component({
-            selector: 'mapviewwork',
-            templateUrl: 'app/core/userview/findwork/mapviewwork/mapviewwork.html',
-            styleUrls: ['app/core/userview/findwork/mapviewwork/mapviewwork.css'],
-            providers: []
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader, core_1.KeyValueDiffers])
-    ], MapViewWorkComponent);
     return MapViewWorkComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Observable_1.Observable)
+], MapViewWorkComponent.prototype, "servicessearch", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], MapViewWorkComponent.prototype, "onServiceSelected", void 0);
+MapViewWorkComponent = __decorate([
+    core_1.Component({
+        selector: 'mapviewwork',
+        templateUrl: 'app/core/userview/findwork/mapviewwork/mapviewwork.html',
+        styleUrls: ['app/core/userview/findwork/mapviewwork/mapviewwork.css'],
+        providers: []
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader, core_1.KeyValueDiffers])
+], MapViewWorkComponent);
 exports.MapViewWorkComponent = MapViewWorkComponent;
 //# sourceMappingURL=mapviewwork.js.map

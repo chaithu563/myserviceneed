@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var core_2 = require('angular2-google-maps/core');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var core_2 = require("angular2-google-maps/core");
 var AddressComponent = (function () {
     function AddressComponent(_router, zone, _loader) {
         this._router = _router;
@@ -100,24 +100,24 @@ var AddressComponent = (function () {
     AddressComponent.prototype.addressChange = function (value) {
         this.serviceinfoChange.emit(this.serviceinfo);
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], AddressComponent.prototype, "serviceinfo", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], AddressComponent.prototype, "serviceinfoChange", void 0);
-    AddressComponent = __decorate([
-        core_1.Component({
-            selector: 'address',
-            templateUrl: 'app/core/userview/postservice/address/address.html',
-            styleUrls: ['app/core/userview/postservice/address/address.css'],
-            providers: []
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
-    ], AddressComponent);
     return AddressComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], AddressComponent.prototype, "serviceinfo", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], AddressComponent.prototype, "serviceinfoChange", void 0);
+AddressComponent = __decorate([
+    core_1.Component({
+        selector: 'address',
+        templateUrl: 'app/core/userview/postservice/address/address.html',
+        styleUrls: ['app/core/userview/postservice/address/address.css'],
+        providers: []
+    }),
+    __metadata("design:paramtypes", [router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
+], AddressComponent);
 exports.AddressComponent = AddressComponent;
 //# sourceMappingURL=address.js.map
