@@ -43,7 +43,7 @@
 
 								<ul *ngIf=cat.PseudoSERVICESUBCATEGORies.length>
 									<li *ngFor="let subcat of cat.PseudoSERVICESUBCATEGORies">
-										<a [routerLink]="['/findwork',subcat.ID]">{{subcat.NAME}}  </a>
+										<a [routerLink]="['/findwork',subcat.ID]">{{subcat.NAME | servicetrunk : ['To Give My ','']}}  </a>
 									</li>
 								</ul>
 

@@ -8,10 +8,10 @@
 export const MSN_DI_CONFIG: AppConfig = {
   oDataEndPoint: 'http://localhost/MSNAdmin/odata',
   oDataProvider: 'oData',
-  MSNServiceApi: 'http://localhost/MSNServiceApi/api/',
-	MSNHost:'http://localhost/MSNServiceApi/'
+  //MSNServiceApi: 'http://localhost/MSNServiceApi/api/',
+  //  MSNHost:'http://localhost/MSNServiceApi/'
 
-  //MSNServiceApi: 'https://msnapi.azurewebsites.net/api/',
-  //MSNHost: 'https://msnapi.azurewebsites.net/'
+  MSNServiceApi: 'https://msnapi.azurewebsites.net/api/',
+  MSNHost: 'https://msnapi.azurewebsites.net/'
 
 };

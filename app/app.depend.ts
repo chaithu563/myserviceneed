@@ -1,5 +1,7 @@
 ﻿import { AppComponent }   from './app.component';
 import { HeaderComponent } from './core/header/header';
+
+import {servicetrunk } from './core/header/servicetrunk';
 import {LoginComponent } from './core/header/login/login';
 import {TopMenuComponent} from './core/topmenu/topmenu';
 import {UserViewComponent} from './core/userview/userview';
@@ -24,7 +26,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import {GoogleSignInComponent} from 'angular-google-signin';
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
-    HeaderComponent, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
+	HeaderComponent, servicetrunk, TopMenuComponent, UserViewComponent, AppComponent, RegisterUserComponent, EditUserComponent, PostServiceComponent, AddressComponent,
     ServiceInfoComponent, ServiceTimeComponent, UserVerifyComponent, FacebookLoginComponent, GoogleSignInComponent,
 	FindWorkComponent, ListViewWorkComponent, MapViewWorkComponent, ServiceSearchComponent, DefaultViewComponent, ModalLoginComponent, UserNeedsComponent,
 	 FileSelectDirective, LoginComponent

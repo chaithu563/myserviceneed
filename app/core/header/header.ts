@@ -1,5 +1,6 @@
 ﻿import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MSNService } from '../../services/msn.service';
+import {servicetrunk} from './servicetrunk';
 import { Observable } from 'rxjs/Observable';
 import {  RouterLink} from '@angular/router';
 declare var $:JQueryStatic;
@@ -7,8 +8,8 @@ declare var $:JQueryStatic;
     selector: 'header',
     templateUrl: 'app/core/header/header.html',
     styleUrls: ['app/core/header/header.css'],
-    providers: [MSNService, RouterLink]
-    
+    providers: [MSNService, RouterLink],
+     pipes: [servicetrunk]
 })
 export class HeaderComponent implements AfterViewInit{
 
