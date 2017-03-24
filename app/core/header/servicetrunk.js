@@ -19,6 +19,7 @@ var servicetrunk = (function () {
         //return value.length > limit ? value.substring(0, limit) + trail : value;
         for (var i = 0; i < args.length; i++) {
             value = value.replace(args[i], '');
+            value = value.replace('Sell My ', 'Buy ');
         }
         return value;
     };
