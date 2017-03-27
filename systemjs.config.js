@@ -13,8 +13,8 @@
       // our app is within the app folder
         app: 'app',
         //shims
-        'core-js-shim': 'npm:core-js/client/shim.min.js',
-        'zone': 'npm:zone.js/dist/zone.js',
+     //   'core-js-shim': 'npm:core-js/client/shim.min.js',
+      //  'zone': 'npm:zone.js/dist/zone.js',
         'reflect-metadata': 'npm:reflect-metadata/Reflect.js',
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',

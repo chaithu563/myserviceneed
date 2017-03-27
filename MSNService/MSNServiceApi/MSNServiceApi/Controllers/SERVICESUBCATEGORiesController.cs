@@ -25,15 +25,25 @@ namespace MSNServiceApi.Controllers
 
         // GET: api/SERVICESUBCATEGORies/5
         [ResponseType(typeof(SERVICESUBCATEGORY))]
-        public async Task<IHttpActionResult> GetSERVICESUBCATEGORY(decimal id)
+        public  dynamic GetSERVICESUBCATEGORY(decimal id)
         {
-            SERVICESUBCATEGORY sERVICESUBCATEGORY = await db.SERVICESUBCATEGORies.FindAsync(id);
+					PseudoSERVICESUBCATEGORY sERVICESUBCATEGORY = db.SERVICESUBCATEGORies.Select(xd => new
+								PseudoSERVICESUBCATEGORY
+					{
+						ID = xd.ID,
+						NAME = xd.NAME,
+						DESCRIPTION = xd.DESCRIPTION,
+
+
+
+					}).First(x=>x.ID==id);
+								
             if (sERVICESUBCATEGORY == null)
             {
                 return NotFound();
             }
 
-            return Ok(sERVICESUBCATEGORY);
+            return (sERVICESUBCATEGORY);
         }
 
         // PUT: api/SERVICESUBCATEGORies/5
@@ -116,4 +126,6 @@ namespace MSNServiceApi.Controllers
             return db.SERVICESUBCATEGORies.Count(e => e.ID == id) > 0;
         }
     }
+
+		//public class PseudoSERVICESUBCATEGORYOther : SERVICESUBCATEGORY { }
 }

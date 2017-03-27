@@ -1,5 +1,5 @@
-﻿import 'core-js-shim';
-import 'zone';
+﻿//import 'core-js-shim';
+//import 'zone';
 import 'reflect-metadata';
 import 'angular2-google-maps/core';
 import 'ng2-bootstrap';

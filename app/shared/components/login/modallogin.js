@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var msn_service_1 = require("../../../services/msn.service");
-var msn_login_1 = require("../../../services/msn.login");
-var router_1 = require("@angular/router");
-var ng2_bootstrap_1 = require("ng2-bootstrap");
-var angular_google_signin_1 = require("angular-google-signin");
+var core_1 = require('@angular/core');
+var msn_service_1 = require('../../../services/msn.service');
+var msn_login_1 = require('../../../services/msn.login');
+var router_1 = require('@angular/router');
+var ng2_bootstrap_1 = require('ng2-bootstrap');
+var angular_google_signin_1 = require('angular-google-signin');
 var ModalLoginComponent = (function () {
     function ModalLoginComponent(msnService, loginService, ngZone) {
         this.msnService = msnService;
@@ -143,24 +143,24 @@ var ModalLoginComponent = (function () {
             console.log(err);
         });
     };
+    __decorate([
+        core_1.ViewChild('myLoginModal'), 
+        __metadata('design:type', ng2_bootstrap_1.ModalDirective)
+    ], ModalLoginComponent.prototype, "myLoginModal", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], ModalLoginComponent.prototype, "loginCallBack", void 0);
+    ModalLoginComponent = __decorate([
+        core_1.Component({
+            selector: 'modallogin',
+            templateUrl: 'app/shared/components/login/modallogin.html',
+            styleUrls: ['app/shared/components/login/modallogin.css'],
+            providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink, angular_google_signin_1.GoogleSignInComponent]
+        }), 
+        __metadata('design:paramtypes', [msn_service_1.MSNService, msn_login_1.LoginService, core_1.NgZone])
+    ], ModalLoginComponent);
     return ModalLoginComponent;
 }());
-__decorate([
-    core_1.ViewChild('myLoginModal'),
-    __metadata("design:type", ng2_bootstrap_1.ModalDirective)
-], ModalLoginComponent.prototype, "myLoginModal", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], ModalLoginComponent.prototype, "loginCallBack", void 0);
-ModalLoginComponent = __decorate([
-    core_1.Component({
-        selector: 'modallogin',
-        templateUrl: 'app/shared/components/login/modallogin.html',
-        styleUrls: ['app/shared/components/login/modallogin.css'],
-        providers: [msn_service_1.MSNService, msn_login_1.LoginService, router_1.RouterLink, angular_google_signin_1.GoogleSignInComponent]
-    }),
-    __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, core_1.NgZone])
-], ModalLoginComponent);
 exports.ModalLoginComponent = ModalLoginComponent;
 //# sourceMappingURL=modallogin.js.map

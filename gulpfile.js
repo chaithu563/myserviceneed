@@ -120,3 +120,16 @@ gulp.task('clean:ts', function () {
 	//return gulp.src(['./app/**/*.js', './app/**/*.js.map'], { read: false })
 	//		.pipe(clean());
 });
+
+
+//'node_modules/reflect-metadata/Reflect.js',
+//'node_modules/systemjs/dist/system.src.js',
+gulp.task('mainminify', function () {
+	return gulp.src([
+			'dist/main.bundle.js',
+			'dist/vendor.bundle.js'
+	])
+			.pipe(concat('bundle.min.js'))
+			.pipe(uglify())
+			.pipe(gulp.dest('./dist'));
+});

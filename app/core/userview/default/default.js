@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var msn_service_1 = require("../../../services/msn.service");
-var core_2 = require("@angular/core");
-var ng2_bootstrap_1 = require("ng2-bootstrap");
-var router_1 = require("@angular/router");
-var ng2_cloudinary_1 = require("ng2-cloudinary");
+var core_1 = require('@angular/core');
+var msn_service_1 = require('../../../services/msn.service');
+var core_2 = require('@angular/core');
+var ng2_bootstrap_1 = require('ng2-bootstrap');
+var router_1 = require('@angular/router');
+var ng2_cloudinary_1 = require('ng2-cloudinary');
 var DefaultViewComponent = (function () {
     //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
     function DefaultViewComponent(msnService, router) {
@@ -52,21 +52,21 @@ var DefaultViewComponent = (function () {
         this.selectedAllServices = data;
         this.allServicesModal.open();
     };
+    __decorate([
+        core_2.ViewChild('allServicesModal'), 
+        __metadata('design:type', ng2_bootstrap_1.ModalDirective)
+    ], DefaultViewComponent.prototype, "allServicesModal", void 0);
+    DefaultViewComponent = __decorate([
+        core_1.Component({
+            selector: 'userview',
+            templateUrl: 'app/core/userview/default/default.html',
+            styleUrls: ['app/core/userview/default/default.css'],
+            providers: [msn_service_1.MSNService, router_1.RouterLink],
+            directives: []
+        }), 
+        __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router])
+    ], DefaultViewComponent);
     return DefaultViewComponent;
 }());
-__decorate([
-    core_2.ViewChild('allServicesModal'),
-    __metadata("design:type", ng2_bootstrap_1.ModalDirective)
-], DefaultViewComponent.prototype, "allServicesModal", void 0);
-DefaultViewComponent = __decorate([
-    core_1.Component({
-        selector: 'userview',
-        templateUrl: 'app/core/userview/default/default.html',
-        styleUrls: ['app/core/userview/default/default.css'],
-        providers: [msn_service_1.MSNService, router_1.RouterLink],
-        directives: []
-    }),
-    __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router])
-], DefaultViewComponent);
 exports.DefaultViewComponent = DefaultViewComponent;
 //# sourceMappingURL=default.js.map

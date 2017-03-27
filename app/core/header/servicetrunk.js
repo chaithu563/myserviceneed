@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 // truncate.ts
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var servicetrunk = (function () {
     function servicetrunk() {
     }
@@ -23,13 +23,13 @@ var servicetrunk = (function () {
         }
         return value;
     };
+    servicetrunk = __decorate([
+        core_1.Pipe({
+            name: 'servicetrunk'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], servicetrunk);
     return servicetrunk;
 }());
-servicetrunk = __decorate([
-    core_1.Pipe({
-        name: 'servicetrunk'
-    }),
-    __metadata("design:paramtypes", [])
-], servicetrunk);
 exports.servicetrunk = servicetrunk;
 //# sourceMappingURL=servicetrunk.js.map

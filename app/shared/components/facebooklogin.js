@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var FacebookLoginComponent = (function () {
     function FacebookLoginComponent() {
         this.isUserLogin = true;
@@ -55,17 +55,17 @@ var FacebookLoginComponent = (function () {
             _this.statusChangeCallback(response);
         });
     };
+    FacebookLoginComponent = __decorate([
+        core_1.Component({
+            selector: 'facebook-login',
+            templateUrl: 'app/shared/components/facebooklogin.html',
+            //styleUrls: ['app/shared/components/facebooklogin.css'],
+            //  templateUrl: 'facebooklogin.html',
+            directives: [router_1.ROUTER_DIRECTIVES]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], FacebookLoginComponent);
     return FacebookLoginComponent;
 }());
-FacebookLoginComponent = __decorate([
-    core_1.Component({
-        selector: 'facebook-login',
-        templateUrl: 'app/shared/components/facebooklogin.html',
-        //styleUrls: ['app/shared/components/facebooklogin.css'],
-        //  templateUrl: 'facebooklogin.html',
-        directives: [router_1.ROUTER_DIRECTIVES]
-    }),
-    __metadata("design:paramtypes", [])
-], FacebookLoginComponent);
 exports.FacebookLoginComponent = FacebookLoginComponent;
 //# sourceMappingURL=facebooklogin.js.map
