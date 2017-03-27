@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 //import { Router, Route, RouterModule, ROUTER_DIRECTIVES } from '@angular/router';
 var UserViewComponent = (function () {
     function UserViewComponent(_router) {
@@ -67,17 +67,17 @@ var UserViewComponent = (function () {
             }
         });
     };
-    UserViewComponent = __decorate([
-        core_1.Component({
-            selector: 'userview',
-            templateUrl: 'app/core/userview/userview.html',
-            styleUrls: ['app/core/userview/userview.css'],
-            providers: [],
-            directives: []
-        }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], UserViewComponent);
     return UserViewComponent;
 }());
+UserViewComponent = __decorate([
+    core_1.Component({
+        selector: 'userview',
+        templateUrl: 'app/core/userview/userview.html',
+        styleUrls: ['app/core/userview/userview.css'],
+        providers: [],
+        directives: []
+    }),
+    __metadata("design:paramtypes", [router_1.Router])
+], UserViewComponent);
 exports.UserViewComponent = UserViewComponent;
 //# sourceMappingURL=userview.js.map

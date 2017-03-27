@@ -11,7 +11,11 @@
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      app: 'app',
+        app: 'app',
+        //shims
+        'core-js-shim': 'npm:core-js/client/shim.min.js',
+        'zone': 'npm:zone.js/dist/zone.js',
+        'reflect-metadata': 'npm:reflect-metadata/Reflect.js',
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -22,10 +26,7 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
-    	//shims
-      'core-js-shim': 'npm:core-js/client/shim.min.js',
-      'zone': 'npm:zone.js/dist/zone.js',
-      'reflect-metadata': 'npm:reflect-metadata/Reflect.js',
+    
 
       'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js',
       'ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',

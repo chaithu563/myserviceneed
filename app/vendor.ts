@@ -1,4 +1,7 @@
-﻿import 'angular2-google-maps/core';
+﻿import 'core-js-shim';
+import 'zone';
+import 'reflect-metadata';
+import 'angular2-google-maps/core';
 import 'ng2-bootstrap';
 import 'ng2-dropdown';
 import 'moment';
@@ -20,6 +23,3 @@ import 'angular-google-signin';
 import 'angular2-jwt';
 
 
-import 'core-js-shim';
-import 'zone';
-import 'reflect-metadata';

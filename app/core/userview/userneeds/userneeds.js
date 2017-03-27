@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var msn_login_1 = require('../../../services/msn.login');
-var msn_service_1 = require('../../../services/msn.service');
-var msn_pager_1 = require('../../../services/msn.pager');
-var router_1 = require('@angular/router');
-var ng2_bootstrap_1 = require('ng2-bootstrap');
-var core_2 = require('angular2-google-maps/core');
+var core_1 = require("@angular/core");
+var msn_login_1 = require("../../../services/msn.login");
+var msn_service_1 = require("../../../services/msn.service");
+var msn_pager_1 = require("../../../services/msn.pager");
+var router_1 = require("@angular/router");
+var ng2_bootstrap_1 = require("ng2-bootstrap");
+var core_2 = require("angular2-google-maps/core");
 var UserNeedsComponent = (function () {
     function UserNeedsComponent(msnService, loginService, pagerService, router, zone, _loader) {
         this.msnService = msnService;
@@ -107,25 +107,25 @@ var UserNeedsComponent = (function () {
         this.selectedItem.servicestartdate = object;
         this.selectedItem.serviceenddate = object;
     };
-    __decorate([
-        core_1.ViewChild('deletemodal'), 
-        __metadata('design:type', ng2_bootstrap_1.ModalDirective)
-    ], UserNeedsComponent.prototype, "deleteModal", void 0);
-    __decorate([
-        core_1.ViewChild('updatemodal'), 
-        __metadata('design:type', ng2_bootstrap_1.ModalDirective)
-    ], UserNeedsComponent.prototype, "updateModal", void 0);
-    UserNeedsComponent = __decorate([
-        core_1.Component({
-            selector: 'userneeds',
-            templateUrl: 'app/core/userview/userneeds/userneeds.html',
-            styleUrls: ['app/core/userview/userneeds/userneeds.css'],
-            providers: [msn_service_1.MSNService, msn_pager_1.PagerService, msn_login_1.LoginService],
-            directives: []
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, msn_login_1.LoginService, msn_pager_1.PagerService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
-    ], UserNeedsComponent);
     return UserNeedsComponent;
 }());
+__decorate([
+    core_1.ViewChild('deletemodal'),
+    __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+], UserNeedsComponent.prototype, "deleteModal", void 0);
+__decorate([
+    core_1.ViewChild('updatemodal'),
+    __metadata("design:type", ng2_bootstrap_1.ModalDirective)
+], UserNeedsComponent.prototype, "updateModal", void 0);
+UserNeedsComponent = __decorate([
+    core_1.Component({
+        selector: 'userneeds',
+        templateUrl: 'app/core/userview/userneeds/userneeds.html',
+        styleUrls: ['app/core/userview/userneeds/userneeds.css'],
+        providers: [msn_service_1.MSNService, msn_pager_1.PagerService, msn_login_1.LoginService],
+        directives: []
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, msn_pager_1.PagerService, router_1.Router, core_1.NgZone, core_2.MapsAPILoader])
+], UserNeedsComponent);
 exports.UserNeedsComponent = UserNeedsComponent;
 //# sourceMappingURL=userneeds.js.map

@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var ng2_cloudinary_1 = require('ng2-cloudinary');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var ng2_cloudinary_1 = require("ng2-cloudinary");
 //import {AdminUserComponent}  from './user/adminuser';
-var msn_service_1 = require('../../../../services/msn.service');
+var msn_service_1 = require("../../../../services/msn.service");
 var ServiceInfoComponent = (function () {
     function ServiceInfoComponent(msnService, router, route) {
         this.msnService = msnService;
@@ -47,25 +47,25 @@ var ServiceInfoComponent = (function () {
     ServiceInfoComponent.prototype.descriptionChange = function (value) {
         this.serviceinfoChange.emit(this.serviceinfo);
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ServiceInfoComponent.prototype, "serviceinfo", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], ServiceInfoComponent.prototype, "serviceinfoChange", void 0);
-    ServiceInfoComponent = __decorate([
-        core_1.Component({
-            selector: 'serviceinfo',
-            templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
-            styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
-            providers: [msn_service_1.MSNService],
-            directives: []
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
-    ], ServiceInfoComponent);
     return ServiceInfoComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], ServiceInfoComponent.prototype, "serviceinfo", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], ServiceInfoComponent.prototype, "serviceinfoChange", void 0);
+ServiceInfoComponent = __decorate([
+    core_1.Component({
+        selector: 'serviceinfo',
+        templateUrl: 'app/core/userview/postservice/serviceinfo/serviceinfo.html',
+        styleUrls: ['app/core/userview/postservice/serviceinfo/serviceinfo.css'],
+        providers: [msn_service_1.MSNService],
+        directives: []
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
+], ServiceInfoComponent);
 exports.ServiceInfoComponent = ServiceInfoComponent;
 //# sourceMappingURL=serviceinfo.js.map

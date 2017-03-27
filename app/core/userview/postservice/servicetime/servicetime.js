@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var forms_1 = require('@angular/forms');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 //import {AdminUserComponent} from './user/adminuser';
-var msn_service_1 = require('../../../../services/msn.service');
+var msn_service_1 = require("../../../../services/msn.service");
 var ServiceTimeComponent = (function () {
     function ServiceTimeComponent(msnService, router, route, formBuilder) {
         this.msnService = msnService;
@@ -49,25 +49,25 @@ var ServiceTimeComponent = (function () {
         this.serviceinfo.servicestartdate = object;
         this.serviceinfo.serviceenddate = object;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ServiceTimeComponent.prototype, "serviceinfo", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], ServiceTimeComponent.prototype, "serviceinfoChange", void 0);
-    ServiceTimeComponent = __decorate([
-        core_1.Component({
-            selector: 'servicetime',
-            templateUrl: 'app/core/userview/postservice/servicetime/servicetime.html',
-            styleUrls: ['app/core/userview/postservice/servicetime/servicetime.css'],
-            providers: [msn_service_1.MSNService, forms_1.FormBuilder],
-            directives: []
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder])
-    ], ServiceTimeComponent);
     return ServiceTimeComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], ServiceTimeComponent.prototype, "serviceinfo", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], ServiceTimeComponent.prototype, "serviceinfoChange", void 0);
+ServiceTimeComponent = __decorate([
+    core_1.Component({
+        selector: 'servicetime',
+        templateUrl: 'app/core/userview/postservice/servicetime/servicetime.html',
+        styleUrls: ['app/core/userview/postservice/servicetime/servicetime.css'],
+        providers: [msn_service_1.MSNService, forms_1.FormBuilder],
+        directives: []
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder])
+], ServiceTimeComponent);
 exports.ServiceTimeComponent = ServiceTimeComponent;
 //# sourceMappingURL=servicetime.js.map

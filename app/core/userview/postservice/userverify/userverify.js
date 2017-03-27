@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var msn_login_1 = require('../../../../services/msn.login');
-var modallogin_1 = require('../../../../shared/components/login/modallogin');
-var msn_service_1 = require('../../../../services/msn.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var msn_login_1 = require("../../../../services/msn.login");
+var modallogin_1 = require("../../../../shared/components/login/modallogin");
+var msn_service_1 = require("../../../../services/msn.service");
 var UserVerifyComponent = (function () {
     function UserVerifyComponent(msnService, loginService, router, route) {
         this.msnService = msnService;
@@ -67,33 +67,33 @@ var UserVerifyComponent = (function () {
         this.myLoginModal.open();
         //this.initialLoad();
     };
-    __decorate([
-        core_1.ViewChild('modallogin'), 
-        __metadata('design:type', modallogin_1.ModalLoginComponent)
-    ], UserVerifyComponent.prototype, "myLoginModal", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], UserVerifyComponent.prototype, "serviceinfo", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], UserVerifyComponent.prototype, "serviceinfoChange", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], UserVerifyComponent.prototype, "postUserRequest", void 0);
-    UserVerifyComponent = __decorate([
-        core_1.Component({
-            selector: 'userverify',
-            templateUrl: 'app/core/userview/postservice/userverify/userverify.html',
-            styleUrls: ['app/core/userview/postservice/userverify/userverify.css'],
-            providers: [msn_service_1.MSNService, msn_login_1.LoginService],
-            directives: []
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, msn_login_1.LoginService, router_1.Router, router_1.ActivatedRoute])
-    ], UserVerifyComponent);
     return UserVerifyComponent;
 }());
+__decorate([
+    core_1.ViewChild('modallogin'),
+    __metadata("design:type", modallogin_1.ModalLoginComponent)
+], UserVerifyComponent.prototype, "myLoginModal", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], UserVerifyComponent.prototype, "serviceinfo", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], UserVerifyComponent.prototype, "serviceinfoChange", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], UserVerifyComponent.prototype, "postUserRequest", void 0);
+UserVerifyComponent = __decorate([
+    core_1.Component({
+        selector: 'userverify',
+        templateUrl: 'app/core/userview/postservice/userverify/userverify.html',
+        styleUrls: ['app/core/userview/postservice/userverify/userverify.css'],
+        providers: [msn_service_1.MSNService, msn_login_1.LoginService],
+        directives: []
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, msn_login_1.LoginService, router_1.Router, router_1.ActivatedRoute])
+], UserVerifyComponent);
 exports.UserVerifyComponent = UserVerifyComponent;
 //# sourceMappingURL=userverify.js.map
