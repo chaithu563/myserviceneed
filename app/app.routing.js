@@ -1,6 +1,7 @@
 "use strict";
 var router_1 = require('@angular/router');
 var userneeds_1 = require('./core/userview/userneeds/userneeds');
+var registerwork_1 = require('./core/userview/registerwork/registerwork');
 var edituser_1 = require('./core/userview/user/edituser');
 var postservice_1 = require('./core/userview/postservice/postservice');
 var address_1 = require('./core/userview/postservice/address/address');
@@ -47,6 +48,10 @@ var appRoutes = [
     {
         path: 'userneeds/:id',
         component: userneeds_1.UserNeedsComponent
+    },
+    {
+        path: 'registerwork/:id',
+        component: registerwork_1.RegisterWorkComponent
     },
     {
         path: 'user/:id', component: edituser_1.EditUserComponent

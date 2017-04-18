@@ -1,0 +1,10 @@
+﻿.searcharea{
+	
+    margin: 0 auto;
+		width:90%;
+}
+
+.search-text-box{
+	/*display:inline;*/	
+	width:100% !important;
+}
