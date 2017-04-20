@@ -45,7 +45,7 @@ var Dictionary = (function () {
 var postServiceRoute = (function (_super) {
     __extends(postServiceRoute, _super);
     function postServiceRoute(init) {
-        _super.call(this, init);
+        return _super.call(this, init) || this;
     }
     postServiceRoute.prototype.values = function () {
         return this._values;

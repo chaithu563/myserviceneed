@@ -253,6 +253,7 @@
     <Compile Include="Controllers\SERVICESUBCATEGORiesController.cs" />
     <Compile Include="Controllers\USERINFOesController.cs" />
     <Compile Include="Controllers\USERSERVICENEEDsController.cs" />
+    <Compile Include="Controllers\USERSERVICEsController.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">

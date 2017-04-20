@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 //import {AdminUserComponent} from './user/adminuser';
-var servicesearch_1 = require('../servicesearch/servicesearch');
-var msn_service_1 = require('../../../services/msn.service');
-var postServiceRoute_1 = require('../../../types/postServiceRoute');
-var postServiceRequest_1 = require('../../../types/postServiceRequest');
+var servicesearch_1 = require("../servicesearch/servicesearch");
+var msn_service_1 = require("../../../services/msn.service");
+var postServiceRoute_1 = require("../../../types/postServiceRoute");
+var postServiceRequest_1 = require("../../../types/postServiceRequest");
 var PostServiceComponent = (function () {
     function PostServiceComponent(msnService, router, route) {
         var _this = this;
@@ -109,17 +109,17 @@ var PostServiceComponent = (function () {
             console.log(err);
         });
     };
-    PostServiceComponent = __decorate([
-        core_1.Component({
-            selector: 'postservice',
-            templateUrl: 'app/core/userview/postservice/postservice.html',
-            styleUrls: ['app/core/userview/postservice/postservice.css'],
-            providers: [servicesearch_1.ServiceSearchComponent, msn_service_1.MSNService],
-            directives: []
-        }), 
-        __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
-    ], PostServiceComponent);
     return PostServiceComponent;
 }());
+PostServiceComponent = __decorate([
+    core_1.Component({
+        selector: 'postservice',
+        templateUrl: 'app/core/userview/postservice/postservice.html',
+        styleUrls: ['app/core/userview/postservice/postservice.css'],
+        providers: [servicesearch_1.ServiceSearchComponent, msn_service_1.MSNService],
+        directives: []
+    }),
+    __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router, router_1.ActivatedRoute])
+], PostServiceComponent);
 exports.PostServiceComponent = PostServiceComponent;
 //# sourceMappingURL=postservice.js.map

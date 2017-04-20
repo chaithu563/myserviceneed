@@ -14,7 +14,6 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\roslyn\VBCSCompiler.
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\MSNServiceApi.dll.config
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\MSNServiceApi.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\MSNServiceApi.pdb
-C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Cors.Fakes.fakesconfig
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\EntityFramework.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\EntityFramework.SqlServer.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Microsoft.AI.Agent.Intercept.dll
@@ -95,7 +94,6 @@ C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\Swashbuckle.Core.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\WebActivatorEx.dll
 C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.IdentityModel.Tokens.Jwt.xml
-C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojFakesResolveAssemblyReference.cache
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.Migrations.AddClientsAndRefreshTokenTables.resources
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csproj.GenerateResource.Cache
@@ -192,3 +190,4 @@ D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\bin\System.Web.Http.WebHost.xml
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.dll
 D:\chaitanya\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.pdb
+C:\myserviceneed\MSNService\MSNServiceApi\MSNServiceApi\obj\Debug\MSNServiceApi.csprojResolveAssemblyReference.cache
