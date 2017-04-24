@@ -1,17 +1,17 @@
 ﻿<div class="container">
-    <div class="text-center">
+    <div class="">
    
 
 			<div>
-				Add your service using search
+				<h3>Add your service using search </h3>
 
 			</div>
        
-			<div class="searcharea">
+			<div >
 				<input ng2-auto-complete
 							 class="form-control search-text-box"
-							 ([ngmodel])="searchString"
-							 (valuechanged)="serviceSelected($event)"
+							 ([ngModel])="searchString"
+							 (valueChanged)="serviceSelected($event)"
 							 [source]="avilableServices"
 							 display-property-name="NAME"
 							 display-property-value="ID"
@@ -20,11 +20,7 @@
 							 placeholder="Choose Your Needed Service" />
 
 
-				<div class="autoButton">
-					<button type="button" class="btn btn-info">
-						<span class="glyphicon glyphicon-search"></span> Search
-					</button>
-				</div>
+				
 			</div>
        
        
