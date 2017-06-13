@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 //import {AdminUserComponent} from './user/adminuser';
-var msn_service_1 = require("../../../services/msn.service");
+var msn_service_1 = require('../../../services/msn.service');
 var ServiceSearchComponent = (function () {
     function ServiceSearchComponent(msnService) {
         this.msnService = msnService;
@@ -54,17 +54,17 @@ var ServiceSearchComponent = (function () {
         this.cities.filter(function (x) { return x.ID == value.ID; }).map(function (data) { return _this.areas = data.CITYAREAs; });
         console.log(this.areas);
     };
+    ServiceSearchComponent = __decorate([
+        core_1.Component({
+            selector: 'servicesearch',
+            templateUrl: 'app/core/userview/servicesearch/servicesearch.html',
+            styleUrls: ['app/core/userview/servicesearch/servicesearch.css'],
+            providers: [msn_service_1.MSNService],
+            directives: []
+        }), 
+        __metadata('design:paramtypes', [msn_service_1.MSNService])
+    ], ServiceSearchComponent);
     return ServiceSearchComponent;
 }());
-ServiceSearchComponent = __decorate([
-    core_1.Component({
-        selector: 'servicesearch',
-        templateUrl: 'app/core/userview/servicesearch/servicesearch.html',
-        styleUrls: ['app/core/userview/servicesearch/servicesearch.css'],
-        providers: [msn_service_1.MSNService],
-        directives: []
-    }),
-    __metadata("design:paramtypes", [msn_service_1.MSNService])
-], ServiceSearchComponent);
 exports.ServiceSearchComponent = ServiceSearchComponent;
 //# sourceMappingURL=servicesearch.js.map

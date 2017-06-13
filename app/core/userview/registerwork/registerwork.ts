@@ -20,11 +20,13 @@ export class RegisterWorkComponent implements OnInit {
 	
 	avilableServices: any;
 	searchString: string;
+	userName: string;
 	constructor(private msnService: MSNService, private router: Router, private zone: NgZone, private _loader: MapsAPILoader)
 	{
 		this.searchString = "";
 		this.avilableServices = this.msnService.getAvailableServicesURL();
-
+		var currentUser = JSON.parse(localStorage.getItem('userDetails'));
+		this.userName = currentUser.Name;
 	}
 
 	

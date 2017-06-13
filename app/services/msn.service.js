@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
-var app_config_1 = require("../app.config");
-var http_1 = require("@angular/http");
+var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
+var app_config_1 = require('../app.config');
+var http_1 = require('@angular/http');
 // Import RxJs required methods
-require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/catch');
 var MSNService = (function () {
     function MSNService(http) {
         this.http = http;
@@ -104,11 +104,11 @@ var MSNService = (function () {
         })
             .catch(function (error) { return Observable_1.Observable.throw(error.json().error || 'Server error'); });
     };
+    MSNService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], MSNService);
     return MSNService;
 }());
-MSNService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], MSNService);
 exports.MSNService = MSNService;
 //# sourceMappingURL=msn.service.js.map

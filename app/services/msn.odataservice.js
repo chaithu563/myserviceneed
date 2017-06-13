@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var Subject_1 = require("rxjs/Subject");
-var MSN_1 = require("../jaydata-model/MSN");
-var app_config_1 = require("../app.config");
+var core_1 = require('@angular/core');
+var Subject_1 = require('rxjs/Subject');
+var MSN_1 = require('../jaydata-model/MSN');
+var app_config_1 = require('../app.config');
 require("jaydata/odata");
 var MSNOdataService = (function () {
     function MSNOdataService() {
@@ -39,11 +39,11 @@ var MSNOdataService = (function () {
         this.subject.next(this.context);
         this.subject.complete();
     };
+    MSNOdataService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], MSNOdataService);
     return MSNOdataService;
 }());
-MSNOdataService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], MSNOdataService);
 exports.MSNOdataService = MSNOdataService;
 //# sourceMappingURL=msn.odataservice.js.map

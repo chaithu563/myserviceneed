@@ -1,13 +1,13 @@
 "use strict";
-var router_1 = require("@angular/router");
-var userneeds_1 = require("./core/userview/userneeds/userneeds");
-var registerwork_1 = require("./core/userview/registerwork/registerwork");
-var edituser_1 = require("./core/userview/user/edituser");
-var postservice_1 = require("./core/userview/postservice/postservice");
-var address_1 = require("./core/userview/postservice/address/address");
-var findwork_1 = require("./core/userview/findwork/findwork");
-var default_1 = require("./core/userview/default/default");
-var userview_1 = require("./core/userview/userview");
+var router_1 = require('@angular/router');
+var userneeds_1 = require('./core/userview/userneeds/userneeds');
+var registerwork_1 = require('./core/userview/registerwork/registerwork');
+var edituser_1 = require('./core/userview/user/edituser');
+var postservice_1 = require('./core/userview/postservice/postservice');
+var address_1 = require('./core/userview/postservice/address/address');
+var findwork_1 = require('./core/userview/findwork/findwork');
+var default_1 = require('./core/userview/default/default');
+var userview_1 = require('./core/userview/userview');
 // Route Configuration
 //export const routes: Routes = [
 //		{ path: '/manageadmins', component: AdminUserComponent }

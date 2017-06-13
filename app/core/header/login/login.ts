@@ -40,6 +40,7 @@ export class LoginComponent implements AfterViewInit {
 							if (user.HasRegistered) {
                 this.isLoggedIn = true;
                 this.user = user;
+								localStorage.setItem('userDetails', JSON.stringify(user));
                 console.log(user);
 							}
             }

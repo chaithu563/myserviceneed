@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var msn_service_1 = require("../../../services/msn.service");
-var msn_pager_1 = require("../../../services/msn.pager");
-var router_1 = require("@angular/router");
-var core_2 = require("angular2-google-maps/core");
+var core_1 = require('@angular/core');
+var msn_service_1 = require('../../../services/msn.service');
+var msn_pager_1 = require('../../../services/msn.pager');
+var router_1 = require('@angular/router');
+var core_2 = require('angular2-google-maps/core');
 var FindWorkComponent = (function () {
     //  searchUrl: string = "http://localhost/MSNServiceApi/api/FetchServices?search=:keyword";
     function FindWorkComponent(msnService, pagerService, router, route, zone, _loader) {
@@ -188,17 +188,17 @@ var FindWorkComponent = (function () {
             this.servicessearch.bookedon = '';
         }
     };
+    FindWorkComponent = __decorate([
+        core_1.Component({
+            selector: 'findwork',
+            templateUrl: 'app/core/userview/findwork/findwork.html',
+            styleUrls: ['app/core/userview/findwork/findwork.css'],
+            providers: [msn_service_1.MSNService, msn_pager_1.PagerService],
+            directives: []
+        }), 
+        __metadata('design:paramtypes', [msn_service_1.MSNService, msn_pager_1.PagerService, router_1.Router, router_1.ActivatedRoute, core_1.NgZone, core_2.MapsAPILoader])
+    ], FindWorkComponent);
     return FindWorkComponent;
 }());
-FindWorkComponent = __decorate([
-    core_1.Component({
-        selector: 'findwork',
-        templateUrl: 'app/core/userview/findwork/findwork.html',
-        styleUrls: ['app/core/userview/findwork/findwork.css'],
-        providers: [msn_service_1.MSNService, msn_pager_1.PagerService],
-        directives: []
-    }),
-    __metadata("design:paramtypes", [msn_service_1.MSNService, msn_pager_1.PagerService, router_1.Router, router_1.ActivatedRoute, core_1.NgZone, core_2.MapsAPILoader])
-], FindWorkComponent);
 exports.FindWorkComponent = FindWorkComponent;
 //# sourceMappingURL=findwork.js.map
