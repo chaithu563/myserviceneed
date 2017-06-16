@@ -13,107 +13,133 @@ using MSNServiceApi.Models;
 
 namespace MSNServiceApi.Controllers
 {
-    public class USERSERVICEsController : ApiController
-    {
-        private MSNEntities db = new MSNEntities();
+	public class USERSERVICEsController : ApiController
+	{
+		private MSNEntities db = new MSNEntities();
 
-        // GET: api/USERSERVICEs
-        public IQueryable<USERSERVICE> GetUSERSERVICEs()
-        {
-            return db.USERSERVICEs;
-        }
+		// GET: api/USERSERVICEs
+		public IQueryable<USERSERVICE> GetUSERSERVICEs()
+		{
+			return db.USERSERVICEs;
+		}
 
-        // GET: api/USERSERVICEs/5
-        [ResponseType(typeof(USERSERVICE))]
-        public async Task<IHttpActionResult> GetUSERSERVICE(decimal id)
-        {
-            USERSERVICE uSERSERVICE = await db.USERSERVICEs.FindAsync(id);
-            if (uSERSERVICE == null)
-            {
-                return NotFound();
-            }
+		// GET: api/USERSERVICEs/5
+		[ResponseType(typeof(USERSERVICE))]
+		public IEnumerable<dynamic> GetUSERSERVICE(string id)
+		{
+			//USERSERVICE uSERSERVICE = await db.USERSERVICEs.FindAsync(id);
+			//if (uSERSERVICE == null)
+			//{
+			//		return NotFound();
+			//}
 
-            return Ok(uSERSERVICE);
-        }
+			//return Ok(uSERSERVICE);
 
-        // PUT: api/USERSERVICEs/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUSERSERVICE(decimal id, USERSERVICE uSERSERVICE)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			var uSERSERVICE = db.USERSERVICEs.Select(x => new PSUEDOUSERSERVICE
+			{
+				ID = x.ID,
+				USERID = x.USERID,
+				//	SERVICECATEGORY=x.SERVICECATEGORY,
+				SERVICESUBCATEGORYID = x.SERVICESUBCATEGORY.ID,
+				SERVICESUBCATEGORYNAME = x.SERVICESUBCATEGORY.NAME
 
-            if (id != uSERSERVICE.ID)
-            {
-                return BadRequest();
-            }
+			}
+				).Where(x => x.USERID.Equals(id)).ToList();
+			if (uSERSERVICE == null)
+			{
+				return null;
+			}
 
-            db.Entry(uSERSERVICE).State = EntityState.Modified;
+			return (uSERSERVICE);
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!USERSERVICEExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+		}
 
-        // POST: api/USERSERVICEs
-        [ResponseType(typeof(USERSERVICE))]
-        public async Task<IHttpActionResult> PostUSERSERVICE(USERSERVICE uSERSERVICE)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// PUT: api/USERSERVICEs/5
+		[ResponseType(typeof(void))]
+		public async Task<IHttpActionResult> PutUSERSERVICE(decimal id, USERSERVICE uSERSERVICE)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            db.USERSERVICEs.Add(uSERSERVICE);
-            await db.SaveChangesAsync();
+			if (id != uSERSERVICE.ID)
+			{
+				return BadRequest();
+			}
 
-            return CreatedAtRoute("DefaultApi", new { id = uSERSERVICE.ID }, uSERSERVICE);
-        }
+			db.Entry(uSERSERVICE).State = EntityState.Modified;
 
-        // DELETE: api/USERSERVICEs/5
-        [ResponseType(typeof(USERSERVICE))]
-        public async Task<IHttpActionResult> DeleteUSERSERVICE(decimal id)
-        {
-            USERSERVICE uSERSERVICE = await db.USERSERVICEs.FindAsync(id);
-            if (uSERSERVICE == null)
-            {
-                return NotFound();
-            }
+			try
+			{
+				await db.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!USERSERVICEExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            db.USERSERVICEs.Remove(uSERSERVICE);
-            await db.SaveChangesAsync();
+			return StatusCode(HttpStatusCode.NoContent);
+		}
 
-            return Ok(uSERSERVICE);
-        }
+		// POST: api/USERSERVICEs
+		[ResponseType(typeof(USERSERVICE))]
+		public async Task<IHttpActionResult> PostUSERSERVICE(USERSERVICE uSERSERVICE)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+			db.USERSERVICEs.Add(uSERSERVICE);
+			await db.SaveChangesAsync();
 
-        private bool USERSERVICEExists(decimal id)
-        {
-            return db.USERSERVICEs.Count(e => e.ID == id) > 0;
-        }
-    }
+			return CreatedAtRoute("DefaultApi", new { id = uSERSERVICE.ID }, uSERSERVICE);
+		}
+
+		// DELETE: api/USERSERVICEs/5
+		[ResponseType(typeof(USERSERVICE))]
+		public async Task<IHttpActionResult> DeleteUSERSERVICE(decimal id)
+		{
+			USERSERVICE uSERSERVICE = await db.USERSERVICEs.FindAsync(id);
+			if (uSERSERVICE == null)
+			{
+				return NotFound();
+			}
+
+			db.USERSERVICEs.Remove(uSERSERVICE);
+			await db.SaveChangesAsync();
+
+			return Ok(uSERSERVICE);
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		private bool USERSERVICEExists(decimal id)
+		{
+			return db.USERSERVICEs.Count(e => e.ID == id) > 0;
+		}
+	}
+
+	public class PSUEDOUSERSERVICE : USERSERVICE
+	{
+		public decimal SERVICESUBCATEGORYID;
+		public string SERVICESUBCATEGORYNAME;
+
+	}
 }

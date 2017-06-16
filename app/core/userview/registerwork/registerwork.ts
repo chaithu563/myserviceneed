@@ -35,7 +35,23 @@ export class RegisterWorkComponent implements OnInit {
 		if (object && object.NAME)
 		//	this.router.navigate(['postservice', object.ID]);
 		// this.router.navigateByUrl('postservice/' + object.ID);
-		console.log(object);
+		{
+			console.log(object);
+
+			var userneedOperation = this.msnService.postUserService({ USERID: JSON.parse(localStorage.getItem('userDetails')).ID, SERVICESUBCATEGORYID: object.ID });
+
+			// Subscribe to observable
+			userneedOperation.subscribe(
+				postedneed => {
+					console.log(postedneed);
+					//this.router.navigate(['/userneeds', '']);
+				},
+				err => {
+					// Log errors if any
+					console.log(err);
+				});
+
+		}
 	}
 
 	

@@ -26,10 +26,21 @@ var RegisterWorkComponent = (function () {
         this.userName = currentUser.Name;
     }
     RegisterWorkComponent.prototype.serviceSelected = function (object) {
-        if (object && object.NAME)
-            //	this.router.navigate(['postservice', object.ID]);
-            // this.router.navigateByUrl('postservice/' + object.ID);
+        if (object && object.NAME) 
+        //	this.router.navigate(['postservice', object.ID]);
+        // this.router.navigateByUrl('postservice/' + object.ID);
+        {
             console.log(object);
+            var userneedOperation = this.msnService.postUserService({ USERID: JSON.parse(localStorage.getItem('userDetails')).ID, SERVICESUBCATEGORYID: object.ID });
+            // Subscribe to observable
+            userneedOperation.subscribe(function (postedneed) {
+                console.log(postedneed);
+                //this.router.navigate(['/userneeds', '']);
+            }, function (err) {
+                // Log errors if any
+                console.log(err);
+            });
+        }
     };
     RegisterWorkComponent = __decorate([
         core_1.Component({
